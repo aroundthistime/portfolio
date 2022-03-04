@@ -1,0 +1,8 @@
+@import '../../../styles/variables/variables';
+
+.header__link {
+  margin: 0 $row-gap;
+  .header__icon {
+    font-size: 1.4rem;
+  }
+}

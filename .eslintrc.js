@@ -24,6 +24,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'no-use-before-define': ['error', {functions: false}],
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -35,6 +36,9 @@ module.exports = {
         mjs: 'never',
       },
     ],
+    'import/prefer-default-export': 'off',
+    'no-unused-vars': 0,
+    '@typescript-eslint/no-unused-vars': 0,
     'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx', '.tsx']}],
   },
   settings: {

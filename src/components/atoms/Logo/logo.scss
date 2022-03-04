@@ -1,0 +1,10 @@
+@import '../../../styles/variables/variables';
+
+.logo {
+  display: inline-block;
+  .logo__text {
+    font-size: $font-large;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+  }
+}
