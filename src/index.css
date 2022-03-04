@@ -1,0 +1,11 @@
+@import './styles/reset.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
