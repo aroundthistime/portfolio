@@ -1,20 +1,44 @@
 //padding
-$padding-vertical: 1.2rem;
-$padding-vertical-small: 0.5rem;
-$padding-vertical-large: 2.5rem;
+@function padding-vertical($size: 'default') {
+  @if $size == 'small' {
+    @return 0.5rem;
+  } @else if $size == 'default' {
+    @return 1.2rem;
+  } @else {
+    @return 2.5rem;
+  }
+}
 
-$padding-horizontal: 1.2rem;
-$padding-horizontal-small: 0.5rem;
-$padding-horizontal-large: 3rem;
+@function padding-horizontal($size: 'default') {
+  @if $size == 'small' {
+    @return 0.5rem;
+  } @else if $size == 'default' {
+    @return 1.2rem;
+  } @else {
+    @return 3rem;
+  }
+}
 
 //border-radius
 $border-radius: 10px;
 
 //gap
-$column-gap: 1.2rem;
-$column-gap-small: 0.5rem;
-$column-gap-large: 4rem;
+@function column-gap($size: 'default') {
+  @if $size == 'small' {
+    @return 0.5rem;
+  } @else if $size == 'default' {
+    @return 1.2rem;
+  } @else {
+    @return 4rem;
+  }
+}
 
-$row-gap: 1.2rem;
-$row-gap-small: 0.5rem;
-$row-gap-large: 3rem;
+@function row-gap($size: 'default') {
+  @if $size == 'small' {
+    @return 0.5rem;
+  } @else if $size == 'default' {
+    @return 1.2rem;
+  } @else {
+    @return 3rem;
+  }
+}

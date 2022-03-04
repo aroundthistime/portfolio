@@ -1,7 +1,7 @@
 @import '../../../styles/variables/variables';
 
 .skill {
-  margin: $row-gap 0;
+  margin: row-gap() 0;
   .skill__header {
     display: flex;
     align-items: center;
@@ -9,7 +9,7 @@
     .skill__image {
       width: 2rem;
       height: 2rem;
-      margin-right: $column-gap-small;
+      margin-right: column-gap('small');
     }
     .skill__title {
       font-size: 1.3rem;
@@ -19,8 +19,8 @@
   .skill__descriptions {
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: $row-gap-small;
-    padding-left: $padding-horizontal;
+    row-gap: row-gap('small');
+    padding-left: padding-horizontal();
     .skill__description {
       list-style-type: disc;
     }

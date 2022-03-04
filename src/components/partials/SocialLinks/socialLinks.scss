@@ -4,6 +4,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   grid-auto-rows: 6.5rem;
-  column-gap: $column-gap;
-  row-gap: $row-gap;
+  column-gap: column-gap();
+  row-gap: row-gap();
 }

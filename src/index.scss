@@ -24,6 +24,6 @@ body {
 }
 
 main {
-  padding: $padding-vertical-large $padding-horizontal-large;
+  padding: padding-vertical('large') padding-horizontal('large');
   min-width: min-content;
 }
