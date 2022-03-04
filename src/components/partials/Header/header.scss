@@ -10,5 +10,5 @@ header.header {
   background-color: white;
   z-index: 100;
   padding: padding-vertical() padding-horizontal();
-  box-shadow: $shadow-default;
+  @include shadow();
 }

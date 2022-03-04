@@ -1,2 +1,9 @@
-$light-gray-border: 1px solid rgba(0, 0, 0, 0.1);
-$light-gray-border-bold: 2.5px solid rgba(0, 0, 0, 0.1);
+@import './colors';
+
+@function light-gray-border($style: 'default') {
+  @if $style == 'default' {
+    @return 1px solid $light-gray;
+  } @else {
+    @return 2.5px solid $light-gray;
+  }
+}

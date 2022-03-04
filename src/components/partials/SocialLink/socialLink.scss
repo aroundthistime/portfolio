@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: $light-gray-border-bold;
+  border: light-gray-border('bold');
   border-radius: $border-radius;
   overflow: hidden;
   .social-link__card {

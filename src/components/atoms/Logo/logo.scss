@@ -3,7 +3,7 @@
 .logo {
   display: inline-block;
   .logo__text {
-    font-size: $font-large;
+    @include font-size('large');
     font-family: 'Dancing Script', cursive;
     font-weight: 600;
   }
