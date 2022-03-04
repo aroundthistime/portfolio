@@ -1,0 +1,16 @@
+@import '../../../styles/variables/variables';
+
+.section {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: $column-gap-large;
+  .section__title {
+    padding: $padding-vertical-small $padding-horizontal;
+    border-bottom: $divider;
+    font-size: $font-large;
+    font-family: 'Secular One', sans-serif;
+  }
+  .section__content {
+    padding: $padding-vertical-small $padding-horizontal;
+  }
+}

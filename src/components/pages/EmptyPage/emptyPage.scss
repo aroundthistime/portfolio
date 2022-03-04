@@ -1,0 +1,14 @@
+@import '../../../styles/variables/variables';
+
+.empty-page {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .empty-page__text {
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: $font-blur;
+  }
+}

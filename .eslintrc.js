@@ -17,7 +17,9 @@ module.exports = {
     '@typescript-eslint/no-shadow': ['error'],
     'no-shadow': 'off',
     'no-undef': 'off',
-    'arrow-body-style': ['error', 'always'],
+    'arrow-body-style': 0,
+    'react/prop-types': 0,
+    'react/function-component-definition': 0,
     'prettier/prettier': [
       'error',
       {
