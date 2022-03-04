@@ -4,10 +4,10 @@ import './skill.scss';
 type Props = {
   imageSrc: string;
   names: string[];
-  descriptions?: string[];
+  descriptions: string[];
 };
 
-const Skill = ({imageSrc, names, descriptions = []}: Props) => {
+const Skill = ({imageSrc, names, descriptions}: Props) => {
   const titleText = names.join('/');
   return (
     <li className="skill">

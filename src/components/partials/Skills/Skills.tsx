@@ -13,10 +13,21 @@ const Skills = () => (
     <Section.Title>Skills</Section.Title>
     <Section.Content>
       <ul className="skills">
-        <Skill imageSrc={TypescriptImage} names={['Typescript']} />
+        <Skill
+          imageSrc={TypescriptImage}
+          names={['Typescript']}
+          descriptions={[
+            '타입스크립트의 클래스를 기반으로 OOP를 구현할 수 있습니다.',
+            '타입 체크를 통해 프로그램의 안정성을 강화할 수 있습니다.',
+          ]}
+        />
         <Skill
           imageSrc={StyledImage}
           names={['Scss', 'styled-components', 'Emotion']}
+          descriptions={[
+            'Scss의 mixin, variable, function, 조건문 등을 활용하여 웹페이지를 스타일링할 수 있습니다.',
+            'styled-components 혹은 Emotion을 활용하여 CSS-In-JS 방식으로 스타일링할 수 있습니다.',
+          ]}
         />
         <Skill
           imageSrc={ReactImage}
@@ -32,7 +43,7 @@ const Skills = () => (
           names={['Redux']}
           descriptions={[
             'Ducks 패턴의 Redux 혹은 Redux Toolkit 라이브러리를 활용하여 전역상태를 관리할 수 있습니다.',
-            'redux-persist를 활용하여 asyncstorage 혹은 localstorage에 전역 상태를 저장할 수 있습니다.',
+            'redux-persist를 활용하여 asyncstorage 혹은 localstorage에 전역상태를 저장할 수 있습니다.',
             'Redux 외에 Context API, Reactive Variables를 활용하여 전역상태를 관리할 수 있습니다.',
           ]}
         />

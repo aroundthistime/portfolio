@@ -33,7 +33,7 @@ $border-radius: 10px;
   } @else if $size == 'default' {
     @return 1.2rem;
   } @else {
-    @return 4rem;
+    @return 3rem;
   }
 }
 
