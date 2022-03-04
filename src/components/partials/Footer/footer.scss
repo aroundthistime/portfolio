@@ -1,0 +1,12 @@
+@import '../../../styles/variables/variables';
+
+footer.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $padding-vertical 0;
+  .footer__text {
+    opacity: 0.6;
+    line-height: 1.3rem;
+  }
+}
