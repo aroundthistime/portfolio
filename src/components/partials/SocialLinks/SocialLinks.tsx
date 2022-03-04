@@ -9,7 +9,7 @@ const SocialLinks = () => (
   <Section>
     <Section.Title>Social Links</Section.Title>
     <Section.Content>
-      <ul className="social-links-container">
+      <ul className="social-links">
         <GithubLink />
         <BlogLink />
       </ul>

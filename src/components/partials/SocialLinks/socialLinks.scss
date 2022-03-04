@@ -1,6 +1,6 @@
 @import '../../../styles/variables/variables';
 
-.social-links-container {
+.social-links {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   grid-auto-rows: 6.5rem;
