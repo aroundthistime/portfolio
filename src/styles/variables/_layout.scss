@@ -19,6 +19,10 @@
   }
 }
 
+%default-padding {
+  padding: padding-vertical() padding-horizontal();
+}
+
 //border-radius
 $border-radius: 10px;
 

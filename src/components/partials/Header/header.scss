@@ -9,6 +9,6 @@ header.header {
   justify-content: space-between;
   background-color: white;
   z-index: 100;
-  padding: padding-vertical() padding-horizontal();
+  @extend %default-padding;
   @include shadow();
 }

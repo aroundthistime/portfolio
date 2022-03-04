@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: padding-vertical() padding-horizontal();
+    @extend %default-padding;
     background-color: white;
     border-radius: $border-radius;
     &.social-link__card--default {
