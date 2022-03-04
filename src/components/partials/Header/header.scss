@@ -7,6 +7,8 @@ header.header {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  background-color: white;
+  z-index: 100;
   padding: $padding-vertical $padding-horizontal;
   box-shadow: $shadow-default;
 }

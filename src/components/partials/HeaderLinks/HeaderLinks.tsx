@@ -4,6 +4,8 @@ import {faBlog} from '@fortawesome/free-solid-svg-icons';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
 import HeaderLink from '../../atoms/HeaderLink/HeaderLink';
 import './headerLinks.scss';
+import GithubIcon from '../../atoms/Icons/GithubIcon';
+import BlogIcon from '../../atoms/Icons/BlogIcon';
 
 function HeaderLinks() {
   return (
@@ -19,7 +21,7 @@ export default HeaderLinks;
 function GithubLink() {
   return (
     <HeaderLink to="https://github.com/aroundthistime">
-      <FontAwesomeIcon icon={faGithub} className="header__icon" />
+      <GithubIcon className="header__icon" />
     </HeaderLink>
   );
 }
@@ -27,7 +29,7 @@ function GithubLink() {
 function BlogLink() {
   return (
     <HeaderLink to="https://aroundthistime.tistory.com/">
-      <FontAwesomeIcon icon={faBlog} className="header__icon" />
+      <BlogIcon className="header__icon" />
     </HeaderLink>
   );
 }

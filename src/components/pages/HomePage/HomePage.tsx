@@ -7,7 +7,6 @@ function HomePage() {
   return (
     <main className="home">
       <SocialLinks />
-      <SocialLinks />
     </main>
   );
 }
