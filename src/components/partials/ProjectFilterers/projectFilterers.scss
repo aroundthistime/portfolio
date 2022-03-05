@@ -1,3 +1,8 @@
+@import '../../../styles/variables/variables';
+
 .project-filterers {
   display: flex;
+  @include mobile {
+    display: none;
+  }
 }

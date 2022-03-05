@@ -5,7 +5,7 @@ export interface ProjectType {
   skills: ProjectSkillType[];
   content: string;
   features: ProjectFeatureType[];
-  images?: string[];
+  images: ImageBundle[];
   takeaways: ProjectTakeawayType[];
   githubLink?: string;
 }
@@ -34,6 +34,11 @@ export interface ProjectFeatureType {
   title: string;
   isByMe: boolean;
   descriptions?: string[];
+}
+
+export interface ImageBundle {
+  description?: string;
+  imageUrls?: string[];
 }
 
 export interface ProjectTakeawayType {
