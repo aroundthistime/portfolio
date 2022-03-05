@@ -6,8 +6,15 @@ interface SectionSubComponents {
   Content: React.FC<{}>;
 }
 
-const Section: React.FC<{}> & SectionSubComponents = ({children}) => {
-  return <section className="section">{children}</section>;
+type Props = {
+  className?: string;
+};
+
+const Section: React.FC<Props> & SectionSubComponents = ({
+  children,
+  className = '',
+}) => {
+  return <section className={`section ${className}`}>{children}</section>;
 };
 
 Section.Title = ({children}) => (

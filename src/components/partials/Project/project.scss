@@ -1,3 +1,5 @@
+@import '../../../styles/variables/variables';
+
 .projects__project {
   background-color: white;
   aspect-ratio: 1.2 / 1;
@@ -16,5 +18,11 @@
         opacity: 0.2;
       }
     }
+  }
+}
+
+@include mobile {
+  .projects__project {
+    aspect-ratio: 1.8 / 1;
   }
 }

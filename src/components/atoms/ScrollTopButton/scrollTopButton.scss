@@ -1,12 +1,14 @@
 @import '../../../styles/variables/variables';
 
+$top-button-size: 3rem;
+
 .top-button {
   position: fixed;
   bottom: 4rem;
   right: 4rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 2rem;
+  width: $top-button-size;
+  height: $top-button-size;
+  border-radius: calc($top-button-size / 2);
   display: flex;
   border: light-gray-border();
   justify-content: center;
