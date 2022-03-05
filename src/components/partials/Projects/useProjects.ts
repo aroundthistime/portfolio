@@ -70,6 +70,8 @@ export const useProjects = (): ReturnType => {
       {title: '실시간 푸쉬알람 (Expo-notifications)', isByMe: true},
       {title: '계정 비활성화/활성화 기능', isByMe: true},
     ],
+    thumbnail:
+      'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/1.jpg?alt=media&token=604406de-b650-4760-bd2b-a29c0a16e381',
     githubLink: 'https://github.com/aroundthistime/booting',
     images: [
       {

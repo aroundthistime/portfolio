@@ -1,6 +1,7 @@
 export interface ProjectType {
   title: string;
   priority: number;
+  thumbnail: string;
   summary: ProjectSummaryType;
   skills: ProjectSkillType[];
   content: string;
