@@ -5,6 +5,9 @@
   max-width: 800px;
   margin-bottom: column-gap('large');
   .section__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: padding-vertical('small') padding-horizontal();
     border-bottom: light-gray-border();
     @include font-size('large');

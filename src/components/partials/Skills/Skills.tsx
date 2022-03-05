@@ -6,7 +6,6 @@ import StyledImage from '../../../assets/images/skills/styled.png';
 import ReactImage from '../../../assets/images/skills/react.png';
 import ReduxImage from '../../../assets/images/skills/redux.png';
 import NodeImage from '../../../assets/images/skills/nodejs.png';
-import './skills.scss';
 
 const Skills = () => (
   <Section>
@@ -17,8 +16,8 @@ const Skills = () => (
           imageSrc={TypescriptImage}
           names={['Typescript']}
           descriptions={[
-            '타입스크립트의 클래스를 기반으로 OOP를 구현할 수 있습니다.',
             '타입 체크를 통해 프로그램의 안정성을 강화할 수 있습니다.',
+            '타입스크립트의 클래스를 기반으로 OOP를 구현할 수 있습니다.',
           ]}
         />
         <Skill
@@ -43,7 +42,7 @@ const Skills = () => (
           names={['Redux']}
           descriptions={[
             'Ducks 패턴의 Redux 혹은 Redux Toolkit 라이브러리를 활용하여 전역상태를 관리할 수 있습니다.',
-            'redux-persist를 활용하여 asyncstorage 혹은 localstorage에 전역상태를 저장할 수 있습니다.',
+            'redux-persist를 활용하여 asyncstorage 혹은 localstorage에 전역상태를 유지할 수 있습니다.',
             'Redux 외에 Context API, Reactive Variables를 활용하여 전역상태를 관리할 수 있습니다.',
           ]}
         />
