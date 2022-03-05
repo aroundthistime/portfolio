@@ -1,7 +1,14 @@
 import {collection, getDocs} from 'firebase/firestore';
 import React, {useEffect, useMemo, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {ProjectType} from '../../../@types/projectType';
 import {firestore} from '../../../firebase';
+import {
+  changeFilterMethod,
+  ProjectFilterMethodType,
+  PROJECT_FILTER_METHODS,
+} from '../../../modules/projectFilterMethod';
+import {RootState} from '../../../modules/root';
 import {isPersonalProject} from '../../../utils/projectHandlers';
 
 type ReturnType = {
@@ -15,15 +22,14 @@ export type ProjectFiltererType = {
   use: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
-export type ProjectFilterMethodType = typeof PROJECT_FILTER_METHODS[number];
-
-const PROJECT_FILTER_METHODS = ['all', 'personal', 'team'];
-
 export const useProjects = (): ReturnType => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [filterMethod, setFilterMethod] =
-    useState<ProjectFilterMethodType>('all');
   const [projects, setProjects] = useState<ProjectType[]>([]);
+  const filterMethod = useSelector(
+    (state: RootState) => state.projectFilterMethod,
+  );
+  const dispatch = useDispatch();
+
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -121,7 +127,7 @@ export const useProjects = (): ReturnType => {
       return {
         method,
         use: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-          setFilterMethod(method),
+          dispatch(changeFilterMethod(method)),
       };
     });
   }, []);

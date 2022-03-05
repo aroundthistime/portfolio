@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
+import {Provider} from 'react-redux';
+import {createStore} from '@reduxjs/toolkit';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorBoundary from './components/wrapper/ErrorBoundary';
+import rootReducer from './modules/root';
+
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root'),
