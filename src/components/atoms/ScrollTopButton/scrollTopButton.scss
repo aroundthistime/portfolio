@@ -1,0 +1,27 @@
+@import '../../../styles/variables/variables';
+
+.top-button {
+  position: fixed;
+  bottom: 4rem;
+  right: 4rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 2rem;
+  display: flex;
+  border: light-gray-border();
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  @include shadow();
+  cursor: pointer;
+  .top-button__icon {
+    font-size: 2rem;
+  }
+}
+
+@include mobile {
+  .top-button {
+    bottom: 2.5rem;
+    right: 2.5rem;
+  }
+}
