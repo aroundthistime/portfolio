@@ -1,20 +1,10 @@
-import {collection, getDocs} from 'firebase/firestore';
-import React, {useEffect} from 'react';
-import {firestore} from '../../../firebase';
+import React from 'react';
 import Section from '../Section/Section';
 import './projects.scss';
+import {useProjects} from './useProjects';
 
 const Projects = () => {
-  const getData = async () => {
-    console.log('!');
-    const data: any[] = [];
-    const snapshot = await getDocs(collection(firestore, 'project'));
-    snapshot.forEach(s => data.push(s.data()));
-    console.log(data);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  const {loading, projects, filterers} = useProjects();
   return (
     <Section>
       <Section.Title>Projects</Section.Title>

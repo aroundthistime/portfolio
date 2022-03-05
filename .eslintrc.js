@@ -20,6 +20,7 @@ module.exports = {
     'arrow-body-style': 0,
     'react/prop-types': 0,
     'react/function-component-definition': 0,
+    'react/destructuring-assignment': 0,
     'prettier/prettier': [
       'error',
       {
