@@ -9,6 +9,7 @@ import {
 import SkillIcon from '../../atoms/SkillIcon/SkillIcon';
 import Loader from '../../partials/Loader/Loader';
 import Section from '../../partials/Section/Section';
+import ErrorBoundary from '../../wrapper/ErrorBoundary';
 import './projectPage.scss';
 import {useProjectPage} from './useProjectPage';
 

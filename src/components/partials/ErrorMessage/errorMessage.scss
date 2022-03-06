@@ -1,0 +1,10 @@
+@import '../../../styles/variables/variables';
+
+.error-message {
+  width: 100%;
+  height: 100%;
+  border: light-gray-border('bold');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
