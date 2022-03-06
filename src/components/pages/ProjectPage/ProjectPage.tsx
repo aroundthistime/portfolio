@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  ImageBundle,
   ProjectFeatureType,
   ProjectSkillType,
   ProjectSummaryType,
@@ -35,11 +36,24 @@ const project = {
   githubLink: 'https://github.com/aroundthistime/booting',
   images: [
     {
+      description: '무언가 어쩌고 저쩌고',
       imageUrls: [
-        'https://firebasestorage.googleapis.com/v0/b/around…=media&token=604406de-b650-4760-bd2b-a29c0a16e381',
-        'https://firebasestorage.googleapis.com/v0/b/around…=media&token=d4d300ba-6964-4535-8623-f9f4b4a4cf7e',
-        'https://firebasestorage.googleapis.com/v0/b/around…=media&token=6949efa8-5dac-42f0-b4fa-c21fc8daeddf',
-        'https://firebasestorage.googleapis.com/v0/b/around…=media&token=4c8ebcb1-215d-4674-97ba-48ab5ba4cb61',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/1.jpg?alt=media&token=604406de-b650-4760-bd2b-a29c0a16e381',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/2.jpg?alt=media&token=d4d300ba-6964-4535-8623-f9f4b4a4cf7e',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/3.jpg?alt=media&token=6949efa8-5dac-42f0-b4fa-c21fc8daeddf',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/4.jpg?alt=media&token=4c8ebcb1-215d-4674-97ba-48ab5ba4cb61',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/4.jpg?alt=media&token=4c8ebcb1-215d-4674-97ba-48ab5ba4cb61',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/4.jpg?alt=media&token=4c8ebcb1-215d-4674-97ba-48ab5ba4cb61',
+      ],
+    },
+    {
+      imageUrls: [
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/1.jpg?alt=media&token=604406de-b650-4760-bd2b-a29c0a16e381',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/2.jpg?alt=media&token=d4d300ba-6964-4535-8623-f9f4b4a4cf7e',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/3.jpg?alt=media&token=6949efa8-5dac-42f0-b4fa-c21fc8daeddf',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/4.jpg?alt=media&token=4c8ebcb1-215d-4674-97ba-48ab5ba4cb61',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/4.jpg?alt=media&token=4c8ebcb1-215d-4674-97ba-48ab5ba4cb61',
+        'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/4.jpg?alt=media&token=4c8ebcb1-215d-4674-97ba-48ab5ba4cb61',
       ],
     },
   ],
@@ -129,6 +143,7 @@ const ProjectPage = () => {
       <ProjectPage.Skills skills={project.skills} />
       <ProjectPage.Content content={project.content} />
       <ProjectPage.Features features={project.features} />
+      <ProjectPage.Images images={project.images} />
     </main>
   );
 };
@@ -262,6 +277,42 @@ ProjectPage.Feature = ({feature, className = ''}: ProjectFeatureProps) => {
   );
 };
 
+ProjectPage.Images = ({images}: ProjectImagesProps) => (
+  <Section>
+    <Section.Title>Images</Section.Title>
+    <Section.Content>
+      <ul className="project__images">
+        {images.map((imageBundle, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <ProjectPage.ImageBundle imageBundle={imageBundle} key={index} />
+        ))}
+      </ul>
+    </Section.Content>
+  </Section>
+);
+
+ProjectPage.ImageBundle = ({imageBundle}: ProjectImageBundleProps) => {
+  const {description, imageUrls} = imageBundle;
+  return (
+    <li className="images__image-bundle">
+      {description && (
+        <p className="project__pre-description-text">{description}</p>
+      )}
+      {imageUrls && (
+        <ul className="image-bundle__images">
+          {imageUrls.map(imageUrl => (
+            <ProjectPage.Image src={imageUrl} key={imageUrl} />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+};
+
+ProjectPage.Image = ({src}: ProjectImageProps) => (
+  <img className="image-bundle__image no-drag" src={src} alt={src} />
+);
+
 type ProjectTitleProps = {
   title: string;
 };
@@ -290,6 +341,18 @@ type ProjectFeaturesProps = {
 type ProjectFeatureProps = {
   feature: ProjectFeatureType;
   className?: string;
+};
+
+type ProjectImagesProps = {
+  images: ImageBundle[];
+};
+
+type ProjectImageBundleProps = {
+  imageBundle: ImageBundle;
+};
+
+type ProjectImageProps = {
+  src: string;
 };
 
 export default ProjectPage;
