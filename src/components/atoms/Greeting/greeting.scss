@@ -1,18 +1,21 @@
 @import '../../../styles/variables/variables';
 
+@mixin font-style($size) {
+  font-size: $size;
+  line-height: calc($size + 0.2rem);
+}
+
 .greeting {
   display: flex;
   align-items: flex-end;
-  padding: padding-vertical() padding-horizontal();
+  @extend %default-padding;
   font-family: 'Lobster', cursive;
   .greeting__message {
     &.greeting__message-1 {
-      font-size: 4rem;
-      line-height: 4.2rem;
+      @include font-style(4rem);
     }
     &.greeting__message-2 {
-      font-size: 2.5rem;
-      line-height: 2.7rem;
+      @include font-style(2.5rem);
     }
   }
 }
@@ -24,14 +27,11 @@
     padding: padding-vertical('small') padding-horizontal('small');
     .greeting__message {
       &.greeting__message-1 {
-        font-size: 3.2rem;
-        line-height: 3.4rem;
-        height: 3.4rem;
+        @include font-style(3.2rem);
         margin-bottom: 1rem;
       }
       &.greeting__message-2 {
-        font-size: 2rem;
-        line-height: 2.2rem;
+        @include font-style(2rem);
       }
     }
   }

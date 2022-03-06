@@ -28,6 +28,7 @@ export interface PeriodType {
 
 export interface ProjectSkillType {
   name: string;
+  image: string;
   isByMe: boolean;
 }
 

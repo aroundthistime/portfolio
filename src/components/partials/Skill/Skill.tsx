@@ -1,18 +1,19 @@
 import React from 'react';
+import SkillIcon from '../../atoms/SkillIcon/SkillIcon';
 import './skill.scss';
 
 type Props = {
-  imageSrc: string;
+  image: string;
   names: string[];
   descriptions: string[];
 };
 
-const Skill = ({imageSrc, names, descriptions}: Props) => {
+const Skill = ({image, names, descriptions}: Props) => {
   const titleText = names.join('/');
   return (
     <li className="skill">
       <div className="skill__header no-drag">
-        <img className="skill__image" src={imageSrc} alt={titleText} />
+        <SkillIcon src={image} name={titleText} />
         <h4 className="skill__title">{titleText}</h4>
       </div>
       <ul className="skill__descriptions">

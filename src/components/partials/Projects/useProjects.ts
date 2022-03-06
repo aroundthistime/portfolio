@@ -85,14 +85,54 @@ export const useProjects = (): ReturnType => {
     ],
     priority: 3,
     skills: [
-      {isByMe: true, name: 'React Native (Expo)'},
-      {name: 'Express', isByMe: true},
-      {isByMe: true, name: 'GraphQL (Apollo)'},
-      {name: 'Prisma (MySQL)', isByMe: true},
-      {name: 'styled-components', isByMe: true},
-      {name: 'AWS (S3)', isByMe: true},
-      {name: 'Firebase (Cloud Messaging)', isByMe: true},
-      {isByMe: true, name: 'Heroku (Server Deployment)'},
+      {
+        isByMe: true,
+        name: 'React Native (Expo)',
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/react.png?alt=media&token=e26a7420-53fb-4cf8-98ad-42531c2e56c4',
+      },
+      {
+        name: 'styled-components',
+        isByMe: true,
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/styled.png?alt=media&token=402a1712-c334-4df0-b1e3-edd9607c8a4d',
+      },
+      {
+        name: 'Express',
+        isByMe: true,
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/nodejs.png?alt=media&token=6b28260a-e882-430e-aae3-4bdaca402f96',
+      },
+      {
+        isByMe: true,
+        name: 'GraphQL (Apollo)',
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/Graphql.png?alt=media&token=3e66f7a2-3b82-4183-92f5-9205f1c051db',
+      },
+      {
+        name: 'Prisma (MySQL)',
+        isByMe: true,
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/prisma.png?alt=media&token=084ce73f-f291-4080-9792-5703d1e58201',
+      },
+      {
+        name: 'AWS (S3)',
+        isByMe: true,
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/aws.png?alt=media&token=eb8a6689-5041-4eee-b66f-50683c7db1af',
+      },
+      {
+        name: 'Firebase (Cloud Messaging)',
+        isByMe: true,
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/firebase.png?alt=media&token=dd2f05bb-0b8f-44bd-8e1d-ac472941c6ca',
+      },
+      {
+        isByMe: true,
+        name: 'Heroku (Server Deployment)',
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/heroku.png?alt=media&token=f4858034-7995-42ec-a9d9-0c0273069849',
+      },
     ],
     summary: {
       goal: '코로나 사태가 지속됨에 따라 기존보다 연인을 찾을 수 있는 방법이 제한되면서 온라인 매칭이 교내 커뮤니티에서 유행하기 시작했습니다. 해당 매칭은 구글폼으로 신청자의 정보를 입력한 후 일반 학생인 주선자가 해당 정보를 직접 열람하며 일일이 매칭을 진행하는 방식이었는데 일부 주선자들이 획득한 개인정보를 무단으로 지인과 공유하는 문제가 발생하였습니다. 이러한 개인정보 유출에 대한 사용자들의 우려를 방지하기 위해 본 프로젝트는 주선자의 개입없이 사용자들이 독자적으로 이상형에 부합하는 상대방과 매칭 및 채팅을 진행할 수 있는 시스템을 구현할 것입니다.',

@@ -1,0 +1,10 @@
+@import '../../../styles/variables/variables';
+
+main.project {
+  line-height: 1.3;
+  .project__title {
+    @include font-size('x-large');
+    font-weight: bold;
+    padding-top: padding-vertical('large');
+  }
+}
