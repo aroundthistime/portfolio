@@ -135,16 +135,28 @@ ProjectPage.Summary = ({summary}: ProjectSummaryProps) => {
     <Section>
       <Section.Title>Summary</Section.Title>
       <Section.Content>
-        <ul className="circle-list">
-          <li>주제 : {subject}</li>
+        <ul className="circle-list project__summary">
           <li>
-            개발기간 : {period.start} ~ {period.end}
+            <span className="summary__title">주제</span>
+            <span className="summary__content">{subject}</span>
           </li>
           <li>
-            참여인원 : {participants.count}명{' '}
-            {participants.description ? `(${participants.description})` : ''}
+            <span className="summary__title">개발기간</span>
+            <span className="summary__content">
+              {period.start} ~ {period.end}
+            </span>
           </li>
-          <li>포로젝트 배경 및 목표 : {goal}</li>
+          <li>
+            <span className="summary__title">참여인원</span>
+            <span className="summary__content">
+              {participants.count}명{' '}
+              {participants.description ? `(${participants.description})` : ''}
+            </span>
+          </li>
+          <li>
+            <span className="summary__title">포로젝트 배경 및 목표</span>
+            <span className="summary__content">{goal}</span>
+          </li>
         </ul>
       </Section.Content>
     </Section>
