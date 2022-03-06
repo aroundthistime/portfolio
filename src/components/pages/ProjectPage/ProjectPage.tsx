@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  ProjectFeatureType,
   ProjectSkillType,
   ProjectSummaryType,
 } from '../../../@types/projectType';
@@ -19,7 +20,14 @@ const project = {
       title:
         '유저간 실시간 매칭 및 채팅 (Graphql Subscription, Firebase Cloud Messaging)',
     },
-    {title: '실시간 푸쉬알람 (Expo-notifications)', isByMe: true},
+    {
+      title: '실시간 푸쉬알람 (Expo-notifications)',
+      isByMe: true,
+      descriptions: [
+        'somethingoaasdfasdansdofiansoifdnaposifhdaposihfapoisisdngoaisdn',
+        '히히oiwehtqoiweht',
+      ],
+    },
     {title: '계정 비활성화/활성화 기능', isByMe: true},
   ],
   thumbnail:
@@ -119,6 +127,8 @@ const ProjectPage = () => {
       <ProjectPage.Title title={project.title} />
       <ProjectPage.Summary summary={project.summary} />
       <ProjectPage.Skills skills={project.skills} />
+      <ProjectPage.Content content={project.content} />
+      <ProjectPage.Features features={project.features} />
     </main>
   );
 };
@@ -170,7 +180,9 @@ ProjectPage.Skills = ({skills}: ProjectSkillsProps) => {
       <Section.Title>Skills</Section.Title>
       <Section.Content>
         {unusedSkillIsIncluded && (
-          <p>(본인이 사용한 스택에 한해 Bold 처리했습니다.)</p>
+          <p className="project__pre-description-text">
+            (본인이 사용한 스택에 한해 Bold 처리했습니다.)
+          </p>
         )}
         <ul className="project__skills">
           {skills.map(skill => {
@@ -199,6 +211,57 @@ ProjectPage.Skill = ({className = '', skill}: ProjectSkillProps) => {
   );
 };
 
+ProjectPage.Content = ({content}: ProjectContentProps) => (
+  <Section>
+    <Section.Title>Content</Section.Title>
+    <Section.Content>{content}</Section.Content>
+  </Section>
+);
+
+ProjectPage.Features = ({features}: ProjectFeaturesProps) => {
+  const featureNotByMeIsIncluded = features.find(feature => !feature.isByMe);
+  return (
+    <Section>
+      <Section.Title>Features</Section.Title>
+      <Section.Content>
+        {featureNotByMeIsIncluded && (
+          <p className="project__pre-description-text">
+            (본인이 구현한 기능에 한해 Bold 처리하였습니다.)
+          </p>
+        )}
+        <ol className="project__features">
+          {features.map(feature => {
+            const shouldBeBold = featureNotByMeIsIncluded && feature.isByMe;
+            return (
+              <ProjectPage.Feature
+                feature={feature}
+                key={feature.title}
+                className={shouldBeBold ? 'text--bold' : ''}
+              />
+            );
+          })}
+        </ol>
+      </Section.Content>
+    </Section>
+  );
+};
+
+ProjectPage.Feature = ({feature, className = ''}: ProjectFeatureProps) => {
+  const {title, descriptions} = feature;
+  return (
+    <li className={`project__feature ${className}`}>
+      <span className="feature__title">{title}</span>
+      {descriptions && (
+        <ul className="feature__descriptions">
+          {descriptions.map(description => (
+            <li className="feature__description">{description}</li>
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+};
+
 type ProjectTitleProps = {
   title: string;
 };
@@ -213,6 +276,19 @@ type ProjectSkillsProps = {
 
 type ProjectSkillProps = {
   skill: ProjectSkillType;
+  className?: string;
+};
+
+type ProjectContentProps = {
+  content: string;
+};
+
+type ProjectFeaturesProps = {
+  features: ProjectFeatureType[];
+};
+
+type ProjectFeatureProps = {
+  feature: ProjectFeatureType;
   className?: string;
 };
 

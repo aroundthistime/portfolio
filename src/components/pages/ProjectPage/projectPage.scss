@@ -27,6 +27,27 @@ main.project {
       @include font-size();
     }
   }
+  .project__features {
+    list-style: decimal;
+    padding-left: padding-horizontal();
+    .project__feature {
+      &:not(:last-child) {
+        margin-bottom: row-gap('small');
+      }
+      .feature__descriptions {
+        list-style: circle;
+        padding-left: padding-horizontal('small');
+        margin-top: row-gap('x-small');
+        .feature__description {
+          word-wrap: break-word;
+        }
+      }
+    }
+  }
+
+  .project__pre-description-text {
+    margin-bottom: row-gap('small');
+  }
 }
 
 @include mobile {
