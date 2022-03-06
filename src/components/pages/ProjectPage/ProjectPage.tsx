@@ -4,6 +4,7 @@ import {
   ProjectFeatureType,
   ProjectSkillType,
   ProjectSummaryType,
+  ProjectTakeawayType,
 } from '../../../@types/projectType';
 import SkillIcon from '../../atoms/SkillIcon/SkillIcon';
 import Section from '../../partials/Section/Section';
@@ -144,6 +145,7 @@ const ProjectPage = () => {
       <ProjectPage.Content content={project.content} />
       <ProjectPage.Features features={project.features} />
       <ProjectPage.Images images={project.images} />
+      <ProjectPage.Takeaways takeaways={project.takeaways} />
     </main>
   );
 };
@@ -313,6 +315,24 @@ ProjectPage.Image = ({src}: ProjectImageProps) => (
   <img className="image-bundle__image no-drag" src={src} alt={src} />
 );
 
+ProjectPage.Takeaways = ({takeaways}: ProjectTakeawaysProps) => (
+  <Section>
+    <Section.Title>Takeaways</Section.Title>
+    <Section.Content>
+      <ul className="project__takeaways">
+        {takeaways.map(takeaway => (
+          <ProjectPage.Takeaway takeaway={takeaway} key={takeaway.title} />
+        ))}
+      </ul>
+    </Section.Content>
+  </Section>
+);
+
+ProjectPage.Takeaway = ({takeaway}: ProjectTakeawayProps) => {
+  const {title, description} = takeaway;
+  return <li className="project__takeaway">{title}</li>;
+};
+
 type ProjectTitleProps = {
   title: string;
 };
@@ -353,6 +373,14 @@ type ProjectImageBundleProps = {
 
 type ProjectImageProps = {
   src: string;
+};
+
+type ProjectTakeawaysProps = {
+  takeaways: ProjectTakeawayType[];
+};
+
+type ProjectTakeawayProps = {
+  takeaway: ProjectTakeawayType;
 };
 
 export default ProjectPage;
