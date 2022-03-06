@@ -1,4 +1,5 @@
 export interface ProjectType {
+  id: string;
   title: string;
   priority: number;
   thumbnail: string;

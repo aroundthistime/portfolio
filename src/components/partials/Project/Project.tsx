@@ -10,7 +10,7 @@ type Props = {
 
 const Project = ({project}: Props) => (
   <li className="projects__project">
-    <Link to={`/project/${project.title}`}>
+    <Link to={`/project/${project.id}`}>
       <Card>
         <Card.Default>
           <img
