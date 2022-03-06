@@ -182,7 +182,7 @@ ProjectPage.Skill = ({className = '', skill}: ProjectSkillProps) => {
   return (
     <li className={`project__skill ${className}`}>
       <SkillIcon src={image} name={name} />
-      <p className="skill__name">{name}</p>
+      <span className="skill__name">{name}</span>
     </li>
   );
 };
