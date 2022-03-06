@@ -8,7 +8,6 @@ export interface ProjectType {
   features: ProjectFeatureType[];
   images: ImageBundle[];
   takeaways: ProjectTakeawayType[];
-  githubLink?: string;
 }
 
 export interface ProjectSummaryType {
@@ -18,6 +17,7 @@ export interface ProjectSummaryType {
     count: number;
     description?: string;
   };
+  githubLink?: string;
   goal: string;
 }
 

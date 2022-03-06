@@ -34,7 +34,6 @@ const project = {
   ],
   thumbnail:
     'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/1.jpg?alt=media&token=604406de-b650-4760-bd2b-a29c0a16e381',
-  githubLink: 'https://github.com/aroundthistime/booting',
   images: [
     {
       description: '무언가 어쩌고 저쩌고',
@@ -114,6 +113,7 @@ const project = {
     participants: {count: 1},
     period: {end: '2021-02', start: '2021-01'},
     subject: '한국외대 재학생들을 위한 모바일 소개팅 어플리케이션',
+    githubLink: 'https://github.com/aroundthistime/booting',
   },
 
   takeaways: [
@@ -157,7 +157,7 @@ ProjectPage.Title = ({title}: ProjectTitleProps) => (
 );
 
 ProjectPage.Summary = ({summary}: ProjectSummaryProps) => {
-  const {subject, period, participants, goal} = summary;
+  const {subject, period, participants, goal, githubLink} = summary;
   return (
     <Section>
       <Section.Title>Summary</Section.Title>
@@ -180,6 +180,14 @@ ProjectPage.Summary = ({summary}: ProjectSummaryProps) => {
               {participants.description ? `(${participants.description})` : ''}
             </span>
           </li>
+          {githubLink && (
+            <li>
+              <span className="summary__title">깃허브 링크</span>
+              <a href={githubLink} className="project__link-text">
+                <span className="summary__content">{githubLink}</span>
+              </a>
+            </li>
+          )}
           <li>
             <span className="summary__title">포로젝트 배경 및 목표</span>
             <span className="summary__content">{goal}</span>
@@ -330,7 +338,12 @@ ProjectPage.Takeaways = ({takeaways}: ProjectTakeawaysProps) => (
 
 ProjectPage.Takeaway = ({takeaway}: ProjectTakeawayProps) => {
   const {title, description} = takeaway;
-  return <li className="project__takeaway">{title}</li>;
+  return (
+    <li className="project__takeaway">
+      <p className="takeaway__title text--bold">{title}</p>
+      <span className="takeaway__description">{description}</span>
+    </li>
+  );
 };
 
 type ProjectTitleProps = {

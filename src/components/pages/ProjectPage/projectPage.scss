@@ -70,9 +70,22 @@ main.project {
       }
     }
   }
+  .project__takeaways {
+    .project__takeaway {
+      margin-bottom: row-gap('large');
+      .takeaway__title {
+        font-size: 1.15rem;
+        margin-bottom: row-gap('x-small');
+      }
+    }
+  }
 
   .project__pre-description-text {
     margin-bottom: row-gap('small');
+  }
+
+  .project__link-text {
+    text-decoration: underline;
   }
 }
 

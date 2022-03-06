@@ -72,7 +72,6 @@ export const useProjects = (): ReturnType => {
     ],
     thumbnail:
       'https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/1.jpg?alt=media&token=604406de-b650-4760-bd2b-a29c0a16e381',
-    githubLink: 'https://github.com/aroundthistime/booting',
     images: [
       {
         imageUrls: [
@@ -139,6 +138,7 @@ export const useProjects = (): ReturnType => {
       participants: {count: 1},
       period: {end: '2021-02', start: '2021-01'},
       subject: '한국외대 재학생들을 위한 모바일 소개팅 어플리케이션',
+      githubLink: 'https://github.com/aroundthistime/booting',
     },
 
     takeaways: [
