@@ -37,6 +37,7 @@ const Skills = () => (
           names={['Redux']}
           descriptions={[
             'Ducks 패턴의 Redux 혹은 Redux Toolkit 라이브러리를 활용하여 전역상태를 관리할 수 있습니다.',
+            'Reselect selector을 활용하여 Redux state에 의한 컴포넌트의 리렌더링을 최적화할 수 있습니다.',
             'redux-persist를 활용하여 asyncstorage 혹은 localstorage에 전역상태를 유지할 수 있습니다.',
             'Redux 외에 Context API, Reactive Variables를 활용하여 전역상태를 관리할 수 있습니다.',
           ]}
