@@ -27,7 +27,7 @@ const Skills = () => (
           image="https://firebasestorage.googleapis.com/v0/b/aroundthistime-portfolio.appspot.com/o/react.png?alt=media&token=e26a7420-53fb-4cf8-98ad-42531c2e56c4"
           names={['ReactJS', 'React Native']}
           descriptions={[
-            'Container-Presenter 패턴으로 컴포넌트의 UI와 로직을 분리하여 개발할 수 있습니다.',
+            'Presentational-Container 패턴으로 컴포넌트의 UI와 로직을 분리하여 개발할 수 있습니다.',
             'React Query를 활용하여 API 요청을 수행할 수 있습니다.',
           ]}
         />
