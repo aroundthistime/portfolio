@@ -182,9 +182,11 @@ ProjectPage.Images = ({images}: ProjectImagesProps) => (
     <Section.Title>Images</Section.Title>
     <Section.Content>
       <ul className="project__images">
-        {images.map((imageBundle, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <ProjectPage.ImageBundle imageBundle={imageBundle} key={index} />
+        {images.map(imageBundle => (
+          <ProjectPage.ImageBundle
+            imageBundle={imageBundle}
+            key={imageBundle.description}
+          />
         ))}
       </ul>
     </Section.Content>
@@ -192,14 +194,17 @@ ProjectPage.Images = ({images}: ProjectImagesProps) => (
 );
 
 ProjectPage.ImageBundle = ({imageBundle}: ProjectImageBundleProps) => {
-  const {description, imageUrls} = imageBundle;
+  const {description, imageUrls, isDesktopImage} = imageBundle;
   return (
     <li className="images__image-bundle">
       {description && (
         <p className="project__pre-description-text">{description}</p>
       )}
       {imageUrls && (
-        <ul className="image-bundle__images">
+        <ul
+          className={`image-bundle__images ${
+            isDesktopImage ? 'image-bundle__images--desktop' : ''
+          }`}>
           {imageUrls.map(imageUrl => (
             <ProjectPage.Image src={imageUrl} key={imageUrl} />
           ))}

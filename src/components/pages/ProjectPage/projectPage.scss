@@ -55,6 +55,9 @@ main.project {
         grid-auto-rows: min-content;
         column-gap: column-gap();
         row-gap: row-gap();
+        &.image-bundle__images--desktop {
+          grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        }
         .image-bundle__image {
           position: relative;
           width: 100%;

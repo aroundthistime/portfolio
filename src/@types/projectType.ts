@@ -43,6 +43,7 @@ export interface ProjectFeatureType {
 export interface ImageBundle {
   description?: string;
   imageUrls?: string[];
+  isDesktopImage?: boolean;
 }
 
 export interface ProjectTakeawayType {
