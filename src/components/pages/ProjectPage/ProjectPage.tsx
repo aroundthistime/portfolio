@@ -64,8 +64,10 @@ ProjectPage.Summary = ({summary}: ProjectSummaryProps) => {
           </li>
           {applicationLink && (
             <li>
-              <span className="summary__title">링크</span>
-              <span className="summary__content">{applicationLink}</span>
+              <span className="summary__title">서비스 링크</span>
+              <a href={applicationLink} className="project__link-text">
+                <span className="summary__content">{applicationLink}</span>
+              </a>
             </li>
           )}
           {githubLink && (
