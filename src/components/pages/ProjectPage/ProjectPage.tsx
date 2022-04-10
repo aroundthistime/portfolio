@@ -38,7 +38,8 @@ ProjectPage.Title = ({title}: ProjectTitleProps) => (
 );
 
 ProjectPage.Summary = ({summary}: ProjectSummaryProps) => {
-  const {subject, period, participants, goal, githubLink} = summary;
+  const {subject, period, participants, goal, githubLink, applicationLink} =
+    summary;
   return (
     <Section>
       <Section.Title>Summary</Section.Title>
@@ -61,6 +62,12 @@ ProjectPage.Summary = ({summary}: ProjectSummaryProps) => {
               {participants.description ? `(${participants.description})` : ''}
             </span>
           </li>
+          {applicationLink && (
+            <li>
+              <span className="summary__title">링크</span>
+              <span className="summary__content">{applicationLink}</span>
+            </li>
+          )}
           {githubLink && (
             <li>
               <span className="summary__title">깃허브 링크</span>
