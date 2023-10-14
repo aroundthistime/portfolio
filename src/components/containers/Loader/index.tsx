@@ -5,7 +5,7 @@ import LoaderImage from '@/assets/images/loading-simpson.gif';
 /**
  * Full screen loader component
  */
-const Loader = ({loadingText}: Props) => {
+const Loader = ({ loadingText }: Props) => {
   const DEFAULT_LOADING_TEXT = "Hold on! I'm on my way";
 
   return (

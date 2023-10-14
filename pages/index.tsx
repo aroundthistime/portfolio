@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
-import {useRouter} from 'next/router';
-import {isMobileDevice} from '../src/utils/device';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { isMobileDevice } from '../src/utils/device';
 
 const IndexPage = () => {
   const router = useRouter();
