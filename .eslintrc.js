@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
@@ -44,6 +45,7 @@ module.exports = {
     'no-unused-vars': 0,
     '@typescript-eslint/no-unused-vars': 0,
     'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx', '.tsx']}],
+    'react/react-in-jsx-scope': 'off',
   },
   settings: {
     'import/resolver': {node: {extensions: ['.js', '.jsx', '.ts', '.tsx']}},
