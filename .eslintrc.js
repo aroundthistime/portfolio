@@ -44,8 +44,12 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-unused-vars': 0,
     '@typescript-eslint/no-unused-vars': 0,
-    'react/jsx-filename-extension': [1, {extensions: ['.js', '.jsx', '.tsx']}],
+    'react/jsx-filename-extension': [
+      1,
+      { extensions: ['.js', '.jsx', '.tsx'] },
+    ],
     'react/react-in-jsx-scope': 'off',
+    'array-callback-return': 'off',
   },
   settings: {
     'import/resolver': {
