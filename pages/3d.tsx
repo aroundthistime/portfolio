@@ -1,8 +1,10 @@
+import React from 'react';
 import { OrbitControls } from '@react-three/drei';
 import { Canvas, extend } from '@react-three/fiber';
 import { Color, NoToneMapping, Vector3 } from 'three';
 import { TextGeometry } from 'three-stdlib';
 import Bart from '@/components/threeD/Bart';
+import Room from '@/components/threeD/Room';
 
 extend({ TextGeometry });
 
@@ -16,6 +18,7 @@ const ThreeDScene = () => {
       gl={{ toneMapping: NoToneMapping }}
       scene={{ background: new Color('#A6C5F7') }}>
       <OrbitControls enablePan enableZoom zoomSpeed={5} />
+      <Room />
       <Bart />
       <directionalLight position={new Vector3(-30, 10, 10)} />
       <ambientLight intensity={0.1} />
