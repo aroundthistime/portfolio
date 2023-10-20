@@ -1,5 +1,5 @@
 import { lazy, useEffect, useState } from 'react';
-import { Group, Object3DEventMap } from 'three';
+import { Group, MathUtils, Object3DEventMap } from 'three';
 import { GLTF } from 'three-stdlib';
 import ZipModelLoader from '@/utils/modelLoader/ZipModelLoader';
 
@@ -13,7 +13,11 @@ const Room = () => {
    */
   const loadRoomModel = async () => {
     const loader = new ZipModelLoader();
-    const [loadedRoom] = await loader.loadAsync('/models/room.zip');
+    const [loadedRoom] = (await loader.loadAsync(
+      '/models/room.zip',
+    )) as Group[];
+    loadedRoom.rotateY(MathUtils.degToRad(270));
+
     setRoomModel(loadedRoom);
   };
 

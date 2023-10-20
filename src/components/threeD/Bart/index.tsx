@@ -23,7 +23,7 @@ const Bart = () => {
   const { createAudioElementFor3D } = use3DMediaElement();
   const { setRaycasterFromMouseEvent } = useRaycaster();
 
-  const POSITION = new Vector3(2, 1.15, -2);
+  const POSITION = new Vector3(2.2, 1.15, 2.5);
   const SCALE = new Vector3(1.8, 1.8, 1.8);
 
   /**
@@ -111,7 +111,7 @@ const Bart = () => {
     // Locate the line bart is saying on top of bart's head
     const bartWorldPosition = bartRef.current.getWorldPosition(new Vector3());
     bartTextRef.current.position.set(
-      bartWorldPosition.x - 0.5,
+      bartWorldPosition.x + 0.2,
       bartWorldPosition.y + 1.3,
       bartWorldPosition.z,
     );
