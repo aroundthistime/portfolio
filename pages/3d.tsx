@@ -1,33 +1,26 @@
 import { OrbitControls } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
-import { useEffect, useState } from 'react';
-import ZipModelLoader from '@/utils/modelLoader/ZipModelLoader';
+import { Canvas, extend } from '@react-three/fiber';
+import { Color, NoToneMapping, Vector3 } from 'three';
+import { TextGeometry } from 'three-stdlib';
+import Bart from '@/components/threeD/Bart';
 
-const Something = () => {
-  const [model, setModel] = useState(null);
+extend({ TextGeometry });
 
-  const load = async () => {
-    const loader = new ZipModelLoader();
-
-    const loadedModel = await loader.loadAsync('/models/room1.zip');
-    setModel(loadedModel);
-  };
-
-  useEffect(() => {}, [load()]);
-
-  return null;
-  // if (!model) return null;
-  // return <primitive object={model} />;
-};
-
-const ThreeDPortfolioPage = () => {
+/**
+ * Component rendering the 3D scene part of the portfolio
+ */
+const ThreeDScene = () => {
   return (
-    <Canvas>
+    <Canvas
+      style={{ width: '90vw', height: '90vh' }}
+      gl={{ toneMapping: NoToneMapping }}
+      scene={{ background: new Color('#A6C5F7') }}>
       <OrbitControls enablePan enableZoom zoomSpeed={5} />
-      <Something />
+      <Bart />
+      <directionalLight position={new Vector3(-30, 10, 10)} />
+      <ambientLight intensity={0.1} />
     </Canvas>
   );
-  // return <div>This will be 3dD</div>;
 };
 
-export default ThreeDPortfolioPage;
+export default ThreeDScene;
