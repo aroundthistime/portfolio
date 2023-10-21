@@ -3,9 +3,10 @@ import { OrbitControls } from '@react-three/drei';
 import { Canvas, extend, useThree } from '@react-three/fiber';
 import { Color, NoToneMapping, Vector3 } from 'three';
 import { TextGeometry } from 'three-stdlib';
-import Bart from '@/components/threeD/Bart';
-import Room from '@/components/threeD/Room';
-import Cat from '@/components/threeD/Room/Cat';
+import Bart from '@/components/models/Bart';
+import Room from '@/components/models/Room';
+import Cat from '@/components/models/Cat';
+import WallClock from '@/components/models/WallClock';
 
 extend({ TextGeometry });
 
@@ -18,7 +19,7 @@ const ThreeDScene = () => {
       style={{ width: '50dvw', height: '100dvh', backgroundColor: 'pink' }}
       gl={{ toneMapping: NoToneMapping }}
       scene={{ background: new Color('#A6C5F7') }}>
-      <OrbitControls zoomSpeed={5} enablePan={false} />
+      <OrbitControls zoomSpeed={5} />
       <ThreeDSceneContents />
       <directionalLight position={new Vector3(-30, 10, 10)} />
       <ambientLight intensity={0.1} />
@@ -41,6 +42,7 @@ const ThreeDSceneContents = () => {
       <Room />
       <Bart />
       <Cat />
+      <WallClock />
     </>
   );
 };
