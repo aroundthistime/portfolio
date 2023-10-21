@@ -1,6 +1,7 @@
 import { useFrame, useLoader } from '@react-three/fiber';
-import { AnimationMixer } from 'three';
+import { AnimationMixer, Vector3 } from 'three';
 import { GLTFLoader } from 'three-stdlib';
+import { getScaleVector } from '@/utils/threeUtils';
 
 const Cat = () => {
   const loadedCat = useLoader(GLTFLoader, '/models/cat.glb');
@@ -19,7 +20,7 @@ const Cat = () => {
   return (
     <primitive
       object={loadedCat.scene}
-      scale={[0.0025, 0.0025, 0.0025]}
+      scale={getScaleVector(0.0025)}
       position={[2.2, 4.7, -3.197931945323944]}
     />
   );

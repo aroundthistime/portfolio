@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 import use3DMediaElement from '@/hooks/use3DMediaElement';
 import { getRandomItemFromArray } from '@/utils/array';
 import useRaycaster from '@/hooks/useRaycaster';
+import { getScaleVector } from '@/utils/threeUtils';
 
 extend({ SpriteText });
 
@@ -24,7 +25,6 @@ const Bart = () => {
   const { setRaycasterFromMouseEvent } = useRaycaster();
 
   const POSITION = new Vector3(2.2, 1.15, 2.5);
-  const SCALE = new Vector3(1.8, 1.8, 1.8);
 
   /**
    * URL source and line content for the bart's audios
@@ -127,7 +127,11 @@ const Bart = () => {
 
   return (
     <group>
-      <sprite ref={bartRef} position={POSITION} scale={SCALE} onClick={onClick}>
+      <sprite
+        ref={bartRef}
+        position={POSITION}
+        scale={getScaleVector(1.8)}
+        onClick={onClick}>
         {/* Support transparent background */}
         <spriteMaterial map={bartTexture} alphaTest={0.5} transparent />
       </sprite>
