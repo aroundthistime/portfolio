@@ -5,6 +5,7 @@ import { Color, NoToneMapping, Vector3 } from 'three';
 import { TextGeometry } from 'three-stdlib';
 import Bart from '@/components/threeD/Bart';
 import Room from '@/components/threeD/Room';
+import Cat from '@/components/threeD/Room/Cat';
 
 extend({ TextGeometry });
 
@@ -39,6 +40,7 @@ const ThreeDSceneContents = () => {
     <>
       <Room />
       <Bart />
+      <Cat />
     </>
   );
 };
