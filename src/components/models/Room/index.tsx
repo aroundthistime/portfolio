@@ -1,5 +1,12 @@
 import { lazy, useEffect, useState } from 'react';
-import { Group, MathUtils, Object3DEventMap } from 'three';
+import {
+  Color,
+  Group,
+  MathUtils,
+  MeshPhongMaterial,
+  Object3D,
+  Object3DEventMap,
+} from 'three';
 import { GLTF } from 'three-stdlib';
 import ZipModelLoader from '@/utils/modelLoader/ZipModelLoader';
 
@@ -17,6 +24,13 @@ const Room = () => {
       '/models/room.zip',
     )) as Group[];
     loadedRoom.rotateY(MathUtils.degToRad(270));
+
+    loadedRoom.traverse(object => {
+      // Paint room wallpaper
+      if (object.name === 'Wall_Cube.002_Wall') {
+        (object.material as MeshPhongMaterial).color = new Color('#DA7E8A');
+      }
+    });
 
     setRoomModel(loadedRoom);
   };

@@ -16,7 +16,7 @@ extend({ TextGeometry });
 const ThreeDScene = () => {
   return (
     <Canvas
-      style={{ width: '50dvw', height: '100dvh', backgroundColor: 'pink' }}
+      style={{ width: '50dvw', height: '100dvh', backgroundColor: '#A7C6F8' }}
       gl={{ toneMapping: NoToneMapping }}
       scene={{ background: new Color('#A6C5F7') }}>
       <OrbitControls zoomSpeed={5} />
