@@ -7,6 +7,7 @@ import Bart from '@/components/3D/models/Bart';
 import Room from '@/components/3D/models/Room';
 import Cat from '@/components/3D/models/Cat';
 import WallClock from '@/components/3D/models/WallClock';
+import PortfolioContents from '@/components/containers/PortfolioContents';
 
 extend({ TextGeometry });
 
@@ -15,15 +16,24 @@ extend({ TextGeometry });
  */
 const ThreeDScene = () => {
   return (
-    <Canvas
-      style={{ width: '50dvw', height: '100dvh', backgroundColor: '#A7C6F8' }}
-      gl={{ toneMapping: NoToneMapping }}
-      scene={{ background: new Color('#A6C5F7') }}>
-      <OrbitControls zoomSpeed={5} />
-      <ThreeDSceneContents />
-      <directionalLight position={new Vector3(-30, 10, 10)} />
-      <ambientLight intensity={0.1} />
-    </Canvas>
+    <div
+      style={{
+        width: '100dvw',
+        height: '100dvh',
+        display: 'flex',
+        backgroundColor: '#A7C6F8',
+      }}>
+      <Canvas
+        style={{ width: '50dvw', height: '100dvh' }}
+        gl={{ toneMapping: NoToneMapping }}
+        scene={{ background: new Color('#A6C5F7') }}>
+        <OrbitControls enablePan={false} enableZoom={false} />
+        <ThreeDSceneContents />
+        <directionalLight position={new Vector3(-30, 10, 10)} />
+        <ambientLight intensity={0.1} />
+      </Canvas>
+      <PortfolioContents />
+    </div>
   );
 };
 
