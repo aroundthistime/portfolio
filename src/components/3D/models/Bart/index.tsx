@@ -1,17 +1,18 @@
-import { extend, useFrame, useLoader, useThree } from '@react-three/fiber';
+import { extend, useLoader, useThree } from '@react-three/fiber';
 import { Sprite, TextureLoader, Vector3 } from 'three';
 import SpriteText from 'three-spritetext';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import use3DMediaElement from '@/hooks/use3DMediaElement';
 import { getRandomItemFromArray } from '@/utils/array';
 import useRaycaster from '@/hooks/useRaycaster';
 import { getScaleVector } from '@/utils/threeUtils';
+import SpeechBubble from './SpeechBubble';
 
 extend({ SpriteText });
 
 const Bart = () => {
   const bartTexture = useLoader(TextureLoader, '/models/bart.png');
-  const { raycaster, camera } = useThree();
+  const { raycaster, scene } = useThree();
 
   const bartAudioStateRef = useRef({
     isLoaded: false,
@@ -19,12 +20,13 @@ const Bart = () => {
     audioElements: [],
   });
   const bartRef = useRef<Sprite>(null!);
-  const bartTextRef = useRef<SpriteText>(null!);
+  const [speechBubbleContent, setSpeechBubbleContent] = useState('');
 
   const { createAudioElementFor3D } = use3DMediaElement();
   const { setRaycasterFromMouseEvent } = useRaycaster();
 
-  const POSITION = new Vector3(2.2, 1.15, 2.5);
+  const BART_POSITION = new Vector3(2.2, 1.15, 2.5);
+  const SPEECH_BUBBLE_POSITION = new Vector3(0, 0, 0);
 
   /**
    * URL source and line content for the bart's audios
@@ -74,7 +76,10 @@ const Bart = () => {
 
     if (!bartAudioStateRef.current.isLoaded) return;
 
-    const intersections = raycaster.intersectObject(bartRef.current, true);
+    const intersections = raycaster.intersectObjects(scene.children, true);
+
+    // const intersectedBart = intersections.length > 0 &&
+    //   bartRef.current.
 
     if (intersections.length > 0) {
       document.body.style.cursor = 'pointer';
@@ -96,26 +101,14 @@ const Bart = () => {
       bartAudioStateRef.current.audioElements,
     );
     const content = randomAudioElement.getAttribute('data-audio-content');
-    bartTextRef.current.text = content;
+    setSpeechBubbleContent(content);
     randomAudioElement.play();
     randomAudioElement.onended = () => {
       bartAudioStateRef.current.isPlaying = false;
       randomAudioElement.onended = undefined;
-      bartTextRef.current.text = '';
+      setSpeechBubbleContent('');
     };
   };
-
-  useFrame(() => {
-    if (!bartTextRef.current || !bartRef.current) return;
-
-    // Locate the line bart is saying on top of bart's head
-    const bartWorldPosition = bartRef.current.getWorldPosition(new Vector3());
-    bartTextRef.current.position.set(
-      bartWorldPosition.x + 0.2,
-      bartWorldPosition.y + 1.3,
-      bartWorldPosition.z,
-    );
-  });
 
   useEffect(() => {
     initializeBartVoice();
@@ -126,17 +119,20 @@ const Bart = () => {
   }, []);
 
   return (
-    <group>
-      <sprite
-        ref={bartRef}
-        position={POSITION}
-        scale={getScaleVector(1.8)}
-        onClick={onClick}>
-        {/* Support transparent background */}
-        <spriteMaterial map={bartTexture} alphaTest={0.5} transparent />
-      </sprite>
-      <spriteText ref={bartTextRef} textHeight={0.5} color="black" />
-    </group>
+    <sprite
+      ref={bartRef}
+      position={BART_POSITION}
+      scale={getScaleVector(1.8)}
+      onClick={onClick}>
+      {/* Support transparent background */}
+      <spriteMaterial map={bartTexture} alphaTest={0.5} transparent />
+      {speechBubbleContent && (
+        <SpeechBubble
+          content={speechBubbleContent}
+          position={SPEECH_BUBBLE_POSITION}
+        />
+      )}
+    </sprite>
   );
 };
 
