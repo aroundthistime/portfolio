@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import use3DMediaElement from '@/hooks/use3DMediaElement';
 import { getRandomItemFromArray } from '@/utils/array';
 import useRaycaster from '@/hooks/useRaycaster';
-import { getScaleVector } from '@/utils/threeUtils';
+import { getScaleVector, isDescendantOf } from '@/utils/threeUtils';
 import SpeechBubble from './SpeechBubble';
 
 extend({ SpriteText });
@@ -13,6 +13,8 @@ extend({ SpriteText });
 const Bart = () => {
   const bartTexture = useLoader(TextureLoader, '/models/bart.png');
   const { raycaster, scene } = useThree();
+  const { createAudioElementFor3D } = use3DMediaElement();
+  const { setRaycasterFromMouseEvent } = useRaycaster();
 
   const bartAudioStateRef = useRef({
     isLoaded: false,
@@ -22,11 +24,7 @@ const Bart = () => {
   const bartRef = useRef<Sprite>(null!);
   const [speechBubbleContent, setSpeechBubbleContent] = useState('');
 
-  const { createAudioElementFor3D } = use3DMediaElement();
-  const { setRaycasterFromMouseEvent } = useRaycaster();
-
   const BART_POSITION = new Vector3(2.2, 1.15, 2.5);
-  const SPEECH_BUBBLE_POSITION = new Vector3(0, 0, 0);
 
   /**
    * URL source and line content for the bart's audios
@@ -72,16 +70,7 @@ const Bart = () => {
    * @param {MouseEvent} event Mouse moving event
    */
   const onDocumentMouseMove = event => {
-    setRaycasterFromMouseEvent(event);
-
-    if (!bartAudioStateRef.current.isLoaded) return;
-
-    const intersections = raycaster.intersectObjects(scene.children, true);
-
-    // const intersectedBart = intersections.length > 0 &&
-    //   bartRef.current.
-
-    if (intersections.length > 0) {
+    if (mouseEventIntersectedBart(event)) {
       document.body.style.cursor = 'pointer';
     } else {
       document.body.style.cursor = 'default';
@@ -89,12 +78,15 @@ const Bart = () => {
   };
 
   /**
-   * Event handler for click event on bart character.
-   * Play a random audio and show the line while playing
+   * Event handler for click event on document.
+   * Play a random audio and show the line while playing if bart character is clicked
+   * @param {MouseEvent} event Mouse click event
    */
-  const onClick = () => {
+  const onDocumentClick = event => {
     if (!bartAudioStateRef.current.isLoaded) return;
     if (bartAudioStateRef.current.isPlaying) return;
+
+    if (!mouseEventIntersectedBart(event)) return;
 
     bartAudioStateRef.current.isPlaying = true;
     const randomAudioElement = getRandomItemFromArray<HTMLAudioElement>(
@@ -110,28 +102,40 @@ const Bart = () => {
     };
   };
 
+  /**
+   * Get whether given mouse event has intersected bart character or not.
+   * The result is only true if the intersection has not been disturbed by any other elements.
+   * (eg. the result would be false if intersection was made but bart was occluded at the moment)
+   * @param {MouseEvent} mouseEvent Mouse event to check the intersection
+   * @returns {boolean} True if the mouse event has intersected bart character
+   */
+  const mouseEventIntersectedBart = (mouseEvent: MouseEvent) => {
+    setRaycasterFromMouseEvent(mouseEvent);
+
+    const intersections = raycaster.intersectObjects(scene.children, true);
+
+    const intersectedObject = intersections[0]?.object;
+
+    return (
+      intersectedObject && isDescendantOf(intersectedObject, bartRef.current)
+    );
+  };
+
   useEffect(() => {
     initializeBartVoice();
+    document.addEventListener('click', onDocumentClick);
     document.addEventListener('mousemove', onDocumentMouseMove);
     return () => {
+      document.removeEventListener('click', onDocumentClick);
       document.removeEventListener('mousemove', onDocumentMouseMove);
     };
   }, []);
 
   return (
-    <sprite
-      ref={bartRef}
-      position={BART_POSITION}
-      scale={getScaleVector(1.8)}
-      onClick={onClick}>
+    <sprite ref={bartRef} position={BART_POSITION} scale={getScaleVector(1.8)}>
       {/* Support transparent background */}
       <spriteMaterial map={bartTexture} alphaTest={0.5} transparent />
-      {speechBubbleContent && (
-        <SpeechBubble
-          content={speechBubbleContent}
-          position={SPEECH_BUBBLE_POSITION}
-        />
-      )}
+      {speechBubbleContent && <SpeechBubble content={speechBubbleContent} />}
     </sprite>
   );
 };
