@@ -3,10 +3,10 @@ import { OrbitControls } from '@react-three/drei';
 import { Canvas, extend, useThree } from '@react-three/fiber';
 import { Color, NoToneMapping, Vector3 } from 'three';
 import { TextGeometry } from 'three-stdlib';
-import Bart from '@/components/models/Bart';
-import Room from '@/components/models/Room';
-import Cat from '@/components/models/Cat';
-import WallClock from '@/components/models/WallClock';
+import Bart from '@/components/3D/models/Bart';
+import Room from '@/components/3D/models/Room';
+import Cat from '@/components/3D/models/Cat';
+import WallClock from '@/components/3D/models/WallClock';
 
 extend({ TextGeometry });
 

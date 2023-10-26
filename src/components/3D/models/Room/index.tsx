@@ -1,19 +1,9 @@
-import { lazy, useEffect, useState } from 'react';
-import {
-  Color,
-  Group,
-  MathUtils,
-  MeshPhongMaterial,
-  Object3D,
-  Object3DEventMap,
-} from 'three';
-import { GLTF } from 'three-stdlib';
+import { useEffect, useState } from 'react';
+import { Color, Group, MathUtils, MeshPhongMaterial } from 'three';
 import ZipModelLoader from '@/utils/modelLoader/ZipModelLoader';
 
 const Room = () => {
-  const [roomModel, setRoomModel] = useState<
-    Group<Object3DEventMap> | GLTF | null
-  >(null);
+  const [roomModel, setRoomModel] = useState<Group | null>(null);
 
   /**
    * Load model of the room
