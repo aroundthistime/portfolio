@@ -2,11 +2,17 @@ import useTypeWriter from '@/hooks/useTypeWriter';
 import { PortfolioSection } from '../style';
 
 const Intro = () => {
-  const { typingResult } = useTypeWriter("Bienvenue, I'm Donghwan Yu");
+  const { typingResult } = useTypeWriter([
+    "Bienvenue, I'm Donghwan Yu",
+    'Frontend Developer',
+  ]);
+
+  const [greeting, jobTitle] = typingResult;
+
   return (
     <PortfolioSection>
-      <h1>{typingResult}</h1>
-      <h3>Frontend Developer</h3>
+      <h1>{greeting}</h1>
+      <h3>{jobTitle}</h3>
     </PortfolioSection>
   );
 };
