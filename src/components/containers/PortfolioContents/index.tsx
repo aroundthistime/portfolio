@@ -1,9 +1,10 @@
+import Intro from './Intro';
 import { PortfolioContentsContainer, PortfolioSection } from './style';
 
 const PortfolioContents = () => {
   return (
     <PortfolioContentsContainer>
-      <PortfolioSection>하이욘</PortfolioSection>
+      <Intro />
       <PortfolioSection>1</PortfolioSection>
       <PortfolioSection>2</PortfolioSection>
       <PortfolioSection>3</PortfolioSection>
