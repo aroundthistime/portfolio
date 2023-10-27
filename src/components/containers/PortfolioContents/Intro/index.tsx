@@ -1,5 +1,6 @@
 import useTypeWriter from '@/hooks/useTypeWriter';
 import { PortfolioSection } from '../style';
+import { IntroContainer, IntroHeadline, IntroSubtitle } from './style';
 
 const Intro = () => {
   const { typingResult } = useTypeWriter([
@@ -11,8 +12,10 @@ const Intro = () => {
 
   return (
     <PortfolioSection>
-      <h1>{greeting}</h1>
-      <h3>{jobTitle}</h3>
+      <IntroContainer>
+        <IntroHeadline>{greeting}</IntroHeadline>
+        <IntroSubtitle>{jobTitle}</IntroSubtitle>
+      </IntroContainer>
     </PortfolioSection>
   );
 };
