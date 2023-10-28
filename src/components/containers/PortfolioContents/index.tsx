@@ -1,5 +1,6 @@
 import Intro from './Intro';
-import { PortfolioContentsContainer, PortfolioSection } from './style';
+import PortfolioSection from './PortfolioSection';
+import { PortfolioContentsContainer } from './style';
 
 const PortfolioContents = () => {
   return (

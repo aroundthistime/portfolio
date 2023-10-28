@@ -1,11 +1,9 @@
 /* eslint-disable no-param-reassign */
-import { useIntersectionObserver } from 'usehooks-ts';
-import { useEffect, useRef } from 'react';
-import { Vector3 } from 'three';
+
 import useTypeWriter from '@/hooks/useTypeWriter';
-import { PortfolioSection } from '../style';
 import { IntroContainer, IntroHeadline, IntroSubtitle } from './style';
 import useCameraStore from '@/components/store/useCameraStore';
+import PortfolioSection from '../PortfolioSection';
 
 const GREETING_TEXT = "Bienvenue, I'm Donghwan Yu";
 const JOB_TITLE = 'Frontend Developer';
@@ -15,23 +13,16 @@ const Intro = () => {
     GREETING_TEXT,
     JOB_TITLE,
   ]);
-  const introSectionRef = useRef<HTMLElement>();
-
-  const intersection = useIntersectionObserver(introSectionRef, {
-    threshold: 0.1,
-  });
 
   const [greeting, jobTitle] = typingResult;
 
-  useEffect(() => {
-    if (intersection?.isIntersecting) {
-      useCameraStore.getState().setToDefault();
-      restartTypeWriting();
-    }
-  }, [intersection]);
+  const onIntersect = () => {
+    useCameraStore.getState().setToDefault();
+    restartTypeWriting();
+  };
 
   return (
-    <PortfolioSection ref={introSectionRef}>
+    <PortfolioSection onIntersect={onIntersect}>
       <IntroContainer>
         <IntroHeadline>{greeting}</IntroHeadline>
         <IntroSubtitle>{jobTitle}</IntroSubtitle>
