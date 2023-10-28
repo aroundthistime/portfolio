@@ -11,7 +11,10 @@ const GREETING_TEXT = "Bienvenue, I'm Donghwan Yu";
 const JOB_TITLE = 'Frontend Developer';
 
 const Intro = () => {
-  const { typingResult } = useTypeWriter([GREETING_TEXT, JOB_TITLE]);
+  const { typingResult, restartTypeWriting } = useTypeWriter([
+    GREETING_TEXT,
+    JOB_TITLE,
+  ]);
   const introSectionRef = useRef<HTMLElement>();
 
   const intersection = useIntersectionObserver(introSectionRef, {
@@ -23,6 +26,7 @@ const Intro = () => {
   useEffect(() => {
     if (intersection?.isIntersecting) {
       useCameraStore.getState().setToDefault();
+      restartTypeWriting();
     }
   }, [intersection]);
 
