@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface Props {
   /**
    * Array of data with one or more depths
@@ -34,7 +36,9 @@ const NestedList = ({
     <ol className={className}>
       {multiDepthDataList.map((multiDepthData, dataIndex) => {
         return (
-          <li key={multiDepthData.title} className="nested-list__title">
+          <li
+            key={multiDepthData.title.toString()}
+            className="nested-list__title">
             <MultiDepthDataTitle
               title={multiDepthData.title}
               index={dataIndex + listIndex}
@@ -60,35 +64,66 @@ const NestedList = ({
 /**
  * Component for rendering title of a multi depth data
  */
-const MultiDepthDataTitle = ({ title, index, depth }) => {
-  return <p>{`${getBulletPoint(index, depth)} ${title}`}</p>;
+const MultiDepthDataTitle = ({ title, index, depth }: TitleProps) => {
+  return (
+    <p>
+      {getBulletPoint(index, depth)}&nbsp;{title}
+    </p>
+  );
 };
+
+interface TitleProps {
+  title: DataTitle;
+  index: number;
+  depth: number;
+}
 
 /**
  * Component for rendering a certain item of multi depth data
  */
-const MultiDepthDataItem = ({ item, index, depth }) => {
+const MultiDepthDataItem = ({ item, index, depth }: ItemProps) => {
   const bulletPoint = getBulletPoint(index, depth);
 
   const LEFT_MARGIN_PER_DEPTH = '15px';
 
+  const getRenderResultByItemType = () => {
+    if (typeof item === 'string') {
+      // string
+      return <p>{`${bulletPoint} ${item}`}</p>;
+    }
+    if (React.isValidElement(item)) {
+      // JSX element
+      return (
+        <p>
+          {bulletPoint}&nbsp;{item}
+        </p>
+      );
+    }
+    return (
+      // Another multi depth data nested
+      <NestedList
+        multiDepthDataList={[item as MultiDepthData]}
+        currentDepth={depth}
+        listIndex={index}
+      />
+    );
+  };
+
   return (
     <li
-      key={item.toString}
+      key={item.toString()}
       style={{ marginLeft: LEFT_MARGIN_PER_DEPTH }}
       className="nested-list__item">
-      {typeof item === 'string' ? (
-        <p key={item}>{`${bulletPoint} ${item}`}</p>
-      ) : (
-        <NestedList
-          multiDepthDataList={[item]}
-          currentDepth={depth}
-          listIndex={index}
-        />
-      )}
+      {getRenderResultByItemType()}
     </li>
   );
 };
+
+interface ItemProps {
+  item: DataItem;
+  index: number;
+  depth: number;
+}
 
 /**
  * Get bullet point for the current item of nested list.
@@ -119,12 +154,16 @@ export interface MultiDepthData {
   /**
    * Title of the data
    */
-  title: string | React.JSX.Element;
+  title: DataTitle;
 
   /**
    * Array of items corresponding to this data
    */
-  items: (string | React.JSX.Element | MultiDepthData)[];
+  items: DataItem[];
 }
+
+type DataTitle = string | React.JSX.Element;
+
+type DataItem = DataTitle | MultiDepthData;
 
 export default NestedList;
