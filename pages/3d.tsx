@@ -22,7 +22,7 @@ const ThreeDScene = () => {
       style={{
         width: '100dvw',
         height: '100dvh',
-        backgroundColor: 'orange',
+        backgroundColor: '#ffd299',
       }}>
       <Canvas
         style={{
