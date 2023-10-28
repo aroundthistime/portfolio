@@ -9,7 +9,7 @@ import Room from '@/components/3D/models/Room';
 import Cat from '@/components/3D/models/Cat';
 import WallClock from '@/components/3D/models/WallClock';
 import PortfolioContents from '@/components/containers/PortfolioContents';
-import useCameraStore from '@/components/store/useCameraStore';
+import use3DSceneStore from '@/components/store/use3DSceneStore';
 
 extend({ TextGeometry });
 
@@ -49,7 +49,7 @@ const ThreeDScene = () => {
  * A separate component is required for accessing r3f related properties
  */
 const ThreeDSceneContents = () => {
-  const { camera } = useThree();
+  const { camera, scene } = useThree();
 
   /**
    * Update camera with new position and target to look at.
@@ -72,17 +72,37 @@ const ThreeDSceneContents = () => {
       .start();
   };
 
+  /**
+   * Update root scene with new position
+   * @param {Vector3} newPosition New scene position to be applied
+   */
+  const updateScene = (newPosition: Vector3) => {
+    const position = new Vector3().copy(scene.position);
+
+    // For smoother camera update
+    new TWEEN.Tween(position)
+      .to(newPosition)
+      .easing(TWEEN.Easing.Back.InOut)
+      .onUpdate(() => {
+        scene.position.set(position.x, position.y, position.z);
+      })
+      .start();
+  };
+
   useFrame(() => {
     TWEEN.update();
   });
 
-  // Manually initialize camera position because subscription is not triggered with initial state
   useEffect(() => {
-    const { position } = useCameraStore.getState();
-    camera.position.set(position.x, position.y, position.z);
+    // Manually initialize camera position because subscription is not triggered with initial state
+    const {
+      camera: { position: cameraPosition },
+    } = use3DSceneStore.getState();
+    camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z);
 
-    useCameraStore.subscribe(state => {
-      updateCamera(state.position, state.target);
+    use3DSceneStore.subscribe(state => {
+      updateCamera(state.camera.position, state.camera.target);
+      updateScene(state.scene.position);
     });
   }, []);
 

@@ -2,8 +2,8 @@
 
 import useTypeWriter from '@/hooks/useTypeWriter';
 import { IntroContainer, IntroHeadline, IntroSubtitle } from './style';
-import useCameraStore from '@/components/store/useCameraStore';
 import PortfolioSection from '../PortfolioSection';
+import use3DSceneStore from '@/components/store/use3DSceneStore';
 
 const GREETING_TEXT = "Bienvenue, I'm Donghwan Yu";
 const JOB_TITLE = 'Frontend Developer';
@@ -17,12 +17,16 @@ const Intro = () => {
   const [greeting, jobTitle] = typingResult;
 
   const onIntersect = () => {
-    useCameraStore.getState().setToDefault();
+    use3DSceneStore.getState().putSceneAtCenter();
     restartTypeWriting();
   };
 
+  const onExit = () => {
+    use3DSceneStore.getState().putSceneAside();
+  };
+
   return (
-    <PortfolioSection onIntersect={onIntersect}>
+    <PortfolioSection onIntersect={onIntersect} onExit={onExit}>
       <IntroContainer>
         <IntroHeadline>{greeting}</IntroHeadline>
         <IntroSubtitle>{jobTitle}</IntroSubtitle>

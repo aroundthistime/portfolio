@@ -8,7 +8,6 @@ export const IntroContainer = styled.div`
   align-items: start;
   flex-direction: column;
   row-gap: 15%;
-  padding: 20px 40px;
   font-family: 'Playfair Display', serif;
   font-style: italic;
 `;
