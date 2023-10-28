@@ -26,4 +26,6 @@ export const PortfolioContentBoxBody = styled.div`
   padding-top: 10px;
   padding-right: 30px;
   overflow-y: auto;
+  //   Disable line-height fow using overflow: auto
+  line-height: normal;
 `;
