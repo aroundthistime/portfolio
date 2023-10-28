@@ -3,7 +3,7 @@
 import useTypeWriter from '@/hooks/useTypeWriter';
 import { IntroContainer, IntroHeadline, IntroSubtitle } from './style';
 import PortfolioSection from '../Templates/PortfolioSection';
-import use3DSceneStore from '@/components/store/use3DSceneStore';
+import use3DSceneStore from '@/store/use3DSceneStore';
 
 const GREETING_TEXT = "Bienvenue, I'm Donghwan Yu";
 const JOB_TITLE = 'Frontend Developer';
