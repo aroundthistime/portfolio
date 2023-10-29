@@ -1,4 +1,5 @@
 import React from 'react';
+import { NestedListWrapper } from './style';
 
 interface Props {
   /**
@@ -7,9 +8,9 @@ interface Props {
   multiDepthDataList: MultiDepthData[];
 
   /**
-   * Depth of the current list from the root
+   * Depth of the current list from the root (default is 0)
    */
-  currentDepth?: number;
+  depth?: number;
 
   /**
    * Index of the current list compared to its siblings (default is 0)
@@ -28,36 +29,38 @@ interface Props {
  */
 const NestedList = ({
   multiDepthDataList,
-  currentDepth = 0,
+  depth = 0,
   listIndex = 0,
   className = '',
 }: Props) => {
+  const getClassName = () => {
+    return `${getClassNameWithDepth('nested-list__list', depth)} ${className}`;
+  };
+
   return (
-    <ol className={className}>
+    <NestedListWrapper className={getClassName()}>
       {multiDepthDataList.map((multiDepthData, dataIndex) => {
         return (
-          <li
-            key={multiDepthData.title.toString()}
-            className="nested-list__title">
+          <li key={multiDepthData.title.toString()}>
             <MultiDepthDataTitle
               title={multiDepthData.title}
               index={dataIndex + listIndex}
-              depth={currentDepth}
+              depth={depth}
             />
-            <ol>
+            <ol className={getClassNameWithDepth('nested-list__items', depth)}>
               {multiDepthData.items.map((item, itemIndex) => (
                 <MultiDepthDataItem
                   key={item.toString()}
                   item={item}
                   index={itemIndex}
-                  depth={currentDepth + 1}
+                  depth={depth + 1}
                 />
               ))}
             </ol>
           </li>
         );
       })}
-    </ol>
+    </NestedListWrapper>
   );
 };
 
@@ -66,7 +69,7 @@ const NestedList = ({
  */
 const MultiDepthDataTitle = ({ title, index, depth }: TitleProps) => {
   return (
-    <p>
+    <p className={getClassNameWithDepth('nested-list__title', depth)}>
       {getBulletPoint(index, depth)}&nbsp;{title}
     </p>
   );
@@ -103,7 +106,7 @@ const MultiDepthDataItem = ({ item, index, depth }: ItemProps) => {
       // Another multi depth data nested
       <NestedList
         multiDepthDataList={[item as MultiDepthData]}
-        currentDepth={depth}
+        depth={depth}
         listIndex={index}
       />
     );
@@ -113,7 +116,7 @@ const MultiDepthDataItem = ({ item, index, depth }: ItemProps) => {
     <li
       key={item.toString()}
       style={{ marginLeft: LEFT_MARGIN_PER_DEPTH }}
-      className="nested-list__item">
+      className={getClassNameWithDepth('nested-list__item', depth)}>
       {getRenderResultByItemType()}
     </li>
   );
@@ -129,7 +132,7 @@ interface ItemProps {
  * Get bullet point for the current item of nested list.
  * And starting from certain depth, same bulletin point will be returned
  * @param {number} index Item index compared to its siblings
- * @param {number} depth Depth of the current item from the root
+ * @param {number} depth Current depth from the root of the nested list
  * @returns {string} Bullet point (space not included)
  */
 const getBulletPoint = (index: number, depth: number) => {
@@ -145,6 +148,18 @@ const getBulletPoint = (index: number, depth: number) => {
     default:
       return '-';
   }
+};
+
+/**
+ * Get classnames for elements inside nested list (one with default, one with modifier added based on depth).
+ * This can be used to give different styling for each depths.
+ * Please be aware that the depth would start from 0
+ * @param {string} defaultClassName The default classname without any modifier
+ * @param {number} depth Current depth from the root of the nested list
+ * @returns {string} Classname to give to the element
+ */
+const getClassNameWithDepth = (defaultClassName: string, depth: number) => {
+  return `${defaultClassName} ${defaultClassName}--depth-${depth}`;
 };
 
 /**

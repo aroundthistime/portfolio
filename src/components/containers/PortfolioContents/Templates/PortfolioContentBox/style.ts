@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import {
+  NestedListConfigByDepth,
+  NestedListConfigProperty,
+  getNestedListCssGenerator,
+} from '@/components/NestedList/style';
 
 export const PortfolioContentBoxContainer = styled.div`
   display: flex;
@@ -22,10 +27,53 @@ export const PortfolioContentBoxHeader = styled.h2`
   font-size: 25px;
 `;
 
+/**
+ * Get css code for styling nested list
+ * @returns {string} Css style in string format
+ */
+const getNestedListStyle = () => {
+  const NESTED_LIST_STYLE_CONFIG: Record<
+    NestedListConfigProperty,
+    NestedListConfigByDepth
+  > = {
+    'font-size': {
+      root: 20,
+      dropPerDepth: 2.2,
+      depthWithMinValue: 4,
+    },
+    'list-gap': {
+      root: 18,
+      dropPerDepth: 2,
+      depthWithMinValue: 4,
+    },
+    'item-gap': {
+      root: 6,
+      dropPerDepth: 0.5,
+      depthWithMinValue: 4,
+    },
+    'title-item-gap': {
+      root: 5,
+      dropPerDepth: 0.4,
+      depthWithMinValue: 4,
+    },
+  };
+
+  return Object.keys(NESTED_LIST_STYLE_CONFIG)
+    .map(styleProperty => {
+      const cssGenerator = getNestedListCssGenerator(
+        styleProperty as NestedListConfigProperty,
+      );
+      return cssGenerator(NESTED_LIST_STYLE_CONFIG[styleProperty]);
+    })
+    .join('');
+};
+
 export const PortfolioContentBoxBody = styled.div`
   padding-top: 10px;
   padding-right: 30px;
   overflow-y: auto;
   //   Disable line-height fow using overflow: auto
   line-height: normal;
+
+  ${getNestedListStyle()}
 `;
