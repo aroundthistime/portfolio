@@ -1,3 +1,4 @@
+import range from 'lodash/range';
 import styled from 'styled-components';
 
 export const NestedListWrapper = styled.ol`
@@ -7,6 +8,12 @@ export const NestedListWrapper = styled.ol`
   .nested-list__items {
     display: flex;
     flex-direction: column;
+  }
+
+  .nested-list__item,
+  .nested-list__title {
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -47,14 +54,13 @@ export type NestedListConfigProperty =
  * @returns {string} CSS string based on the given config
  */
 const getFontSizeCss = (fontSizeConfig: NestedListConfigByDepth) => {
-  return Array.from(
-    { length: fontSizeConfig.depthWithMinValue },
-    (_, depth) => {
+  return range(0, fontSizeConfig.depthWithMinValue + 1)
+    .map(depth => {
       return `.nested-list__title--depth-${depth}, .nested-list__item--depth-${depth} {
-              font-size: ${getValueFromDepth(fontSizeConfig, depth)}px;
-          }`;
-    },
-  ).join('');
+            font-size: ${getValueFromDepth(fontSizeConfig, depth)}px;
+        }`;
+    })
+    .join('');
 };
 
 /**
@@ -63,13 +69,15 @@ const getFontSizeCss = (fontSizeConfig: NestedListConfigByDepth) => {
  * @returns {string} CSS string based on the given config
  */
 const getGapBetweenListsCss = (listGapConfig: NestedListConfigByDepth) => {
-  return Array.from({ length: listGapConfig.depthWithMinValue }, (_, depth) => {
-    return `
-            .nested-list__list--depth-${depth} {
-                row-gap: ${getValueFromDepth(listGapConfig, depth)}px;
-            }
-          `;
-  }).join('');
+  return range(0, listGapConfig.depthWithMinValue + 1)
+    .map(depth => {
+      return `
+        .nested-list__list--depth-${depth} {
+            row-gap: ${getValueFromDepth(listGapConfig, depth)}px;
+        }
+      `;
+    })
+    .join('');
 };
 
 /**
@@ -78,13 +86,15 @@ const getGapBetweenListsCss = (listGapConfig: NestedListConfigByDepth) => {
  * @returns {string} CSS string based on the given config
  */
 const getGapBetweenItemsCss = (itemGapConfig: NestedListConfigByDepth) => {
-  return Array.from({ length: itemGapConfig.depthWithMinValue }, (_, depth) => {
-    return `
-              .nested-list__items--depth-${depth} {
-                  row-gap: ${getValueFromDepth(itemGapConfig, depth)}px;
-              }
-            `;
-  }).join('');
+  return range(0, itemGapConfig.depthWithMinValue + 1)
+    .map(depth => {
+      return `
+        .nested-list__items--depth-${depth} {
+            row-gap: ${getValueFromDepth(itemGapConfig, depth)}px;
+        }
+      `;
+    })
+    .join('');
 };
 
 /**
@@ -95,9 +105,8 @@ const getGapBetweenItemsCss = (itemGapConfig: NestedListConfigByDepth) => {
 const getGapBetweenTitleAndItemsCss = (
   titleItemsGapConfig: NestedListConfigByDepth,
 ) => {
-  return Array.from(
-    { length: titleItemsGapConfig.depthWithMinValue },
-    (_, depth) => {
+  return range(0, titleItemsGapConfig.depthWithMinValue + 1)
+    .map(depth => {
       return `
               .nested-list__title--depth-${depth} {
                   margin-bottom: ${getValueFromDepth(
@@ -106,8 +115,8 @@ const getGapBetweenTitleAndItemsCss = (
                   )}px;
               }
           `;
-    },
-  ).join('');
+    })
+    .join('');
 };
 
 /**
