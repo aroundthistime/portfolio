@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Color, Group, MathUtils, MeshPhongMaterial } from 'three';
 import ZipModelLoader from '@/utils/modelLoader/ZipModelLoader';
+import MonitorScreen from './MonitorScreen';
 
 const Room = () => {
   const [roomModel, setRoomModel] = useState<Group | null>(null);
@@ -31,7 +32,11 @@ const Room = () => {
 
   if (!roomModel) return null;
 
-  return <primitive object={roomModel} />;
+  return (
+    <primitive object={roomModel}>
+      <MonitorScreen />
+    </primitive>
+  );
 };
 
 export default Room;
