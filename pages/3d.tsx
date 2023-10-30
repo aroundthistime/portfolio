@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { OrbitControls } from '@react-three/drei';
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
 import { Color, NoToneMapping, Vector3 } from 'three';
@@ -17,25 +17,41 @@ extend({ TextGeometry });
  * Component rendering the 3D scene part of the portfolio
  */
 const ThreeDScene = () => {
+  /**
+   * camera.lookAt doesn't work properly when using OrbitControls.
+   * The job could instead be achieved with setting the target of the controls
+   */
+  const [controlTarget, setControlTarget] = useState<Vector3>(new Vector3());
+
+  // Reset zoom level when changing camera or scene properties to prevent unwanted behaviors
+  const [zoom, setZoom] = useState<number>();
+
+  useEffect(() => {
+    use3DSceneStore.subscribe(() => {
+      setZoom(0);
+    });
+  }, []);
+
   return (
     <div
       style={{
-        width: '100dvw',
-        height: '100dvh',
+        width: '100vw',
+        height: '100vh',
         backgroundColor: '#ffd299',
       }}>
       <Canvas
         style={{
-          width: '100dvw',
-          height: '100dvh',
           position: 'absolute',
           top: '0px',
           left: '0px',
         }}
         gl={{ toneMapping: NoToneMapping }}
         scene={{ background: new Color('#A6C5F7') }}>
-        <OrbitControls enablePan={false} />
-        <ThreeDSceneContents />
+        <OrbitControls enablePan={false} target={controlTarget} zoom0={zoom} />
+        <ThreeDSceneContents
+          controlTarget={controlTarget}
+          setControlTarget={setControlTarget}
+        />
         <directionalLight position={new Vector3(-30, 10, 10)} />
         <ambientLight intensity={0.1} />
       </Canvas>
@@ -48,7 +64,10 @@ const ThreeDScene = () => {
  * Actual contents of the 3D scene.
  * A separate component is required for accessing r3f related properties
  */
-const ThreeDSceneContents = () => {
+const ThreeDSceneContents = ({
+  controlTarget,
+  setControlTarget,
+}: ThreeDSceneProps) => {
   const { camera, scene } = useThree();
 
   /**
@@ -57,17 +76,35 @@ const ThreeDSceneContents = () => {
    * @param {Vector3} newTarget New target point that the camera should look at
    */
   const updateCamera = (newPosition: Vector3, newTarget: Vector3) => {
-    const position = new Vector3().copy(camera.position);
+    const oldPosition = new Vector3().copy(camera.position);
+
+    const cameraProperty = {
+      positionX: oldPosition.x,
+      positionY: oldPosition.y,
+      positionZ: oldPosition.z,
+      targetX: controlTarget.x,
+      targetY: controlTarget.y,
+      targetZ: controlTarget.z,
+    };
+
+    const updatedProperty = {
+      positionX: newPosition.x,
+      positionY: newPosition.y,
+      positionZ: newPosition.z,
+      targetX: newTarget.x,
+      targetY: newTarget.y,
+      targetZ: newTarget.z,
+    };
 
     // For smoother camera update
-    new TWEEN.Tween(position)
-      .to(newPosition)
+    new TWEEN.Tween(cameraProperty)
+      .to(updatedProperty)
       .easing(TWEEN.Easing.Back.InOut)
       .onUpdate(() => {
-        camera.position.set(position.x, position.y, position.z);
-      })
-      .onComplete(() => {
-        camera.lookAt(newTarget);
+        const { positionX, positionY, positionZ, targetX, targetY, targetZ } =
+          cameraProperty;
+        setControlTarget(new Vector3(targetX, targetY, targetZ));
+        camera.position.set(positionX, positionY, positionZ);
       })
       .start();
   };
@@ -115,5 +152,17 @@ const ThreeDSceneContents = () => {
     </>
   );
 };
+
+interface ThreeDSceneProps {
+  /**
+   * Current target of orbit controls
+   */
+  controlTarget: Vector3;
+
+  /**
+   * Set target of the orbit controls (which would look like setting target of the camera)
+   */
+  setControlTarget: React.Dispatch<React.SetStateAction<Vector3>>;
+}
 
 export default ThreeDScene;

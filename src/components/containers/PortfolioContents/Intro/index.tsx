@@ -20,15 +20,10 @@ const Intro = () => {
     restartTypeWriting();
   };
 
-  const onExit = () => {
-    use3DSceneStore.getState().putSceneAside();
-  };
-
   return (
     <PortfolioSection
       sectionTitle={SectionTitle.Intro}
-      onIntersect={onIntersect}
-      onExit={onExit}>
+      onIntersect={onIntersect}>
       <IntroContainer>
         <IntroHeadline>{greeting}</IntroHeadline>
         <IntroSubtitle>{jobTitle}</IntroSubtitle>

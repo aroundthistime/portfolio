@@ -3,6 +3,7 @@ import PortfolioSection from '../Templates/PortfolioSection';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
 import SkillNameWithLogo from './SkillNameWithLogo';
 import { SectionTitle } from '@/types/enums/SectionTitle';
+import use3DSceneStore from '@/store/use3DSceneStore';
 
 /**
  * Component for showing the tech skills I can utilize
@@ -115,8 +116,14 @@ const SkillSet = () => {
     },
   ];
 
+  const onIntersect = () => {
+    use3DSceneStore.getState().putSceneAside();
+  };
+
   return (
-    <PortfolioSection sectionTitle={SectionTitle.Skills}>
+    <PortfolioSection
+      sectionTitle={SectionTitle.Skills}
+      onIntersect={onIntersect}>
       <PortfolioContentBox>
         <PortfolioContentBox.Header>Skills</PortfolioContentBox.Header>
         <PortfolioContentBox.Body>

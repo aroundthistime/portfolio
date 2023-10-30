@@ -35,6 +35,10 @@ const use3DSceneStore = create<SceneStoreState>()(set => ({
 
   putSceneAside: () => {
     set({
+      camera: {
+        position: CAMERA_DEFAULT_POSITION,
+        target: CAMERA_DEFAULT_TARGET,
+      },
       scene: {
         position: SCENE_ASIDE_POSITION,
       },
