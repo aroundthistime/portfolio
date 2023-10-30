@@ -73,7 +73,7 @@ export const PortfolioContentBoxBody = styled.div`
   padding-right: 30px;
   overflow-y: auto;
 
-  // Disable line-height fow using overflow: auto
+  // Disable line-height for using overflow: auto
   line-height: normal;
 
   ${getNestedListStyle()}
