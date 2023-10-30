@@ -34,7 +34,7 @@ const ThreeDScene = () => {
         }}
         gl={{ toneMapping: NoToneMapping }}
         scene={{ background: new Color('#A6C5F7') }}>
-        <OrbitControls />
+        <OrbitControls enablePan={false} />
         <ThreeDSceneContents />
         <directionalLight position={new Vector3(-30, 10, 10)} />
         <ambientLight intensity={0.1} />
