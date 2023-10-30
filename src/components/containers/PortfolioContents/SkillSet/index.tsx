@@ -2,8 +2,15 @@ import NestedList, { MultiDepthData } from '@/components/NestedList';
 import PortfolioSection from '../Templates/PortfolioSection';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
 import SkillNameWithLogo from './SkillNameWithLogo';
+import { SectionTitle } from '@/types/enums/SectionTitle';
 
+/**
+ * Component for showing the tech skills I can utilize
+ */
 const SkillSet = () => {
+  /**
+   * @TODO Replace local data with one received from API (+ include processing to make into jsx elements)
+   */
   const skills: MultiDepthData[] = [
     {
       title: (
@@ -109,7 +116,7 @@ const SkillSet = () => {
   ];
 
   return (
-    <PortfolioSection>
+    <PortfolioSection sectionTitle={SectionTitle.Skills}>
       <PortfolioContentBox>
         <PortfolioContentBox.Header>Skills</PortfolioContentBox.Header>
         <PortfolioContentBox.Body>

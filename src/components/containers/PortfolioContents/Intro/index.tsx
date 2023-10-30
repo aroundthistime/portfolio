@@ -1,9 +1,8 @@
-/* eslint-disable no-param-reassign */
-
 import useTypeWriter from '@/hooks/useTypeWriter';
 import { IntroContainer, IntroHeadline, IntroSubtitle } from './style';
 import PortfolioSection from '../Templates/PortfolioSection';
 import use3DSceneStore from '@/store/use3DSceneStore';
+import { SectionTitle } from '@/types/enums/SectionTitle';
 
 const GREETING_TEXT = "Bienvenue, I'm Donghwan Yu";
 const JOB_TITLE = 'Frontend Developer';
@@ -26,7 +25,10 @@ const Intro = () => {
   };
 
   return (
-    <PortfolioSection onIntersect={onIntersect} onExit={onExit}>
+    <PortfolioSection
+      sectionTitle={SectionTitle.Intro}
+      onIntersect={onIntersect}
+      onExit={onExit}>
       <IntroContainer>
         <IntroHeadline>{greeting}</IntroHeadline>
         <IntroSubtitle>{jobTitle}</IntroSubtitle>
