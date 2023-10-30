@@ -42,7 +42,7 @@ const getNestedListStyle = () => {
       depthWithMinValue: 4,
     },
     'list-gap': {
-      root: 18,
+      root: 20,
       dropPerDepth: 2,
       depthWithMinValue: 4,
     },
@@ -52,7 +52,7 @@ const getNestedListStyle = () => {
       depthWithMinValue: 4,
     },
     'title-item-gap': {
-      root: 5,
+      root: 6,
       dropPerDepth: 0.4,
       depthWithMinValue: 4,
     },
@@ -69,7 +69,7 @@ const getNestedListStyle = () => {
 };
 
 export const PortfolioContentBoxBody = styled.div`
-  padding-top: 10px;
+  padding-top: 15px;
   padding-right: 30px;
   overflow-y: auto;
 
