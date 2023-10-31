@@ -8,6 +8,11 @@ interface Props {
   multiDepthDataList: MultiDepthData[];
 
   /**
+   * Whether to insert bullet point at the beginning of each item (default is true)
+   */
+  useBulletPoint?: boolean;
+
+  /**
    * Depth of the current list from the root (default is 0)
    */
   depth?: number;
@@ -29,6 +34,7 @@ interface Props {
  */
 const NestedList = ({
   multiDepthDataList,
+  useBulletPoint = true,
   depth = 0,
   listIndex = 0,
   className = '',
@@ -41,19 +47,21 @@ const NestedList = ({
     <NestedListWrapper className={getClassName()}>
       {multiDepthDataList.map((multiDepthData, dataIndex) => {
         return (
-          <li key={multiDepthData.title.toString()}>
+          <li key={Math.random()}>
             <MultiDepthDataTitle
               title={multiDepthData.title}
               index={dataIndex + listIndex}
               depth={depth}
+              useBulletPoint={useBulletPoint}
             />
             <ol className={getClassNameWithDepth('nested-list__items', depth)}>
               {multiDepthData.items.map((item, itemIndex) => (
                 <MultiDepthDataItem
-                  key={item.toString()}
+                  key={Math.random()}
                   item={item}
                   index={itemIndex}
                   depth={depth + 1}
+                  useBulletPoint={useBulletPoint}
                 />
               ))}
             </ol>
@@ -67,10 +75,16 @@ const NestedList = ({
 /**
  * Component for rendering title of a multi depth data
  */
-const MultiDepthDataTitle = ({ title, index, depth }: TitleProps) => {
+const MultiDepthDataTitle = ({
+  title,
+  index,
+  depth,
+  useBulletPoint,
+}: TitleProps) => {
+  const bulletPoint = useBulletPoint ? getBulletPoint(index, depth) : '';
   return (
     <p className={getClassNameWithDepth('nested-list__title', depth)}>
-      {getBulletPoint(index, depth)}&nbsp;{title}
+      {bulletPoint}&nbsp;{title}
     </p>
   );
 };
@@ -79,13 +93,19 @@ interface TitleProps {
   title: DataTitle;
   index: number;
   depth: number;
+  useBulletPoint: boolean;
 }
 
 /**
  * Component for rendering a certain item of multi depth data
  */
-const MultiDepthDataItem = ({ item, index, depth }: ItemProps) => {
-  const bulletPoint = getBulletPoint(index, depth);
+const MultiDepthDataItem = ({
+  item,
+  index,
+  depth,
+  useBulletPoint,
+}: ItemProps) => {
+  const bulletPoint = useBulletPoint ? getBulletPoint(index, depth) : '';
 
   const LEFT_MARGIN_PER_DEPTH = '15px';
 
@@ -108,13 +128,14 @@ const MultiDepthDataItem = ({ item, index, depth }: ItemProps) => {
         multiDepthDataList={[item as MultiDepthData]}
         depth={depth}
         listIndex={index}
+        useBulletPoint={useBulletPoint}
       />
     );
   };
 
   return (
     <li
-      key={item.toString()}
+      key={Math.random()}
       style={{ marginLeft: LEFT_MARGIN_PER_DEPTH }}
       className={getClassNameWithDepth('nested-list__item', depth)}>
       {getRenderResultByItemType()}
@@ -126,6 +147,7 @@ interface ItemProps {
   item: DataItem;
   index: number;
   depth: number;
+  useBulletPoint: boolean;
 }
 
 /**
