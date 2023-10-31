@@ -1,5 +1,6 @@
 import React from 'react';
 import { NestedListWrapper } from './style';
+import { MultiDepthData } from '@/types/MultiDepthData';
 
 interface Props {
   /**
@@ -92,7 +93,7 @@ const MultiDepthDataTitle = ({
 };
 
 interface TitleProps {
-  title: DataTitle;
+  title: MultiDepthData['title'];
   index: number;
   depth: number;
   useBulletPoint: boolean;
@@ -142,7 +143,7 @@ const MultiDepthDataItem = ({
 };
 
 interface ItemProps {
-  item: DataItem;
+  item: MultiDepthData['items'][0];
   index: number;
   depth: number;
   useBulletPoint: boolean;
@@ -188,24 +189,5 @@ const getBulletPointSpan = (index: number, depth: number) => {
 const getClassNameWithDepth = (defaultClassName: string, depth: number) => {
   return `${defaultClassName} ${defaultClassName}--depth-${depth}`;
 };
-
-/**
- * Data with one or more depths
- */
-export interface MultiDepthData {
-  /**
-   * Title of the data
-   */
-  title: DataTitle;
-
-  /**
-   * Array of items corresponding to this data
-   */
-  items: DataItem[];
-}
-
-type DataTitle = string | React.JSX.Element;
-
-type DataItem = DataTitle | MultiDepthData;
 
 export default NestedList;

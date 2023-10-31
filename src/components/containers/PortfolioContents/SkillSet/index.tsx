@@ -1,9 +1,10 @@
-import NestedList, { MultiDepthData } from '@/components/NestedList';
+import NestedList from '@/components/NestedList';
 import PortfolioSection from '../Templates/PortfolioSection';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
 import LogoWithText from '../../../LogoWithText';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import use3DSceneStore from '@/store/use3DSceneStore';
+import { MultiDepthData } from '@/types/MultiDepthData';
 
 /**
  * Component for showing the tech skills I can utilize

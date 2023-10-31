@@ -1,9 +1,9 @@
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
 import PortfolioSection from '../Templates/PortfolioSection';
-import NestedList, { MultiDepthData } from '@/components/NestedList';
 import LogoWithText from '@/components/LogoWithText';
 import { NestedProjectList, ProjectClickGuidance } from './style';
+import { MultiDepthData } from '@/types/MultiDepthData';
 
 /**
  * Section for showing the previous projects that I've done
