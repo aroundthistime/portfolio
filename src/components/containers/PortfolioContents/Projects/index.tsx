@@ -3,6 +3,7 @@ import PortfolioContentBox from '../Templates/PortfolioContentBox';
 import PortfolioSection from '../Templates/PortfolioSection';
 import NestedList, { MultiDepthData } from '@/components/NestedList';
 import LogoWithText from '@/components/LogoWithText';
+import { NestedProjectList } from './style';
 
 /**
  * Section for showing the previous projects that I've done
@@ -39,7 +40,7 @@ const Projects = () => {
       <PortfolioContentBox>
         <PortfolioContentBox.Header>Projects</PortfolioContentBox.Header>
         <PortfolioContentBox.Body>
-          <NestedList multiDepthDataList={projects} />
+          <NestedProjectList multiDepthDataList={projects} />
         </PortfolioContentBox.Body>
       </PortfolioContentBox>
     </PortfolioSection>
