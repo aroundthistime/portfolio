@@ -1,14 +1,14 @@
-import { Logo } from './style';
+import { Logo, LogoWithTextContainer } from './style';
 
 /**
  * Component for rendering logo + text combination
  */
 const LogoWithText = ({ text, logoSrc }: Props) => {
   return (
-    <span style={{ display: 'flex' }}>
+    <LogoWithTextContainer>
       <Logo src={logoSrc} alt={`${text} logo`} />
       {text}
-    </span>
+    </LogoWithTextContainer>
   );
 };
 
