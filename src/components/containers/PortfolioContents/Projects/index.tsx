@@ -27,6 +27,15 @@ const Projects = () => {
     },
     {
       title: (
+        <LogoWithText
+          text="3D Portfolio"
+          logoSrc="/images/projects/portfolio/logo.jpeg"
+        />
+      ),
+      items: ['Portfolio using Web 3D rendering'],
+    },
+    {
+      title: (
         <LogoWithText text="Owin" logoSrc="/images/projects/owin/logo.jpeg" />
       ),
       items: [
