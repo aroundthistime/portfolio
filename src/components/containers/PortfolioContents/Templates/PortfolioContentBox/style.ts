@@ -77,4 +77,8 @@ export const PortfolioContentBoxBody = styled.div`
   line-height: normal;
 
   ${getNestedListStyle()}
+
+  .nested-list__title {
+    font-family: 'Righteous', sans-serif;
+  }
 `;
