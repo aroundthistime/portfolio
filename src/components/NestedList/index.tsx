@@ -8,7 +8,9 @@ interface Props {
   multiDepthDataList: MultiDepthData[];
 
   /**
-   * Whether to insert bullet point at the beginning of each item (default is true)
+   * Whether to insert bullet point at the beginning of each item (default is true).
+   * This is config for the entire nested list tree.
+   * If you want to differentiate the existence of bullet point, please use css with classnames
    */
   useBulletPoint?: boolean;
 
@@ -81,7 +83,7 @@ const MultiDepthDataTitle = ({
   depth,
   useBulletPoint,
 }: TitleProps) => {
-  const bulletPoint = useBulletPoint ? getBulletPoint(index, depth) : '';
+  const bulletPoint = useBulletPoint ? getBulletPointSpan(index, depth) : '';
   return (
     <p className={getClassNameWithDepth('nested-list__title', depth)}>
       {bulletPoint}&nbsp;{title}
@@ -105,23 +107,19 @@ const MultiDepthDataItem = ({
   depth,
   useBulletPoint,
 }: ItemProps) => {
-  const bulletPoint = useBulletPoint ? getBulletPoint(index, depth) : '';
+  const bulletPoint = useBulletPoint ? getBulletPointSpan(index, depth) : '';
 
   const LEFT_MARGIN_PER_DEPTH = '15px';
 
   const getRenderResultByItemType = () => {
-    if (typeof item === 'string') {
-      // string
-      return <p>{`${bulletPoint} ${item}`}</p>;
-    }
-    if (React.isValidElement(item)) {
-      // JSX element
+    if (typeof item === 'string' || React.isValidElement(item)) {
       return (
         <p>
           {bulletPoint}&nbsp;{item}
         </p>
       );
     }
+
     return (
       // Another multi depth data nested
       <NestedList
@@ -155,21 +153,28 @@ interface ItemProps {
  * And starting from certain depth, same bulletin point will be returned
  * @param {number} index Item index compared to its siblings
  * @param {number} depth Current depth from the root of the nested list
- * @returns {string} Bullet point (space not included)
+ * @returns {JSX.Element} Span with bullet point (space not included)
  */
-const getBulletPoint = (index: number, depth: number) => {
+const getBulletPointSpan = (index: number, depth: number) => {
   // Correct index value to start from 1 instead of 0
   const actualOrder = index + 1;
+  let bulletPointString: string;
+
   switch (depth) {
     case 0:
-      return `${actualOrder}.`;
+      bulletPointString = `${actualOrder}.`;
+      break;
     case 1:
-      return `(${actualOrder})`;
+      bulletPointString = `(${actualOrder})`;
+      break;
     case 2:
-      return '•';
+      bulletPointString = '•';
+      break;
     default:
-      return '-';
+      bulletPointString = '-';
+      break;
   }
+  return <span className="nested-list__bullet-point">{bulletPointString}</span>;
 };
 
 /**
