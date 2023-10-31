@@ -1,7 +1,7 @@
 import NestedList, { MultiDepthData } from '@/components/NestedList';
 import PortfolioSection from '../Templates/PortfolioSection';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
-import SkillNameWithLogo from './SkillNameWithLogo';
+import LogoWithText from '../../../LogoWithText';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import use3DSceneStore from '@/store/use3DSceneStore';
 
@@ -15,8 +15,8 @@ const SkillSet = () => {
   const skills: MultiDepthData[] = [
     {
       title: (
-        <SkillNameWithLogo
-          name="Typescript"
+        <LogoWithText
+          text="Typescript"
           logoSrc="/images/skills/typescript.png"
         />
       ),
@@ -26,14 +26,12 @@ const SkillSet = () => {
       ],
     },
     {
-      title: (
-        <SkillNameWithLogo name="Style" logoSrc="/images/skills/style.png" />
-      ),
+      title: <LogoWithText text="Style" logoSrc="/images/skills/style.png" />,
       items: [
         {
           title: (
-            <SkillNameWithLogo
-              name="styled-components"
+            <LogoWithText
+              text="styled-components"
               logoSrc="/images/skills/styledcomponents.png"
             />
           ),
@@ -42,9 +40,7 @@ const SkillSet = () => {
           ],
         },
         {
-          title: (
-            <SkillNameWithLogo name="Scss" logoSrc="/images/skills/scss.png" />
-          ),
+          title: <LogoWithText text="Scss" logoSrc="/images/skills/scss.png" />,
           items: [
             'Design UI of elements using scss features (eg. mixins, functions)',
           ],
@@ -53,18 +49,15 @@ const SkillSet = () => {
     },
     {
       title: (
-        <SkillNameWithLogo
-          name="React JS / React Native"
+        <LogoWithText
+          text="React JS / React Native"
           logoSrc="/images/skills/React.png"
         />
       ),
       items: [
         {
           title: (
-            <SkillNameWithLogo
-              name="Next.js"
-              logoSrc="/images/skills/Nextjs.png"
-            />
+            <LogoWithText text="Next.js" logoSrc="/images/skills/Nextjs.png" />
           ),
           items: [
             'Provide API Routes or static file serving using Next.js features',
@@ -72,8 +65,8 @@ const SkillSet = () => {
         },
         {
           title: (
-            <SkillNameWithLogo
-              name="React Query"
+            <LogoWithText
+              text="React Query"
               logoSrc="/images/skills/reactquery.png"
             />
           ),
@@ -83,8 +76,8 @@ const SkillSet = () => {
         },
         {
           title: (
-            <SkillNameWithLogo
-              name="State management"
+            <LogoWithText
+              text="State management"
               logoSrc="/images/skills/redux.svg"
             />
           ),
@@ -98,7 +91,7 @@ const SkillSet = () => {
     },
     {
       title: (
-        <SkillNameWithLogo name="Web 3D" logoSrc="/images/skills/threejs.png" />
+        <LogoWithText text="Web 3D" logoSrc="/images/skills/threejs.png" />
       ),
       items: [
         'Develop 3D graphics on web environment using Three.js',
@@ -107,8 +100,8 @@ const SkillSet = () => {
     },
     {
       title: (
-        <SkillNameWithLogo
-          name="WebAssembly"
+        <LogoWithText
+          text="WebAssembly"
           logoSrc="/images/skills/webAssembly.png"
         />
       ),
