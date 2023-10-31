@@ -1,14 +1,20 @@
 import { Html } from '@react-three/drei';
-import { useThree } from '@react-three/fiber';
 import { useEffect, useRef } from 'react';
 import { Euler, Group, Mesh, Vector3 } from 'three';
+import { useThree } from '@react-three/fiber';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import useSectionDetection from '@/hooks/useSectionDetection';
-import use3DSceneStore from '@/store/use3DSceneStore';
+import useObjectFocus from '@/hooks/useObjectFocus';
 
+/**
+ * Component for rendering monitor screen of the PC inside the room
+ */
 const MonitorScreen = () => {
+  // Mesh of monitor screen part of PC model
   const monitorScreenRef = useRef<Mesh>();
-  const containerGroupRef = useRef<Group>(null!);
+  // Html which would float over the actual monitor screen mesh to look as if it is screen
+  const floatingScreenRef = useRef<Group>(null!);
+  const { getObjectCenterPoint, focusOnObject } = useObjectFocus();
   const { scene } = useThree();
 
   /**
@@ -17,33 +23,21 @@ const MonitorScreen = () => {
   const onEnterProjectsSection = () => {
     if (!monitorScreenRef.current) return;
 
-    monitorScreenRef.current.geometry.computeBoundingSphere();
-    const monitorScreenPosition = monitorScreenRef.current.geometry
-      .boundingSphere.center as Vector3;
-
-    // Put screen html slightly on top of monitor to avoid layer fighting
-    containerGroupRef.current.position.set(
-      monitorScreenPosition.x,
-      monitorScreenPosition.y,
-      monitorScreenPosition.z - 0.01,
+    const monitorScreenCenterPoint = getObjectCenterPoint(
+      monitorScreenRef.current,
     );
 
-    const monitorScreenWorldPosition =
-      containerGroupRef.current.getWorldPosition(new Vector3());
+    // Put screen html slightly on top of monitor to avoid z-fighting
+    floatingScreenRef.current.position.set(
+      monitorScreenCenterPoint.x,
+      monitorScreenCenterPoint.y,
+      monitorScreenCenterPoint.z - 0.01,
+    );
 
     // Put some distance between target and camera for better viewing
     const OFFSET_VECTOR = new Vector3(1, 0, 0);
-    const cameraPosition = new Vector3().addVectors(
-      monitorScreenWorldPosition,
-      OFFSET_VECTOR,
-    );
 
-    use3DSceneStore.setState({
-      camera: {
-        position: cameraPosition,
-        target: monitorScreenWorldPosition,
-      },
-    });
+    focusOnObject(floatingScreenRef.current, OFFSET_VECTOR);
   };
 
   useSectionDetection(SectionTitle.Projects, onEnterProjectsSection);
@@ -57,7 +51,7 @@ const MonitorScreen = () => {
   }, []);
 
   return (
-    <group ref={containerGroupRef}>
+    <group ref={floatingScreenRef}>
       <Html transform occlude rotation={new Euler(0, Math.PI, 0)}>
         모니터
       </Html>
