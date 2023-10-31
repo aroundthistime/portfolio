@@ -13,4 +13,5 @@ export const PortfolioContentsContainer = styled.div`
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
+  z-index: 1;
 `;

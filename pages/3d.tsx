@@ -44,6 +44,7 @@ const ThreeDScene = () => {
           position: 'absolute',
           top: '0px',
           left: '0px',
+          zIndex: 0,
         }}
         gl={{ toneMapping: NoToneMapping }}
         scene={{ background: new Color('#A6C5F7') }}>
