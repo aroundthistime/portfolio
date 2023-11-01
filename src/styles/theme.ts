@@ -16,6 +16,22 @@ export const GLOBAL_THEME = {
         xLarge: '150px',
       },
     },
+    margin: {
+      vertical: {
+        xSmall: '5px',
+        small: '10px',
+        normal: '15px',
+        large: '25px',
+        xLarge: '40px',
+      },
+      horizontal: {
+        xSmall: '3px',
+        small: '5px',
+        normal: '20px',
+        large: '40px',
+        xLarge: '60px',
+      },
+    },
   },
   font: {
     size: {

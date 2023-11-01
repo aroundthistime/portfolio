@@ -9,7 +9,7 @@ const LoaderWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  row-gap: 40px;
+  row-gap: ${props => props.theme.layout.margin.vertical.xLarge};
 
   .loader__image-container {
     position: relative;

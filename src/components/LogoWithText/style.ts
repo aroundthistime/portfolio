@@ -8,5 +8,5 @@ export const LogoWithTextContainer = styled.span`
 export const Logo = styled.img`
   width: auto;
   height: 1em;
-  margin-right: 5px;
+  margin-right: ${props => props.theme.layout.margin.horizontal.small};
 `;

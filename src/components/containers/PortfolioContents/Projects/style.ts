@@ -19,5 +19,5 @@ export const NestedProjectList = styled(NestedList)`
 `;
 
 export const ProjectClickGuidance = styled.p`
-  margin-top: 15px;
+  margin-top: ${props => props.theme.layout.margin.vertical.normal};
 `;

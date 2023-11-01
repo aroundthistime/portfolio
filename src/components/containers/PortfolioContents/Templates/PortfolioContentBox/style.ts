@@ -25,7 +25,7 @@ export const PortfolioContentBoxHeader = styled.h2`
     return `${vertical.small} ${horizontal.small}`;
   }};
   padding-top: 0px;
-  margin-right: 20px;
+  margin-right: ${props => props.theme.layout.margin.horizontal.normal};
   border-bottom: 2px solid #a86442;
   font-size: ${props => props.theme.font.size.large};
   font-family: 'Playfair Display', serif;
