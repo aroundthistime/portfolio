@@ -13,12 +13,12 @@ export const IntroContainer = styled.div`
 `;
 
 export const IntroHeadline = styled.h1`
-  font-size: 60px;
+  font-size: ${props => props.theme.font.size.xxxLarge};
   font-weight: 700;
 `;
 
 export const IntroSubtitle = styled.h3`
-  font-size: 40px;
+  font-size: ${props => props.theme.font.size.xxLarge};
   font-weight: 500;
   align-self: end;
 `;

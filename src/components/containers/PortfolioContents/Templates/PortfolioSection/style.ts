@@ -8,7 +8,11 @@ export const PortfolioSectionContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 40px;
+  padding: ${props => {
+    const { horizontal, vertical } = props.theme.layout.padding;
+
+    return `${vertical.normal} ${horizontal.large}`;
+  }};
   scroll-snap-align: start;
   scroll-snap-stop: always;
 `;

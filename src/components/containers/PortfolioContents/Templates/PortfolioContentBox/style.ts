@@ -9,7 +9,7 @@ export const PortfolioContentBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #f7eedd;
-  padding: 30px;
+  padding: ${props => props.theme.layout.padding.vertical.normal};
   padding-right: 10px;
   border-radius: 18px;
   width: 100%;
@@ -19,12 +19,17 @@ export const PortfolioContentBoxContainer = styled.div`
 `;
 
 export const PortfolioContentBoxHeader = styled.h2`
-  padding: 10px 35px 10px 5px;
+  padding: ${props => {
+    const { horizontal, vertical } = props.theme.layout.padding;
+
+    return `${vertical.small} ${horizontal.small}`;
+  }};
   padding-top: 0px;
+  margin-right: 20px;
   border-bottom: 2px solid #a86442;
+  font-size: ${props => props.theme.font.size.large};
   font-family: 'Playfair Display', serif;
   font-weight: 500;
-  font-size: 25px;
 `;
 
 /**

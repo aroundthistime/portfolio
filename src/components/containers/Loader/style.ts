@@ -18,7 +18,7 @@ const LoaderWrapper = styled.div`
   }
 
   .loader__loading-text {
-    font-size: 18px;
+    font-size: ${props => props.theme.font.size.normal};
   }
 `;
 

@@ -2,6 +2,8 @@
 import type { AppProps } from 'next/app';
 import '@/styles/reset.scss';
 import '@/styles/index.scss';
+import { ThemeProvider } from 'styled-components';
+import { GLOBAL_THEME } from '@/styles/theme';
 
 /**
  * Custom app component for initializing all pages
@@ -9,7 +11,9 @@ import '@/styles/index.scss';
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <div>
-      <Component {...pageProps} />
+      <ThemeProvider theme={GLOBAL_THEME}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </div>
   );
 };
