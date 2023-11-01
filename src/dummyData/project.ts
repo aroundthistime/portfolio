@@ -9,8 +9,14 @@ export const PROJECTS: { [key: Project['uuid']]: Project } = {
       brief:
         'OWiN 인카페이먼트 서비스 중 F&B 서비스(카페 및 식당 주문)의 매장 점주들을 위한 모바일 POS 애플리케이션 개발',
       period: {
-        from: new Date(2021, 11, 1),
-        till: new Date(2022, 12, 1),
+        from: {
+          year: 2021,
+          month: 10,
+        },
+        till: {
+          year: 2021,
+          month: 12,
+        },
       },
       links: [
         {

@@ -55,12 +55,21 @@ interface ProjectSummary {
  * Type for storing a period from a certain point of time to another.
  */
 interface Period {
-  from: Date;
+  from: ProjectDateInfo;
 
   /**
    * This could be undefined if you're trying to say something that has started and still lasts
    */
-  till?: Date;
+  till?: ProjectDateInfo;
+}
+
+/**
+ * Type for saving date related to project.
+ * Stores only year and the month
+ */
+interface ProjectDateInfo {
+  year: number;
+  month: number;
 }
 
 /**
