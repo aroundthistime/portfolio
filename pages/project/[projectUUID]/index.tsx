@@ -2,9 +2,21 @@ import { GetServerSideProps } from 'next';
 import { PROJECTS } from '@/dummyData/project';
 import { Project } from '@/types/Project';
 import { normalizeURLParam } from '@/utils/url';
+import { ProjectPageContainer, ProjectTitle } from './style';
+
+interface Props {
+  /**
+   * Data of the project with given UUID
+   */
+  project: Project;
+}
 
 const ProjectPage = ({ project }: Props) => {
-  return null;
+  return (
+    <ProjectPageContainer>
+      <ProjectTitle>{project.title}</ProjectTitle>
+    </ProjectPageContainer>
+  );
 };
 
 export const getServerSideProps = (async ({ params }) => {
@@ -18,12 +30,5 @@ export const getServerSideProps = (async ({ params }) => {
     },
   };
 }) satisfies GetServerSideProps<Props>;
-
-interface Props {
-  /**
-   * Data of the project with given UUID
-   */
-  project: Project;
-}
 
 export default ProjectPage;
