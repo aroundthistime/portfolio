@@ -1,5 +1,7 @@
 import { Project } from '@/types/Project';
 import { SKILLS } from './skill';
+import PlayStoreLink from '@/utils/link/LinkGenerator/PlayStoreLink';
+import AppStoreLink from '@/utils/link/LinkGenerator/AppstoreLink';
 
 export const PROJECTS: { [key: Project['uuid']]: Project } = {
   1: {
@@ -20,14 +22,12 @@ export const PROJECTS: { [key: Project['uuid']]: Project } = {
         },
       },
       links: [
-        {
-          title: 'Playstore',
-          url: 'https://play.google.com/store/apps/details?id=kr.owin.fnbmanager',
-        },
-        {
-          title: 'APP Store',
-          url: 'https://apps.apple.com/kr/app/%EC%98%A4%EC%9C%88-%EC%82%AC%EC%9E%A5%EB%8B%98-%EC%84%9C%EB%B9%84%EC%8A%A4/id1601783039',
-        },
+        new PlayStoreLink(
+          'https://play.google.com/store/apps/details?id=kr.owin.fnbmanager',
+        ).toObject(),
+        new AppStoreLink(
+          'https://apps.apple.com/kr/app/%EC%98%A4%EC%9C%88-%EC%82%AC%EC%9E%A5%EB%8B%98-%EC%84%9C%EB%B9%84%EC%8A%A4/id1601783039',
+        ).toObject(),
       ],
     },
     skills: [

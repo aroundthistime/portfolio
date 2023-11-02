@@ -1,8 +1,13 @@
 import Link from 'next/link';
 import { Project, ProjectDateInfo } from '@/types/Project';
-import { ProjectSummaryItem, ProjectSummaryItemLabel } from './style';
+import {
+  ProjectLinkLogoWithText,
+  ProjectSummaryItem,
+  ProjectSummaryItemLabel,
+} from './style';
 import { addBetweenElements } from '@/utils/array';
 import ProjectSection from '../ProjectSection';
+import LogoWithText from '@/components/LogoWithText';
 
 /**
  * Component which contains summary of a project
@@ -32,7 +37,11 @@ const ProjectSummary = ({ summary }: Props) => {
   const getProjectLinks = () => {
     const ProjectLinks = summary.links.map(link => (
       <Link href={link.url} key={link.title}>
-        {link.title}
+        {link.image ? (
+          <ProjectLinkLogoWithText logoSrc={link.image} text={link.title} />
+        ) : (
+          link.title
+        )}
       </Link>
     ));
 
