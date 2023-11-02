@@ -46,8 +46,19 @@ export interface Project {
  * First provided summary information of the project
  */
 interface ProjectSummary {
+  /**
+   * Brief explanation of what this project is
+   */
   brief: string;
+
+  /**
+   * Working period of this project
+   */
   period: Period;
+
+  /**
+   * Links related to this project (eg. github, service link)
+   */
   links?: Link[];
 }
 
@@ -55,9 +66,13 @@ interface ProjectSummary {
  * Type for storing a period from a certain point of time to another.
  */
 interface Period {
+  /**
+   * Point of time when this project has started (or when I started working for the project)
+   */
   from: ProjectDateInfo;
 
   /**
+   * Point of time when this project has been completed (or when I stopped working for the project).
    * This could be undefined if you're trying to say something that has started and still lasts
    */
   till?: ProjectDateInfo;
