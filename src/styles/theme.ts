@@ -45,6 +45,6 @@ export const GLOBAL_THEME = {
     },
   },
   opacity: {
-    blur: 0.5,
+    blur: 0.4,
   },
 };

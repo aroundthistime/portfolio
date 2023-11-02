@@ -102,7 +102,7 @@ export interface SkillUsedInProject extends CollaboratedProjectItem {
 /**
  * Feature of the project implementation (could be nested)
  */
-interface ProjectFeature extends CollaboratedProjectItem {
+export interface ProjectFeature extends CollaboratedProjectItem {
   /**
    * String that describes the feature
    */

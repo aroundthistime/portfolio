@@ -61,7 +61,7 @@ export const PROJECTS: { [key: Project['uuid']]: Project } = {
     features: [
       {
         title: {
-          content: '로그인 / 비밀번호 변경',
+          content: '계정 인증 처리 시스템',
           byMe: true,
         },
         items: [],
