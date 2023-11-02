@@ -1,6 +1,6 @@
 import { Project } from '@/types/Project';
 import ProjectSection from '../ProjectSection';
-import { ProjectSkillsContainer } from './style';
+import { ProjectSkillsContainer, SkillsNotUsedByMeGuide } from './style';
 import ProjectSkill from './ProjectSkill';
 
 /**
@@ -20,10 +20,10 @@ const ProjectSkills = ({ skills }: Props) => {
       <ProjectSection.Title>Skills</ProjectSection.Title>
       <ProjectSection.Content>
         {containsSkillNotUsedByMe() && (
-          <p>
+          <SkillsNotUsedByMeGuide>
             The blurred texts are the skills or tools that were not used by me
             but from other teammates.
-          </p>
+          </SkillsNotUsedByMeGuide>
         )}
         <ProjectSkillsContainer>
           {skills.map(skill => (
