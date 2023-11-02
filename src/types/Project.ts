@@ -17,6 +17,11 @@ export interface Project {
   title: string;
 
   /**
+   * URL for the logo image of the project
+   */
+  logo: string;
+
+  /**
    * Group of information as summary
    */
   summary: ProjectSummary;

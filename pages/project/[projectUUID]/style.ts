@@ -15,13 +15,6 @@ export const ProjectPageContainer = styled.main`
   row-gap: ${props => props.theme.layout.margin.vertical.large};
 `;
 
-export const ProjectTitle = styled.h1`
-  font-size: ${props => props.theme.font.size.xxLarge};
-  font-weight: 700;
-  font-family: 'Playfair Display', serif;
-  width: 100%;
-`;
-
 export const ProjectSection = styled.section`
   width: 100%;
   display: flex;

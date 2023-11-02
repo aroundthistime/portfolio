@@ -5,6 +5,7 @@ export const PROJECTS: { [key: Project['uuid']]: Project } = {
   1: {
     uuid: '1',
     title: 'Owin mobile POS application',
+    logo: '/images/projects/owin/logo.jpeg',
     summary: {
       brief:
         'OWiN 인카페이먼트 서비스 중 F&B 서비스(카페 및 식당 주문)의 매장 점주들을 위한 모바일 POS 애플리케이션 개발',

@@ -2,8 +2,9 @@ import { GetServerSideProps } from 'next';
 import { PROJECTS } from '@/dummyData/project';
 import { Project } from '@/types/Project';
 import { normalizeURLParam } from '@/utils/url';
-import { ProjectPageContainer, ProjectTitle } from './style';
+import { ProjectPageContainer } from './style';
 import ProjectSummary from '@/components/containers/ProjectPageTemplate/ProjectSummary';
+import ProjectTitle from '@/components/containers/ProjectPageTemplate/ProjectTitle';
 
 interface Props {
   /**
@@ -15,7 +16,7 @@ interface Props {
 const ProjectPage = ({ project }: Props) => {
   return (
     <ProjectPageContainer>
-      <ProjectTitle>{project.title}</ProjectTitle>
+      <ProjectTitle project={project} />
       <ProjectSummary summary={project.summary} />
     </ProjectPageContainer>
   );
