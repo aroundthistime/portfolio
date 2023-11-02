@@ -1,12 +1,8 @@
-import {
-  ProjectSection,
-  ProjectSectionContent,
-  ProjectSectionTitle,
-} from 'pages/project/[projectUUID]/style';
 import Link from 'next/link';
 import { Project, ProjectDateInfo } from '@/types/Project';
 import { ProjectSummaryItem, ProjectSummaryItemLabel } from './style';
 import { addBetweenElements } from '@/utils/array';
+import ProjectSection from '../ProjectSection';
 
 /**
  * Component which contains summary of a project
@@ -47,8 +43,8 @@ const ProjectSummary = ({ summary }: Props) => {
 
   return (
     <ProjectSection>
-      <ProjectSectionTitle>Summary</ProjectSectionTitle>
-      <ProjectSectionContent>
+      <ProjectSection.Title>Summary</ProjectSection.Title>
+      <ProjectSection.Content>
         <ProjectSummaryItem>
           <ProjectSummaryItemLabel>What is it?</ProjectSummaryItemLabel>
           {summary.brief}
@@ -63,7 +59,7 @@ const ProjectSummary = ({ summary }: Props) => {
             {getProjectLinks()}
           </ProjectSummaryItem>
         )}
-      </ProjectSectionContent>
+      </ProjectSection.Content>
     </ProjectSection>
   );
 };
