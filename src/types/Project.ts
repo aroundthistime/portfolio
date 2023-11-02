@@ -95,7 +95,7 @@ export interface ProjectDateInfo {
 /**
  * Skill that was used in the project (could be skill that I haven't used actually)
  */
-interface SkillUsedInProject extends CollaboratedProjectItem {
+export interface SkillUsedInProject extends CollaboratedProjectItem {
   skill: Skill;
 }
 

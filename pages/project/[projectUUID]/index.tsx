@@ -5,6 +5,7 @@ import { normalizeURLParam } from '@/utils/url';
 import { ProjectPageContainer } from './style';
 import ProjectSummary from '@/components/containers/ProjectPageTemplate/ProjectSummary';
 import ProjectTitle from '@/components/containers/ProjectPageTemplate/ProjectTitle';
+import ProjectSkills from '@/components/containers/ProjectPageTemplate/ProjectSkills';
 
 interface Props {
   /**
@@ -18,6 +19,7 @@ const ProjectPage = ({ project }: Props) => {
     <ProjectPageContainer>
       <ProjectTitle project={project} />
       <ProjectSummary summary={project.summary} />
+      <ProjectSkills skills={project.skills} />
     </ProjectPageContainer>
   );
 };

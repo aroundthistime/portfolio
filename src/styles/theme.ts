@@ -44,4 +44,7 @@ export const GLOBAL_THEME = {
       xxxLarge: '60px',
     },
   },
+  opacity: {
+    blur: 0.5,
+  },
 };
