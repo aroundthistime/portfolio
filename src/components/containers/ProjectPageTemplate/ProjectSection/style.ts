@@ -5,6 +5,10 @@ export const ProjectSectionContainer = styled.section`
   display: flex;
   flex-direction: column;
   row-gap: ${props => props.theme.layout.margin.vertical.normal};
+
+  .not-by-me {
+    opacity: ${props => props.theme.opacity.blur};
+  }
 `;
 
 export const ProjectSectionTitle = styled.h3`
