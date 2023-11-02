@@ -82,7 +82,7 @@ interface Period {
  * Type for saving date related to project.
  * Stores only year and the month
  */
-interface ProjectDateInfo {
+export interface ProjectDateInfo {
   year: number;
   month: number;
 }

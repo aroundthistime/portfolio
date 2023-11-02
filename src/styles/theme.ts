@@ -13,7 +13,7 @@ export const GLOBAL_THEME = {
         small: '5px',
         normal: '30px',
         large: '50px',
-        xLarge: '150px',
+        xLarge: '200px',
       },
     },
     margin: {

@@ -32,3 +32,24 @@ export const getFilledArray = <T>(value: T, length: number): T[] => {
 
   return resultArray;
 };
+
+/**
+ * Get an array with parameter added between each elements of the original array
+ * @template {T}
+ * @param {T[]} array Array to update
+ * @param {U} elementToAdd Element to add between elements of the original array
+ * @returns {(T|U)[]} Array with parameter element added between elements
+ */
+export const addBetweenElements = <T, U>(
+  array: T[],
+  elementToAdd: U,
+): (T | U)[] => {
+  const newArray: any[] = [];
+  for (let i = 0; i < array.length; i += 1) {
+    newArray.push(array[i]);
+    if (i < array.length - 1) {
+      newArray.push(elementToAdd);
+    }
+  }
+  return newArray;
+};

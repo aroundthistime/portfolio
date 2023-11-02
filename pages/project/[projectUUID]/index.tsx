@@ -3,6 +3,7 @@ import { PROJECTS } from '@/dummyData/project';
 import { Project } from '@/types/Project';
 import { normalizeURLParam } from '@/utils/url';
 import { ProjectPageContainer, ProjectTitle } from './style';
+import ProjectSummary from '@/components/containers/ProjectPageTemplate/ProjectSummary';
 
 interface Props {
   /**
@@ -15,6 +16,7 @@ const ProjectPage = ({ project }: Props) => {
   return (
     <ProjectPageContainer>
       <ProjectTitle>{project.title}</ProjectTitle>
+      <ProjectSummary summary={project.summary} />
     </ProjectPageContainer>
   );
 };

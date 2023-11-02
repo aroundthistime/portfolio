@@ -45,5 +45,3 @@ export const ProjectSectionTitle = styled.h3`
 export const ProjectSectionContent = styled.div`
   padding: 0 ${props => props.theme.layout.padding.horizontal.normal};
 `;
-
-export const ProjectSummaryItem = styled.p``;
