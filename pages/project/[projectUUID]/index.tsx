@@ -6,6 +6,7 @@ import { ProjectPageContainer } from './style';
 import ProjectSummary from '@/components/containers/ProjectPageTemplate/ProjectSummary';
 import ProjectTitle from '@/components/containers/ProjectPageTemplate/ProjectTitle';
 import ProjectSkills from '@/components/containers/ProjectPageTemplate/ProjectSkills';
+import ProjectContent from '@/components/containers/ProjectPageTemplate/ProjectContent';
 
 interface Props {
   /**
@@ -20,6 +21,7 @@ const ProjectPage = ({ project }: Props) => {
       <ProjectTitle project={project} />
       <ProjectSummary summary={project.summary} />
       <ProjectSkills skills={project.skills} />
+      <ProjectContent content={project.content} />
     </ProjectPageContainer>
   );
 };
