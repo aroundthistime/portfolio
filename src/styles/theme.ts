@@ -23,6 +23,7 @@ export const GLOBAL_THEME = {
         normal: '15px',
         large: '25px',
         xLarge: '40px',
+        xxLarge: '60px',
       },
       horizontal: {
         xSmall: '3px',
@@ -30,6 +31,7 @@ export const GLOBAL_THEME = {
         normal: '20px',
         large: '40px',
         xLarge: '60px',
+        xxLarge: '80px',
       },
     },
   },

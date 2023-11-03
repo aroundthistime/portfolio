@@ -83,4 +83,24 @@ export const SKILLS = {
     name: 'Java',
     logoSrc: '/images/skills/java.png',
   },
+  aws: {
+    name: 'AWS',
+    logoSrc: '/images/skills/aws.png',
+  },
+  springBoot: {
+    name: 'Spring Boot',
+    logoSrc: '/images/skills/spring-boot.png',
+  },
+  docker: {
+    name: 'Docker',
+    logoSrc: '/images/skills/docker.png',
+  },
+  jest: {
+    name: 'Jest',
+    logoSrc: '/images/skills/jest.png',
+  },
+  rtl: {
+    name: 'React Testing Library',
+    logoSrc: '/images/skills/react-testing-library.png',
+  },
 } as const;

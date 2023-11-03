@@ -461,4 +461,206 @@ export const PROJECTS: { [key: Project['uuid']]: Project } = {
       },
     ],
   },
+  3: {
+    uuid: '3',
+    title: 'SQUARS',
+    logo: '/projects/squars/logo.jpeg',
+    summary: {
+      brief: 'WebAR platform with online editor & AR Viewer',
+      period: {
+        from: {
+          year: 2023,
+          month: 3,
+        },
+        till: {
+          year: 2023,
+          month: 11,
+        },
+      },
+      links: [
+        {
+          title: 'Official Link',
+          url: 'https://squars.io/',
+          image: '/projects/squars/logo.jpeg',
+        },
+      ],
+    },
+    skills: [
+      {
+        skill: SKILLS.typescript,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.nextJS,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.reactJS,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.zustand,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.threeJS,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.r3f,
+        byMe: true,
+      },
+      { skill: SKILLS.jest, byMe: true },
+      {
+        skill: SKILLS.rtl,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.webAssembly,
+        byMe: true,
+      },
+      { skill: SKILLS.styledComponents, byMe: true },
+      {
+        skill: SKILLS.figma,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.springBoot,
+        byMe: false,
+      },
+      {
+        skill: SKILLS.aws,
+        byMe: false,
+      },
+      {
+        skill: SKILLS.docker,
+        byMe: false,
+      },
+    ],
+    content:
+      '버넥트 플랫폼 조직 근무 당시 참여했던 웹 기반 AR 프로젝트 저작 플랫폼입니다. 유니티가 아닌 Three.js, React Three Fiber, React Three Drei 등 순수 웹 기술을 기반으로 3D 렌더링을 수행하였으며 AR 기능 관련해서는 연구 조직에서 개발한 SDK인 트랙을 활용하였습니다.\n전체적인 서비스의 범위 내에서는 3D 프로젝트를 저작할 수 있는 에디터와 해당 프로젝트를 AR 기능으로 확인할 수 있는 뷰어 부문에 참여하였으며 구체적으로는 코드 유지보수, 신규 기능 개발, 리팩토링, 개발문서 작성 등을 담당하였습니다. (서비스 런치 이후 시점에 프로젝트에 참여하였기 때문에 초반 시스템 설계에는 참여하지 않았습니다.)\n우선 에디터에서는 하나의 프로젝트에 대해 해당 프로젝트가 AR 뷰어에서 추적할 현실에 존재하는 타겟 물체를 설정한 후 그 위치를 기준으로 3D (혹은 2D) 증강물들을 추가할 수 있습니다. 증강물에는 어플리케이션에서 기본 제공하는 도형, 사용자의 3D 모델 파일, 이미지-비디오-오디오 등 미디어 파일 등이 포함되며 자동 실행, 사용자 터치 등과 같은 트리거를 통해 이벤트를 추가할 수도 있습니다. 이렇게 생성된 프로젝트는 작업에 변경점이 생길 때마다 자동적으로 저장되며 사용자가 최종적으로 퍼블리시할 경우 뷰어 어플리케이션을 통해 해당 프로젝트의 내용을 AR로 확인할 수 있습니다.\nAR 뷰어의 경우 기기의 카메라를 통해 현실에 존재하는 지정된 타겟을 탐지한 후 그 위치를 기준으로 프로젝트 렌더링을 수행합니다. 추가적으로 AR 뷰어는 사용자의 행동 등 특정 기준이 발동할 때마다 그 데이터를 수집하는 뷰 트레이스 기능을 제공합니다. 이렇게 획득된 통계 정보는 SQUARS 서비스의 Analytics 기능을 통해 확인할 수 있습니다.',
+    features: [
+      {
+        title: {
+          content: '3D 에디터',
+          byMe: true,
+        },
+        items: [
+          {
+            content: 'AR 타겟 설정 (2D 이미지, QR 코드,직육면체, 원기둥 물체)',
+            byMe: true,
+          },
+          {
+            title: {
+              content: '3D 프로젝트 저작',
+              byMe: true,
+            },
+            items: [
+              {
+                content: '자체 증강물 제공',
+                byMe: true,
+              },
+              {
+                content: '사용자 Asset 지원 (이미지, 비디오, 오디오, 3D 모델)',
+                byMe: true,
+              },
+              {
+                content: '자동 저장 (프로젝트 내용 변경 기준)',
+                byMe: false,
+              },
+              {
+                title: {
+                  content: '협업 기능',
+                  byMe: false,
+                },
+                items: [
+                  {
+                    content: '동시 접근 방지 (웹 소켓 활용)',
+                    byMe: false,
+                  },
+                  {
+                    content: '증강물에 댓글 작성 기능',
+                    byMe: false,
+                  },
+                ],
+              },
+              {
+                content: 'AR 기능 제외된 순수 3D 프리뷰 화면 제공',
+                byMe: true,
+              },
+              {
+                content: '유료 플랜에 한해 뷰어 추가 설정 기능',
+                byMe: true,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: {
+          content: '모바일 AR 뷰어',
+          byMe: true,
+        },
+        items: [
+          {
+            content: '타겟 인식 시 타겟 위치 및 방향 기준으로 프로젝트 렌더링',
+            byMe: true,
+          },
+          {
+            content: '에디터에서 설정된 미디어, 이벤트 등 실행',
+            byMe: true,
+          },
+          {
+            content: '프로젝트 조회 횟수 검사 및 제한',
+            byMe: true,
+          },
+          {
+            title: {
+              content: '통계 자료 수집',
+              byMe: true,
+            },
+            items: [
+              {
+                content:
+                  '사용자 액션 등 특정 기준 충족할 때마다 통계 자료 수집',
+                byMe: true,
+              },
+              {
+                content: '수집된 자료 그래프 등의 형태로 통계화하여 제공',
+                byMe: false,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    screenshotGroups: [
+      {
+        title: '1. Service Guide',
+        screenshots: [
+          {
+            type: ProjectScreenshotMediaType.Video,
+            src: '/projects/squars/screenshots/overall.mp4',
+          },
+        ],
+      },
+      {
+        title: '2. Sample Projects',
+        screenshots: [
+          {
+            type: ProjectScreenshotMediaType.Video,
+            src: '/projects/squars/screenshots/business-card.mp4',
+          },
+          {
+            type: ProjectScreenshotMediaType.Video,
+            src: '/projects/squars/screenshots/movie-poster.mp4',
+          },
+          {
+            type: ProjectScreenshotMediaType.Video,
+            src: '/projects/squars/screenshots/map.mp4',
+          },
+        ],
+      },
+    ],
+  },
 };
