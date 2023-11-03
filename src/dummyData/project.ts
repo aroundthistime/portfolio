@@ -1,4 +1,4 @@
-import { Project } from '@/types/Project';
+import { Project, ProjectScreenshotMediaType } from '@/types/Project';
 import { SKILLS } from './skill';
 import PlayStoreLink from '@/utils/link/LinkGenerator/PlayStoreLink';
 import AppStoreLink from '@/utils/link/LinkGenerator/AppstoreLink';
@@ -7,7 +7,7 @@ export const PROJECTS: { [key: Project['uuid']]: Project } = {
   1: {
     uuid: '1',
     title: 'Owin mobile POS application',
-    logo: '/images/projects/owin/logo.jpeg',
+    logo: '/projects/owin/logo.jpeg',
     summary: {
       brief:
         'OWiN 인카페이먼트 서비스 중 F&B 서비스(카페 및 식당 주문)의 매장 점주들을 위한 모바일 POS 애플리케이션 개발',
@@ -168,10 +168,6 @@ export const PROJECTS: { [key: Project['uuid']]: Project } = {
             content: '조회 기간 필터 제공',
             byMe: true,
           },
-          {
-            content: '정산내역 외부 엑셀 파일로 추출 기능',
-            byMe: true,
-          },
         ],
       },
       {
@@ -190,6 +186,276 @@ export const PROJECTS: { [key: Project['uuid']]: Project } = {
           {
             content: '공지사항, 이용약관, 사용방법 안내 등',
             byMe: true,
+          },
+        ],
+      },
+    ],
+  },
+  2: {
+    uuid: '2',
+    title: 'TRACK',
+    logo: '/projects/track/logo.jpeg',
+    summary: {
+      brief: 'Cross-platform framework for AR projects',
+      period: {
+        from: {
+          year: 2022,
+          month: 5,
+        },
+        till: {
+          year: 2023,
+          month: 2,
+        },
+      },
+      links: [
+        {
+          title: 'Official Link',
+          url: 'https://track.virnect.com/',
+          image: '/projects/track/logo.jpeg',
+        },
+      ],
+    },
+    skills: [
+      {
+        skill: SKILLS.typescript,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.webAssembly,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.cpp,
+        byMe: false,
+      },
+      {
+        skill: SKILLS.reactJS,
+        byMe: true,
+      },
+
+      {
+        skill: SKILLS.nextJS,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.reduxToolkit,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.scss,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.threeJS,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.r3f,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.python,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.teamcity,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.grafana,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.java,
+        byMe: false,
+      },
+    ],
+    content:
+      '버넥트 연구 조직 근무 당시 참여했던 크로스 플랫폼 AR 프레임워크 개발 프로젝트입니다. 서울과 비엔나 두 오피스 협업 통해서 (영어 기반) 개발 진행되었으며 그 중 C++ 코드로 작성된 네이티브 컴퓨터 비전 코드를 다양한 플랫폼에 맞춰서 빌드하거나 연구 조직 내 인프라를 담당하는 팀에서 근무를 진행했습니다. 해당 팀 내에서 구체적으로 진행한 업무들은 다음과 같습니다.\n\n(1) 웹 플랫폼 전용 라이브러리 개발\n네이티브 코드를 Emscripten을 통해 WebAssembly로 컴파일한 후 타입스크립트 기반 관련 API 함께 작성 후 NPM 패키지 형태로 빌드\n\n(2) 연구조직 내 외부를 위한 웹 프로토타입 어플리케이션 개발\n데모 AR 웹 뷰어, 웹 벤치마크 테스트 어플리케이션 등 (주로 Next.JS, Typescript 기반)\n\n(3) 벤치마크 시스템 개발\n파이썬 기반 프레임 워크 성능 측정용 벤치마크 스크립트 개발 (정확도, 연산 속도 등 추출). 해당 스크립트를 Teamcity를 활용하여 자동화한 후 그 결과를 엑셀 파일 추출, 슬랙 및 깃허브 PR 메시지로 전송, mySQL 데이터베이스 업로드 후 Grafana 통한 시각화 등으로 확인할 수 있도록 구현. 성능 측정은 PC 네이티브 환경, PC 웹 환경, 모바일 기기 웹 환경 대상으로 진행',
+    features: [
+      {
+        title: {
+          content: '다양한 타겟에 대한 AR 기능 제공',
+          byMe: false,
+        },
+        items: [
+          {
+            content: '이미지',
+            byMe: false,
+          },
+          {
+            content: 'QR 코드',
+            byMe: false,
+          },
+          {
+            content: 'CAD 모델',
+            byMe: false,
+          },
+          {
+            content: '공간 인식 (Map)',
+            byMe: false,
+          },
+          {
+            content: '3D 물체 인식',
+            byMe: false,
+          },
+          {
+            content: '멀티 타겟 AR',
+            byMe: false,
+          },
+        ],
+      },
+      {
+        title: {
+          content: '타겟 학습(training)을 통한 타겟 인식용 정보 추출',
+          byMe: false,
+        },
+        items: [],
+      },
+      {
+        title: {
+          content: '타겟 학습 내용 기반으로 타겟 검출 (Detection, Tracking)',
+          byMe: false,
+        },
+        items: [],
+      },
+      {
+        title: {
+          content:
+            '다양한 플랫폼 지원 (실행 어플리케이션 혹은 SDK 라이브러리 형태)',
+          byMe: true,
+        },
+        items: [
+          {
+            content: 'PC (Windows, MacOS, Linux)',
+            byMe: false,
+          },
+          {
+            content: 'iOS',
+            byMe: false,
+          },
+          {
+            content: 'Android',
+            byMe: false,
+          },
+          {
+            content:
+              'Web (Web SDK는 유일하게 외부에 제공되지 않으며 사내 WebXR 플랫폼 조직에서 차용중입니다)',
+            byMe: true,
+          },
+          {
+            content: 'Unity',
+            byMe: false,
+          },
+        ],
+      },
+      {
+        title: {
+          content:
+            'SDK 활용 관련 프로토타입 어플리케이션 개발 (Web에 한해서 본인 참여)',
+          byMe: true,
+        },
+        items: [
+          {
+            content: '타겟 학습 및 검출 어플리케이션 (AR Trainer, AR Viewer)',
+            byMe: true,
+          },
+          {
+            content: '벤치마크 목적 자동화 테스트 어플리케이션',
+            byMe: true,
+          },
+          {
+            content: '테스트, 디버깅 등 목적 데이터셋 생성 어플리케이션',
+            byMe: true,
+          },
+        ],
+      },
+      {
+        title: {
+          content: '자동화 벤치마크 시스템 통한 성능 검증',
+          byMe: true,
+        },
+        items: [
+          {
+            content: '정확도, 연산 속도 등 수치화 및 런타임 에러 등 검출',
+            byMe: true,
+          },
+          {
+            title: {
+              content: '절대적/상대적 평가 통한 성능 게산 수행',
+              byMe: true,
+            },
+            items: [
+              {
+                content: '절대적: 각 시나리오별 지정해놓은 구체적인 수치',
+                byMe: true,
+              },
+              {
+                content:
+                  '상대적: 다른 벤치마크 결과 데이터와 비교 (주로 코드 변경 이전 기준)',
+                byMe: true,
+              },
+            ],
+          },
+          {
+            title: {
+              content: 'Teamcity 활용 실행 자동화',
+              byMe: true,
+            },
+            items: [
+              {
+                content: '깃허브 PR 연동',
+                byMe: true,
+              },
+              {
+                content: '시간 주기별 실행',
+                byMe: true,
+              },
+              {
+                content:
+                  '트리거별 테스트 차등화 (테스트 시나리오, 반복 횟수 등)',
+                byMe: true,
+              },
+            ],
+          },
+          {
+            title: {
+              content: '검사 결과 공유',
+              byMe: true,
+            },
+            items: [
+              {
+                content: '슬랙, 깃허브 PR 코멘트 연동',
+                byMe: true,
+              },
+              {
+                content:
+                  '결과 데이터 MySQL DB 업로드 후 Grafana Dashboard 통한 시각화',
+                byMe: true,
+              },
+              {
+                content: 'CSV 파일 추출',
+                byMe: true,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    screenshotGroups: [
+      {
+        screenshots: [
+          {
+            type: ProjectScreenshotMediaType.Video,
+            src: '/projects/track/screenshots/Statue.mp4',
+          },
+          {
+            type: ProjectScreenshotMediaType.Video,
+            src: '/projects/track/screenshots/Car.mp4',
+          },
+          {
+            type: ProjectScreenshotMediaType.Image,
+            src: '/projects/track/screenshots/Map.gif',
           },
         ],
       },
