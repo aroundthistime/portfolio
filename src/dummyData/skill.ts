@@ -31,6 +31,10 @@ export const SKILLS = {
     name: 'Redux',
     logoSrc: '/images/skills/redux.svg',
   },
+  reduxToolkit: {
+    name: 'Redux Toolkit',
+    logoSrc: '/images/skills/redux.svg',
+  },
   zustand: {
     name: 'Zustand',
     logoSrc: '/images/skills/zustand.png',
@@ -74,5 +78,9 @@ export const SKILLS = {
   figma: {
     name: 'Figma',
     logoSrc: '/images/skills/figma.png',
+  },
+  java: {
+    name: 'Java',
+    logoSrc: '/images/skills/java.png',
   },
 } as const;
