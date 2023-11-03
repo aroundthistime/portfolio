@@ -8,6 +8,7 @@ import ProjectTitle from '@/components/containers/ProjectPageTemplate/ProjectTit
 import ProjectSkills from '@/components/containers/ProjectPageTemplate/ProjectSkills';
 import ProjectContent from '@/components/containers/ProjectPageTemplate/ProjectContent';
 import ProjectFeatures from '@/components/containers/ProjectPageTemplate/ProjectFeatures';
+import ProjectScreenshots from '@/components/containers/ProjectPageTemplate/ProjectScreenshots';
 
 interface Props {
   /**
@@ -24,6 +25,9 @@ const ProjectPage = ({ project }: Props) => {
       <ProjectSkills skills={project.skills} />
       <ProjectContent content={project.content} />
       <ProjectFeatures features={project.features} />
+      {project.screenshotGroups && (
+        <ProjectScreenshots screenshotGroups={project.screenshotGroups} />
+      )}
     </ProjectPageContainer>
   );
 };

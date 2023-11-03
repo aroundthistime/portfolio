@@ -44,7 +44,7 @@ export interface Project {
   /**
    * Screenshots (could be videos also) to show the result of the project
    */
-  screenshots?: ProjectScreenshots;
+  screenshotGroups?: ProjectScreenshotGroup[];
 }
 
 /**
@@ -120,19 +120,13 @@ interface CollaboratedProjectItem {
 }
 
 /**
- * Project screenshots can be just an array of screenshots,
- * or divided into smaller groups by topic.
- */
-type ProjectScreenshots = ProjectScreenshot[] | ProjectScreenshotGroup[];
-
-/**
  * Group of project screenshots (eg. Native APP screenshots, Web APP screenshots)
  */
-interface ProjectScreenshotGroup {
+export interface ProjectScreenshotGroup {
   /**
    * Title of the group
    */
-  title: string;
+  title?: string;
 
   /**
    * Screenshots which are classified as this group
@@ -143,11 +137,11 @@ interface ProjectScreenshotGroup {
 /**
  * Screenshot to help understand the project
  */
-interface ProjectScreenshot {
+export interface ProjectScreenshot {
   /**
    * Media type of the screenshot file
    */
-  type: ProjectScreenshotType;
+  type: ProjectScreenshotMediaType;
 
   /**
    * URL of the screenshot resource file
@@ -158,7 +152,7 @@ interface ProjectScreenshot {
 /**
  * Media type of the project screenshot
  */
-export enum ProjectScreenshotType {
-  Video,
-  Audio,
+export enum ProjectScreenshotMediaType {
+  Video = 'video',
+  Image = 'image',
 }
