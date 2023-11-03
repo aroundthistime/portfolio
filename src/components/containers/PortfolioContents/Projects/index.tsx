@@ -12,32 +12,25 @@ const Projects = () => {
   const projects: MultiDepthData[] = [
     {
       title: (
-        <LogoWithText
-          text="SQUARS"
-          logoSrc="/images/projects/squars/logo.jpeg"
-        />
+        <LogoWithText text="SQUARS" logoSrc="/projects/squars/logo.jpeg" />
       ),
       items: ['WebAR platform with online editor & AR Viewer'],
     },
     {
-      title: (
-        <LogoWithText text="TRACK" logoSrc="/images/projects/track/logo.jpeg" />
-      ),
+      title: <LogoWithText text="TRACK" logoSrc="/projects/track/logo.jpeg" />,
       items: ['Cross-platform framework for AR projects'],
     },
     {
       title: (
         <LogoWithText
           text="3D Portfolio"
-          logoSrc="/images/projects/portfolio/logo.jpeg"
+          logoSrc="/projects/portfolio/logo.jpeg"
         />
       ),
       items: ['Portfolio using Web 3D rendering'],
     },
     {
-      title: (
-        <LogoWithText text="Owin" logoSrc="/images/projects/owin/logo.jpeg" />
-      ),
+      title: <LogoWithText text="Owin" logoSrc="/projects/owin/logo.jpeg" />,
       items: [
         'Mobile POS application for shop owners of Owin In-car payment service',
       ],
