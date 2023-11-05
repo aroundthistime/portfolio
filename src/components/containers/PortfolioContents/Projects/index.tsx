@@ -1,41 +1,52 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
 import PortfolioSection from '../Templates/PortfolioSection';
 import LogoWithText from '@/components/LogoWithText';
 import { NestedProjectList, ProjectClickGuidance } from './style';
 import { MultiDepthData } from '@/types/MultiDepthData';
+import use3DSceneStore from '@/store/use3DSceneStore';
+import { ProjectBriefDto } from '@/types/dto/ProjectDto';
 
 /**
  * Section for showing the previous projects that I've done
  */
 const Projects = () => {
-  const projects: MultiDepthData[] = [
-    {
-      title: (
-        <LogoWithText text="SQUARS" logoSrc="/projects/squars/logo.jpeg" />
-      ),
-      items: ['WebAR platform with online editor & AR Viewer'],
-    },
-    {
-      title: <LogoWithText text="TRACK" logoSrc="/projects/track/logo.jpeg" />,
-      items: ['Cross-platform framework for AR projects'],
-    },
-    {
-      title: (
-        <LogoWithText
-          text="3D Portfolio"
-          logoSrc="/projects/portfolio/logo.jpeg"
-        />
-      ),
-      items: ['Portfolio using Web 3D rendering'],
-    },
-    {
-      title: <LogoWithText text="Owin" logoSrc="/projects/owin/logo.jpeg" />,
-      items: [
-        'Mobile POS application for shop owners of Owin In-car payment service',
-      ],
-    },
-  ];
+  const [projects, setProjects] = useState<MultiDepthData[]>([]);
+
+  /**
+   * Get list of brief project information from server
+   */
+  const getProjects = async () => {
+    const data = await axios.get('/api/project/brief');
+    const {
+      data: { projects: projectDtos },
+    } = data;
+
+    // Convert project dtos suitable for rendering
+    const projectsToRender: MultiDepthData[] = projectDtos.map(
+      (projectDto: ProjectBriefDto) => {
+        const onProjectClick = () => {
+          use3DSceneStore.getState().openMonitor(`/project/${projectDto.uuid}`);
+        };
+        return {
+          title: (
+            <button onClick={onProjectClick} type="button">
+              <LogoWithText text={projectDto.title} logoSrc={projectDto.logo} />
+            </button>
+          ),
+          items: [projectDto.brief],
+        };
+      },
+    );
+
+    setProjects(projectsToRender);
+  };
+
+  useEffect(() => {
+    getProjects();
+  }, []);
 
   return (
     <PortfolioSection sectionTitle={SectionTitle.Projects}>

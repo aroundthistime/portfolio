@@ -20,6 +20,22 @@ export interface SceneStoreState {
   };
 
   /**
+   * Whether to enable zoom for 3D scene
+   */
+  enableZoom: boolean;
+
+  /**
+   * Whether to enable rotation inside 3D scene
+   */
+  enableRotate: boolean;
+
+  /**
+   * URL of webview page to show up at monitor screen.
+   * Could be null if monitor screen is not turned on right now
+   */
+  monitorScreenUrl: string | null;
+
+  /**
    * Put everything at the center of the screen
    */
   putSceneAtCenter: () => void;
@@ -28,4 +44,15 @@ export interface SceneStoreState {
    * Put everything at the left side of the screen
    */
   putSceneAside: () => void;
+
+  /**
+   * Open monitor screen with certain page
+   * @param {string} screenPageUrl URL of the page to show through monitor screen
+   */
+  openMonitor: (screenPageUrl: string) => void;
+
+  /**
+   * Close monitor screen
+   */
+  closeMonitor: () => void;
 }

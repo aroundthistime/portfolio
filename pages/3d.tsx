@@ -23,12 +23,21 @@ const ThreeDScene = () => {
    */
   const [controlTarget, setControlTarget] = useState<Vector3>(new Vector3());
 
-  // Reset zoom level when changing camera or scene properties to prevent unwanted behaviors
+  // How much 3D scene is zoomed
   const [zoom, setZoom] = useState<number>();
+  const enableZoom = use3DSceneStore(state => state.enableZoom);
+  const enableRotate = use3DSceneStore(state => state.enableRotate);
 
   useEffect(() => {
-    use3DSceneStore.subscribe(() => {
-      setZoom(0);
+    use3DSceneStore.subscribe((state, prev) => {
+      // Reset zoom level when changing camera or scene properties to prevent unwanted behaviors
+      if (
+        state.camera.position !== prev.camera.position ||
+        state.camera.target !== prev.camera.target ||
+        state.scene.position !== prev.scene.position
+      ) {
+        setZoom(0);
+      }
     });
   }, []);
 
@@ -48,7 +57,13 @@ const ThreeDScene = () => {
         }}
         gl={{ toneMapping: NoToneMapping }}
         scene={{ background: new Color('#A6C5F7') }}>
-        <OrbitControls enablePan={false} target={controlTarget} zoom0={zoom} />
+        <OrbitControls
+          enablePan={false}
+          enableZoom={enableZoom}
+          enableRotate={enableRotate}
+          zoom0={zoom}
+          target={controlTarget}
+        />
         <ThreeDSceneContents
           controlTarget={controlTarget}
           setControlTarget={setControlTarget}
@@ -138,9 +153,16 @@ const ThreeDSceneContents = ({
     } = use3DSceneStore.getState();
     camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z);
 
-    use3DSceneStore.subscribe(state => {
-      updateCamera(state.camera.position, state.camera.target);
-      updateScene(state.scene.position);
+    use3DSceneStore.subscribe((state, prev) => {
+      if (
+        state.camera.position !== prev.camera.position ||
+        state.camera.target !== prev.camera.target
+      ) {
+        updateCamera(state.camera.position, state.camera.target);
+      }
+      if (state.scene.position !== prev.scene.position) {
+        updateScene(state.scene.position);
+      }
     });
   }, []);
 

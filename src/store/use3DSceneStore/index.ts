@@ -21,6 +21,11 @@ const use3DSceneStore = create<SceneStoreState>()(set => ({
     position: SCENE_DEFAULT_POSITION,
   },
 
+  enableZoom: true,
+  enableRotate: false,
+
+  monitorScreenUrl: null,
+
   putSceneAtCenter: () => {
     set({
       camera: {
@@ -42,6 +47,22 @@ const use3DSceneStore = create<SceneStoreState>()(set => ({
       scene: {
         position: SCENE_ASIDE_POSITION,
       },
+    });
+  },
+
+  openMonitor: (screenPageUrl: string) => {
+    set({
+      enableZoom: false,
+      enableRotate: false,
+      monitorScreenUrl: screenPageUrl,
+    });
+  },
+
+  closeMonitor: () => {
+    set({
+      enableZoom: true,
+      enableRotate: true,
+      monitorScreenUrl: null,
     });
   },
 }));
