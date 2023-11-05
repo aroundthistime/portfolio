@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const ProjectPageContainer = styled.main`
-  width: 100vw;
-  width: 100dvw;
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;

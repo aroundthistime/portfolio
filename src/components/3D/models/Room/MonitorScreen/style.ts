@@ -1,7 +1,7 @@
-import { Html } from '@react-three/drei';
+import { animated } from '@react-spring/web';
 import styled from 'styled-components';
 
-export const MonitorScreenContainer = styled(Html)`
+export const MonitorScreenContainer = styled(animated.div)`
   width: 1585px;
   height: 915px;
   display: flex;
