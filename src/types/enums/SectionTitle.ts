@@ -5,5 +5,5 @@ export enum SectionTitle {
   Intro = 'intro',
   Skills = 'skills',
   Projects = 'projects',
-  SocialLinks = 'socialLinks',
+  ContactMe = 'contactMe',
 }

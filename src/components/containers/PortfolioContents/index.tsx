@@ -5,6 +5,7 @@ import SkillSet from './SkillSet';
 import { PortfolioContentsContainer } from './style';
 import Projects from './Projects';
 import use3DSceneStore from '@/store/use3DSceneStore';
+import ContactMe from './ContactMe';
 
 const PortfolioContents = () => {
   // Root container element with all portfolio contents
@@ -26,7 +27,7 @@ const PortfolioContents = () => {
       <Intro />
       <SkillSet />
       <Projects />
-      <PortfolioSection>3</PortfolioSection>
+      <ContactMe />
     </PortfolioContentsContainer>
   );
 };
