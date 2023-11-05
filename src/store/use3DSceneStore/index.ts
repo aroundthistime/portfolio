@@ -22,7 +22,7 @@ const use3DSceneStore = create<SceneStoreState>()(set => ({
   },
 
   enableZoom: true,
-  enableRotate: false,
+  enableRotate: true,
 
   monitorScreenUrl: null,
 
