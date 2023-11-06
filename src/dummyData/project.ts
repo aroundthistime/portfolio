@@ -6,186 +6,201 @@ import AppStoreLink from '@/utils/link/LinkGenerator/AppstoreLink';
 export const PROJECTS: { [key: Project['uuid']]: Project } = {
   1: {
     uuid: '1',
-    title: 'Owin mobile POS application',
-    logo: '/projects/owin/logo.jpeg',
+    title: 'SQUARS',
+    logo: '/projects/squars/logo.jpeg',
     summary: {
-      brief:
-        'OWiN 인카페이먼트 서비스 중 F&B 서비스(카페 및 식당 주문)의 매장 점주들을 위한 모바일 POS 애플리케이션 개발',
+      brief: 'WebAR platform with online editor & AR Viewer',
       period: {
         from: {
-          year: 2021,
-          month: 10,
+          year: 2023,
+          month: 3,
         },
         till: {
-          year: 2021,
-          month: 12,
+          year: 2023,
+          month: 11,
         },
       },
       links: [
-        new PlayStoreLink(
-          'https://play.google.com/store/apps/details?id=kr.owin.fnbmanager',
-        ).toObject(),
-        new AppStoreLink(
-          'https://apps.apple.com/kr/app/%EC%98%A4%EC%9C%88-%EC%82%AC%EC%9E%A5%EB%8B%98-%EC%84%9C%EB%B9%84%EC%8A%A4/id1601783039',
-        ).toObject(),
+        {
+          title: 'Official Link',
+          url: 'https://squars.io/',
+          image: '/projects/squars/logo.jpeg',
+        },
       ],
     },
     skills: [
-      {
-        skill: SKILLS.reactNative,
-        byMe: true,
-      },
       {
         skill: SKILLS.typescript,
         byMe: true,
       },
       {
-        skill: SKILLS.redux,
+        skill: SKILLS.nextJS,
         byMe: true,
       },
       {
-        skill: SKILLS.styledComponents,
+        skill: SKILLS.reactJS,
         byMe: true,
       },
       {
-        skill: SKILLS.codeIgniter,
+        skill: SKILLS.zustand,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.threeJS,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.r3f,
+        byMe: true,
+      },
+      { skill: SKILLS.jest, byMe: true },
+      {
+        skill: SKILLS.rtl,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.webAssembly,
+        byMe: true,
+      },
+      { skill: SKILLS.styledComponents, byMe: true },
+      {
+        skill: SKILLS.figma,
+        byMe: true,
+      },
+      {
+        skill: SKILLS.springBoot,
         byMe: false,
       },
       {
-        skill: SKILLS.zeplin,
-        byMe: true,
+        skill: SKILLS.aws,
+        byMe: false,
+      },
+      {
+        skill: SKILLS.docker,
+        byMe: false,
       },
     ],
     content:
-      'OWiN의 F&B 서비스(상품 포장 및 차로 배달)와 관련하여 매장 점주들이 이용하는 모바일 애플리케이션으로 ‘배민주문접수 앱’, ‘요기요 사장님’ 등과 유사한 기능을 수행한다고 볼 수 있습니다. 매장들에 설치된 기존 윈도우 POS 시스템과 실시간으로 연동되면서 그 기능을 모두 구현하는 것이 프로젝트의 목표였으며 유지보수의 용이를 위해 크로스 플랫폼 개발이 가능한 React Native를 채택하였습니다.\n백엔드 엔지니어 1명, 디자이너 1명과 함께 프로젝트를 수행하였으며 본인은 프로젝트 내에서 모바일 애플리케이션 개발 및 배포를 담당하였습니다.',
+      '버넥트 플랫폼 조직 근무 당시 참여했던 웹 기반 AR 프로젝트 저작 플랫폼입니다. 유니티가 아닌 Three.js, React Three Fiber, React Three Drei 등 순수 웹 기술을 기반으로 3D 렌더링을 수행하였으며 AR 기능 관련해서는 연구 조직에서 개발한 SDK인 트랙을 활용하였습니다.\n전체적인 서비스의 범위 내에서는 3D 프로젝트를 저작할 수 있는 에디터와 해당 프로젝트를 AR 기능으로 확인할 수 있는 뷰어 부문에 참여하였으며 구체적으로는 코드 유지보수, 신규 기능 개발, 리팩토링, 개발문서 작성 등을 담당하였습니다. (서비스 런치 이후 시점에 프로젝트에 참여하였기 때문에 초반 시스템 설계에는 참여하지 않았습니다.)\n우선 에디터에서는 하나의 프로젝트에 대해 해당 프로젝트가 AR 뷰어에서 추적할 현실에 존재하는 타겟 물체를 설정한 후 그 위치를 기준으로 3D (혹은 2D) 증강물들을 추가할 수 있습니다. 증강물에는 어플리케이션에서 기본 제공하는 도형, 사용자의 3D 모델 파일, 이미지-비디오-오디오 등 미디어 파일 등이 포함되며 자동 실행, 사용자 터치 등과 같은 트리거를 통해 이벤트를 추가할 수도 있습니다. 이렇게 생성된 프로젝트는 작업에 변경점이 생길 때마다 자동적으로 저장되며 사용자가 최종적으로 퍼블리시할 경우 뷰어 어플리케이션을 통해 해당 프로젝트의 내용을 AR로 확인할 수 있습니다.\nAR 뷰어의 경우 기기의 카메라를 통해 현실에 존재하는 지정된 타겟을 탐지한 후 그 위치를 기준으로 프로젝트 렌더링을 수행합니다. 추가적으로 AR 뷰어는 사용자의 행동 등 특정 기준이 발동할 때마다 그 데이터를 수집하는 뷰 트레이스 기능을 제공합니다. 이렇게 획득된 통계 정보는 SQUARS 서비스의 Analytics 기능을 통해 확인할 수 있습니다.',
     features: [
       {
         title: {
-          content: '계정 인증 처리 시스템',
-          byMe: true,
-        },
-        items: [],
-      },
-      {
-        title: {
-          content:
-            '앱 버전 호환성 관리 (어플리케이션 실행할 때마다 최소 요구 버전 검사)',
-          byMe: true,
-        },
-        items: [],
-      },
-      {
-        title: {
-          content: '실시간 주문 알림 (Firebase Cloud Messaging)',
+          content: '3D 에디터',
           byMe: true,
         },
         items: [
           {
-            content:
-              '푸쉬알람 - 알림 내용에 따라 다른 알림음 사용 (Android - Notification Channel 분리 생성)',
+            content: 'AR 타겟 설정 (2D 이미지, QR 코드,직육면체, 원기둥 물체)',
             byMe: true,
           },
           {
-            content: '수신 주문 기준 실시간 화면 렌더링',
-            byMe: true,
+            title: {
+              content: '3D 프로젝트 저작',
+              byMe: true,
+            },
+            items: [
+              {
+                content: '자체 증강물 제공',
+                byMe: true,
+              },
+              {
+                content: '사용자 Asset 지원 (이미지, 비디오, 오디오, 3D 모델)',
+                byMe: true,
+              },
+              {
+                content: '자동 저장 (프로젝트 내용 변경 기준)',
+                byMe: false,
+              },
+              {
+                title: {
+                  content: '협업 기능',
+                  byMe: false,
+                },
+                items: [
+                  {
+                    content: '동시 접근 방지 (웹 소켓 활용)',
+                    byMe: false,
+                  },
+                  {
+                    content: '증강물에 댓글 작성 기능',
+                    byMe: false,
+                  },
+                ],
+              },
+              {
+                content: 'AR 기능 제외된 순수 3D 프리뷰 화면 제공',
+                byMe: true,
+              },
+              {
+                content: '유료 플랜에 한해 뷰어 추가 설정 기능',
+                byMe: true,
+              },
+            ],
           },
         ],
       },
       {
         title: {
-          content: '실시간 주문 처리',
+          content: '모바일 AR 뷰어',
           byMe: true,
         },
         items: [
           {
-            content:
-              '주문승인 - 고객이 요청한 시간이나 그 이후로 상품 수령시간 변경 가능',
+            content: '타겟 인식 시 타겟 위치 및 방향 기준으로 프로젝트 렌더링',
             byMe: true,
           },
           {
-            content: '주문거부 - 사유 선택가능',
+            content: '에디터에서 설정된 미디어, 이벤트 등 실행',
             byMe: true,
           },
           {
-            content: '상품 준비완료 처리',
+            content: '프로젝트 조회 횟수 검사 및 제한',
             byMe: true,
           },
           {
-            content: '주문완료 처리',
-            byMe: true,
+            title: {
+              content: '통계 자료 수집',
+              byMe: true,
+            },
+            items: [
+              {
+                content:
+                  '사용자 액션 등 특정 기준 충족할 때마다 통계 자료 수집',
+                byMe: true,
+              },
+              {
+                content: '수집된 자료 그래프 등의 형태로 통계화하여 제공',
+                byMe: false,
+              },
+            ],
           },
+        ],
+      },
+    ],
+    screenshotGroups: [
+      {
+        title: '1. Service Guide',
+        screenshots: [
           {
-            content: '전달지연 확인 및 대응',
-            byMe: true,
+            type: ProjectScreenshotMediaType.Video,
+            src: '/projects/squars/screenshots/overall.mp4',
           },
         ],
       },
       {
-        title: {
-          content: '주문 내용 확인',
-          byMe: true,
-        },
-        items: [
+        title: '2. Sample Projects',
+        screenshots: [
           {
-            content: '주문시간, 주문상태, 주문내용, 고객정보 등',
-            byMe: true,
+            type: ProjectScreenshotMediaType.Video,
+            src: '/projects/squars/screenshots/business-card.mp4',
           },
           {
-            content:
-              '주문이 완료되지 않은 주문에 대해서는 안심번호 및 차량번호 제공 - 안심번호는 터치시 전화연결 가능 (Linking)',
-            byMe: true,
+            type: ProjectScreenshotMediaType.Video,
+            src: '/projects/squars/screenshots/movie-poster.mp4',
           },
           {
-            content:
-              '주문이 완료된 시점에서 일정 시간 경과된 주문은 고객 정보 보호를 윙해 안심번호, 차량번호 등의 정보 조회 불가 (백엔드 측에서 DB 데이터값 변경)',
-            byMe: false,
-          },
-        ],
-      },
-      {
-        title: {
-          content: '메뉴 조회 및 관리',
-          byMe: true,
-        },
-        items: [
-          {
-            content: '카테고리, 판매여부 등에 의한 필터 기능 제공',
-            byMe: true,
-          },
-        ],
-      },
-      {
-        title: {
-          content: '정산내역 조회',
-          byMe: true,
-        },
-        items: [
-          {
-            content: '각 주문 정산 및 전체 통계 정보 제공',
-            byMe: true,
-          },
-          {
-            content: '조회 기간 필터 제공',
-            byMe: true,
-          },
-        ],
-      },
-      {
-        title: {
-          content: '매장정보 조회 및 변경',
-          byMe: true,
-        },
-        items: [],
-      },
-      {
-        title: {
-          content: '점주 전용 정보 제공 (웹뷰)',
-          byMe: true,
-        },
-        items: [
-          {
-            content: '공지사항, 이용약관, 사용방법 안내 등',
-            byMe: true,
+            type: ProjectScreenshotMediaType.Video,
+            src: '/projects/squars/screenshots/map.mp4',
           },
         ],
       },
@@ -461,203 +476,189 @@ export const PROJECTS: { [key: Project['uuid']]: Project } = {
       },
     ],
   },
-  3: {
-    uuid: '3',
-    title: 'SQUARS',
-    logo: '/projects/squars/logo.jpeg',
+
+  4: {
+    uuid: '4',
+    title: 'Owin mobile POS application',
+    logo: '/projects/owin/logo.jpeg',
     summary: {
-      brief: 'WebAR platform with online editor & AR Viewer',
+      brief:
+        'OWiN 인카페이먼트 서비스 중 F&B 서비스(카페 및 식당 주문)의 매장 점주들을 위한 모바일 POS 애플리케이션 개발',
       period: {
         from: {
-          year: 2023,
-          month: 3,
+          year: 2021,
+          month: 10,
         },
         till: {
-          year: 2023,
-          month: 11,
+          year: 2021,
+          month: 12,
         },
       },
       links: [
-        {
-          title: 'Official Link',
-          url: 'https://squars.io/',
-          image: '/projects/squars/logo.jpeg',
-        },
+        new PlayStoreLink(
+          'https://play.google.com/store/apps/details?id=kr.owin.fnbmanager',
+        ).toObject(),
+        new AppStoreLink(
+          'https://apps.apple.com/kr/app/%EC%98%A4%EC%9C%88-%EC%82%AC%EC%9E%A5%EB%8B%98-%EC%84%9C%EB%B9%84%EC%8A%A4/id1601783039',
+        ).toObject(),
       ],
     },
     skills: [
+      {
+        skill: SKILLS.reactNative,
+        byMe: true,
+      },
       {
         skill: SKILLS.typescript,
         byMe: true,
       },
       {
-        skill: SKILLS.nextJS,
+        skill: SKILLS.redux,
         byMe: true,
       },
       {
-        skill: SKILLS.reactJS,
+        skill: SKILLS.styledComponents,
         byMe: true,
       },
       {
-        skill: SKILLS.zustand,
-        byMe: true,
-      },
-      {
-        skill: SKILLS.threeJS,
-        byMe: true,
-      },
-      {
-        skill: SKILLS.r3f,
-        byMe: true,
-      },
-      { skill: SKILLS.jest, byMe: true },
-      {
-        skill: SKILLS.rtl,
-        byMe: true,
-      },
-      {
-        skill: SKILLS.webAssembly,
-        byMe: true,
-      },
-      { skill: SKILLS.styledComponents, byMe: true },
-      {
-        skill: SKILLS.figma,
-        byMe: true,
-      },
-      {
-        skill: SKILLS.springBoot,
+        skill: SKILLS.codeIgniter,
         byMe: false,
       },
       {
-        skill: SKILLS.aws,
-        byMe: false,
-      },
-      {
-        skill: SKILLS.docker,
-        byMe: false,
+        skill: SKILLS.zeplin,
+        byMe: true,
       },
     ],
     content:
-      '버넥트 플랫폼 조직 근무 당시 참여했던 웹 기반 AR 프로젝트 저작 플랫폼입니다. 유니티가 아닌 Three.js, React Three Fiber, React Three Drei 등 순수 웹 기술을 기반으로 3D 렌더링을 수행하였으며 AR 기능 관련해서는 연구 조직에서 개발한 SDK인 트랙을 활용하였습니다.\n전체적인 서비스의 범위 내에서는 3D 프로젝트를 저작할 수 있는 에디터와 해당 프로젝트를 AR 기능으로 확인할 수 있는 뷰어 부문에 참여하였으며 구체적으로는 코드 유지보수, 신규 기능 개발, 리팩토링, 개발문서 작성 등을 담당하였습니다. (서비스 런치 이후 시점에 프로젝트에 참여하였기 때문에 초반 시스템 설계에는 참여하지 않았습니다.)\n우선 에디터에서는 하나의 프로젝트에 대해 해당 프로젝트가 AR 뷰어에서 추적할 현실에 존재하는 타겟 물체를 설정한 후 그 위치를 기준으로 3D (혹은 2D) 증강물들을 추가할 수 있습니다. 증강물에는 어플리케이션에서 기본 제공하는 도형, 사용자의 3D 모델 파일, 이미지-비디오-오디오 등 미디어 파일 등이 포함되며 자동 실행, 사용자 터치 등과 같은 트리거를 통해 이벤트를 추가할 수도 있습니다. 이렇게 생성된 프로젝트는 작업에 변경점이 생길 때마다 자동적으로 저장되며 사용자가 최종적으로 퍼블리시할 경우 뷰어 어플리케이션을 통해 해당 프로젝트의 내용을 AR로 확인할 수 있습니다.\nAR 뷰어의 경우 기기의 카메라를 통해 현실에 존재하는 지정된 타겟을 탐지한 후 그 위치를 기준으로 프로젝트 렌더링을 수행합니다. 추가적으로 AR 뷰어는 사용자의 행동 등 특정 기준이 발동할 때마다 그 데이터를 수집하는 뷰 트레이스 기능을 제공합니다. 이렇게 획득된 통계 정보는 SQUARS 서비스의 Analytics 기능을 통해 확인할 수 있습니다.',
+      'OWiN의 F&B 서비스(상품 포장 및 차로 배달)와 관련하여 매장 점주들이 이용하는 모바일 애플리케이션으로 ‘배민주문접수 앱’, ‘요기요 사장님’ 등과 유사한 기능을 수행한다고 볼 수 있습니다. 매장들에 설치된 기존 윈도우 POS 시스템과 실시간으로 연동되면서 그 기능을 모두 구현하는 것이 프로젝트의 목표였으며 유지보수의 용이를 위해 크로스 플랫폼 개발이 가능한 React Native를 채택하였습니다.\n백엔드 엔지니어 1명, 디자이너 1명과 함께 프로젝트를 수행하였으며 본인은 프로젝트 내에서 모바일 애플리케이션 개발 및 배포를 담당하였습니다.',
     features: [
       {
         title: {
-          content: '3D 에디터',
+          content: '계정 인증 처리 시스템',
+          byMe: true,
+        },
+        items: [],
+      },
+      {
+        title: {
+          content:
+            '앱 버전 호환성 관리 (어플리케이션 실행할 때마다 최소 요구 버전 검사)',
+          byMe: true,
+        },
+        items: [],
+      },
+      {
+        title: {
+          content: '실시간 주문 알림 (Firebase Cloud Messaging)',
           byMe: true,
         },
         items: [
           {
-            content: 'AR 타겟 설정 (2D 이미지, QR 코드,직육면체, 원기둥 물체)',
+            content:
+              '푸쉬알람 - 알림 내용에 따라 다른 알림음 사용 (Android - Notification Channel 분리 생성)',
             byMe: true,
           },
           {
-            title: {
-              content: '3D 프로젝트 저작',
-              byMe: true,
-            },
-            items: [
-              {
-                content: '자체 증강물 제공',
-                byMe: true,
-              },
-              {
-                content: '사용자 Asset 지원 (이미지, 비디오, 오디오, 3D 모델)',
-                byMe: true,
-              },
-              {
-                content: '자동 저장 (프로젝트 내용 변경 기준)',
-                byMe: false,
-              },
-              {
-                title: {
-                  content: '협업 기능',
-                  byMe: false,
-                },
-                items: [
-                  {
-                    content: '동시 접근 방지 (웹 소켓 활용)',
-                    byMe: false,
-                  },
-                  {
-                    content: '증강물에 댓글 작성 기능',
-                    byMe: false,
-                  },
-                ],
-              },
-              {
-                content: 'AR 기능 제외된 순수 3D 프리뷰 화면 제공',
-                byMe: true,
-              },
-              {
-                content: '유료 플랜에 한해 뷰어 추가 설정 기능',
-                byMe: true,
-              },
-            ],
+            content: '수신 주문 기준 실시간 화면 렌더링',
+            byMe: true,
           },
         ],
       },
       {
         title: {
-          content: '모바일 AR 뷰어',
+          content: '실시간 주문 처리',
           byMe: true,
         },
         items: [
           {
-            content: '타겟 인식 시 타겟 위치 및 방향 기준으로 프로젝트 렌더링',
+            content:
+              '주문승인 - 고객이 요청한 시간이나 그 이후로 상품 수령시간 변경 가능',
             byMe: true,
           },
           {
-            content: '에디터에서 설정된 미디어, 이벤트 등 실행',
+            content: '주문거부 - 사유 선택가능',
             byMe: true,
           },
           {
-            content: '프로젝트 조회 횟수 검사 및 제한',
+            content: '상품 준비완료 처리',
             byMe: true,
           },
           {
-            title: {
-              content: '통계 자료 수집',
-              byMe: true,
-            },
-            items: [
-              {
-                content:
-                  '사용자 액션 등 특정 기준 충족할 때마다 통계 자료 수집',
-                byMe: true,
-              },
-              {
-                content: '수집된 자료 그래프 등의 형태로 통계화하여 제공',
-                byMe: false,
-              },
-            ],
+            content: '주문완료 처리',
+            byMe: true,
           },
-        ],
-      },
-    ],
-    screenshotGroups: [
-      {
-        title: '1. Service Guide',
-        screenshots: [
           {
-            type: ProjectScreenshotMediaType.Video,
-            src: '/projects/squars/screenshots/overall.mp4',
+            content: '전달지연 확인 및 대응',
+            byMe: true,
           },
         ],
       },
       {
-        title: '2. Sample Projects',
-        screenshots: [
+        title: {
+          content: '주문 내용 확인',
+          byMe: true,
+        },
+        items: [
           {
-            type: ProjectScreenshotMediaType.Video,
-            src: '/projects/squars/screenshots/business-card.mp4',
+            content: '주문시간, 주문상태, 주문내용, 고객정보 등',
+            byMe: true,
           },
           {
-            type: ProjectScreenshotMediaType.Video,
-            src: '/projects/squars/screenshots/movie-poster.mp4',
+            content:
+              '주문이 완료되지 않은 주문에 대해서는 안심번호 및 차량번호 제공 - 안심번호는 터치시 전화연결 가능 (Linking)',
+            byMe: true,
           },
           {
-            type: ProjectScreenshotMediaType.Video,
-            src: '/projects/squars/screenshots/map.mp4',
+            content:
+              '주문이 완료된 시점에서 일정 시간 경과된 주문은 고객 정보 보호를 윙해 안심번호, 차량번호 등의 정보 조회 불가 (백엔드 측에서 DB 데이터값 변경)',
+            byMe: false,
+          },
+        ],
+      },
+      {
+        title: {
+          content: '메뉴 조회 및 관리',
+          byMe: true,
+        },
+        items: [
+          {
+            content: '카테고리, 판매여부 등에 의한 필터 기능 제공',
+            byMe: true,
+          },
+        ],
+      },
+      {
+        title: {
+          content: '정산내역 조회',
+          byMe: true,
+        },
+        items: [
+          {
+            content: '각 주문 정산 및 전체 통계 정보 제공',
+            byMe: true,
+          },
+          {
+            content: '조회 기간 필터 제공',
+            byMe: true,
+          },
+        ],
+      },
+      {
+        title: {
+          content: '매장정보 조회 및 변경',
+          byMe: true,
+        },
+        items: [],
+      },
+      {
+        title: {
+          content: '점주 전용 정보 제공 (웹뷰)',
+          byMe: true,
+        },
+        items: [
+          {
+            content: '공지사항, 이용약관, 사용방법 안내 등',
+            byMe: true,
           },
         ],
       },
