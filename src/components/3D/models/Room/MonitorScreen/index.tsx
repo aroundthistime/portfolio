@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
-import { Euler, Group, Mesh, Vector3 } from 'three';
+import { Group, Mesh, Vector3 } from 'three';
 import { useThree } from '@react-three/fiber';
-import { animated, useSpring } from '@react-spring/web';
+import { useSpring } from '@react-spring/web';
 import { Html } from '@react-three/drei';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import useSectionDetection from '@/hooks/useSectionDetection';
@@ -23,7 +23,7 @@ const MonitorScreen = () => {
   const monitorScreenRef = useRef<Mesh>();
   // Html which would float over the actual monitor screen mesh to look as if it is screen
   const floatingScreenRef = useRef<Group>(null!);
-  const { getObjectCenterPoint, focusOnObject } = useObjectFocus();
+  const { focusOnObject } = useObjectFocus();
   const monitorScreenUrl = use3DSceneStore(state => state.monitorScreenUrl);
   const { scene } = useThree();
 
@@ -37,21 +37,10 @@ const MonitorScreen = () => {
    * Callback when the user enters projects section
    */
   const onEnterProjectsSection = () => {
-    if (!monitorScreenRef.current) return;
-
-    const monitorScreenCenterPoint = getObjectCenterPoint(
-      monitorScreenRef.current,
-    );
-
-    // Put screen html slightly on top of monitor to avoid z-fighting
-    floatingScreenRef.current.position.set(
-      monitorScreenCenterPoint.x,
-      monitorScreenCenterPoint.y,
-      monitorScreenCenterPoint.z - 0.01,
-    );
+    if (!floatingScreenRef.current) return;
 
     // Put some distance between target and camera for better viewing
-    const OFFSET_VECTOR = new Vector3(0.5, 0, 0);
+    const OFFSET_VECTOR = new Vector3(0.6, 0, 0);
 
     focusOnObject(floatingScreenRef.current, OFFSET_VECTOR);
   };
@@ -66,20 +55,21 @@ const MonitorScreen = () => {
   };
 
   useEffect(() => {
+    let monitorScreen: Mesh;
     scene.traverse(object => {
-      if (object.name === 'PC_1_Cube.021_Screen') {
-        monitorScreenRef.current = object as Mesh;
+      if (object.name === 'MonitorScreen') {
+        monitorScreen = object as Mesh;
       }
     });
+
+    // Attach Html screen to monitor screen mesh
+    monitorScreen.add(floatingScreenRef.current);
+    monitorScreenRef.current = monitorScreen;
   }, []);
 
   return (
     <group ref={floatingScreenRef}>
-      <Html
-        transform
-        occlude
-        rotation={new Euler(0, Math.PI, 0)}
-        scale={0.0292}>
+      <Html transform scale={[0.027, 0.0444, 1]}>
         <MonitorScreenContainer
           style={{
             opacity,

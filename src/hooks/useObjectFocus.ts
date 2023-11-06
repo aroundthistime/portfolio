@@ -1,7 +1,6 @@
 import { useThree } from '@react-three/fiber';
-import { Box3, Box3Helper, Mesh, Object3D, Sphere, Vector3 } from 'three';
+import { Box3, Object3D, Sphere, Vector3 } from 'three';
 import { Geometry } from 'three-stdlib';
-import { MeshBVH } from 'three-mesh-bvh';
 import use3DSceneStore from '@/store/use3DSceneStore';
 
 /**
@@ -97,6 +96,7 @@ const useObjectFocus = () => {
     focusOnObject,
     focusOnCoordinate,
     getObjectCenterPoint,
+    setupSceneBeforeCameraFocus,
   };
 };
 

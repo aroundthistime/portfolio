@@ -6,8 +6,6 @@ import { TextGeometry } from 'three-stdlib';
 import TWEEN from '@tweenjs/tween.js';
 import Bart from '@/components/3D/models/Bart';
 import Room from '@/components/3D/models/Room';
-import Cat from '@/components/3D/models/Cat';
-import WallClock from '@/components/3D/models/WallClock';
 import PortfolioContents from '@/components/containers/PortfolioContents';
 import use3DSceneStore from '@/store/use3DSceneStore';
 
@@ -168,10 +166,8 @@ const ThreeDSceneContents = ({
 
   return (
     <>
-      <Room />
       <Bart />
-      <Cat />
-      <WallClock />
+      <Room />
     </>
   );
 };
