@@ -1,6 +1,7 @@
 import { useThree } from '@react-three/fiber';
-import { Box3, Object3D, Vector3 } from 'three';
+import { Box3, Box3Helper, Mesh, Object3D, Sphere, Vector3 } from 'three';
 import { Geometry } from 'three-stdlib';
+import { MeshBVH } from 'three-mesh-bvh';
 import use3DSceneStore from '@/store/use3DSceneStore';
 
 /**
@@ -20,19 +21,51 @@ const useObjectFocus = () => {
     object3D: Object3D,
     offsetBetweenObjectAndCamera: Vector3,
   ) => {
+    setupSceneBeforeCameraFocus();
+
+    const objectWorldPosition = object3D.getWorldPosition(new Vector3());
+
+    focusOnCoordinate(objectWorldPosition, offsetBetweenObjectAndCamera);
+  };
+
+  /**
+   * Update perspective camera to focus on a certain coordinate
+   * @param {Vector3} coordinate Coordinate in world position to focus on
+   * @param {Vector3} offsetBetweenCoordAndCamera  3D vector to set the offset between camera and the target point
+   */
+  const focusOnCoordinate = (
+    coordinate: Vector3,
+    offsetBetweenCoordAndCamera: Vector3,
+  ) => {
     const EMPTY_VECTOR = new Vector3();
 
-    if (offsetBetweenObjectAndCamera.equals(EMPTY_VECTOR)) {
+    if (offsetBetweenCoordAndCamera.equals(EMPTY_VECTOR)) {
       throw Error(
         'Invalid offset given! You cannot see anything if the camera is at the same position with the object',
       );
     }
 
-    /**
-     * Update scene immediately.
-     * The following calculations get affected by scene position and
-     * using scene tween animation might not give correct value
-     */
+    setupSceneBeforeCameraFocus();
+
+    const cameraPosition = new Vector3().addVectors(
+      coordinate,
+      offsetBetweenCoordAndCamera,
+    );
+
+    use3DSceneStore.setState({
+      camera: {
+        position: cameraPosition,
+        target: coordinate,
+      },
+    });
+  };
+
+  /**
+   * Update scene immediately.
+   * The following calculations get affected by scene position and
+   * using scene tween animation might not give correct value
+   */
+  const setupSceneBeforeCameraFocus = () => {
     const {
       x: sceneX,
       y: sceneY,
@@ -40,20 +73,6 @@ const useObjectFocus = () => {
     } = use3DSceneStore.getState().scene.position;
 
     scene.position.set(sceneX, sceneY, sceneZ);
-
-    const objectWorldPosition = object3D.getWorldPosition(new Vector3());
-
-    const cameraPosition = new Vector3().addVectors(
-      objectWorldPosition,
-      offsetBetweenObjectAndCamera,
-    );
-
-    use3DSceneStore.setState({
-      camera: {
-        position: cameraPosition,
-        target: objectWorldPosition,
-      },
-    });
   };
 
   /**
@@ -70,12 +89,13 @@ const useObjectFocus = () => {
       return geometry.boundingSphere.center;
     }
     const objectWrappingBox = new Box3().setFromObject(object);
-    const boundingSphere = objectWrappingBox.getBoundingSphere();
+    const boundingSphere = objectWrappingBox.getBoundingSphere(new Sphere());
     return boundingSphere.center;
   };
 
   return {
     focusOnObject,
+    focusOnCoordinate,
     getObjectCenterPoint,
   };
 };
