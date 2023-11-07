@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
 import PortfolioSection from '../Templates/PortfolioSection';
@@ -9,24 +8,19 @@ import { MultiDepthData } from '@/types/MultiDepthData';
 import use3DSceneStore from '@/store/use3DSceneStore';
 import { ProjectBriefDto } from '@/types/dto/ProjectDto';
 import { ProjectsSection } from '@/store/use3DSceneStore/types';
+import { useBriefProjectsQuery } from '@/queries/project/useProjectQuery';
 
 /**
  * Section for showing the previous projects that I've done
  */
 const Projects = () => {
+  const { data: projectDTOs } = useBriefProjectsQuery();
   const [projects, setProjects] = useState<MultiDepthData[]>([]);
-
   /**
-   * Get list of brief project information from server
+   * Convert project DTOs suitable for rendering
    */
-  const getProjects = async () => {
-    const data = await axios.get('/api/project/brief');
-    const {
-      data: { projects: projectDtos },
-    } = data;
-
-    // Convert project dtos suitable for rendering
-    const projectsToRender: MultiDepthData[] = projectDtos.map(
+  const convertProjectsDTOForRendering = () => {
+    const convertedProjects: MultiDepthData[] = projectDTOs.map(
       (projectDto: ProjectBriefDto) => {
         const onProjectClick = () => {
           const { openMonitor } = use3DSceneStore.getState()
@@ -47,12 +41,14 @@ const Projects = () => {
       },
     );
 
-    setProjects(projectsToRender);
+    setProjects(convertedProjects);
   };
 
   useEffect(() => {
-    getProjects();
-  }, []);
+    if (projectDTOs) {
+      convertProjectsDTOForRendering();
+    }
+  }, [projectDTOs]);
 
   return (
     <PortfolioSection sectionTitle={SectionTitle.Projects}>
