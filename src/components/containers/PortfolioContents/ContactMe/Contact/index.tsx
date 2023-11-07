@@ -33,7 +33,8 @@ const Contact = ({ contactLink, contactType }: Props) => {
     <Link
       href={contactLink.url}
       onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}>
+      onMouseLeave={onMouseLeave}
+      target="_blank">
       <LogoWithText text={contactLink.title} logoSrc={contactLink.image} />
     </Link>
   );
