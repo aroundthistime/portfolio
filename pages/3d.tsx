@@ -67,7 +67,7 @@ const ThreeDScene = () => {
           setControlTarget={setControlTarget}
         />
         <directionalLight position={new Vector3(-30, 10, 10)} />
-        <ambientLight intensity={0.1} />
+        <ambientLight intensity={0.2} />
       </Canvas>
       <PortfolioContents />
     </div>
