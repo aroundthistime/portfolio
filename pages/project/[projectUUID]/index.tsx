@@ -1,7 +1,8 @@
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import { PROJECTS } from '@/dummyData/project';
 import { Project } from '@/types/Project';
-import { normalizeURLParam } from '@/utils/url';
+import { getCacheDisabledURL, normalizeURLParam } from '@/utils/url';
 import { ProjectPageContainer } from './style';
 import ProjectSummary from '@/components/containers/ProjectPageTemplate/ProjectSummary';
 import ProjectTitle from '@/components/containers/ProjectPageTemplate/ProjectTitle';
@@ -18,17 +19,27 @@ interface Props {
 }
 
 const ProjectPage = ({ project }: Props) => {
+  const faviconUrl = getCacheDisabledURL(project.logo);
   return (
-    <ProjectPageContainer>
-      <ProjectTitle project={project} />
-      <ProjectSummary summary={project.summary} />
-      <ProjectSkills skills={project.skills} />
-      <ProjectContent content={project.content} />
-      <ProjectFeatures features={project.features} />
-      {project.screenshotGroups && (
-        <ProjectScreenshots screenshotGroups={project.screenshotGroups} />
-      )}
-    </ProjectPageContainer>
+    <>
+      <Head>
+        <link rel="shortcut icon" href={faviconUrl} />
+        <meta name="title" content={project.title} />
+        <meta name="description" content={project.summary.brief} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={project.logo} />
+      </Head>
+      <ProjectPageContainer>
+        <ProjectTitle project={project} />
+        <ProjectSummary summary={project.summary} />
+        <ProjectSkills skills={project.skills} />
+        <ProjectContent content={project.content} />
+        <ProjectFeatures features={project.features} />
+        {project.screenshotGroups && (
+          <ProjectScreenshots screenshotGroups={project.screenshotGroups} />
+        )}
+      </ProjectPageContainer>
+    </>
   );
 };
 
