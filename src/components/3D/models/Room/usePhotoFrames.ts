@@ -2,11 +2,12 @@ import { Object3D, Vector3 } from 'three';
 import useSectionDetection from '@/hooks/useSectionDetection';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import useObjectFocus from '@/hooks/useObjectFocus';
+import { MyContactType } from '@/types/MyContact';
 
 /**
  * Hook for controlling every logic related photo frames inside 3D scene
  */
-const usePhotoFrames = (photoFrames: Record<PhotoFrameType, Object3D>) => {
+const usePhotoFrames = (photoFrames: Record<MyContactType, Object3D>) => {
   const { focusOnCoordinate, setupSceneBeforeCameraFocus } = useObjectFocus();
 
   const onEnterContactMeSection = () => {
@@ -48,12 +49,3 @@ const usePhotoFrames = (photoFrames: Record<PhotoFrameType, Object3D>) => {
 };
 
 export default usePhotoFrames;
-
-/**
- * Type of photo frames used in the 3D scene
- */
-export enum PhotoFrameType {
-  Profile = 'ProfilePhoto',
-  Github = 'GithubPhoto',
-  LinkedIn = 'LinkedInPhoto',
-}

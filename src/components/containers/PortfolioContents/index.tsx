@@ -6,6 +6,7 @@ import { PortfolioContentsContainer } from './style';
 import Projects from './Projects';
 import use3DSceneStore from '@/store/use3DSceneStore';
 import ContactMe from './ContactMe';
+import { SectionTitle } from '@/types/enums/SectionTitle';
 
 const PortfolioContents = () => {
   // Root container element with all portfolio contents
@@ -13,8 +14,12 @@ const PortfolioContents = () => {
 
   useEffect(() => {
     use3DSceneStore.subscribe(state => {
+      const monitorIsTurnedOn =
+        state.currentSection.title === SectionTitle.Projects &&
+        state.currentSection.monitorScreenUrl;
+
       // Do not show project contents when monitor screen is turned on and focused
-      if (state.monitorScreenUrl) {
+      if (monitorIsTurnedOn) {
         ref.current.style.visibility = 'hidden';
       } else {
         ref.current.style.visibility = 'visible';

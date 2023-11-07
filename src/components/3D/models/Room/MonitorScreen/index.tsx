@@ -14,6 +14,7 @@ import {
   MonitorScreenWebview,
 } from './style';
 import CloseIcon from '@/assets/icons/close.svg';
+import { ProjectsSection } from '@/store/use3DSceneStore/types';
 
 /**
  * Component for rendering monitor screen of the PC inside the room
@@ -24,7 +25,10 @@ const MonitorScreen = () => {
   // Html which would float over the actual monitor screen mesh to look as if it is screen
   const floatingScreenRef = useRef<Group>(null!);
   const { focusOnObject } = useObjectFocus();
-  const monitorScreenUrl = use3DSceneStore(state => state.monitorScreenUrl);
+
+  const { monitorScreenUrl, closeMonitor } = use3DSceneStore(
+    state => state.currentSection,
+  ) as ProjectsSection;
   const { scene } = useThree();
 
   // Animation imitating screen turn on-off effect
@@ -51,7 +55,7 @@ const MonitorScreen = () => {
    * Callback function for monitor screen close button click event
    */
   const onMonitorCloseButtonClick = () => {
-    use3DSceneStore.getState().closeMonitor();
+    if (closeMonitor) closeMonitor();
   };
 
   useEffect(() => {

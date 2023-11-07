@@ -8,6 +8,7 @@ import { NestedProjectList, ProjectClickGuidance } from './style';
 import { MultiDepthData } from '@/types/MultiDepthData';
 import use3DSceneStore from '@/store/use3DSceneStore';
 import { ProjectBriefDto } from '@/types/dto/ProjectDto';
+import { ProjectsSection } from '@/store/use3DSceneStore/types';
 
 /**
  * Section for showing the previous projects that I've done
@@ -28,7 +29,12 @@ const Projects = () => {
     const projectsToRender: MultiDepthData[] = projectDtos.map(
       (projectDto: ProjectBriefDto) => {
         const onProjectClick = () => {
-          use3DSceneStore.getState().openMonitor(`/project/${projectDto.uuid}`);
+          const { openMonitor } = use3DSceneStore.getState()
+            .currentSection as ProjectsSection;
+
+          if (openMonitor) {
+            openMonitor(`/project/${projectDto.uuid}`);
+          }
         };
         return {
           title: (

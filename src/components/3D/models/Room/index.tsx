@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import MonitorScreen from './MonitorScreen';
 import useClock from './useClock';
 import useAnimatedModel from './useAnimatedModel';
-import usePhotoFrames, { PhotoFrameType } from './usePhotoFrames';
+import usePhotoFrames from './usePhotoFrames';
+import { MyContactType } from '@/types/MyContact';
 
 /**
  * Component for rendering room with every objects of 3d scene included (except for bart)
@@ -18,11 +19,11 @@ const Room = () => {
   const [psyduck, setPsyduck] = useState<Object3D>();
   const [coffee, setCoffee] = useState<Object3D>();
   const [photoFrames, setPhotoFrames] = useState<
-    Record<PhotoFrameType, Object3D>
+    Record<MyContactType, Object3D>
   >({
-    [PhotoFrameType.Profile]: undefined,
-    [PhotoFrameType.Github]: undefined,
-    [PhotoFrameType.LinkedIn]: undefined,
+    [MyContactType.Profile]: undefined,
+    [MyContactType.Github]: undefined,
+    [MyContactType.LinkedIn]: undefined,
   });
 
   useAnimatedModel(cat);
@@ -50,22 +51,22 @@ const Room = () => {
         case 'psyduck_kfc_toy.glb':
           setPsyduck(object);
           break;
-        case PhotoFrameType.Profile:
+        case MyContactType.Profile:
           setPhotoFrames(prev => ({
             ...prev,
-            [PhotoFrameType.Profile]: object,
+            [MyContactType.Profile]: object,
           }));
           break;
-        case PhotoFrameType.Github:
+        case MyContactType.Github:
           setPhotoFrames(prev => ({
             ...prev,
-            [PhotoFrameType.Github]: object,
+            [MyContactType.Github]: object,
           }));
           break;
-        case PhotoFrameType.LinkedIn:
+        case MyContactType.LinkedIn:
           setPhotoFrames(prev => ({
             ...prev,
-            [PhotoFrameType.LinkedIn]: object,
+            [MyContactType.LinkedIn]: object,
           }));
           break;
 

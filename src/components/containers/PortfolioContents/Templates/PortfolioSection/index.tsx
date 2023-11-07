@@ -3,6 +3,7 @@ import { useIntersectionObserver } from 'usehooks-ts';
 import { PortfolioSectionContainer } from './style';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import useSectionDetection from '@/hooks/useSectionDetection';
+import use3DSceneStore from '@/store/use3DSceneStore';
 
 /**
  * Component for wrapping a certain section in the portfolio.
@@ -25,6 +26,7 @@ const PortfolioSection = ({
   useEffect(() => {
     if (intersection?.isIntersecting) {
       updateQueryParameterToCurrentSection();
+      use3DSceneStore.getState().updateCurrentSection(sectionTitle);
       if (onIntersect) onIntersect();
     } else if (onExit) onExit();
   }, [intersection]);

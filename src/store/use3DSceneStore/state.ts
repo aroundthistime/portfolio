@@ -1,4 +1,6 @@
 import { Vector3 } from 'three';
+import { CurrentSection } from './types';
+import { SectionTitle } from '@/types/enums/SectionTitle';
 
 /**
  * Global state related to 3D scene rendering
@@ -30,10 +32,9 @@ export interface SceneStoreState {
   enableRotate: boolean;
 
   /**
-   * URL of webview page to show up at monitor screen.
-   * Could be null if monitor screen is not turned on right now
+   * Data about current section of the portfolio
    */
-  monitorScreenUrl: string | null;
+  currentSection: CurrentSection;
 
   /**
    * Put everything at the center of the screen
@@ -46,13 +47,7 @@ export interface SceneStoreState {
   putSceneAside: () => void;
 
   /**
-   * Open monitor screen with certain page
-   * @param {string} screenPageUrl URL of the page to show through monitor screen
+   * Update current section of the portfolio (with corresponding data and methods)
    */
-  openMonitor: (screenPageUrl: string) => void;
-
-  /**
-   * Close monitor screen
-   */
-  closeMonitor: () => void;
+  updateCurrentSection: (sectionTitle: SectionTitle) => void;
 }

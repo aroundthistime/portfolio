@@ -1,6 +1,9 @@
 import { create } from 'zustand';
 import { Vector3 } from 'three';
 import { SceneStoreState } from './state';
+import { SectionTitle } from '@/types/enums/SectionTitle';
+import { CurrentSection } from './types';
+import { MyContactType } from '@/types/MyContact';
 
 const CAMERA_DEFAULT_POSITION = new Vector3(8.5, 10, 8.5);
 const CAMERA_DEFAULT_TARGET = new Vector3(0, 0, 0);
@@ -24,7 +27,9 @@ const use3DSceneStore = create<SceneStoreState>()(set => ({
   enableZoom: true,
   enableRotate: true,
 
-  monitorScreenUrl: null,
+  currentSection: {
+    title: SectionTitle.Intro,
+  },
 
   putSceneAtCenter: () => {
     set({
@@ -50,19 +55,77 @@ const use3DSceneStore = create<SceneStoreState>()(set => ({
     });
   },
 
-  openMonitor: (screenPageUrl: string) => {
-    set({
-      enableZoom: false,
-      enableRotate: false,
-      monitorScreenUrl: screenPageUrl,
-    });
-  },
+  updateCurrentSection: (sectionTitle: SectionTitle) => {
+    let currentSection: CurrentSection;
 
-  closeMonitor: () => {
+    switch (sectionTitle) {
+      case SectionTitle.Intro:
+        currentSection = {
+          title: sectionTitle,
+        };
+        break;
+
+      case SectionTitle.Skills:
+        currentSection = {
+          title: sectionTitle,
+        };
+        break;
+
+      case SectionTitle.Projects:
+        currentSection = {
+          title: sectionTitle,
+          monitorScreenUrl: null,
+          openMonitor: (monitorScreenUrl: string) => {
+            set(state => ({
+              ...state,
+              currentSection: {
+                ...state.currentSection,
+                monitorScreenUrl,
+              },
+            }));
+          },
+          closeMonitor: () => {
+            set(state => ({
+              ...state,
+              currentSection: {
+                ...state.currentSection,
+                monitorScreenUrl: null,
+              },
+            }));
+          },
+        };
+        break;
+
+      case SectionTitle.ContactMe:
+        currentSection = {
+          title: sectionTitle,
+          highlightedContactType: null,
+          highlightContact: (contactType: MyContactType) => {
+            set(state => ({
+              ...state,
+              currentSection: {
+                ...state.currentSection,
+                highlightedContactType: contactType,
+              },
+            }));
+          },
+          obscureContact: () => {
+            set(state => ({
+              ...state,
+              currentSection: {
+                ...state.currentSection,
+                highlightedContactType: null,
+              },
+            }));
+          },
+        };
+        break;
+
+      default:
+        return;
+    }
     set({
-      enableZoom: true,
-      enableRotate: true,
-      monitorScreenUrl: null,
+      currentSection,
     });
   },
 }));
