@@ -8,6 +8,8 @@ import Bart from '@/components/3D/models/Bart';
 import Room from '@/components/3D/models/Room';
 import PortfolioContents from '@/components/containers/PortfolioContents';
 import use3DSceneStore from '@/store/use3DSceneStore';
+import withSuspenseMinDelaySuspense from '@/components/HOC/withMinDelaySuspense';
+import Loader from '@/components/containers/Loader';
 
 extend({ TextGeometry });
 
@@ -184,4 +186,4 @@ interface ThreeDSceneProps {
   setControlTarget: React.Dispatch<React.SetStateAction<Vector3>>;
 }
 
-export default ThreeDScene;
+export default withSuspenseMinDelaySuspense(ThreeDScene, <Loader />, 1000);
