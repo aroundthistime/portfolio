@@ -37,3 +37,22 @@ export const isDescendantOf = (
 
   return isDescendant;
 };
+
+/**
+ * Get center point from a group of objects given in an array.
+ * This does not put weight on certain object
+ * @param {Object3D[]} objects Array of 3D objects to find a center point
+ * @returns {Vector3} Center point of the 3D objects
+ */
+export const getCenterPointOfObjects = (objects: Object3D[]) => {
+  const totalPosition = new Vector3();
+
+  objects.forEach(object => {
+    const objectWorldPosition = object.getWorldPosition(new Vector3());
+    totalPosition.add(objectWorldPosition);
+  });
+
+  const centerPoint = totalPosition.divideScalar(objects.length);
+
+  return centerPoint;
+};

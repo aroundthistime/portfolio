@@ -6,6 +6,7 @@ import { SectionTitle } from '@/types/enums/SectionTitle';
 import useObjectFocus from '@/hooks/useObjectFocus';
 import { MyContactType } from '@/types/MyContact';
 import use3DSceneStore from '@/store/use3DSceneStore';
+import { getCenterPointOfObjects } from '@/utils/threeUtils';
 
 /**
  * Hook for controlling every logic related photo frames inside 3D scene
@@ -41,19 +42,6 @@ const usePhotoFrames = (
     photoFramesCenterPoint.add(PHOTO_FRAMES_VIEW_POINT_OFFSET);
 
     focusOnCoordinate(photoFramesCenterPoint, OFFSET_BETWEEN_CAMERA_AND_FRAMES);
-  };
-
-  const getCenterPointOfObjects = (objects: Object3D[]) => {
-    const totalPosition = new Vector3();
-
-    objects.forEach(object => {
-      const objectWorldPosition = object.getWorldPosition(new Vector3());
-      totalPosition.add(objectWorldPosition);
-    });
-
-    const centerPoint = totalPosition.divideScalar(objects.length);
-
-    return centerPoint;
   };
 
   useSectionDetection(SectionTitle.ContactMe, onEnterContactMeSection);
