@@ -1,6 +1,7 @@
 import { useThree } from '@react-three/fiber';
 import { Box3, Object3D, Sphere, Vector3 } from 'three';
 import { Geometry } from 'three-stdlib';
+import TWEEN from '@tweenjs/tween.js';
 import use3DSceneStore from '@/store/use3DSceneStore';
 
 /**
@@ -20,7 +21,7 @@ const useObjectFocus = () => {
     object3D: Object3D,
     offsetBetweenObjectAndCamera: Vector3,
   ) => {
-    setupSceneBeforeCameraFocus();
+    updateSceneImmediately();
 
     const objectWorldPosition = object3D.getWorldPosition(new Vector3());
 
@@ -44,7 +45,7 @@ const useObjectFocus = () => {
       );
     }
 
-    setupSceneBeforeCameraFocus();
+    updateSceneImmediately();
 
     const cameraPosition = new Vector3().addVectors(
       coordinate,
@@ -62,9 +63,10 @@ const useObjectFocus = () => {
   /**
    * Update scene immediately.
    * The following calculations get affected by scene position and
-   * using scene tween animation might not give correct value
+   * using scene tween animation might not give correct value.
+   * Please call this function before calculating world position of an object for accurate results
    */
-  const setupSceneBeforeCameraFocus = () => {
+  const updateSceneImmediately = () => {
     const {
       x: sceneX,
       y: sceneY,
@@ -96,7 +98,7 @@ const useObjectFocus = () => {
     focusOnObject,
     focusOnCoordinate,
     getObjectCenterPoint,
-    setupSceneBeforeCameraFocus,
+    updateSceneImmediately,
   };
 };
 

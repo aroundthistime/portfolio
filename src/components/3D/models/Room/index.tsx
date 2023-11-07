@@ -1,6 +1,6 @@
 import { MathUtils, Object3D, ObjectLoader } from 'three';
 import { useLoader } from '@react-three/fiber';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import MonitorScreen from './MonitorScreen';
 import useClock from './useClock';
 import useAnimatedModel from './useAnimatedModel';
@@ -18,9 +18,8 @@ const Room = () => {
   const [clock, setClock] = useState<Object3D>();
   const [psyduck, setPsyduck] = useState<Object3D>();
   const [coffee, setCoffee] = useState<Object3D>();
-  const [photoFrames, setPhotoFrames] = useState<
-    Record<MyContactType, Object3D>
-  >({
+
+  const photoFramesRef = useRef<Record<MyContactType, Object3D>>({
     [MyContactType.Profile]: undefined,
     [MyContactType.Github]: undefined,
     [MyContactType.LinkedIn]: undefined,
@@ -29,7 +28,7 @@ const Room = () => {
   useAnimatedModel(cat);
   useAnimatedModel(coffee);
   useAnimatedModel(psyduck);
-  usePhotoFrames(photoFrames);
+  usePhotoFrames(photoFramesRef);
 
   // Clock will use dedicated logic for updating animation based on actual time
   useClock(clock);
@@ -52,24 +51,10 @@ const Room = () => {
           setPsyduck(object);
           break;
         case MyContactType.Profile:
-          setPhotoFrames(prev => ({
-            ...prev,
-            [MyContactType.Profile]: object,
-          }));
-          break;
         case MyContactType.Github:
-          setPhotoFrames(prev => ({
-            ...prev,
-            [MyContactType.Github]: object,
-          }));
-          break;
         case MyContactType.LinkedIn:
-          setPhotoFrames(prev => ({
-            ...prev,
-            [MyContactType.LinkedIn]: object,
-          }));
+          photoFramesRef.current[object.name] = object;
           break;
-
         default:
       }
     });
