@@ -4,7 +4,9 @@ import '@/styles/reset.scss';
 import '@/styles/index.scss';
 import { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ErrorBoundary } from 'react-error-boundary';
 import { GLOBAL_THEME } from '@/styles/theme';
+import ErrorPage from '@/components/containers/ErrorPage';
 
 const queryClient = new QueryClient();
 
@@ -15,7 +17,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={GLOBAL_THEME}>
-        <Component {...pageProps} />
+        <ErrorBoundary FallbackComponent={ErrorPage}>
+          <Component {...pageProps} />
+        </ErrorBoundary>
       </ThemeProvider>
     </QueryClientProvider>
   );
