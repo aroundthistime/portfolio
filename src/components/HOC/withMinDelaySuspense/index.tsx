@@ -7,7 +7,6 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { Container } from './style';
 
 /**
  * HOC for wrapping a component with suspense but with minimum amount time that loading fallback should be shown
@@ -29,11 +28,16 @@ function withSuspenseMinDelaySuspense<T>(
       }, minDelay);
     }, []);
 
+    // if (!passedMinDelay) return fallback;
     return (
       <Suspense fallback={fallback}>
-        <Container passedMinDelay={passedMinDelay}>
+        <div
+          style={{
+            visibility: passedMinDelay ? 'visible' : 'hidden',
+            position: 'absolute',
+          }}>
           <WrappedComponent {...props} />
-        </Container>
+        </div>
         {!passedMinDelay && fallback}
       </Suspense>
     );
