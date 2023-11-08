@@ -40,6 +40,11 @@ const nextConfig = {
     };
     return config;
   },
+
+  i18n: {
+    locales: ['en-US', 'ko-KR'],
+    defaultLocale: 'en-US',
+  }
 };
 
 module.exports = nextConfig;
