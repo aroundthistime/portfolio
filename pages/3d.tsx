@@ -14,9 +14,9 @@ import Loader from '@/components/containers/Loader';
 extend({ TextGeometry });
 
 /**
- * Component rendering the 3D scene part of the portfolio
+ * Component rendering the 3D version of portfolio
  */
-const ThreeDScene = () => {
+const ThreeDPortfolio = () => {
   /**
    * camera.lookAt doesn't work properly when using OrbitControls.
    * The job could instead be achieved with setting the target of the controls
@@ -186,4 +186,4 @@ interface ThreeDSceneProps {
   setControlTarget: React.Dispatch<React.SetStateAction<Vector3>>;
 }
 
-export default withSuspenseMinDelaySuspense(ThreeDScene, <Loader />, 1000);
+export default withSuspenseMinDelaySuspense(ThreeDPortfolio, <Loader />, 1000);
