@@ -4,10 +4,11 @@ export const PortfolioContentsContainer = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  width: 50vw;
-  width: 50dvw;
+  width: 100vw;
+  width: 100dvw;
   height: 100vh;
   height: 100dvh;
+  padding-left: 50%;
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
