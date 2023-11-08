@@ -10,14 +10,13 @@ const Loader = ({ loadingText }: Props) => {
 
   return (
     <LoaderWrapper>
-      <div className="loader__image-container">
-        <Image
-          src={LoaderImage.src}
-          alt="loading-image"
-          fill
-          className="loader__loading-image"
-        />
-      </div>
+      <Image
+        src={LoaderImage.src}
+        alt="loading-image"
+        width={150}
+        height={150}
+        className="loader__loading-image"
+      />
       <p className="loader__loading-text">
         {loadingText || DEFAULT_LOADING_TEXT}
       </p>

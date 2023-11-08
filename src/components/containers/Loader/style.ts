@@ -15,12 +15,6 @@ const LoaderWrapper = styled.div`
   row-gap: ${props => props.theme.layout.margin.vertical.xLarge};
   background-color: #ffd299;
 
-  .loader__image-container {
-    position: relative;
-    width: 150px;
-    aspect-ratio: 1 / 1;
-  }
-
   .loader__loading-text {
     font-size: ${props => props.theme.font.size.large};
     font-weight: bold;
