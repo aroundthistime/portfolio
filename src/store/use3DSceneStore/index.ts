@@ -15,7 +15,7 @@ const SCENE_ASIDE_POSITION = new Vector3(-5.5, 0, 5.5);
  * Global store for handling 3D scene.
  * Is required to change something in the scene outside 3D canvas
  */
-const use3DSceneStore = create<SceneStoreState>()(set => ({
+const use3DSceneStore = create<SceneStoreState>()((set, get) => ({
   camera: {
     position: CAMERA_DEFAULT_POSITION,
     target: CAMERA_DEFAULT_TARGET,
@@ -29,6 +29,11 @@ const use3DSceneStore = create<SceneStoreState>()(set => ({
 
   currentSection: {
     title: SectionTitle.Intro,
+  },
+
+  getCameraIsFixed: () => {
+    const { enableZoom, enableRotate } = get();
+    return !enableZoom && !enableRotate;
   },
 
   putSceneAtCenter: () => {
@@ -126,6 +131,20 @@ const use3DSceneStore = create<SceneStoreState>()(set => ({
     }
     set({
       currentSection,
+    });
+  },
+
+  fixCamera: () => {
+    set({
+      enableRotate: false,
+      enableZoom: false,
+    });
+  },
+
+  unfixCamera: () => {
+    set({
+      enableRotate: true,
+      enableZoom: true,
     });
   },
 }));

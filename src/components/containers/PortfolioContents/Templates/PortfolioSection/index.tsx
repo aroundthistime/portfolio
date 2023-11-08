@@ -4,6 +4,7 @@ import { PortfolioSectionContainer } from './style';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import useSectionDetection from '@/hooks/useSectionDetection';
 import use3DSceneStore from '@/store/use3DSceneStore';
+import { CAMERA_FIXED_SECTION_TITLES } from '@/constants/3d';
 
 /**
  * Component for wrapping a certain section in the portfolio.
@@ -26,7 +27,22 @@ const PortfolioSection = ({
   useEffect(() => {
     if (intersection?.isIntersecting) {
       updateQueryParameterToCurrentSection();
-      use3DSceneStore.getState().updateCurrentSection(sectionTitle);
+
+      const { updateCurrentSection, getCameraIsFixed, fixCamera, unfixCamera } =
+        use3DSceneStore.getState();
+
+      updateCurrentSection(sectionTitle);
+
+      if (CAMERA_FIXED_SECTION_TITLES.includes(sectionTitle)) {
+        // Camera isn't fixed yet when it's supposed to
+        if (!getCameraIsFixed()) {
+          fixCamera();
+        }
+        // Camera is fixed when it's not supposed to
+      } else if (getCameraIsFixed()) {
+        unfixCamera();
+      }
+
       if (onIntersect) onIntersect();
     } else if (onExit) onExit();
   }, [intersection]);

@@ -37,6 +37,12 @@ export interface SceneStoreState {
   currentSection: CurrentSection;
 
   /**
+   * Get whether the perspective camera is fixed at the moment
+   * @returns {boolean} True if the perspective camera is fixed
+   */
+  getCameraIsFixed: () => boolean;
+
+  /**
    * Put everything at the center of the screen
    */
   putSceneAtCenter: () => void;
@@ -50,4 +56,14 @@ export interface SceneStoreState {
    * Update current section of the portfolio (with corresponding data and methods)
    */
   updateCurrentSection: (sectionTitle: SectionTitle) => void;
+
+  /**
+   * Fix camera of the scene (rotation, zoom all disabled)
+   */
+  fixCamera: () => void;
+
+  /**
+   * Allow control of the camera (rotation, zoom all enabled)
+   */
+  unfixCamera: () => void;
 }
