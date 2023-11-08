@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import Intro from './Intro';
-import PortfolioSection from './Templates/PortfolioSection';
 import SkillSet from './SkillSet';
 import { PortfolioContentsContainer } from './style';
 import Projects from './Projects';
