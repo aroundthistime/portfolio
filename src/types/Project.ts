@@ -1,12 +1,17 @@
 import { Link } from './Link';
 import { MultiDepthData } from './MultiDepthData';
 import { Skill } from './Skill';
-import { LocalizedString } from './utilTypes/Localization';
+import { LocalizedType, MultiLanguageString } from './utilTypes/Localization';
 
 /**
- * Interface describing detailed information of a project
+ * Project data after localization
  */
-export interface Project {
+export type Project = LocalizedType<MultiLanguageProject>;
+
+/**
+ * Interface describing detailed information of a project (with multi language included)
+ */
+export interface MultiLanguageProject {
   /**
    * UUID of the project to distinguish from each other
    */
@@ -15,7 +20,7 @@ export interface Project {
   /**
    * Title of the project
    */
-  title: LocalizedString;
+  title: MultiLanguageString;
 
   /**
    * URL for the logo image of the project
@@ -35,7 +40,7 @@ export interface Project {
   /**
    * Content text giving the overall description of the project
    */
-  content: LocalizedString;
+  content: MultiLanguageString;
 
   /**
    * Features that were included in the implementation of the project
@@ -55,7 +60,7 @@ interface ProjectSummary {
   /**
    * Brief explanation of what this project is
    */
-  brief: LocalizedString;
+  brief: MultiLanguageString;
 
   /**
    * Working period of this project
@@ -107,7 +112,7 @@ export interface ProjectFeature extends CollaboratedProjectItem {
   /**
    * String that describes the feature
    */
-  content: LocalizedString;
+  content: MultiLanguageString;
 }
 
 /**
@@ -127,7 +132,7 @@ export interface ProjectScreenshotGroup {
   /**
    * Title of the group
    */
-  title?: LocalizedString;
+  title?: MultiLanguageString;
 
   /**
    * Screenshots which are classified as this group

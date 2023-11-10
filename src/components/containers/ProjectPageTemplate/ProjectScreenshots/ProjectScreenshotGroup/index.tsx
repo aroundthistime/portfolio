@@ -1,4 +1,4 @@
-import { ProjectScreenshotGroup as ProjectScreenshotGroupType } from '@/types/Project';
+import { Project } from '@/types/Project';
 import {
   ProjectScreenshotGroupContainer,
   ProjectScreenshotGroupTitle,
@@ -27,7 +27,7 @@ const ProjectScreenshotGroup = ({ screenshotGroup }: Props) => {
 };
 
 interface Props {
-  screenshotGroup: ProjectScreenshotGroupType;
+  screenshotGroup: Project['screenshotGroups'][0];
 }
 
 export default ProjectScreenshotGroup;

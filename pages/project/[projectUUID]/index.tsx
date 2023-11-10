@@ -1,7 +1,11 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { PROJECTS } from '@/dummyData/project';
-import { Project } from '@/types/Project';
+import {
+  MultiLanguageProject,
+  Project,
+  ProjectScreenshotGroup,
+} from '@/types/Project';
 import { getCacheDisabledURL, normalizeURLParam } from '@/utils/url';
 import { ProjectPageContainer } from './style';
 import ProjectSummary from '@/components/containers/ProjectPageTemplate/ProjectSummary';
@@ -10,6 +14,8 @@ import ProjectSkills from '@/components/containers/ProjectPageTemplate/ProjectSk
 import ProjectContent from '@/components/containers/ProjectPageTemplate/ProjectContent';
 import ProjectFeatures from '@/components/containers/ProjectPageTemplate/ProjectFeatures';
 import ProjectScreenshots from '@/components/containers/ProjectPageTemplate/ProjectScreenshots';
+import { localizeData } from '@/utils/localization';
+import { MultiLanguageString } from '@/types/utilTypes/Localization';
 
 interface Props {
   /**
@@ -43,14 +49,20 @@ const ProjectPage = ({ project }: Props) => {
   );
 };
 
-export const getServerSideProps = (async ({ params }) => {
+export const getServerSideProps = (async ({ params, locale }) => {
   const { projectUUID } = params;
   const normalizedProjectUUID = normalizeURLParam(projectUUID);
 
-  const project = PROJECTS[normalizedProjectUUID];
+  const projectBeforeLocalization = PROJECTS[normalizedProjectUUID];
+
+  const localizedProject = localizeData<MultiLanguageProject>(
+    projectBeforeLocalization,
+    locale as keyof MultiLanguageString,
+  );
+
   return {
     props: {
-      project,
+      project: localizedProject,
     },
   };
 }) satisfies GetServerSideProps<Props>;

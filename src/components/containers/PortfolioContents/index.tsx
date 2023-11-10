@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 import Intro from './Intro';
 import SkillSet from './SkillSet';
 import { PortfolioContentsContainer } from './style';
@@ -36,4 +36,4 @@ const PortfolioContents = () => {
   );
 };
 
-export default PortfolioContents;
+export default memo(PortfolioContents);

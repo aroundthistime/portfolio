@@ -1,9 +1,13 @@
-import { Project, ProjectScreenshotMediaType } from '@/types/Project';
+import {
+  MultiLanguageProject,
+  Project,
+  ProjectScreenshotMediaType,
+} from '@/types/Project';
 import { SKILLS } from './skill';
 import PlayStoreLink from '@/utils/link/LinkGenerator/PlayStoreLink';
 import AppStoreLink from '@/utils/link/LinkGenerator/AppstoreLink';
 
-export const PROJECTS: { [key: Project['uuid']]: Project } = {
+export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
   1: {
     uuid: '1',
     title: {
