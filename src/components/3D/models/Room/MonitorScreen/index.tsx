@@ -3,6 +3,7 @@ import { Group, Mesh, Vector3 } from 'three';
 import { useThree } from '@react-three/fiber';
 import { useSpring } from '@react-spring/web';
 import { Html } from '@react-three/drei';
+import { useRouter } from 'next/router';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import useSectionDetection from '@/hooks/useSectionDetection';
 import useObjectFocus from '@/hooks/useObjectFocus';
@@ -25,6 +26,7 @@ const MonitorScreen = () => {
   // Html which would float over the actual monitor screen mesh to look as if it is screen
   const floatingScreenRef = useRef<Group>(null!);
   const { focusOnObject } = useObjectFocus();
+  const { locale } = useRouter();
 
   const { monitorScreenUrl, closeMonitor } = use3DSceneStore(
     state => state.currentSection,
@@ -58,6 +60,13 @@ const MonitorScreen = () => {
     if (closeMonitor) closeMonitor();
   };
 
+  /**
+   * Get monitor screen URL with current locale applied
+   */
+  const getMonitorScreenUrlWithLocale = () => {
+    return `/${locale}${monitorScreenUrl}`;
+  };
+
   useEffect(() => {
     let monitorScreen: Mesh;
     scene.traverse(object => {
@@ -84,7 +93,10 @@ const MonitorScreen = () => {
               <CloseIcon />
             </MonitorScreenCloseButton>
           </MonitorScreenTitleBar>
-          <MonitorScreenWebview title="Project" src={monitorScreenUrl} />
+          <MonitorScreenWebview
+            title="Project"
+            src={getMonitorScreenUrlWithLocale()}
+          />
         </MonitorScreenContainer>
       </Html>
     </group>
