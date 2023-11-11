@@ -12,7 +12,7 @@ export const ProjectSectionContainer = styled.section`
 `;
 
 export const ProjectSectionTitle = styled.h3`
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', 'Noto Serif KR', serif;
   font-weight: 500;
   font-size: ${props => props.theme.font.size.xLarge};
   font-style: italic;

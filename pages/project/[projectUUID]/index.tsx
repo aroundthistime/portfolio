@@ -1,11 +1,8 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PROJECTS } from '@/dummyData/project';
-import {
-  MultiLanguageProject,
-  Project,
-  ProjectScreenshotGroup,
-} from '@/types/Project';
+import { MultiLanguageProject, Project } from '@/types/Project';
 import { getCacheDisabledURL, normalizeURLParam } from '@/utils/url';
 import { ProjectPageContainer } from './style';
 import ProjectSummary from '@/components/containers/ProjectPageTemplate/ProjectSummary';
@@ -62,6 +59,7 @@ export const getServerSideProps = (async ({ params, locale }) => {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common', 'projectPage'])),
       project: localizedProject,
     },
   };

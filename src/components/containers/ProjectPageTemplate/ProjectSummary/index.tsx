@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 import { Project, ProjectDateInfo } from '@/types/Project';
 import {
   ProjectLinkLogoWithText,
@@ -7,12 +8,13 @@ import {
 } from './style';
 import { addBetweenElements } from '@/utils/array';
 import ProjectSection from '../ProjectSection';
-import LogoWithText from '@/components/LogoWithText';
 
 /**
  * Component which contains summary of a project
  */
 const ProjectSummary = ({ summary }: Props) => {
+  const { t } = useTranslation('projectPage');
+
   /**
    * Get working period in formatted string.
    * If 'till' property is not given, it will be formatted as 'Now'
@@ -52,19 +54,21 @@ const ProjectSummary = ({ summary }: Props) => {
 
   return (
     <ProjectSection>
-      <ProjectSection.Title>Summary</ProjectSection.Title>
+      <ProjectSection.Title>{t('summary')}</ProjectSection.Title>
       <ProjectSection.Content>
         <ProjectSummaryItem>
-          <ProjectSummaryItemLabel>What is it?</ProjectSummaryItemLabel>
+          <ProjectSummaryItemLabel>{t('brief')}</ProjectSummaryItemLabel>
           {summary.brief}
         </ProjectSummaryItem>
         <ProjectSummaryItem>
-          <ProjectSummaryItemLabel>Working period</ProjectSummaryItemLabel>
+          <ProjectSummaryItemLabel>
+            {t('working-period')}
+          </ProjectSummaryItemLabel>
           {formatWorkingPeriod()}
         </ProjectSummaryItem>
         {summary.links && summary.links.length > 0 && (
           <ProjectSummaryItem>
-            <ProjectSummaryItemLabel>Related Links</ProjectSummaryItemLabel>
+            <ProjectSummaryItemLabel>{t('links')}</ProjectSummaryItemLabel>
             {getProjectLinks()}
           </ProjectSummaryItem>
         )}

@@ -1,16 +1,22 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
-import { Project, ProjectFeature } from '@/types/Project';
+import {
+  Project,
+  ProjectFeature as MultiLanguageProjectFeature,
+} from '@/types/Project';
 import ProjectSection from '../ProjectSection';
 import MultiDepthDataUtils from '@/utils/MultiDepthDataUtils';
-import NestedList from '@/components/NestedList';
 import { MultiDepthData } from '@/types/MultiDepthData';
 import { FeaturesNotDoneByMeGuide, ProjectFeaturesNestedList } from './style';
+import { LocalizedType } from '@/types/utilTypes/Localization';
 
 /**
  * Component rendering a section about features included in the project implementation
  */
 const ProjectFeatures = ({ features: rawFeatures }: Props) => {
+  const { t } = useTranslation('projectPage');
+
   /**
    * Feature data which will be used for the actual rendering.
    * This will contain the processing result from the raw features data
@@ -69,12 +75,13 @@ const ProjectFeatures = ({ features: rawFeatures }: Props) => {
 
   return (
     <ProjectSection>
-      <ProjectSection.Title>Features</ProjectSection.Title>
+      <ProjectSection.Title>{t('features')}</ProjectSection.Title>
       <ProjectSection.Content>
         {containsFeatureNotDoneByMe() && (
           <FeaturesNotDoneByMeGuide>
-            The blurred texts are the features that are included in the
-            implementation but the efforts were given by other teammates.
+            {t('not-by-me-description', {
+              itemName: t('features').toLowerCase(),
+            })}
           </FeaturesNotDoneByMeGuide>
         )}
         <ProjectFeaturesNestedList multiDepthDataList={features} />
@@ -86,5 +93,7 @@ const ProjectFeatures = ({ features: rawFeatures }: Props) => {
 interface Props {
   features: Project['features'];
 }
+
+type ProjectFeature = LocalizedType<MultiLanguageProjectFeature>;
 
 export default ProjectFeatures;
