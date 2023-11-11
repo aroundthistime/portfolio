@@ -4,6 +4,8 @@ import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
 import { Color, NoToneMapping, Vector3 } from 'three';
 import { TextGeometry } from 'three-stdlib';
 import TWEEN from '@tweenjs/tween.js';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Bart from '@/components/3D/models/Bart';
 import Room from '@/components/3D/models/Room';
 import PortfolioContents from '@/components/containers/PortfolioContents';
@@ -185,5 +187,13 @@ interface ThreeDSceneProps {
    */
   setControlTarget: React.Dispatch<React.SetStateAction<Vector3>>;
 }
+
+export const getStaticProps = (async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['3d', 'common'])),
+    },
+  };
+}) satisfies GetStaticProps;
 
 export default withSuspenseMinDelaySuspense(ThreeDPortfolio, <Loader />, 1000);

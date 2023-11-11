@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import NestedList from '@/components/NestedList';
 import PortfolioSection from '../Templates/PortfolioSection';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
@@ -10,9 +11,8 @@ import { MultiDepthData } from '@/types/MultiDepthData';
  * Component for showing the tech skills I can utilize
  */
 const SkillSet = () => {
-  /**
-   * @TODO Replace local data with one received from API (+ include processing to make into jsx elements)
-   */
+  const { t } = useTranslation(['3d', 'common']);
+
   const skills: MultiDepthData[] = [
     {
       title: (
@@ -22,8 +22,9 @@ const SkillSet = () => {
         />
       ),
       items: [
-        'Implement OOP using typescript classes',
-        'Build custom npm packages',
+        t('skills.typescript.description-1'),
+        t('skills.typescript.description-2'),
+        t('skills.typescript.description-3'),
       ],
     },
     {
@@ -36,15 +37,11 @@ const SkillSet = () => {
               logoSrc="/images/skills/styledcomponents.png"
             />
           ),
-          items: [
-            'Design UI of elements in CSS-In-JS method using styled-components (or Emotion)',
-          ],
+          items: [t('skills.style.styled-components')],
         },
         {
           title: <LogoWithText text="Scss" logoSrc="/images/skills/scss.png" />,
-          items: [
-            'Design UI of elements using scss features (eg. mixins, functions)',
-          ],
+          items: [t('skills.style.scss')],
         },
       ],
     },
@@ -60,9 +57,7 @@ const SkillSet = () => {
           title: (
             <LogoWithText text="Next.js" logoSrc="/images/skills/Nextjs.png" />
           ),
-          items: [
-            'Provide API Routes or static file serving using Next.js features',
-          ],
+          items: [t('skills.react.nextJS')],
         },
         {
           title: (
@@ -71,9 +66,7 @@ const SkillSet = () => {
               logoSrc="/images/skills/reactquery.png"
             />
           ),
-          items: [
-            'Perform effective data synchronization, suspense control, error handling using React Query',
-          ],
+          items: [t('skills.react.reactQuery')],
         },
         {
           title: (
@@ -83,9 +76,8 @@ const SkillSet = () => {
             />
           ),
           items: [
-            'Handle globally shared data inside React application using: Redux, Redux Toolkit, Zustand, Context API',
-            'Utilize Ducks pattern for global state management',
-            'Give synchronized controls over 3D scenes outside canvas using global states',
+            t('skills.react.state.description-1'),
+            t('skills.react.state.description-2'),
           ],
         },
       ],
@@ -94,10 +86,7 @@ const SkillSet = () => {
       title: (
         <LogoWithText text="Web 3D" logoSrc="/images/skills/threejs.png" />
       ),
-      items: [
-        'Develop 3D graphics on web environment using Three.js',
-        'Integrate 3D into React application using React Three Fiber',
-      ],
+      items: [t('skills.3d.description-1'), t('skills.3d.description-2')],
     },
     {
       title: (
@@ -106,7 +95,7 @@ const SkillSet = () => {
           logoSrc="/images/skills/webAssembly.png"
         />
       ),
-      items: ['Compile webAssembly module using Emscripten'],
+      items: [t('skills.webAssembly')],
     },
   ];
 

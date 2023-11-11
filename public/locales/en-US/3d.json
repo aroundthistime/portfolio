@@ -1,0 +1,28 @@
+{
+    "skills": {
+        "typescript": {
+            "description-1": "Implement OOP using typescript classes",
+            "description-2": "Write utility types using generic types",
+            "description-3": "Build custom npm packages"
+        },
+        "style": {
+            "styled-components": "Design UI of elements in CSS-In-JS method using styled-components (or Emotion)",
+            "scss": "Design UI of elements using scss features (eg. mixins, functions)"
+        },
+        "react": {
+            "nextJS": "Provide API Routes or static file serving using Next.js features",
+            "reactQuery": "Perform data synchronization, suspense control, error handling using React Query",
+            "state": {
+                "description-1": "Handle globally shared data inside React application using: Redux, Redux Toolkit, Zustand, Context API",
+                "description-2": "Give synchronized controls over 3D scenes outside canvas using global states"
+            }
+        },
+        "3d": {
+            "description-1": "Develop 3D graphics on web environment using Three.js",
+            "description-2": "Integrate 3D into React application using React Three Fiber"
+        },
+        "webAssembly": "Compile webAssembly module using Emscripten"
+    },
+
+    "inductive-phrase": "You can click the name of the project to see details"
+}

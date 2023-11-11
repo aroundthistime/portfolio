@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'next-i18next';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
 import PortfolioSection from '../Templates/PortfolioSection';
@@ -14,6 +15,7 @@ import { useBriefProjectsQuery } from '@/queries/project/useProjectQuery';
  * Section for showing the previous projects that I've done
  */
 const Projects = () => {
+  const { t } = useTranslation('3d');
   const { data: projectDTOs } = useBriefProjectsQuery();
   const [projects, setProjects] = useState<MultiDepthData[]>([]);
   /**
@@ -56,9 +58,7 @@ const Projects = () => {
         <PortfolioContentBox.Header>Projects</PortfolioContentBox.Header>
         <PortfolioContentBox.Body>
           <NestedProjectList multiDepthDataList={projects} />
-          <ProjectClickGuidance>
-            (You can click the name of the project to see details)
-          </ProjectClickGuidance>
+          <ProjectClickGuidance>{t('inductive-phrase')}</ProjectClickGuidance>
         </PortfolioContentBox.Body>
       </PortfolioContentBox>
     </PortfolioSection>

@@ -8,7 +8,7 @@ import ProjectSkill from './ProjectSkill';
  * Component rendering a section about skills used in the project
  */
 const ProjectSkills = ({ skills }: Props) => {
-  const { t } = useTranslation('projectPage');
+  const { t } = useTranslation(['projectPage', 'common']);
 
   /**
    * Get whether there is at least one skill that I didn't actually use
@@ -20,12 +20,14 @@ const ProjectSkills = ({ skills }: Props) => {
 
   return (
     <ProjectSection>
-      <ProjectSection.Title>{t('skills')}</ProjectSection.Title>
+      <ProjectSection.Title>
+        {t('skills', { ns: 'common' })}
+      </ProjectSection.Title>
       <ProjectSection.Content>
         {containsSkillNotUsedByMe() && (
           <SkillsNotUsedByMeGuide>
             {t('not-by-me-description', {
-              itemName: t('skills').toLowerCase(),
+              itemName: t('skills', { ns: 'common' }).toLowerCase(),
             })}
           </SkillsNotUsedByMeGuide>
         )}
