@@ -1,3 +1,4 @@
+const { i18n } = require('./next-i18next.config')
 const path = require('path');
 
 const nextConfig = {
@@ -41,10 +42,7 @@ const nextConfig = {
     return config;
   },
 
-  i18n: {
-    locales: ['en-US', 'ko-KR'],
-    defaultLocale: 'en-US',
-  }
+  i18n
 };
 
 module.exports = nextConfig;

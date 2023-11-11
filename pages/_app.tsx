@@ -5,6 +5,7 @@ import '@/styles/index.scss';
 import { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
+import { appWithTranslation } from 'next-i18next';
 import { GLOBAL_THEME } from '@/styles/theme';
 import ErrorPage from '@/components/containers/ErrorPage';
 
@@ -25,4 +26,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default App;
+export default appWithTranslation(App);
