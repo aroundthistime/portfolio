@@ -13,6 +13,8 @@ const LoaderWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   row-gap: ${props => props.theme.layout.margin.vertical.xLarge};
+  z-index: 9999;
+
   background-color: #ffd299;
 
   .loader__loading-text {
