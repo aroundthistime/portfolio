@@ -93,10 +93,12 @@ const MonitorScreen = () => {
               <CloseIcon />
             </MonitorScreenCloseButton>
           </MonitorScreenTitleBar>
-          <MonitorScreenWebview
-            title="Project"
-            src={getMonitorScreenUrlWithLocale()}
-          />
+          {monitorScreenUrl && (
+            <MonitorScreenWebview
+              title="Project"
+              src={getMonitorScreenUrlWithLocale()}
+            />
+          )}
         </MonitorScreenContainer>
       </Html>
     </group>
