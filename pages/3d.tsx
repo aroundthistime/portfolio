@@ -6,6 +6,7 @@ import { TextGeometry } from 'three-stdlib';
 import TWEEN from '@tweenjs/tween.js';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
 import Bart from '@/components/3D/models/Bart';
 import Room from '@/components/3D/models/Room';
 import PortfolioContents from '@/components/containers/PortfolioContents';
@@ -44,37 +45,42 @@ const ThreeDPortfolio = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: '#ffd299',
-      }}>
-      <Canvas
+    <>
+      <Head>
+        <link rel="shortcut icon" href="/projects/portfolio/logo.jpeg" />
+      </Head>
+      <div
         style={{
-          position: 'absolute',
-          top: '0px',
-          left: '0px',
-          zIndex: 0,
-        }}
-        gl={{ toneMapping: NoToneMapping }}
-        scene={{ background: new Color('#A6C5F7') }}>
-        <OrbitControls
-          enablePan={false}
-          enableZoom={enableZoom}
-          enableRotate={enableRotate}
-          zoom0={zoom}
-          target={controlTarget}
-        />
-        <ThreeDSceneContents
-          controlTarget={controlTarget}
-          setControlTarget={setControlTarget}
-        />
-        <directionalLight position={new Vector3(-30, 10, 10)} />
-        <ambientLight intensity={0.2} />
-      </Canvas>
-      <PortfolioContents />
-    </div>
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: '#ffd299',
+        }}>
+        <Canvas
+          style={{
+            position: 'absolute',
+            top: '0px',
+            left: '0px',
+            zIndex: 0,
+          }}
+          gl={{ toneMapping: NoToneMapping }}
+          scene={{ background: new Color('#A6C5F7') }}>
+          <OrbitControls
+            enablePan={false}
+            enableZoom={enableZoom}
+            enableRotate={enableRotate}
+            zoom0={zoom}
+            target={controlTarget}
+          />
+          <ThreeDSceneContents
+            controlTarget={controlTarget}
+            setControlTarget={setControlTarget}
+          />
+          <directionalLight position={new Vector3(-30, 10, 10)} />
+          <ambientLight intensity={0.2} />
+        </Canvas>
+        <PortfolioContents />
+      </div>
+    </>
   );
 };
 
