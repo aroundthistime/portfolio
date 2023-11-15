@@ -16,24 +16,29 @@ export const MonitorScreenTitleBar = styled.header`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  column-gap: 8px;
   padding: 0 20px;
 `;
 
-export const MonitorScreenCloseButton = styled.button`
+export const MonitorScreenButton = styled.button<{
+  buttonColor: string;
+}>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #ff6057;
+  background-color: ${props => props.buttonColor};
   border: 1px solid #d06561;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
   cursor: pointer;
 
   svg {
     visibility: hidden;
     width: 12px;
+    opacity: 0.8;
   }
 
   &:hover {

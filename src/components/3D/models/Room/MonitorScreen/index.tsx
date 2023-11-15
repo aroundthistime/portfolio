@@ -9,12 +9,13 @@ import useSectionDetection from '@/hooks/useSectionDetection';
 import useObjectFocus from '@/hooks/useObjectFocus';
 import use3DSceneStore from '@/store/use3DSceneStore';
 import {
-  MonitorScreenCloseButton,
+  MonitorScreenButton,
   MonitorScreenContainer,
   MonitorScreenTitleBar,
   MonitorScreenWebview,
 } from './style';
 import CloseIcon from '@/assets/icons/close.svg';
+import ExpandIcon from '@/assets/icons/expand.svg';
 import { ProjectsSection } from '@/store/use3DSceneStore/types';
 
 /**
@@ -54,6 +55,14 @@ const MonitorScreen = () => {
   useSectionDetection(SectionTitle.Projects, onEnterProjectsSection);
 
   /**
+   * Callback function for monitor screen expand button click event
+   */
+  const onMonitorExpandButtonClick = () => {
+    if (!monitorScreenUrl) return;
+    window.open(getMonitorScreenUrlWithLocale(), '_blank');
+  };
+
+  /**
    * Callback function for monitor screen close button click event
    */
   const onMonitorCloseButtonClick = () => {
@@ -89,9 +98,16 @@ const MonitorScreen = () => {
             transform,
           }}>
           <MonitorScreenTitleBar>
-            <MonitorScreenCloseButton onClick={onMonitorCloseButtonClick}>
+            <MonitorScreenButton
+              onClick={onMonitorExpandButtonClick}
+              buttonColor="#28C841">
+              <ExpandIcon />
+            </MonitorScreenButton>
+            <MonitorScreenButton
+              onClick={onMonitorCloseButtonClick}
+              buttonColor="#ff6057">
               <CloseIcon />
-            </MonitorScreenCloseButton>
+            </MonitorScreenButton>
           </MonitorScreenTitleBar>
           {monitorScreenUrl && (
             <MonitorScreenWebview
