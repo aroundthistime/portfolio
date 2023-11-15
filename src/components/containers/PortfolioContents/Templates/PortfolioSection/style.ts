@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { DeviceType, getResponsiveStyle } from '@/styles/responsive';
 
 export const PortfolioSectionContainer = styled.section`
   width: 100%;
@@ -13,4 +14,15 @@ export const PortfolioSectionContainer = styled.section`
   }};
   scroll-snap-align: start;
   scroll-snap-stop: always;
+
+  ${getResponsiveStyle(
+    css`
+      padding: ${props => {
+        const { horizontal, vertical } = props.theme.layout.padding;
+        return `${vertical.normal} ${horizontal.normal}`;
+      }};
+    `,
+    DeviceType.Mobile,
+    DeviceType.Tablet,
+  )}
 `;
