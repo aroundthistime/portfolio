@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { DeviceType, getResponsiveStyle } from '@/styles/responsive';
 
 export const PortfolioContentsContainer = styled.div`
   position: fixed;
@@ -15,4 +16,12 @@ export const PortfolioContentsContainer = styled.div`
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
   z-index: 1;
+
+  ${getResponsiveStyle(
+    css`
+      padding-left: 0;
+    `,
+    DeviceType.Mobile,
+    DeviceType.Tablet,
+  )}
 `;

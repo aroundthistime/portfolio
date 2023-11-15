@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const PortfolioSectionContainer = styled.section`
-  width: 50vw;
-  width: 50dvw;
-  height: 100vh;
-  height: 100dvh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
