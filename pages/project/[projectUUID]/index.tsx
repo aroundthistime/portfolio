@@ -13,15 +13,24 @@ import ProjectFeatures from '@/components/containers/ProjectPageTemplate/Project
 import ProjectScreenshots from '@/components/containers/ProjectPageTemplate/ProjectScreenshots';
 import { localizeData } from '@/utils/localization';
 import { MultiLanguageString } from '@/types/utilTypes/Localization';
+import ErrorPage from '@/components/containers/ErrorPage';
 
-interface Props {
-  /**
-   * Data of the project with given UUID
-   */
-  project: Project;
-}
+type Props =
+  | {
+      /**
+       * Data of the project with given UUID
+       */
+      project: Project;
+    }
+  | {
+      errorMessage: string;
+    };
 
-const ProjectPage = ({ project }: Props) => {
+const ProjectPage = ({ project, errorMessage }: Props) => {
+  if (errorMessage) {
+    return <ErrorPage errorMessage={errorMessage} />;
+  }
+
   const faviconUrl = getCacheDisabledURL(project.logo);
   return (
     <>
@@ -51,6 +60,15 @@ export const getServerSideProps = (async ({ params, locale }) => {
   const normalizedProjectUUID = normalizeURLParam(projectUUID);
 
   const projectBeforeLocalization = PROJECTS[normalizedProjectUUID];
+
+  if (!projectBeforeLocalization) {
+    return {
+      props: {
+        errorMessage:
+          'Could not find the requested project. Please check your URL :(',
+      },
+    };
+  }
 
   const localizedProject = localizeData<MultiLanguageProject>(
     projectBeforeLocalization,

@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { DeviceType, getResponsiveStyle } from '@/styles/responsive';
 
 export const ErrorPageWrapper = styled.div`
   width: 100vw;
@@ -14,6 +15,7 @@ export const ErrorPageWrapper = styled.div`
   flex-direction: column;
   row-gap: ${props => props.theme.layout.margin.vertical.xLarge};
   background-color: #ffd299;
+  padding: ${props => props.theme.layout.padding.vertical.normal};
 `;
 
 export const ErrorPageImage = styled.img`
@@ -23,4 +25,11 @@ export const ErrorPageImage = styled.img`
 export const ErrorMessage = styled.p`
   font-size: ${props => props.theme.font.size.large};
   font-weight: bold;
+
+  ${getResponsiveStyle(
+    css`
+      font-size: ${props => props.theme.font.size.normal};
+    `,
+    DeviceType.Mobile,
+  )}
 `;
