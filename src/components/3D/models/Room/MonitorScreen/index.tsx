@@ -100,12 +100,12 @@ const MonitorScreen = () => {
           <MonitorScreenTitleBar>
             <MonitorScreenButton
               onClick={onMonitorExpandButtonClick}
-              buttonColor="#28C841">
+              $buttonColor="#28C841">
               <ExpandIcon />
             </MonitorScreenButton>
             <MonitorScreenButton
               onClick={onMonitorCloseButtonClick}
-              buttonColor="#ff6057">
+              $buttonColor="#ff6057">
               <CloseIcon />
             </MonitorScreenButton>
           </MonitorScreenTitleBar>

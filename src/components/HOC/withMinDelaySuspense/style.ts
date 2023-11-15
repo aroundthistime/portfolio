@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div<ContainerProps>`
   position: relative;
   ${props => {
-    if (props.passedMinDelay) return '';
+    if (props.$passedMinDelay) return '';
 
     //
     /**
@@ -19,5 +19,5 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 interface ContainerProps {
-  passedMinDelay: boolean;
+  $passedMinDelay: boolean;
 }

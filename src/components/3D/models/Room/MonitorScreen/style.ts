@@ -21,12 +21,12 @@ export const MonitorScreenTitleBar = styled.header`
 `;
 
 export const MonitorScreenButton = styled.button<{
-  buttonColor: string;
+  $buttonColor: string;
 }>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: ${props => props.buttonColor};
+  background-color: ${props => props.$buttonColor};
   border: 1px solid #d06561;
 
   display: flex;

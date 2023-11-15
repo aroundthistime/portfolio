@@ -11,8 +11,8 @@ import Bart from '@/components/3D/models/Bart';
 import Room from '@/components/3D/models/Room';
 import PortfolioContents from '@/components/containers/PortfolioContents';
 import use3DSceneStore from '@/store/use3DSceneStore';
-import withSuspenseMinDelaySuspense from '@/components/HOC/withMinDelaySuspense';
 import Loader from '@/components/containers/Loader';
+import withSuspenseMinDelaySuspense from '@/components/HOC/withMinDelaySuspense';
 
 extend({ TextGeometry });
 

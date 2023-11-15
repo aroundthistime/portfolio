@@ -1,12 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import {
-  Component,
-  ComponentType,
-  ReactNode,
-  Suspense,
-  useEffect,
-  useState,
-} from 'react';
+import { ComponentType, ReactNode, Suspense, useEffect, useState } from 'react';
+import { Container } from './style';
 
 /**
  * HOC for wrapping a component with suspense but with minimum amount time that loading fallback should be shown
@@ -28,16 +22,11 @@ function withSuspenseMinDelaySuspense<T>(
       }, minDelay);
     }, []);
 
-    // if (!passedMinDelay) return fallback;
     return (
       <Suspense fallback={fallback}>
-        <div
-          style={{
-            visibility: passedMinDelay ? 'visible' : 'hidden',
-            position: 'absolute',
-          }}>
+        <Container $passedMinDelay={passedMinDelay}>
           <WrappedComponent {...props} />
-        </div>
+        </Container>
         {!passedMinDelay && fallback}
       </Suspense>
     );
