@@ -30,18 +30,9 @@ module.exports = {
     ],
     'react/require-default-props': 0,
     'no-use-before-define': 0,
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
-        mjs: 'never',
-      },
-    ],
+    'import/extensions': 'off',
     'import/prefer-default-export': 'off',
+    'import/no-unresolved': 'off',
     'no-unused-vars': 0,
     '@typescript-eslint/no-unused-vars': 0,
     'react/jsx-filename-extension': [
