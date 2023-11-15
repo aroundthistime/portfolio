@@ -24,7 +24,7 @@ const DEVICE_BREAK_POINT = {
  * Get css statement for certain device type
  * @param {RuleSet<Object>} cssStatement Css statement to apply for certain condition
  * @param {...DeviceType[]} deviceTypes Type of devices that you want to apply the style
- * @returns {string} Responsive css statement only applied for the certain device type(s)
+ * @returns {RuleSet<Object>} Responsive css statement only applied for the certain device type(s)
  */
 export const getResponsiveStyle = (
   cssStatement: RuleSet<Object>,

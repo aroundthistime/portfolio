@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { DeviceType, getResponsiveStyle } from '@/styles/responsive';
 
 export const LanguageSelectorLink = styled(Link)`
   opacity: 0.4;
@@ -21,4 +22,11 @@ export const LanguageIcon = styled.img`
 export const LanguageName = styled.p`
   color: black;
   font-weight: bold;
+
+  ${getResponsiveStyle(
+    css`
+      display: none;
+    `,
+    DeviceType.Mobile,
+  )}
 `;

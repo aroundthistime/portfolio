@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { DeviceType, getResponsiveStyle } from '@/styles/responsive';
 
 export const ProjectSectionContainer = styled.section`
   width: 100%;
@@ -22,8 +23,26 @@ export const ProjectSectionTitle = styled.h3`
     return `${vertical.small} ${horizontal.normal}`;
   }};
   border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
+
+  ${getResponsiveStyle(
+    css`
+      padding: ${props => {
+        const { horizontal, vertical } = props.theme.layout.padding;
+
+        return `${vertical.small} ${horizontal.small}`;
+      }};
+    `,
+    DeviceType.Mobile,
+  )}
 `;
 
 export const ProjectSectionContent = styled.div`
   padding: 0 ${props => props.theme.layout.padding.horizontal.normal};
+
+  ${getResponsiveStyle(
+    css`
+      padding: 0 ${props => props.theme.layout.padding.horizontal.small};
+    `,
+    DeviceType.Mobile,
+  )}
 `;

@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { DeviceType, getResponsiveStyle } from '@/styles/responsive';
 
 export const ProjectPageContainer = styled.main`
   background-color: rgb(255, 255, 255);
@@ -12,4 +14,16 @@ export const ProjectPageContainer = styled.main`
   }};
   line-height: 1.3;
   row-gap: ${props => props.theme.layout.margin.vertical.large};
+
+  ${getResponsiveStyle(
+    css`
+      padding: ${props => {
+        const { vertical, horizontal } = props.theme.layout.padding;
+
+        return `${vertical.large} ${horizontal.normal}`;
+      }};
+    `,
+    DeviceType.Mobile,
+    DeviceType.Tablet,
+  )}
 `;

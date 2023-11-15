@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { DeviceType, getResponsiveStyle } from '@/styles/responsive';
 
 export const LanguageSelectorsContainer = styled.ul`
   display: flex;
@@ -7,4 +8,14 @@ export const LanguageSelectorsContainer = styled.ul`
   top: ${props => props.theme.layout.padding.horizontal.normal};
   left: ${props => props.theme.layout.padding.horizontal.normal};
   z-index: 1;
+
+  ${getResponsiveStyle(
+    css`
+      top: 15px;
+      left: auto;
+      right: 15px;
+    `,
+    DeviceType.Mobile,
+    DeviceType.Tablet,
+  )}
 `;
