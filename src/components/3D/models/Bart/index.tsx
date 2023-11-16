@@ -1,4 +1,4 @@
-import { extend, useLoader, useThree } from '@react-three/fiber';
+import { LoaderProto, extend, useLoader, useThree } from '@react-three/fiber';
 import { Sprite, TextureLoader, Vector3 } from 'three';
 import SpriteText from 'three-spritetext';
 import { useEffect, useRef, useState } from 'react';
@@ -11,7 +11,10 @@ import SpeechBubble from './SpeechBubble';
 extend({ SpriteText });
 
 const Bart = () => {
-  const bartTexture = useLoader(TextureLoader, '/models/bart.png');
+  const bartTexture = useLoader(
+    TextureLoader as LoaderProto<unknown>,
+    '/models/bart.png',
+  );
   const { raycaster, scene } = useThree();
   const { createAudioElementFor3D } = use3DMediaElement();
   const { setRaycasterFromMouseEvent } = useRaycaster();

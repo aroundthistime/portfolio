@@ -1,10 +1,9 @@
 import { Html } from '@react-three/drei';
-import { Vector3 } from 'three';
 import { SpeechBubbleContainer, SpeechBubbleContent } from './style';
 
-const SpeechBubble = ({ content, position }: Props) => {
+const SpeechBubble = ({ content }: Props) => {
   return (
-    <Html transform sprite position={position}>
+    <Html transform sprite>
       <SpeechBubbleContainer>
         <SpeechBubbleContent>{content}</SpeechBubbleContent>
       </SpeechBubbleContainer>
@@ -14,7 +13,6 @@ const SpeechBubble = ({ content, position }: Props) => {
 
 interface Props {
   content: string;
-  position: Vector3;
 }
 
 export default SpeechBubble;

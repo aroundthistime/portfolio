@@ -4,7 +4,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'prettier',
+    'plugin:@react-three/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -13,7 +18,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', '@typescript-eslint', 'prettier', '@react-three'],
   rules: {
     '@typescript-eslint/no-shadow': ['error'],
     'no-shadow': 'off',
@@ -41,6 +46,8 @@ module.exports = {
     ],
     'react/react-in-jsx-scope': 'off',
     'array-callback-return': 'off',
+    '@react-three/no-new-in-loop': 'warn',
+    'react/no-unknown-property': 'warn',
   },
   settings: {
     'import/resolver': {

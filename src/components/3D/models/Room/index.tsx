@@ -1,5 +1,5 @@
 import { MathUtils, Object3D, ObjectLoader } from 'three';
-import { useLoader } from '@react-three/fiber';
+import { LoaderProto, useLoader } from '@react-three/fiber';
 import { useEffect, useRef, useState } from 'react';
 import MonitorScreen from './MonitorScreen';
 import useClock from './useClock';
@@ -11,7 +11,10 @@ import { MyContactType } from '@/types/MyContact';
  * Component for rendering room with every objects of 3d scene included (except for bart)
  */
 const Room = () => {
-  const room = useLoader(ObjectLoader, '/models/room.json') as Object3D;
+  const room = useLoader(
+    ObjectLoader as LoaderProto<unknown>,
+    '/models/room.json',
+  ) as Object3D;
 
   // Objects to handle additionally in the room object tree (eg. animations, material edit)
   const [cat, setCat] = useState<Object3D>();
