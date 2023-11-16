@@ -84,7 +84,9 @@ const useObjectFocus = () => {
    * @returns {Vector3} Center point in 3D vector
    */
   const getObjectCenterPoint = (object: Object3D): Vector3 => {
+    // @ts-ignore
     if (object.geometry) {
+      // @ts-ignore
       const geometry = object.geometry as Geometry;
       geometry.computeBoundingSphere();
       return geometry.boundingSphere.center;

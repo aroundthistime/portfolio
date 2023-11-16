@@ -6,6 +6,8 @@ const nextConfig = {
     styledComponents: true,
   },
 
+  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
+
   // Set for server info hide
   poweredByHeader: false,
   // Set loader and plugin

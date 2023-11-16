@@ -15,20 +15,23 @@ import { localizeData } from '@/utils/localization';
 import { MultiLanguageString } from '@/types/utilTypes/Localization';
 import ErrorPage from '@/components/containers/ErrorPage';
 
-type Props =
-  | {
-      /**
-       * Data of the project with given UUID
-       */
-      project: Project;
-    }
-  | {
-      errorMessage: string;
-    };
+interface Props {
+  project: Project | null;
+}
 
-const ProjectPage = ({ project, errorMessage }: Props) => {
-  if (errorMessage) {
-    return <ErrorPage errorMessage={errorMessage} />;
+const ProjectPage = ({ project }: Props) => {
+  if (!project) {
+    // Directly render error page (cannot use error boundary because of SSR)
+    return (
+      <ErrorPage
+        error={
+          new Error(
+            'Could not find the requested project. Please check your URL :(',
+          )
+        }
+        resetErrorBoundary={() => {}}
+      />
+    );
   }
 
   const faviconUrl = getCacheDisabledURL(project.logo);
@@ -64,8 +67,7 @@ export const getServerSideProps = (async ({ params, locale }) => {
   if (!projectBeforeLocalization) {
     return {
       props: {
-        errorMessage:
-          'Could not find the requested project. Please check your URL :(',
+        project: null,
       },
     };
   }

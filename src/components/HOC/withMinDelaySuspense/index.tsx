@@ -13,7 +13,7 @@ function withSuspenseMinDelaySuspense<T>(
   fallback: ReactNode,
   minDelay: number = 1000,
 ) {
-  return function WithSuspenseMinDelaySuspenseComponent({ props }: T) {
+  return function WithSuspenseMinDelaySuspenseComponent(props: T) {
     const [passedMinDelay, setPassedMinDelay] = useState(false);
 
     useEffect(() => {

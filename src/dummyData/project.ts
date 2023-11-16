@@ -5,7 +5,7 @@ import {
 } from '@/types/Project';
 import { SKILLS } from './skill';
 import PlayStoreLink from '@/utils/link/LinkGenerator/PlayStoreLink';
-import AppStoreLink from '@/utils/link/LinkGenerator/AppstoreLink';
+import AppStoreLink from '@/utils/link/LinkGenerator/AppStoreLink';
 
 export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
   1: {
