@@ -1,11 +1,14 @@
 import Image from 'next/image';
+import { FallbackProps } from 'react-error-boundary';
 import { ErrorMessage, ErrorPageImage, ErrorPageWrapper } from './style';
 import ErrorImage from '@/assets/images/error-image.gif';
 
 /**
  * Component used as the default error fallback
  */
-const ErrorPage = ({ errorMessage = 'Oops! Something went wrong :(' }) => {
+const ErrorPage = ({
+  errorMessage = 'Oops! Something went wrong :(',
+}: Props) => {
   return (
     <ErrorPageWrapper>
       <ErrorPageImage src={ErrorImage.src} alt="error-logo" />
@@ -14,7 +17,7 @@ const ErrorPage = ({ errorMessage = 'Oops! Something went wrong :(' }) => {
   );
 };
 
-interface Props {
+interface Props extends FallbackProps {
   errorMessage?: string;
 }
 
