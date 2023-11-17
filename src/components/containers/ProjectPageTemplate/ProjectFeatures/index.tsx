@@ -69,8 +69,11 @@ const ProjectFeatures = ({ features: rawFeatures }: Props) => {
   };
 
   useEffect(() => {
-    containsFeatureNotDoneByMe();
     processFeaturesDataForRendering();
+  }, [rawFeatures]);
+
+  useEffect(() => {
+    containsFeatureNotDoneByMe();
   }, []);
 
   return (

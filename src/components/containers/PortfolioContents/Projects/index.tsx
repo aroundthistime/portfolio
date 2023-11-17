@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
 import PortfolioSection from '../Templates/PortfolioSection';
@@ -16,7 +17,9 @@ import { useBriefProjectsQuery } from '@/queries/project/useProjectQuery';
  */
 const Projects = () => {
   const { t } = useTranslation('3d');
-  const { data: projectDTOs } = useBriefProjectsQuery();
+  const router = useRouter();
+
+  const { data: projectDTOs, refetch, isLoading } = useBriefProjectsQuery();
   const [projects, setProjects] = useState<MultiDepthData[]>([]);
   /**
    * Convert project DTOs suitable for rendering
@@ -51,6 +54,12 @@ const Projects = () => {
       convertProjectsDTOForRendering();
     }
   }, [projectDTOs]);
+
+  useEffect(() => {
+    if (router.locale && !isLoading) {
+      refetch();
+    }
+  }, [router.locale]);
 
   return (
     <PortfolioSection sectionTitle={SectionTitle.Projects}>
