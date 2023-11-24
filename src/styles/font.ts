@@ -23,4 +23,5 @@ export const notoSerifKR = Noto_Serif_KR({
 export const ysabeauOfficeFont = Ysabeau_Office({
   subsets: ['latin'],
   style: 'italic',
+  display: 'swap',
 });
