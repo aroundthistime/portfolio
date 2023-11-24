@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { GLOBAL_THEME } from '@/styles/theme';
 import ErrorPage from '@/components/containers/ErrorPage';
 import LanguageSelectors from '@/components/LanguageSelectors';
+import { GlobalStyles } from '@/styles/global';
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={GLOBAL_THEME}>
         <ErrorBoundary FallbackComponent={ErrorPage}>
+          <GlobalStyles />
           <Component {...pageProps} />
           {/* Do not provide language selectors to prevent nested UI */}
           {isWebview === false && <LanguageSelectors />}
