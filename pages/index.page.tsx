@@ -47,7 +47,14 @@ const ThreeDPortfolio = () => {
   return (
     <>
       <Head>
+        <title>유동환 (Donghwan Yu) Portfolio</title>
         <link rel="shortcut icon" href="/projects/portfolio/logo.jpeg" />
+        <meta
+          name="description"
+          content="3D Portfolio of Donghwan Yu in custom web page"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/projects/portfolio/logo.jpeg" />
       </Head>
       <div
         style={{

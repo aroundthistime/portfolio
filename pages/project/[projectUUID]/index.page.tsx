@@ -38,6 +38,7 @@ const ProjectPage = ({ project }: Props) => {
   return (
     <>
       <Head>
+        <title>{project.title}</title>
         <link rel="shortcut icon" href={faviconUrl} />
         <meta name="title" content={project.title} />
         <meta name="description" content={project.summary.brief} />
