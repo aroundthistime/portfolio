@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { DeviceType, getResponsiveStyle } from '@/styles/responsive';
+import { notoSerifKR, playfairDisplayFont } from '@/styles/font';
 
 export const ProjectSectionContainer = styled.section`
   width: 100%;
@@ -13,7 +14,8 @@ export const ProjectSectionContainer = styled.section`
 `;
 
 export const ProjectSectionTitle = styled.h3`
-  font-family: 'Playfair Display', 'Noto Serif KR', serif;
+  font-family: ${playfairDisplayFont.style.fontFamily},
+    ${notoSerifKR.style.fontFamily}, sans-serif;
   font-weight: 500;
   font-size: ${props => props.theme.font.size.xLarge};
   font-style: italic;

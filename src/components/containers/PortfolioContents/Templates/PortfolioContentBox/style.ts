@@ -4,6 +4,7 @@ import {
   NestedListConfigProperty,
   getNestedListCssGenerator,
 } from '@/components/NestedList/style';
+import { playfairDisplayFont, righteousFont } from '@/styles/font';
 
 export const PortfolioContentBoxContainer = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ export const PortfolioContentBoxHeader = styled.h2`
   margin-right: ${props => props.theme.layout.margin.horizontal.normal};
   border-bottom: 2px solid #a86442;
   font-size: ${props => props.theme.font.size.large};
-  font-family: 'Playfair Display', serif;
+  font-family: ${playfairDisplayFont.style.fontFamily}, sans-serif;
   font-weight: 500;
 `;
 
@@ -84,6 +85,6 @@ export const PortfolioContentBoxBody = styled.div`
   ${getNestedListStyle()}
 
   .nested-list__title {
-    font-family: 'Righteous', sans-serif;
+    font-family: ${righteousFont.style.fontFamily}, sans-serif;
   }
 `;

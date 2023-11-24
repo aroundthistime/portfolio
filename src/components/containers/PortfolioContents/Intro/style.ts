@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { playfairDisplayFont } from '@/styles/font';
 
 export const IntroContainer = styled.div`
   width: 100%;
@@ -8,7 +9,7 @@ export const IntroContainer = styled.div`
   align-items: start;
   flex-direction: column;
   row-gap: 15%;
-  font-family: 'Playfair Display', serif;
+  font-family: ${playfairDisplayFont.style.fontFamily}, sans-serif;
   font-style: italic;
 `;
 
