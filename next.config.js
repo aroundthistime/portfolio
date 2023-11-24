@@ -5,6 +5,7 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  swcMinify: true,
 
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
 
