@@ -12,6 +12,7 @@ const LanguageSelector = ({ language, locale, iconSrc }: Props) => {
     // Redirect to same path but with the desired locale
     <LanguageSelectorLink
       href={router.asPath}
+      replace
       locale={locale}
       className={classNames({
         'language-selector--selected': router.locale === locale,
