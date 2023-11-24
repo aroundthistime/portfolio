@@ -11,6 +11,7 @@ import use3DSceneStore from '@/store/use3DSceneStore';
 import { ProjectBriefDto } from '@/types/dto/ProjectDto';
 import { ProjectsSection } from '@/store/use3DSceneStore/types';
 import { useBriefProjectsQuery } from '@/queries/project/useProjectQuery';
+import { isMobileDevice } from '@/utils/device';
 
 /**
  * Section for showing the previous projects that I've done
@@ -21,6 +22,7 @@ const Projects = () => {
 
   const { data: projectDTOs, refetch, isLoading } = useBriefProjectsQuery();
   const [projects, setProjects] = useState<MultiDepthData[]>([]);
+
   /**
    * Convert project DTOs suitable for rendering
    */
@@ -28,11 +30,19 @@ const Projects = () => {
     const convertedProjects: MultiDepthData[] = projectDTOs.map(
       (projectDto: ProjectBriefDto) => {
         const onProjectClick = () => {
-          const { openMonitor } = use3DSceneStore.getState()
-            .currentSection as ProjectsSection;
+          // Maintain current locale for opening project page
+          const projectPageUrl = `/${router.locale}/project/${projectDto.uuid}`;
 
-          if (openMonitor) {
-            openMonitor(`/project/${projectDto.uuid}`);
+          // In mobile devices, new tabs will open without using 3D monitors due to screen size issues
+          if (isMobileDevice()) {
+            window.open(projectPageUrl, '_blank');
+          } else {
+            const { openMonitor } = use3DSceneStore.getState()
+              .currentSection as ProjectsSection;
+
+            if (openMonitor) {
+              openMonitor(projectPageUrl);
+            }
           }
         };
         return {

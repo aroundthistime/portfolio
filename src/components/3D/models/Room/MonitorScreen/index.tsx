@@ -59,7 +59,7 @@ const MonitorScreen = () => {
    */
   const onMonitorExpandButtonClick = () => {
     if (!monitorScreenUrl) return;
-    window.open(getMonitorScreenUrlWithLocale(), '_blank');
+    window.open(monitorScreenUrl, '_blank');
   };
 
   /**
@@ -67,13 +67,6 @@ const MonitorScreen = () => {
    */
   const onMonitorCloseButtonClick = () => {
     if (closeMonitor) closeMonitor();
-  };
-
-  /**
-   * Get monitor screen URL with current locale applied
-   */
-  const getMonitorScreenUrlWithLocale = () => {
-    return `/${locale}${monitorScreenUrl}`;
   };
 
   useEffect(() => {
@@ -110,10 +103,7 @@ const MonitorScreen = () => {
             </MonitorScreenButton>
           </MonitorScreenTitleBar>
           {monitorScreenUrl && (
-            <MonitorScreenWebview
-              title="Project"
-              src={getMonitorScreenUrlWithLocale()}
-            />
+            <MonitorScreenWebview title="Project" src={monitorScreenUrl} />
           )}
         </MonitorScreenContainer>
       </Html>
