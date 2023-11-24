@@ -38,7 +38,10 @@ const ProjectSummary = ({ summary }: Props) => {
    */
   const getProjectLinks = () => {
     const ProjectLinks = summary.links.map(link => (
-      <Link href={link.url} key={link.title}>
+      <Link
+        href={link.url}
+        key={link.title}
+        style={{ display: 'inline-block' }}>
         {link.image ? (
           <ProjectLinkLogoWithText logoSrc={link.image} text={link.title} />
         ) : (
