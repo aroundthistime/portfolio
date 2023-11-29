@@ -10,7 +10,9 @@
             "scss": "mixin, function 등 Scss 기능을 활용하여 UI를 구현할 수 있습니다"
         },
         "react": {
-            "nextJS": "Next.js 프레임워크를 활용하여 자체 API 라우트, 정적 파일 제공 등을 구현할 수 있습니다",
+            "description-1": "Container/Presentational 패턴을 통해 로직과 뷰를 명확히 분리할 수 있습니다",
+            "description-2": "i18next 라이브러리를 활용하여 어플리케이션 국제화를 적용할 수 있습니다",
+            "nextJS": "Next.js 프레임워크를 활용하여 SSR 어플리케이션을 구현하고 API 라우트, 정적 파일 제공 등의 빌트인 기능들을 활용할 수 있습니다",
             "reactQuery": "React Query를 활용하여 비동기 처리, 에러 대응 등을 구현할 수 있습니다",
             "state": {
                 "description-1": "Redux, Redux Toolkit, Zustand, Context API 등을 활용하여 리액트 어플리케이션의 전역 상태를 관리할 수 있습니다",
@@ -21,7 +23,7 @@
             "description-1": "Three.js를 활용하여 웹 환경에서 3d 그래픽을 구현할 수 있습니다",
             "description-2": "React Three Fiber 라이브러리를 활용하여 리액트 어플리케이션에 3D 기능을 탑재할 수 있습니다"
         },
-        "webAssembly": "Emscripten을 활용하여 웹어셈블리 모듈을 컴파일할 수 있습니다"
+        "webAssembly": "Emscripten을 활용하여 웹어셈블리 모듈을 컴파일하고 이를 웹 어플리케이션에서 실행할 수 있습니다"
     },
 
     "inductive-phrase": "프로젝트 이름을 클릭하시면 보다 구체적인 내용을 확인하실 수 있습니다"

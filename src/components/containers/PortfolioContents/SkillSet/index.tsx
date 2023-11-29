@@ -53,6 +53,8 @@ const SkillSet = () => {
         />
       ),
       items: [
+        t('skills.react.description-1'),
+        t('skills.react.description-2'),
         {
           title: (
             <LogoWithText text="Next.js" logoSrc="/images/skills/Nextjs.png" />
