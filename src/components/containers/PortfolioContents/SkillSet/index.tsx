@@ -17,6 +17,19 @@ const SkillSet = () => {
     {
       title: (
         <LogoWithText
+          text="HTML5, CSS, Javascript"
+          logoSrc="/images/skills/web.png"
+        />
+      ),
+      items: [
+        t('skills.web.description-1'),
+        t('skills.web.description-2'),
+        t('skills.web.description-3'),
+      ],
+    },
+    {
+      title: (
+        <LogoWithText
           text="Typescript"
           logoSrc="/images/skills/typescript.png"
         />
@@ -28,65 +41,21 @@ const SkillSet = () => {
       ],
     },
     {
-      title: <LogoWithText text="Style" logoSrc="/images/skills/style.png" />,
-      items: [
-        {
-          title: (
-            <LogoWithText
-              text="styled-components"
-              logoSrc="/images/skills/styledcomponents.png"
-            />
-          ),
-          items: [t('skills.style.styled-components')],
-        },
-        {
-          title: <LogoWithText text="Scss" logoSrc="/images/skills/scss.png" />,
-          items: [t('skills.style.scss')],
-        },
-      ],
-    },
-    {
       title: (
         <LogoWithText
-          text="React JS / React Native"
+          text="React.js, Next.js, React Native"
           logoSrc="/images/skills/React.png"
         />
       ),
       items: [
         t('skills.react.description-1'),
         t('skills.react.description-2'),
-        {
-          title: (
-            <LogoWithText text="Next.js" logoSrc="/images/skills/Nextjs.png" />
-          ),
-          items: [t('skills.react.nextJS')],
-        },
-        {
-          title: (
-            <LogoWithText
-              text="React Query"
-              logoSrc="/images/skills/reactquery.png"
-            />
-          ),
-          items: [t('skills.react.reactQuery')],
-        },
-        {
-          title: (
-            <LogoWithText
-              text="State management"
-              logoSrc="/images/skills/redux.svg"
-            />
-          ),
-          items: [
-            t('skills.react.state.description-1'),
-            t('skills.react.state.description-2'),
-          ],
-        },
+        t('skills.react.description-3'),
       ],
     },
     {
       title: (
-        <LogoWithText text="Web 3D" logoSrc="/images/skills/threejs.png" />
+        <LogoWithText text="Three.js" logoSrc="/images/skills/threejs.png" />
       ),
       items: [t('skills.3d.description-1'), t('skills.3d.description-2')],
     },
@@ -97,7 +66,7 @@ const SkillSet = () => {
           logoSrc="/images/skills/webAssembly.png"
         />
       ),
-      items: [t('skills.webAssembly')],
+      items: [t('skills.webAssembly.description-1')],
     },
   ];
 

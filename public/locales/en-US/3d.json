@@ -1,29 +1,29 @@
 {
     "skills": {
-        "typescript": {
-            "description-1": "Implement OOP using typescript classes",
-            "description-2": "Write utility types using generic types",
-            "description-3": "Implement custom npm packages with types included"
+        "web": {
+            "description-1": "Write javascript code with ES6 features",
+            "description-2": "Set Favicon, Open Graph Protocol to a web page",
+            "description-3": "Design UI using SCSS, CSS Module, styled-components"
         },
-        "style": {
-            "styled-components": "Design UI of elements in CSS-In-JS method using styled-components (or Emotion)",
-            "scss": "Design UI of elements using scss features (eg. mixins, functions)"
+        "typescript": {
+            "description-1": "Implement applications or npm libraries using typescript",
+            "description-2": "Apply OOP using classes provided by typescript",
+            "description-3": "Write Utility Types based on Generic types"
         },
         "react": {
-            "description-1": "Separate application logic from the view using Container/Presentational pattern",
-            "description-2": "Internalize application using i18next library",
-            "nextJS": "Implement SSR application and provide API Routes or static file serving using Next.js built-in features",
-            "reactQuery": "Perform data synchronization, suspense control, error handling using React Query",
-            "state": {
-                "description-1": "Handle globally shared data inside React application using: Redux, Redux Toolkit, Zustand, Context API",
-                "description-2": "Give synchronized controls over 3D scenes outside canvas using global states"
-            }
+            "description-1": "Implement SPA application with React JS or SSR application with Next.js",
+            "description-2": "Implement cross platform mobile applications using React Native (Android, iOS)",
+            "description-3": "Separate application logic from the view using Container/Presentational pattern",
+            "description-4": "Handle globally shared data inside React application using: Redux, Redux Toolkit, Zustand, Context API",
+            "description-5": "Internalize application using i18next library"
         },
         "3d": {
-            "description-1": "Develop 3D graphics on web environment using Three.js",
-            "description-2": "Integrate 3D into React application using React Three Fiber"
+            "description-1": "Render 3D graphics on web environment using Three.js",
+            "description-2": "Integrate Web 3D into React application using React Three Fiber"
         },
-        "webAssembly": "Compile webAssembly module using Emscripten and execute it from a web application"
+        "webAssembly": {
+            "description-1": "Compile webAssembly module using Emscripten and execute it from a web application"
+        }
     },
 
     "inductive-phrase": "You can click the name of the project to see details"
