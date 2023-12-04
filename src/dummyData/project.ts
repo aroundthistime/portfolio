@@ -23,7 +23,7 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
       period: {
         from: {
           year: 2023,
-          month: 3,
+          month: 2,
         },
         till: {
           year: 2023,
@@ -129,7 +129,7 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
                   'ko-KR': '자체 증강물 제공',
                   'en-US': 'Provide built-in assets',
                 },
-                byMe: true,
+                byMe: false,
               },
               {
                 content: {
@@ -146,7 +146,7 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
                   'en-US':
                     "Auto-save (triggered by every change made in the project's content",
                 },
-                byMe: false,
+                byMe: true,
               },
               {
                 title: {
@@ -182,14 +182,6 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
                 },
                 byMe: true,
               },
-              {
-                content: {
-                  'ko-KR': '유료 플랜에 한해 뷰어 추가 설정 기능',
-                  'en-US':
-                    'Provide additional customization regarding Viewer application for paid plans',
-                },
-                byMe: true,
-              },
             ],
           },
         ],
@@ -206,9 +198,18 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
           {
             content: {
               'ko-KR':
-                '타겟 인식 시 타겟 위치 및 방향 기준으로 프로젝트 렌더링',
+                '캔버스, 카메라 등 Web API 활용하여 실제 카메라 촬영 영상 배경 렌더링',
               'en-US':
-                'Render project based on the position and the direction of the detected target',
+                'Render background based on reality using Web APIs (eg. Canvas, Camera)',
+            },
+            byMe: true,
+          },
+          {
+            content: {
+              'ko-KR':
+                '타겟 인식 시 타겟 위치 및 방향 기준으로 프로젝트 렌더링 (30 FPS)',
+              'en-US':
+                'Render project based on the position and the direction of the detected target (in 30 FPS)',
             },
             byMe: true,
           },
@@ -227,6 +228,14 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
             byMe: true,
           },
           {
+            content: {
+              'ko-KR': '프로젝트 설정 기반 Favicon, Open Graph Protocol 적용',
+              'en-US':
+                'Apply Favicon and Open Graph Protocol according to project settings',
+            },
+            byMe: true,
+          },
+          {
             title: {
               content: {
                 'ko-KR': '통계 자료 수집',
@@ -238,9 +247,9 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
               {
                 content: {
                   'ko-KR':
-                    '사용자 액션 등 특정 기준 충족할 때마다 통계 자료 수집',
+                    '사용자 액션 등 특정 기준 충족할 때마다 통계 자료 수집 (웹 소켓 기반)',
                   'en-US':
-                    'Collect data if a certain condition is met (eg. user action, play start)',
+                    'Collect data if a certain condition is met (eg. user action, play start) using web socket',
                 },
                 byMe: true,
               },
@@ -345,7 +354,7 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
         byMe: true,
       },
       {
-        skill: SKILLS.reduxToolkit,
+        skill: SKILLS.redux,
         byMe: true,
       },
       {
