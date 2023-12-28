@@ -103,4 +103,16 @@ export const SKILLS = {
     name: 'React Testing Library',
     logoSrc: '/images/skills/react-testing-library.png',
   },
+  jenkins: {
+    name: 'Jenkins',
+    logoSrc: '/images/skills/jenkins.png',
+  },
+  argocd: {
+    name: 'Argo CD',
+    logoSrc: '/images/skills/argocd.png',
+  },
+  kubernetes: {
+    name: 'Kubernetes',
+    logoSrc: '/images/skills/kubernetes.png',
+  },
 } as const;
