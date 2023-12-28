@@ -1,13 +1,10 @@
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { Project, ProjectDateInfo } from '@/types/Project';
-import {
-  ProjectLinkLogoWithText,
-  ProjectSummaryItem,
-  ProjectSummaryItemLabel,
-} from './style';
+import { ProjectSummaryItem, ProjectSummaryItemLabel } from './style';
 import { addBetweenElements } from '@/utils/array';
 import ProjectSection from '../ProjectSection';
+import LogoWithText from '@/components/LogoWithText';
 
 /**
  * Component which contains summary of a project
@@ -43,7 +40,7 @@ const ProjectSummary = ({ summary }: Props) => {
         key={link.title}
         style={{ display: 'inline-block' }}>
         {link.image ? (
-          <ProjectLinkLogoWithText logoSrc={link.image} text={link.title} />
+          <LogoWithText logoSrc={link.image} text={link.title} />
         ) : (
           link.title
         )}

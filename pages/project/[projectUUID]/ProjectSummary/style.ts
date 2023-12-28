@@ -12,8 +12,3 @@ export const ProjectSummaryItemLabel = styled.span`
     content: ' : ';
   }
 `;
-
-export const ProjectLinkLogoWithText = styled(LogoWithText)`
-  display: inline-flex;
-  align-items: normal;
-`;
