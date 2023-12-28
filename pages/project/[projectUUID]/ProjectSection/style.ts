@@ -18,7 +18,6 @@ export const ProjectSectionTitle = styled.h3`
     ${notoSerifKR.style.fontFamily}, sans-serif;
   font-weight: 500;
   font-size: ${props => props.theme.font.size.xLarge};
-  font-style: italic;
   padding: ${props => {
     const { horizontal, vertical } = props.theme.layout.padding;
 
