@@ -12,7 +12,7 @@ export const ProjectPageContainer = styled.main`
 
     return `${vertical.xLarge} ${horizontal.xLarge}`;
   }};
-  line-height: 1.3;
+  line-height: 1.4;
   row-gap: ${props => props.theme.layout.margin.vertical.large};
 
   ${getResponsiveStyle(

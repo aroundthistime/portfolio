@@ -48,6 +48,11 @@ export interface MultiLanguageProject {
   features: MultiDepthData<ProjectFeature>[];
 
   /**
+   * Trouble shoots that I've experienced during the project
+   */
+  troubleShoots?: ProjectTroubleShoot[];
+
+  /**
    * Screenshots (could be videos also) to show the result of the project
    */
   screenshotGroups?: ProjectScreenshotGroup[];
@@ -123,6 +128,26 @@ interface CollaboratedProjectItem {
    * Whether the thing is done (or used) by me
    */
   byMe: boolean;
+}
+
+/**
+ * Issue that I met during the project and corresponding solution that I've came up with
+ */
+export interface ProjectTroubleShoot {
+  /**
+   * One line title to summarize the issue
+   */
+  title: MultiLanguageString;
+
+  /**
+   * Issue of the trouble shoot
+   */
+  problem: MultiLanguageString;
+
+  /**
+   * Applied solution
+   */
+  solution: MultiLanguageString;
 }
 
 /**

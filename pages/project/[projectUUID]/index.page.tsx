@@ -14,6 +14,7 @@ import { ProjectPageContainer } from './style';
 import { localizeData } from '@/utils/localization';
 import { MultiLanguageString } from '@/types/utilTypes/Localization';
 import ErrorPage from '@/components/containers/ErrorPage';
+import ProjectTroubleShoots from './ProjectTroubleShoots';
 
 interface Props {
   project: Project | null;
@@ -51,6 +52,9 @@ const ProjectPage = ({ project }: Props) => {
         <ProjectSkills skills={project.skills} />
         <ProjectContent content={project.content} />
         <ProjectFeatures features={project.features} />
+        {project.troubleShoots && (
+          <ProjectTroubleShoots troubleShoots={project.troubleShoots} />
+        )}
         {project.screenshotGroups && (
           <ProjectScreenshots screenshotGroups={project.screenshotGroups} />
         )}
