@@ -36,14 +36,13 @@ export const MonitorScreenButton = styled.button<{
   cursor: pointer;
 
   svg {
-    visibility: hidden;
     width: 12px;
-    opacity: 0.8;
+    opacity: 0.7;
   }
 
   &:hover {
     svg {
-      visibility: visible;
+      opacity: 0.9;
     }
   }
 `;
