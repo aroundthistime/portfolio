@@ -89,10 +89,22 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
         skill: SKILLS.docker,
         byMe: false,
       },
+      {
+        skill: SKILLS.kubernetes,
+        byMe: false,
+      },
+      {
+        skill: SKILLS.argocd,
+        byMe: false,
+      },
+      {
+        skill: SKILLS.jenkins,
+        byMe: false,
+      },
     ],
     content: {
       'ko-KR':
-        '버넥트 플랫폼 조직 근무 당시 참여했던 웹 기반 AR 프로젝트 저작 플랫폼입니다. 유니티가 아닌 Three.js, React Three Fiber, React Three Drei 등 순수 웹 기술을 기반으로 3D 렌더링을 수행하였으며 AR 기능 관련해서는 연구 조직에서 개발한 SDK인 트랙을 활용하였습니다.\n전체적인 서비스의 범위 내에서는 3D 프로젝트를 저작할 수 있는 에디터와 해당 프로젝트를 AR 기능으로 확인할 수 있는 뷰어 부문에 참여하였으며 구체적으로는 코드 유지보수, 신규 기능 개발, 리팩토링, 개발문서 작성 등을 담당하였습니다. (서비스 런치 이후 시점에 프로젝트에 참여하였기 때문에 초반 시스템 설계에는 참여하지 않았습니다.)\n우선 에디터에서는 하나의 프로젝트에 대해 해당 프로젝트가 AR 뷰어에서 추적할 현실에 존재하는 타겟 물체를 설정한 후 그 위치를 기준으로 3D (혹은 2D) 증강물들을 추가할 수 있습니다. 증강물에는 어플리케이션에서 기본 제공하는 도형, 사용자의 3D 모델 파일, 이미지-비디오-오디오 등 미디어 파일 등이 포함되며 자동 실행, 사용자 터치 등과 같은 트리거를 통해 이벤트를 추가할 수도 있습니다. 이렇게 생성된 프로젝트는 작업에 변경점이 생길 때마다 자동적으로 저장되며 사용자가 최종적으로 퍼블리시할 경우 뷰어 어플리케이션을 통해 해당 프로젝트의 내용을 AR로 확인할 수 있습니다.\nAR 뷰어의 경우 기기의 카메라를 통해 현실에 존재하는 지정된 타겟을 탐지한 후 그 위치를 기준으로 프로젝트 렌더링을 수행합니다. 추가적으로 AR 뷰어는 사용자의 행동 등 특정 기준이 발동할 때마다 그 데이터를 수집하는 뷰 트레이스 기능을 제공합니다. 이렇게 획득된 통계 정보는 SQUARS 서비스의 Analytics 기능을 통해 확인할 수 있습니다.',
+        '버넥트 플랫폼 조직 근무 당시 참여했던 웹 기반 AR 프로젝트 저작 플랫폼입니다. 유니티가 아닌 Three.js, React Three Fiber, React Three Drei 등 순수 웹 기술을 기반으로 3D 렌더링을 수행하였으며 AR 기능 관련해서는 연구 조직에서 개발한 SDK인 TRACK을 활용하였습니다.\n전체적인 서비스의 범위 내에서는 3D 프로젝트를 저작할 수 있는 에디터와 해당 프로젝트를 AR 기능으로 확인할 수 있는 뷰어 부문에 참여하였으며 구체적으로는 코드 유지보수, 신규 기능 개발, 리팩토링, 개발문서 작성 등을 담당하였습니다. (서비스 런치 이후 시점에 프로젝트에 참여하였기 때문에 초반 시스템 설계에는 참여하지 않았습니다.)\n우선 에디터에서는 하나의 프로젝트에 대해 해당 프로젝트가 AR 뷰어에서 추적할 현실에 존재하는 타겟 물체를 설정한 후 그 위치를 기준으로 3D (혹은 2D) 증강물들을 추가할 수 있습니다. 증강물에는 어플리케이션에서 기본 제공하는 도형, 사용자의 3D 모델 파일, 이미지-비디오-오디오 등 미디어 파일 등이 포함되며 자동 실행, 사용자 터치 등과 같은 트리거를 통해 이벤트를 추가할 수도 있습니다. 이렇게 생성된 프로젝트는 작업에 변경점이 생길 때마다 자동적으로 저장되며 사용자가 최종적으로 퍼블리시할 경우 뷰어 어플리케이션을 통해 해당 프로젝트의 내용을 AR로 확인할 수 있습니다.\nAR 뷰어의 경우 기기의 카메라를 통해 현실에 존재하는 지정된 타겟을 탐지한 후 그 위치를 기준으로 프로젝트 렌더링을 수행합니다. 추가적으로 AR 뷰어는 사용자의 행동 등 특정 기준이 발동할 때마다 그 데이터를 수집하는 뷰 트레이스 기능을 제공합니다. 이렇게 획득된 통계 정보는 SQUARS 서비스의 Analytics 기능을 통해 확인할 수 있습니다.',
       'en-US':
         'SQUARS is a platform service where you can create and view AR experiences. It is not based on Unity, but runs on pure web technology like Three.js, React Three Fiber. And for the functionality regarding the augmented reality itself, we used TRACK which is an SDK provided by the research center of the same company.\nInside the entire system, I was working on the implementation of the editor where you can create 3D projects, and the viewer where you can actually experience the project in AR mode. And inside the team, I was managing code maintenance, implementing new features, code refactoring and writing technical documentations. (I didn’t participate in designing the structure of the system itself because I was involved in this project after it initially launched its service)\nFor deeper explanation, editor is an application where you can create a project with a real-life target that you want to track with AR and add augmentations based on the location of the target. For the augmentations, we provide built-in primitives, 3D model files by default, and we also let the user import his local assets (3D model files or media files like image, video, audios). And for each object, you can add events which are either triggered by the initialization of the project or by a certain interaction of the user. The project inside editor is auto-saved, and you have an additional publish feature which decides the state of the project that the viewer application would actually provide.\nFrom the AR Viewer, you use the camera of your mobile device to detect the designated target and based on that you render the contents of the project. AR Viewer provides an additional feature called ‘View tracing’ which collects data when certain condition is met (eg. user did a certain action). The statistical information is provided at Analytics page of SQUARS service, which can be used for obtaining further insights.',
     },
@@ -264,6 +276,64 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
             ],
           },
         ],
+      },
+    ],
+    troubleShoots: [
+      {
+        title: {
+          'ko-KR': '안정적인 통계 수집 시스템 구현',
+          'en-US': 'Implementing stable statistics collection system',
+        },
+        problem: {
+          'ko-KR':
+            '뷰어 어플리케이션에서 구현한 통계 정보 수집 시스템은 초기에 웹소켓을 기반으로 구현되었습니다. 그러나 이따금씩 웹소켓 통신이 해체되는 순간들이 발생하였고 이는 자연스럽게 수집할 데이터의 손실을 야기했습니다. 그에 따라 프로젝트 접속 시간과 같이 웹소켓 프로토콜이 필요한 일부 데이터를 제외한 모든 데이터 수집을 REST API로 대체하는 작업을 진행하게 되었습니다. 대부분의 데이터는 보다 안정적인 수집 양상을 보였지만 새로고침, 브라우저 종료와 같이 페이지 이탈과 관련된 데이터는 일반적인 REST API로는 제대로 정보 전송이 이루어지는 문제가 발생하였습니다.',
+          'en-US':
+            "The system for collecting statistical data from the Viewer application was initially implemented using Websocket Protocol. However, we've encountered several occasions that websocket connection gets lost in the middle which led to unexpected loss of the data to collect. Therefore we've replaced the API protocols with REST API for stability unless the data required a dedicated feature of websocket (eg. collecting the play time of the project). For most of the data, the result was more stable after the migration. However, we could no longer collect data related to page exits (eg. refresh, close application).",
+        },
+        solution: {
+          'ko-KR':
+            '다행히 페이지의 종료에도 지속가능한 요청을 날리는 두 가지 Web API를 발견할 수 있었습니다. 첫 번째는 fetch의 keepalive 속성을 활용하는 방법이었으며 두 번째는 navigator의 sendBeacon 메소드를 활용하는 방법이었습니다. 두 가지 방법 모두 최대 64kb의 작은 데이터만을 전송할 수 있지만 간단한 통계 정보만을 전송하는 시스템의 목적사항에 부합했습니다. 다만 url과 payload data를 제외하고는 추가적인 설정이 제한되는 후자와 달리 fetch를 활용하는 방법이 요청에 보다 많은 설정을 적용할 수 있었기 때문에 최종적으로 해당 방식을 채택하여 시스템을 구현했습니다.',
+          'en-US':
+            "Fortunately, there were 2 Web APIs we could utilize for sending a persistent request which would outlive a webpage. The first was using keepalive property of fetch, and the other was using sendBeacon method of navigator. Both methods had restriction for the maximum size of data to send (64kb) which didn't become an issue for our demand. But unlike fetch which enables additional configurations to the request, navigator.sendBeacon had more restrictions (the API only provided configurations for the url and the payload data). For the reason, we've ended up with implementing the system with fetch for further flexibility.",
+        },
+      },
+      {
+        title: {
+          'ko-KR':
+            'Safari 브라우저 17버전의 WebGL 이슈 (브라우저 및 OS 별 이슈 대응)',
+          'en-US':
+            'WebGL context lost issue of Safari over iOS 17 (resolve browser/OS specific issues)',
+        },
+        problem: {
+          'ko-KR':
+            'iOS 17 버전 이상의 사파리 브라우저에서 타겟 인식이 전혀 이루어지지 않는 문제가 발생했습니다. iOS 환경의 크롬 브라우저는 사파리 브라우저와 동일 엔진을 공유하기 때문에 결국 해당 버전대의 iOS 기기에서는 SQUARS가 서비스를 제공하는 모든 브라우저가 정상적인 기능을 할 수 없게 되었습니다.',
+          'en-US':
+            'There was an issue that the Viewer application was not capable of detecting the target at all from Safari browsers over iOS 17. Because Chrome browser on an iOS device shares the same engine with Safari, it meant that SQUARS was no longer providing its service for any of the main target browsers on iOS environment.',
+        },
+        solution: {
+          'ko-KR':
+            '카메라, WebGL 등 Web API에 의존도가 상대적으로 높은 SQUARS의 특성상 특정 브라우저 혹은 OS와 관련된 이슈가 종종 발생하는 것은 예견된 일이었습니다. 그렇기 때문에 SQUARS의 에러 핸들링 시스템은 클라이언트 측에서 예상치 못한 런타임 에러가 발생시 브라우저, OS 등의 정보를 로그에 함께 포함시키도록 구현되어 있었습니다. 해당 정보를 통해 저희는 iOS 17 버전에서 사파리 브라우저가 백그라운드 상태로 넘어갈 때 WebGL context가 손실되는 이슈가 발생함을 빠르게 확인할 수 있었습니다.\n다행히 뷰어 어플리케이션은 백그라운드 상태로 전환되었을 때 유지되어야 할 기능이 존재하지 않았습니다. 따라서 visibilitychange 이벤트를 통해 SQUARS 뷰어가 최상단에 위치할 때에는 카메라 등의 리소스 수집 및 렌더링을 수행하고 그렇지 않은 경우에는 과감히 WebGL을 포함한 모든 리소스를 해제하는 방법을 도입했습니다. 그를 통해 관련 이슈를 해결함과 동시에 백그라운드 상태로 전환된 뷰어 어플리케이션이 카메라 리소스 권한을 유지함에 따라 다른 어플리케이션의 동작에 영향이 가는 이슈 역시 해결할 수 있었습니다.',
+          'en-US':
+            "It was inevitable that an application which is highly dependent on Web APIs (eg. Camera, WebGL) like SQUARS would often encounter issues with specific browsers or OS. Therefore when implementing the error handling system of SQUARS, we've designed it to include browser or OS information when sending logs of unexpected runtime errors from client. Based on this information, we immediately found out that the context of WebGL was getting lost if the browser goes background state from Safari over iOS 17.\nThe bright thing was that the viewer application didn't include any functionalities that should be maintained at the background state. Therefore we've set the behavior of the application to collect resources and render only when its foreground, otherwise discard every resource (including WebGL, of course). This approach was not only resolving the WebGL issue, but also the issue that SQUARS was disturbing the functionalities of other applications because of unreturned resources.",
+        },
+      },
+      {
+        title: {
+          'ko-KR': '3D 객체 관련 메모리 누수',
+          'en-US': 'Memory leaks with 3D objects',
+        },
+        problem: {
+          'ko-KR':
+            '사용자와의 인터렉션이 포함된 3D 프로젝트에서 어플리케이션 런타임이 길어짐에 따라 성능이 저하되는 현상이 발견되었습니다. 극단적인 테스트 상황에서는 어플리케이션이 동작을 중단하는 현상까지 발생하였습니다.',
+          'en-US':
+            'An issue was reported that the performance of the applications decreased as the runtime gets longer with projects that include user interactions. At extreme test scenarios, the application stopped its functionality.',
+        },
+        solution: {
+          'ko-KR':
+            '크롬 브라우저의 개발자 도구를 활용하여 메모리를 분석한 결과 힙 사이즈가 지속적으로 증가하며 인터렉션을 위한 리스너들이 그 원인임을 확인했습니다. 자바스크립트는 참조를 기반으로 가비지 컬렉션을 수행하기 때문에 정리되지 못한 리스너, 그리고 관련 3D 객체들이 메모리에 잔재하게 되었고 그로 인해 결국 어플리케이션의 동작이 멈추는 현상까지 이어지게 된 것이었습니다. 획득한 스냅샷을 기반으로 누수가 발생하는 리스너들의 정리를 추가한 이후 어플리케이션은 일정된 힙 사이즈를 유지할 수 있었습니다.',
+          'en-US':
+            'By utilizing devtools of Chrome browser, it was found out that the heap size was consistently increasing during runtime and listeners used for user interactions were the causes of it. Because javascript performs garbage-collection based on the concept of "reference", uncleaned listeners and related 3D objects were remaining inside the memory which stopped the application from running in the end. After adding the code for cleaning up the listeners based on the memory snapshot, the application could maintain a consistent level of memory size.',
+        },
       },
     ],
     screenshotGroups: [
@@ -506,7 +576,7 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
               'ko-KR':
                 'Web (Web SDK는 유일하게 외부에 제공되지 않으며 사내 WebXR 플랫폼 조직에서 차용중입니다)',
               'en-US':
-                'Web (Unlike others, Web SDK is exposed in public and is only used by other services of the company',
+                'Web (Unlike others, Web SDK is not exposed in public and is only used by other services of the company',
             },
             byMe: true,
           },
@@ -673,6 +743,63 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
             ],
           },
         ],
+      },
+    ],
+    troubleShoots: [
+      {
+        title: {
+          'ko-KR': '브라우저 및 OS 최적화',
+          'en-US': 'Supporting multiple browsers & OS',
+        },
+        problem: {
+          'ko-KR':
+            'TRACK Web SDK는 Android, iOS, PC 총 세 가지 환경에서 실행되는 다양한 브라우저를 지원해야 했습니다. 그러나 Web API, SIMD 호환 등 다양한 측면에서 각 환경은 차이가 있었고 그에 대응하는 최적화 및 안정화 노력이 요구되었습니다.',
+          'en-US':
+            'The Web SDK of TRACK had to multiple browsers on Android, iOS, PC. Each environment had different supports with Web APIs and other functionalities (eg. SIMD), so we needed approaches for each of them to produce the best performance.',
+        },
+        solution: {
+          'ko-KR':
+            '최적화된 성능와 안정적인 호환성을 위해 저희는 외부적으로는 추상성을 유지하면서 내부적으로 로직의 분기 처리를 수행하기로 결정했습니다. 분기 처리는 브라우저와 같은 환경보다는 특정 로직의 호환 여부 검사를 기반으로 진행되었으며 호환 여부 뿐만 아니라 각 경우에 대한 벤치마크 실행 결과를 토대로 추가적인 우선순위를 결정하였습니다. 일부 분기 처리 과정에서는 동적 모듈 로딩과 같은 코드 분할을 적용함으로써 로딩 시간 최적화 및 정적 import로 인한 예기치 못한 호환성 에러 발생 등을 방지할 수 있었습니다.',
+          'en-US':
+            "We've decided to include multiple branches inside TRACK because performance was the most important standard of our library. Branching the logic was done based on the compatibility of the logic (rather than the type of the browser), and we've also utilized the benchmark system to set the priority of each branches. For some of them, we've applied code splitting like dynamic module loading in order to optimize loading time and prevent unexpected copabitility errors happening due to static imports.",
+        },
+      },
+      {
+        title: {
+          'ko-KR': '대규모 연산 수행하기 (이미지 프로세싱)',
+          'en-US':
+            'Performing heavy calculation from client side (image processing)',
+        },
+        problem: {
+          'ko-KR':
+            '데이터셋 생성 어플리케이션은 30 혹은 60 FPS의 속도로 기기의 카메라 및 IMU 센서로부터 획득된 데이터를 공정하고 추출하는 웹 어플리케이션입니다. 데이터 자체의 크기가 작고 프로세싱 과정도 복잡하지 않은 IMU 센서 데이터와 달리 이미지 데이터의 경우 프로세싱의 속도보다 실행 주기가 더 빠르기 때문에 점점 어플리케이션의 성능이 느려지는 문제가 발생했습니다.',
+          'en-US':
+            'The Dataset generator is an web application which extracts data from camera or IMU sensor, processes the data and saves the result in 30 or 60 FPS speed. Unlike IMU sensor data which has small data size and requires simple processing, the processing of image data is slower than the execution period of the application. This caused the application to drop its performance as the runtime gets longer.',
+        },
+        solution: {
+          'ko-KR':
+            '해당 이슈를 극복하기 위해 첫 번째로 시도했던 방법은 Next.js 프레임워크를 통해 API를 구현한 후 무거운 프로세싱 과정을 서버에 위임하는 것이었습니다. 그러나 이는 네트워크 환경에 큰 영향을 받았으며 원만한 네트워크 환경에서의 통신 비용 역시 빠른 실행 주기를 감당하기에는 적지 않음을 확인했습니다.\n그를 대신하여 최종적으로 선택한 방법은 Web Worker을 통해 연산 과정을 백그라운드 쓰레드로 이동시킨 것이었습니다. 그를 통해 메인 스레드에 발생하는 연산 비용 부담을 줄일 수 있었으며 메인 스레드와 Worker 스레드 간 이미지 데이터를 주고받는 과정에서 Transferable object를 활용함으로써 통신 비용 관련 발생하는 오버헤드를 줄이는 방식을 채택했습니다.',
+          'en-US':
+            "The initial method that I've tried was implementing an API with Next.js framework features and delegate the heavy processes to the server. But this method was easily affected by the state of the network and even at the stable state, the overhead of the network communication was too expensive for the fast iteration.\nThe other approach (which was actually applied) was moving the process to the background thread of the browser using Web Worker so that the heavy payload could be distributed instead of only being focused on the main thread. And to decrease the overhead being made for the communication between threads, we've transfered the image data as transferable object.",
+        },
+      },
+      {
+        title: {
+          'ko-KR': '관심사 분리 원칙 기반 설계하기 (SoC)',
+          'en-US': 'Design system based on SoC (Separation of Concerns)',
+        },
+        problem: {
+          'ko-KR':
+            'TRACK Web SDK는 카메라, IMU 센서 등 하드웨어 리소스와 관련된 로직, 그리고 그로부터 추출한 데이터를 기반으로 AR 연산을 수행하는 로직 크게 두 가지로 구성됩니다. 초반 설계 당시 TRACK에 대한 비즈니스 요구사항은 후자만이 존재했기 때문에 외부에는 관련된 인터페이스만을 제공하고 그 외는 라이브러리 내에 은닉화하는 방식으로 구현이 진행되었습니다. 그러나 시간이 흘러 데이터셋 생성 어플리케이션을 구현하는 과정에서 문제가 발생하였습니다. 해당 어플리케이션은 AR 연산 기능을 제외한 순수 하드웨어 로직만을 필요로 하였으며 기존의 라이브러리 설계는 이와 관련된 API를 전혀 제공하고 있지 않았기 때문입니다.',
+          'en-US':
+            "TRACK Web SDK contains 2 major logics: one controlling the hardware resources (eg. camera, IMU sensor) and the other which performs AR computation with the data extracted from the previous. Back when TRACK web SDK was initially being designed, the given business requirements were only related to 'AR', and therefore we implemented the system to only provide an external interface about related codes, and hide the others inside the library.\nThe issue popped up with implementing the dataset generator application. The application didn't have dependencies for AR computation, but only for the pure hardware logic that TRACK was not giving any APIs for.",
+        },
+        solution: {
+          'ko-KR':
+            '이 문제를 해결하기 위해서 저희는 관심사 분리 원칙(SoC)에 의거하여 하나의 라이브러리를 둘로 분리하는 작업을 수행했습니다. 하드웨어와 관련된 은닉을 해제하는 간단한 방법이 있었음에도 분리 작업을 수행한 이유는 각각의 로직이 서로 다른 기반을 가지기 때문입니다. AR 관련 로직은 C++로 작성된 컴퓨터 비전 코드의 WebAssembly 빌드를, 하드웨어 관련 로직은 Web API를 주된 기반으로 가지고 있었으며 둘 간의 공통점이 존재하지 않았습니다. 그렇기 때문에 두 로직을 분리할 경우 한 로직에 이슈가 발생했을 때 다른 로직에 영향 없이 보다 유연하게 대응할 수 있다는 이점이 발생합니다. 실제로 브라우저 업데이트라는 제3의 요소에 크게 영향을 받는 Web API의 특성상 TRACK의 하드웨어 모듈은 핫픽스 배포가 이루어지는 경우가 종종 발생하였으며 이러한 설계 전환은 그 과정을 보다 원활하게 만들어주었습니다.',
+          'en-US':
+            "To resolve this issue, we've decided to divide the library into 2 based on SoC. The reason why we didn't take the easiest option of exposing the hardware related APIs was because each logic had unique code base. The AR logic was based on WebAssembly build of computer vision code written in C++, and the one related to hardware was based on Web APIs. There was no common area in between. Therefore decoupling 2 logic gave a benefit that you can flexibly handle an issue of a logic without affecting the other one. In the case of TRACK's hardware module, we often faced situations where we needed to deploy the library as hotfix due to the nature of Web APIs being easily affected by a third element (=browser updates). Changing the design enabled this process to become smoother and faster.",
+        },
       },
     ],
     screenshotGroups: [
