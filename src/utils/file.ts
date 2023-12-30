@@ -5,6 +5,13 @@
  */
 export const getExtension = (fileName: string) => {
   const lastDot = fileName.lastIndexOf('.');
+
+  if (lastDot === -1) {
+    throw new Error(
+      'Invalid input - dot is required after extension for parsing',
+    );
+  }
+
   const extension = fileName
     .substring(lastDot, fileName.length)
     .split('.')

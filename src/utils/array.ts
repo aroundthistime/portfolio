@@ -24,6 +24,10 @@ export const getRandomItemFromArray = <T>(array: T[]): T | undefined => {
  * @returns {T[]} An array filled with same elements
  */
 export const getFilledArray = <T>(value: T, length: number): T[] => {
+  if (length < 0) {
+    throw new Error('Invalid length given - should be greater or equal to 0');
+  }
+
   const resultArray = [];
 
   for (let i = 0; i < length; i += 1) {
@@ -48,7 +52,7 @@ export const addBetweenElements = <T, U>(
   for (let i = 0; i < array.length; i += 1) {
     newArray.push(array[i]);
     if (i < array.length - 1) {
-      newArray.push(elementToAdd);
+      newArray.push(cloneDeep(elementToAdd));
     }
   }
   return newArray;
