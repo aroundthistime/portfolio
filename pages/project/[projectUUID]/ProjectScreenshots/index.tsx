@@ -4,10 +4,7 @@ import { useIntersectionObserver } from 'usehooks-ts';
 import { Project } from '@/types/Project';
 import ProjectSection from '../ProjectSection';
 import { ProjectScreenshotGroupsContainer } from './style';
-
-const ProjectScreenshotGroup = React.lazy(
-  () => import('./ProjectScreenshotGroup'),
-);
+import ProjectScreenshotGroup from './ProjectScreenshotGroup';
 
 /**
  * Component for rendering a section containing screenshots of the project

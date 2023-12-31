@@ -2,6 +2,7 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import dynamic from 'next/dynamic';
 import { PROJECTS } from '@/dummyData/project';
 import { MultiLanguageProject, Project } from '@/types/Project';
 import { getCacheDisabledURL, normalizeURLParam } from '@/utils/url';
@@ -9,6 +10,7 @@ import { ProjectPageContainer } from './style';
 import { localizeData } from '@/utils/localization';
 import { MultiLanguageString } from '@/types/utilTypes/Localization';
 import ProjectTroubleShoots from './ProjectTroubleShoots';
+import ProjectScreenshots from './ProjectScreenshots';
 
 const ErrorPage = React.lazy(() => import('@/components/containers/ErrorPage'));
 const ProjectTitle = React.lazy(
@@ -25,9 +27,6 @@ const ProjectContent = React.lazy(
 );
 const ProjectFeatures = React.lazy(
   () => import('pages/project/[projectUUID]/ProjectFeatures'),
-);
-const ProjectScreenshots = React.lazy(
-  () => import('pages/project/[projectUUID]/ProjectScreenshots'),
 );
 
 interface Props {
@@ -50,6 +49,7 @@ const ProjectPage = ({ project }: Props) => {
   }
 
   const faviconUrl = getCacheDisabledURL(project.logo);
+
   return (
     <>
       <Head>
