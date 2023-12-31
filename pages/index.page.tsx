@@ -7,12 +7,15 @@ import TWEEN from '@tweenjs/tween.js';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
-import Bart from '@/components/3D/models/Bart';
-import Room from '@/components/3D/models/Room';
-import PortfolioContents from '@/components/containers/PortfolioContents';
 import use3DSceneStore from '@/store/use3DSceneStore';
 import Loader from '@/components/containers/Loader';
 import withSuspenseMinDelaySuspense from '@/components/HOC/withMinDelaySuspense';
+
+const PortfolioContents = React.lazy(
+  () => import('@/components/containers/PortfolioContents'),
+);
+const Bart = React.lazy(() => import('@/components/3D/models/Bart'));
+const Room = React.lazy(() => import('@/components/3D/models/Room'));
 
 extend({ TextGeometry });
 

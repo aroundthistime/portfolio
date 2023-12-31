@@ -1,11 +1,13 @@
 import { useTranslation } from 'next-i18next';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { useIntersectionObserver } from 'usehooks-ts';
 import { Project } from '@/types/Project';
 import ProjectSection from '../ProjectSection';
 import { ProjectScreenshotGroupsContainer } from './style';
 
-import ProjectScreenshotGroup from './ProjectScreenshotGroup';
+const ProjectScreenshotGroup = React.lazy(
+  () => import('./ProjectScreenshotGroup'),
+);
 
 /**
  * Component for rendering a section containing screenshots of the project

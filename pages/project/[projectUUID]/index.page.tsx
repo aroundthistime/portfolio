@@ -1,20 +1,34 @@
+import React from 'react';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import ProjectContent from 'pages/project/[projectUUID]/ProjectContent';
-import ProjectFeatures from 'pages/project/[projectUUID]/ProjectFeatures';
-import ProjectSummary from 'pages/project/[projectUUID]/ProjectSummary';
-import ProjectTitle from 'pages/project/[projectUUID]/ProjectTitle';
-import ProjectSkills from 'pages/project/[projectUUID]/ProjectSkills';
-import ProjectScreenshots from 'pages/project/[projectUUID]/ProjectScreenshots';
 import { PROJECTS } from '@/dummyData/project';
 import { MultiLanguageProject, Project } from '@/types/Project';
 import { getCacheDisabledURL, normalizeURLParam } from '@/utils/url';
 import { ProjectPageContainer } from './style';
 import { localizeData } from '@/utils/localization';
 import { MultiLanguageString } from '@/types/utilTypes/Localization';
-import ErrorPage from '@/components/containers/ErrorPage';
 import ProjectTroubleShoots from './ProjectTroubleShoots';
+
+const ErrorPage = React.lazy(() => import('@/components/containers/ErrorPage'));
+const ProjectTitle = React.lazy(
+  () => import('pages/project/[projectUUID]/ProjectTitle'),
+);
+const ProjectSummary = React.lazy(
+  () => import('pages/project/[projectUUID]/ProjectSummary'),
+);
+const ProjectSkills = React.lazy(
+  () => import('pages/project/[projectUUID]/ProjectSkills'),
+);
+const ProjectContent = React.lazy(
+  () => import('pages/project/[projectUUID]/ProjectContent'),
+);
+const ProjectFeatures = React.lazy(
+  () => import('pages/project/[projectUUID]/ProjectFeatures'),
+);
+const ProjectScreenshots = React.lazy(
+  () => import('pages/project/[projectUUID]/ProjectScreenshots'),
+);
 
 interface Props {
   project: Project | null;

@@ -1,11 +1,12 @@
-import { useEffect, useRef, memo } from 'react';
-import Intro from './Intro';
-import SkillSet from './SkillSet';
+import React, { useEffect, useRef, memo } from 'react';
 import { PortfolioContentsContainer } from './style';
-import Projects from './Projects';
 import use3DSceneStore from '@/store/use3DSceneStore';
-import ContactMe from './ContactMe';
 import { SectionTitle } from '@/types/enums/SectionTitle';
+
+const Intro = React.lazy(() => import('./Intro'));
+const SkillSet = React.lazy(() => import('./SkillSet'));
+const Projects = React.lazy(() => import('./Projects'));
+const ContactMe = React.lazy(() => import('./ContactMe'));
 
 const PortfolioContents = () => {
   // Root container element with all portfolio contents
