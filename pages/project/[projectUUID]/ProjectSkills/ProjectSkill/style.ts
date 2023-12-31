@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import LogoWithText from '@/components/LogoWithText';
 
-export const ProjectSkillContainer = styled.div`
+export const ProjectSkillContainer = styled.li`
   display: flex;
   align-items: center;
 `;
