@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import Image from 'next/image';
 import { DeviceType, getResponsiveStyle } from '@/styles/responsive';
 
 export const ErrorPageWrapper = styled.div`
@@ -18,9 +19,7 @@ export const ErrorPageWrapper = styled.div`
   padding: ${props => props.theme.layout.padding.vertical.normal};
 `;
 
-export const ErrorPageImage = styled.img`
-  width: 250px;
-`;
+export const ErrorPageImage = styled(Image)``;
 
 export const ErrorMessage = styled.p`
   font-size: ${props => props.theme.font.size.large};

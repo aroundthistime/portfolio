@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 
 export const LogoWithTextContainer = styled.span`
@@ -5,8 +6,6 @@ export const LogoWithTextContainer = styled.span`
   align-items: center;
 `;
 
-export const Logo = styled.img`
-  width: auto;
-  height: 1em;
+export const Logo = styled(Image)`
   margin-right: ${props => props.theme.layout.margin.horizontal.small};
 `;
