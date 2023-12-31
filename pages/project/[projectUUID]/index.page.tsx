@@ -12,20 +12,20 @@ import { MultiLanguageString } from '@/types/utilTypes/Localization';
 import ProjectTroubleShoots from './ProjectTroubleShoots';
 import ProjectScreenshots from './ProjectScreenshots';
 
-const ErrorPage = React.lazy(() => import('@/components/containers/ErrorPage'));
-const ProjectTitle = React.lazy(
+const ErrorPage = dynamic(() => import('@/components/containers/ErrorPage'));
+const ProjectTitle = dynamic(
   () => import('pages/project/[projectUUID]/ProjectTitle'),
 );
-const ProjectSummary = React.lazy(
+const ProjectSummary = dynamic(
   () => import('pages/project/[projectUUID]/ProjectSummary'),
 );
-const ProjectSkills = React.lazy(
+const ProjectSkills = dynamic(
   () => import('pages/project/[projectUUID]/ProjectSkills'),
 );
-const ProjectContent = React.lazy(
+const ProjectContent = dynamic(
   () => import('pages/project/[projectUUID]/ProjectContent'),
 );
-const ProjectFeatures = React.lazy(
+const ProjectFeatures = dynamic(
   () => import('pages/project/[projectUUID]/ProjectFeatures'),
 );
 
