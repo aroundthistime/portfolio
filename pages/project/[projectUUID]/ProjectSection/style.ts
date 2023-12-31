@@ -10,6 +10,10 @@ export const ProjectSectionContainer = styled.section`
 
   .not-by-me {
     opacity: ${props => props.theme.opacity.blur};
+
+    &:hover {
+      opacity: inherit;
+    }
   }
 `;
 
