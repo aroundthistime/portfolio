@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import { ysabeauOfficeFont } from '@/styles/font';
 
 export const SpeechBubbleContainer = styled.div`
-  font-family: ${ysabeauOfficeFont.style.fontFamily}, cursive;
   font-weight: 600;
   background-position: center;
   background-repeat: no-repeat !important;
