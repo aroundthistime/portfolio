@@ -79,7 +79,9 @@ const SkillSet = () => {
       sectionTitle={SectionTitle.Skills}
       onIntersect={onIntersect}>
       <PortfolioContentBox>
-        <PortfolioContentBox.Header>Skills</PortfolioContentBox.Header>
+        <PortfolioContentBox.Header>
+          {t('skills', { ns: 'common' })}
+        </PortfolioContentBox.Header>
         <PortfolioContentBox.Body>
           <NestedList multiDepthDataList={skills} />
         </PortfolioContentBox.Body>

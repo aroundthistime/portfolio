@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react';
+import { useTranslation } from 'next-i18next';
 import { SectionTitle } from '@/types/enums/SectionTitle';
 import PortfolioContentBox from '../Templates/PortfolioContentBox';
 import PortfolioSection from '../Templates/PortfolioSection';
@@ -18,6 +19,8 @@ import { MyContactType } from '@/types/MyContact';
  * Section for showing my contacts (eg. social links)
  */
 const ContactMe = () => {
+  const { t } = useTranslation();
+
   const CONTACT_PROPS: ComponentProps<typeof Contact>[] = [
     {
       contactLink: new GithubLink(MY_GITHUB_LINK),
@@ -42,7 +45,9 @@ const ContactMe = () => {
   return (
     <PortfolioSection sectionTitle={SectionTitle.ContactMe}>
       <PortfolioContentBox>
-        <PortfolioContentBox.Header>Contact Me</PortfolioContentBox.Header>
+        <PortfolioContentBox.Header>
+          {t('contact-me')}
+        </PortfolioContentBox.Header>
         <PortfolioContentBox.Body>
           <NestedList multiDepthDataList={contactsInMultiDepth} />
         </PortfolioContentBox.Body>

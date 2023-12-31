@@ -17,7 +17,7 @@ import { isMobileDevice } from '@/utils/device';
  * Section for showing the previous projects that I've done
  */
 const Projects = () => {
-  const { t } = useTranslation('3d');
+  const { t } = useTranslation(['3d', 'common']);
   const router = useRouter();
 
   const { data: projectDTOs, refetch, isLoading } = useBriefProjectsQuery();
@@ -74,7 +74,9 @@ const Projects = () => {
   return (
     <PortfolioSection sectionTitle={SectionTitle.Projects}>
       <PortfolioContentBox>
-        <PortfolioContentBox.Header>Projects</PortfolioContentBox.Header>
+        <PortfolioContentBox.Header>
+          {t('projects', { ns: 'common' })}
+        </PortfolioContentBox.Header>
         <PortfolioContentBox.Body>
           <NestedProjectList multiDepthDataList={projects} />
           <ProjectClickGuidance>{t('inductive-phrase')}</ProjectClickGuidance>
