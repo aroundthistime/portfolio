@@ -30,12 +30,12 @@ const Projects = () => {
     const convertedProjects: MultiDepthData[] = projectDTOs.map(
       (projectDto: ProjectBriefDto) => {
         const onProjectClick = () => {
-          // Maintain current locale for opening project page
-          const projectPageUrl = `/${router.locale}/project/${projectDto.uuid}`;
+          const projectPageUrl = `/project/${projectDto.uuid}`;
 
           // In mobile devices, new tabs will open without using 3D monitors due to screen size issues
+          // Maintain current locale for opening project page
           if (isMobileDevice()) {
-            window.open(projectPageUrl, '_blank');
+            window.open(`/${router.locale}${projectPageUrl}`, '_blank');
           } else {
             const { openMonitor } = use3DSceneStore.getState()
               .currentSection as ProjectsSection;

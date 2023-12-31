@@ -103,7 +103,10 @@ const MonitorScreen = () => {
             </MonitorScreenButton>
           </MonitorScreenTitleBar>
           {monitorScreenUrl && (
-            <MonitorScreenWebview title="Project" src={monitorScreenUrl} />
+            <MonitorScreenWebview
+              title="Project"
+              src={`/${locale}${monitorScreenUrl}`}
+            />
           )}
         </MonitorScreenContainer>
       </Html>
