@@ -54,7 +54,7 @@ const ProjectPage = ({ project }: Props) => {
     <>
       <Head>
         <title>{project.title}</title>
-        <link rel="shortcut icon" href={faviconUrl} />
+        <link rel="shortcut icon" href={faviconUrl} suppressHydrationWarning />
         <meta name="title" content={project.title} />
         <meta name="description" content={project.summary.brief} />
         <meta property="og:type" content="website" />

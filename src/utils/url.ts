@@ -11,7 +11,10 @@ export const normalizeURLParam = (parameter: string | string[]) => {
 
 /**
  * Add a cache-disabling query parameter to a URL, ensuring it won't be cached by the browser.
- * If the URL is a blob URL or a data URL, it remains unchanged
+ * If the URL is a blob URL or a data URL, it remains unchanged.
+ *
+ * [important] This function uses timestamp, therefore check for hydration is required for production mode
+ *
  * @param {string} url URL to modify
  * @returns {string} The modified URL with cache-disabled
  */
