@@ -57,6 +57,7 @@ module.exports = {
           '**/*{.,_}{test,spec}.{ts,tsx}', // tests where the extension or filename suffix denotes that it is a test
           '**/jest.config.ts', // jest config
           '**/jest.setup.ts', // jest setup
+          '**/setupTests.ts',
         ],
         optionalDependencies: false,
       },
