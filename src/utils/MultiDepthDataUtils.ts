@@ -10,6 +10,13 @@ class MultiDepthDataUtils<T> {
   }
 
   /**
+   * Interface for getting data
+   */
+  get data() {
+    return this.multiDepthData;
+  }
+
+  /**
    * Convert all the data inside multi depth data using the given callback.
    * This method doesn't change the original,
    * @template {U} Type of data which will go inside multi depth data after processing (set as original type by default)
@@ -31,6 +38,7 @@ class MultiDepthDataUtils<T> {
       return convertingCallback(item);
     });
 
+    this.multiDepthData = clonedMultiDepthData;
     return clonedMultiDepthData as unknown as MultiDepthData<U>;
   };
 
