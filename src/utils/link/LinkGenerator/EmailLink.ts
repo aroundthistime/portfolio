@@ -6,9 +6,9 @@ import AbstractCommonLink from './AbstractCommonLink';
 class EmailLink extends AbstractCommonLink {
   constructor(emailAddress: string) {
     // Add prefix to open Gmail mail write page with the given email address
-    const emailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}`;
+    const emailLink = `mailto:${emailAddress}`;
     super(emailLink);
-    this.title = `Email (${emailAddress})`;
+    this.title = `Email: ${emailAddress}`;
   }
 
   image = '/images/linkLogos/email.png';
