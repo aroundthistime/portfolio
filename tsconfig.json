@@ -17,7 +17,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "plugins": [
       {
         "name": "next"
@@ -25,15 +25,20 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@": ["src/"],
-      "@/*": ["src/*"]
-    },
+      "@": [
+        "src/"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "__test__"
   ],
   "exclude": [
     "node_modules"
