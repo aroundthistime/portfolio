@@ -24,7 +24,41 @@ export const getCacheDisabledURL = (url: string) => {
     return url;
   }
   const separator = url.includes('?') ? '&' : '?'; // Check if the URL already has query parameters
-  return `${url}${separator}_=${new Date().getTime()}`;
+
+  const usedSearchParams = extractURLQueryParams(url);
+
+  // Prevent query key being added from messing up the original URL
+  let randomQueryKey = '_';
+  while (usedSearchParams[randomQueryKey] !== undefined) {
+    randomQueryKey += '_';
+  }
+
+  return `${url}${separator}${randomQueryKey}=${new Date().getTime()}`;
+};
+
+/**
+ * Extract query parameters inside given URL.
+ * The URL does not have to be standard URL format (eg. relative path like '/image.jpg' is also supported)
+ * @param {string} url URL to extract parameters from
+ * @returns {Record<string, string>} Key-value object of query parameters inside the URL
+ */
+const extractURLQueryParams = (url: string): Record<string, string> => {
+  const params: Record<string, string> = {};
+
+  const queryString = url.split('?')[1];
+
+  if (!queryString) {
+    return params;
+  }
+
+  const queries = queryString.split('&');
+
+  queries.forEach(query => {
+    const [key, value] = query.split('=');
+    params[key] = decodeURIComponent(value);
+  });
+
+  return params;
 };
 
 /**
