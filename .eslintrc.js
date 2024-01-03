@@ -58,6 +58,7 @@ module.exports = {
           '**/jest.config.ts', // jest config
           '**/jest.setup.ts', // jest setup
           '**/setupTests.ts',
+          '__test__/*', // test specific utils
         ],
         optionalDependencies: false,
       },
