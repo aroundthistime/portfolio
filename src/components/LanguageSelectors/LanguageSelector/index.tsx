@@ -17,7 +17,8 @@ const LanguageSelector = ({ language, locale, iconSrc }: Props) => {
         locale={locale}
         className={classNames({
           'language-selector--selected': router.locale === locale,
-        })}>
+        })}
+        data-testid={`language-selector-${locale}`}>
         <LanguageIcon src={iconSrc} alt={language} width={20} height={20} />
         <LanguageName>{language}</LanguageName>
       </LanguageSelectorLink>
