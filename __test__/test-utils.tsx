@@ -1,7 +1,10 @@
 import { render } from '@testing-library/react';
 import { MemoryRouterProvider } from 'next-router-mock/dist/MemoryRouterProvider';
 import { ThemeProvider } from 'styled-components';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GLOBAL_THEME } from '@/styles/theme';
+
+const queryClient = new QueryClient();
 
 /**
  * This is a file containing every utility logic required for running test.
@@ -12,7 +15,9 @@ import { GLOBAL_THEME } from '@/styles/theme';
 const AllTheProviders = ({ children }) => {
   return (
     <MemoryRouterProvider>
-      <ThemeProvider theme={GLOBAL_THEME}>{children}</ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={GLOBAL_THEME}>{children}</ThemeProvider>
+      </QueryClientProvider>
     </MemoryRouterProvider>
   );
 };
