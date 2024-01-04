@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
@@ -11,6 +11,7 @@ import { localizeData } from '@/utils/localization';
 import { MultiLanguageString } from '@/types/utilTypes/Localization';
 import ProjectTroubleShoots from './ProjectTroubleShoots';
 import ProjectScreenshots from './ProjectScreenshots';
+import { cartesian } from '@/utils/array';
 
 const ErrorPage = dynamic(() => import('@/components/containers/ErrorPage'));
 const ProjectTitle = dynamic(
@@ -77,7 +78,7 @@ const ProjectPage = ({ project }: Props) => {
   );
 };
 
-export const getServerSideProps = (async ({ params, locale }) => {
+export const getStaticProps = (async ({ params, locale }) => {
   const { projectUUID } = params;
   const normalizedProjectUUID = normalizeURLParam(projectUUID);
 
@@ -102,6 +103,24 @@ export const getServerSideProps = (async ({ params, locale }) => {
       project: localizedProject,
     },
   };
-}) satisfies GetServerSideProps<Props>;
+}) satisfies GetStaticProps<Props>;
+
+export const getStaticPaths = (async () => {
+  const paths = cartesian(Object.keys(PROJECTS), ['ko-KR', 'en-US']).map(
+    ([projectUUID, locale]) => {
+      return {
+        params: {
+          projectUUID,
+        },
+        locale,
+      };
+    },
+  );
+
+  return {
+    paths,
+    fallback: false,
+  };
+}) satisfies GetStaticPaths;
 
 export default ProjectPage;

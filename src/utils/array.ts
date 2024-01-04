@@ -57,3 +57,11 @@ export const addBetweenElements = <T, U>(
   }
   return newArray;
 };
+
+/**
+ * Get cartesian of given arrays
+ * @param {...any[][]} arrays Arrays to create cartesian product from
+ * @returns {any[]} Array containing cartesian product
+ */
+export const cartesian = (...arrays: any[][]) =>
+  arrays.reduce((a, b) => a.flatMap(d => b.map(e => [d, e].flat())));
