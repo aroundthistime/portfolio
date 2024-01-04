@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { PortfolioContentsContainer } from './style';
 import use3DSceneStore from '@/store/use3DSceneStore';
 import { SectionTitle } from '@/types/enums/SectionTitle';
-
-const Intro = React.lazy(() => import('./Intro'));
-const SkillSet = React.lazy(() => import('./SkillSet'));
-const Projects = React.lazy(() => import('./Projects'));
-const ContactMe = React.lazy(() => import('./ContactMe'));
+import Intro from './Intro';
+import SkillSet from './SkillSet';
+import Projects from './Projects';
+import ContactMe from './ContactMe';
 
 const PortfolioContents = () => {
   // Root container element with all portfolio contents
@@ -18,7 +17,9 @@ const PortfolioContents = () => {
         state.currentSection.title === SectionTitle.Projects &&
         state.currentSection.monitorScreenUrl;
 
-      // Do not show project contents when monitor screen is turned on and focused
+      if (!ref.current) return;
+
+      // Do not show project contents whe monitor screen is turned on and focused
       if (monitorIsTurnedOn) {
         ref.current.style.visibility = 'hidden';
       } else {
@@ -28,7 +29,9 @@ const PortfolioContents = () => {
   }, []);
 
   return (
-    <PortfolioContentsContainer ref={ref}>
+    <PortfolioContentsContainer
+      ref={ref}
+      data-testid="portfolio-contents-container">
       <Intro />
       <SkillSet />
       <Projects />
@@ -37,4 +40,4 @@ const PortfolioContents = () => {
   );
 };
 
-export default memo(PortfolioContents);
+export default React.memo(PortfolioContents);
