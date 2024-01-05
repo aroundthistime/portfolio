@@ -13,9 +13,12 @@
         "react": {
             "description-1": "React JS를 활용한 SPA 어플리케이션 혹은 Next.js를 활용한 SSR 어플리케이션을 구현할 수 있습니다.",
             "description-2": "React Native를 활용하여 크로스 플랫폼 어플리케이션을 구현한 경험이 있습니다. (Android, iOS)",
-            "description-3": "Container/Presentational 패턴을 통해 로직과 뷰를 명확히 분리할 수 있습니다.",
-            "description-4": "Redux, Redux-Toolkit, Zustand, Context API 등을 활용하여 리액트 어플리케이션의 전역 상태를 관리할 수 있습니다.",
+            "description-3": "Container/Presentational 패턴을 통해 로직과 뷰를 분리하는 방식을 선호합니다.",
+            "description-4": "Redux, RTK, Zustand, Tanstack Query, Context API를 활용하여 리액트 어플리케이션의 상태를 관리할 수 있습니다.",
             "description-5": "i18next 라이브러리를 활용하여 어플리케이션의 국제화를 적용한 경험이 있습니다."
+        },
+        "test": {
+            "description-1": "Jest와  React Testing Library를 활용하여 함수, 리액트 훅 및 컴포넌트에 대한 유닛 테스트를 작성할 수 있습니다."
         },
         "3d": {
             "description-1": "Three.js를 활용하여 웹 브라우저에서 3D 요소를 렌더링할 수 있습니다.",
