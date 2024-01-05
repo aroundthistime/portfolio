@@ -13,7 +13,6 @@ import ProjectTroubleShoots from './ProjectTroubleShoots';
 import ProjectScreenshots from './ProjectScreenshots';
 import { cartesian } from '@/utils/array';
 
-const ErrorPage = dynamic(() => import('@/components/containers/ErrorPage'));
 const ProjectTitle = dynamic(
   () => import('pages/project/[projectUUID]/ProjectTitle'),
 );
@@ -35,20 +34,6 @@ interface Props {
 }
 
 const ProjectPage = ({ project }: Props) => {
-  if (!project) {
-    // Directly render error page (cannot use error boundary because of SSR)
-    return (
-      <ErrorPage
-        error={
-          new Error(
-            'Could not find the requested project. Please check your URL :(',
-          )
-        }
-        resetErrorBoundary={() => {}}
-      />
-    );
-  }
-
   const faviconUrl = getCacheDisabledURL(project.logo);
 
   return (
@@ -83,14 +68,6 @@ export const getStaticProps = (async ({ params, locale }) => {
   const normalizedProjectUUID = normalizeURLParam(projectUUID);
 
   const projectBeforeLocalization = PROJECTS[normalizedProjectUUID];
-
-  if (!projectBeforeLocalization) {
-    return {
-      props: {
-        project: null,
-      },
-    };
-  }
 
   const localizedProject = localizeData<MultiLanguageProject>(
     projectBeforeLocalization,
