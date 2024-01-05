@@ -14,8 +14,11 @@
             "description-1": "Implement SPA application with React JS or SSR application with Next.js",
             "description-2": "Implement cross platform mobile applications using React Native (Android, iOS)",
             "description-3": "Separate application logic from the view using Container/Presentational pattern",
-            "description-4": "Handle globally shared data inside React application using: Redux, Redux Toolkit, Zustand, Context API",
+            "description-4": "Handle globally shared data inside React application using: Redux, RTK, Zustand, TanStack Query, Context API",
             "description-5": "Internalize application using i18next library"
+        },
+        "test": {
+            "description-1": "Write unit tests for functions, Hook and Components with combinations of Jest + React Testing Library"
         },
         "3d": {
             "description-1": "Render 3D graphics on web environment using Three.js",

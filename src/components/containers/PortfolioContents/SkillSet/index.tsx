@@ -51,7 +51,13 @@ const SkillSet = () => {
         t('skills.react.description-1'),
         t('skills.react.description-2'),
         t('skills.react.description-3'),
+        t('skills.react.description-4'),
+        t('skills.react.description-5'),
       ],
+    },
+    {
+      title: <LogoWithText text="Test" logoSrc="/images/skills/jest.png" />,
+      items: [t('skills.test.description-1')],
     },
     {
       title: (
