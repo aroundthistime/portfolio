@@ -5,11 +5,6 @@ describe('use3DMediaElement', () => {
   const TEST_MEDIA_SOURCE = 'test-url';
   const TEST_LOAD_DELAY = 200;
 
-  beforeEach(() => {
-    // Reset document
-    document.getElementsByTagName('html')[0].innerHTML = '';
-  });
-
   it('can create audio element', async () => {
     const { result } = renderHook(use3DMediaElement);
 

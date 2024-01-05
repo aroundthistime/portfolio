@@ -77,8 +77,6 @@ describe('useTypeWriter', () => {
       jest.advanceTimersByTime(TYPEWRITE_SPEED * TEST_SINGLE_STRING.length);
     });
 
-    // result.current.restartTypeWriting();
-
     act(() => {
       result.current.restartTypeWriting();
     });
