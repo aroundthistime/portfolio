@@ -1,12 +1,13 @@
 import { MathUtils, Object3D, ObjectLoader } from 'three';
 import { LoaderProto, useLoader } from '@react-three/fiber';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import useClock from './useClock';
 import useAnimatedModel from './useAnimatedModel';
 import usePhotoFrames from './usePhotoFrames';
 import { MyContactType } from '@/types/MyContact';
 
-const MonitorScreen = React.lazy(() => import('./MonitorScreen'));
+const MonitorScreen = dynamic(() => import('./MonitorScreen'));
 
 /**
  * Component for rendering room with every objects of 3d scene included (except for bart)
