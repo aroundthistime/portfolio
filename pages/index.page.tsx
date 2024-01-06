@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { OrbitControls } from '@react-three/drei';
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
 import { Color, NoToneMapping, Vector3 } from 'three';
@@ -7,15 +7,14 @@ import TWEEN from '@tweenjs/tween.js';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import use3DSceneStore from '@/store/use3DSceneStore';
 import Loader from '@/components/containers/Loader';
 import withSuspenseMinDelaySuspense from '@/components/HOC/withMinDelaySuspense';
+import PortfolioContents from '@/components/containers/PortfolioContents';
 
-const PortfolioContents = React.lazy(
-  () => import('@/components/containers/PortfolioContents'),
-);
-const Bart = React.lazy(() => import('@/components/3D/models/Bart'));
-const Room = React.lazy(() => import('@/components/3D/models/Room'));
+const Bart = dynamic(() => import('@/components/3D/models/Bart'));
+const Room = dynamic(() => import('@/components/3D/models/Room'));
 
 extend({ TextGeometry });
 

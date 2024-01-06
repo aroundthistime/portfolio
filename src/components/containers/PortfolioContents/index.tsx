@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { PortfolioContentsContainer } from './style';
 import use3DSceneStore from '@/store/use3DSceneStore';
 import { SectionTitle } from '@/types/enums/SectionTitle';
-
-const Intro = React.lazy(() => import('./Intro'));
-const SkillSet = React.lazy(() => import('./SkillSet'));
-const Projects = React.lazy(() => import('./Projects'));
-const ContactMe = React.lazy(() => import('./ContactMe'));
+import Intro from './Intro';
+import SkillSet from './SkillSet';
+import Projects from './Projects';
+import ContactMe from './ContactMe';
 
 const PortfolioContents = () => {
   // Root container element with all portfolio contents
@@ -37,4 +36,4 @@ const PortfolioContents = () => {
   );
 };
 
-export default memo(PortfolioContents);
+export default React.memo(PortfolioContents);
