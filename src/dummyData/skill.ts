@@ -115,4 +115,12 @@ export const SKILLS = {
     name: 'Kubernetes',
     logoSrc: '/images/skills/kubernetes.png',
   },
+  githubAction: {
+    name: 'Github Action',
+    logoSrc: '/images/skills/githubAction.png',
+  },
+  sonarqube: {
+    name: 'SonarQube',
+    logoSrc: '/images/skills/sonarqube.svg',
+  },
 } as const;

@@ -101,6 +101,14 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
         skill: SKILLS.jenkins,
         byMe: false,
       },
+      {
+        skill: SKILLS.githubAction,
+        byMe: false,
+      },
+      {
+        skill: SKILLS.sonarqube,
+        byMe: false,
+      },
     ],
     content: {
       'ko-KR':
@@ -440,6 +448,10 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
         byMe: true,
       },
       {
+        skill: SKILLS.java,
+        byMe: false,
+      },
+      {
         skill: SKILLS.python,
         byMe: true,
       },
@@ -448,11 +460,19 @@ export const PROJECTS: { [key: Project['uuid']]: MultiLanguageProject } = {
         byMe: true,
       },
       {
+        skill: SKILLS.sonarqube,
+        byMe: true,
+      },
+      {
         skill: SKILLS.grafana,
         byMe: true,
       },
       {
-        skill: SKILLS.java,
+        skill: SKILLS.docker,
+        byMe: false,
+      },
+      {
+        skill: SKILLS.githubAction,
         byMe: false,
       },
     ],
