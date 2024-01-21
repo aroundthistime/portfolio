@@ -9,26 +9,16 @@ import { getCacheDisabledURL, normalizeURLParam } from '@/utils/url';
 import { ProjectPageContainer } from './style';
 import { localizeData } from '@/utils/localization';
 import { MultiLanguageString } from '@/types/utilTypes/Localization';
-import ProjectTroubleShoots from './ProjectTroubleShoots';
-import ProjectScreenshots from './ProjectScreenshots';
 import { cartesian } from '@/utils/array';
 import { LOCALES } from '@/types/Locale';
+import ProjectTitle from './ProjectTitle';
+import ProjectSummary from './ProjectSummary';
+import ProjectSkills from './ProjectSkills';
+import ProjectContent from './ProjectContent';
+import ProjectFeatures from './ProjectFeatures';
 
-const ProjectTitle = dynamic(
-  () => import('pages/project/[projectUUID]/ProjectTitle'),
-);
-const ProjectSummary = dynamic(
-  () => import('pages/project/[projectUUID]/ProjectSummary'),
-);
-const ProjectSkills = dynamic(
-  () => import('pages/project/[projectUUID]/ProjectSkills'),
-);
-const ProjectContent = dynamic(
-  () => import('pages/project/[projectUUID]/ProjectContent'),
-);
-const ProjectFeatures = dynamic(
-  () => import('pages/project/[projectUUID]/ProjectFeatures'),
-);
+const ProjectTroubleShoots = dynamic(() => import('./ProjectTroubleShoots'));
+const ProjectScreenshots = dynamic(() => import('./ProjectScreenshots'));
 
 interface Props {
   project: Project | null;
