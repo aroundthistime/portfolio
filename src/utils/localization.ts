@@ -4,6 +4,7 @@ import {
   MultiLanguageString,
 } from '@/types/utilTypes/Localization';
 import { replaceRecursively } from './iterator';
+import { LOCALES } from '@/types/Locale';
 
 /**
  * Get localized version of raw data containing multi languages
@@ -25,8 +26,9 @@ export const localizeData = <T>(
     return (
       typeof data === 'object' &&
       data !== null &&
-      data.hasOwnProperty('ko-KR') &&
-      data.hasOwnProperty('en-US')
+      LOCALES.every(possibleLocale => {
+        return data.hasOwnProperty(possibleLocale);
+      })
     );
   };
 

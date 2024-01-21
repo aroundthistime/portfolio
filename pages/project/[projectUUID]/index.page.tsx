@@ -12,6 +12,7 @@ import { MultiLanguageString } from '@/types/utilTypes/Localization';
 import ProjectTroubleShoots from './ProjectTroubleShoots';
 import ProjectScreenshots from './ProjectScreenshots';
 import { cartesian } from '@/utils/array';
+import { LOCALES } from '@/types/Locale';
 
 const ProjectTitle = dynamic(
   () => import('pages/project/[projectUUID]/ProjectTitle'),
@@ -83,16 +84,17 @@ export const getStaticProps = (async ({ params, locale }) => {
 }) satisfies GetStaticProps<Props>;
 
 export const getStaticPaths = (async () => {
-  const paths = cartesian(Object.keys(PROJECTS), ['ko-KR', 'en-US']).map(
-    ([projectUUID, locale]) => {
-      return {
-        params: {
-          projectUUID,
-        },
-        locale,
-      };
-    },
-  );
+  const paths = cartesian(
+    Object.keys(PROJECTS),
+    LOCALES as unknown as any[],
+  ).map(([projectUUID, locale]) => {
+    return {
+      params: {
+        projectUUID,
+      },
+      locale,
+    };
+  });
 
   return {
     paths,
