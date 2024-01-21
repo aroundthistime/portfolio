@@ -3,6 +3,7 @@ import {
   ProjectScreenshot as ProjectScreenshotType,
 } from '@/types/Project';
 import { ProjectScreenshotContainer } from './style';
+import LazyVideo from '@/components/LazyLoading/LazyVideo';
 
 /**
  * Component for rendering a single screenshot item of project
@@ -21,7 +22,7 @@ const ProjectScreenshot = ({ screenshot }: Props) => {
           alt="Project screenshot"
         />
       ) : (
-        <video
+        <LazyVideo
           src={screenshot.src}
           className={getClassName()}
           autoPlay
