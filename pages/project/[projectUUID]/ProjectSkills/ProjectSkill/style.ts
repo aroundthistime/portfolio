@@ -6,6 +6,6 @@ export const ProjectSkillContainer = styled.li`
   align-items: center;
 `;
 
-export const ProjectSkillWithLogo = styled(LogoWithText)`\
+export const ProjectSkillWithLogo = styled(LogoWithText)`
   font-size: ${props => props.theme.font.size.normal};
 `;

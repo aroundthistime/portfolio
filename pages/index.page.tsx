@@ -10,10 +10,15 @@ import Head from 'next/head';
 import use3DSceneStore from '@/store/use3DSceneStore';
 import Loader from '@/components/containers/Loader';
 import withSuspenseMinDelaySuspense from '@/components/HOC/withMinDelaySuspense';
+import PortfolioContents from '@/components/containers/PortfolioContents';
+import { SKILLS } from '@/dummyData/skill';
+import { PROJECTS } from '@/dummyData/project';
+import {
+  MY_EMAIL_LINK,
+  MY_GITHUB_LINK,
+  MY_LINKEDIN_LINK,
+} from '@/constants/links';
 
-const PortfolioContents = React.lazy(
-  () => import('@/components/containers/PortfolioContents'),
-);
 const Bart = React.lazy(() => import('@/components/3D/models/Bart'));
 const Room = React.lazy(() => import('@/components/3D/models/Room'));
 
@@ -34,7 +39,31 @@ const ThreeDPortfolio = () => {
   const enableZoom = use3DSceneStore(state => state.enableZoom);
   const enableRotate = use3DSceneStore(state => state.enableRotate);
 
+  /**
+   * Preload important image assets right after mount (UX purpose)
+   */
+  const preloadImages = () => {
+    const IMAGES_TO_PRELOAD = [
+      '/images/skills/web.png',
+      SKILLS.typescript.logoSrc,
+      SKILLS.reactJS.logoSrc,
+      SKILLS.jest.logoSrc,
+      SKILLS.threeJS.logoSrc,
+      SKILLS.webAssembly.logoSrc,
+      '/images/linkLogos/github.png',
+      '/images/linkLogos/linkedIn.png',
+      '/images/linkLogos/email.png',
+      ...Object.values(PROJECTS).map(project => project.logo),
+    ];
+
+    IMAGES_TO_PRELOAD.forEach(imageSrc => {
+      const image = new Image();
+      image.src = imageSrc;
+    });
+  };
+
   useEffect(() => {
+    preloadImages();
     use3DSceneStore.subscribe((state, prev) => {
       // Reset zoom level when changing camera or scene properties to prevent unwanted behaviors
       if (

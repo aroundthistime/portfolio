@@ -1,13 +1,11 @@
 import { ReplaceSubType } from '.';
+import { Locale } from '../Locale';
 
 /**
  * Utility type which has strings for different locales
  * @template {T} - The type with actual string data for each locales
  */
-export type MultiLanguageString = {
-  'ko-KR': string;
-  'en-US': string;
-};
+export type MultiLanguageString = Record<Locale, string>;
 
 /**
  * Utility type which converts a data type for multi language

@@ -123,4 +123,4 @@ export const SKILLS = {
     name: 'SonarQube',
     logoSrc: '/images/skills/sonarqube.svg',
   },
-} as const;
+} as const satisfies Record<string, { name: string; logoSrc: string }>;
