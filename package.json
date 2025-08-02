@@ -10,6 +10,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "check": "pnpm lint && pnpm tsc --noEmit",
     "start": "next start"
   },
   "dependencies": {
