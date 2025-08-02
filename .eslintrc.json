@@ -16,7 +16,8 @@
     "prefer-template": "error",
     "object-shorthand": "error",
     "prefer-arrow-callback": "error",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/no-unescaped-entities": "off"
   },
   "ignorePatterns": [
     "node_modules/",
