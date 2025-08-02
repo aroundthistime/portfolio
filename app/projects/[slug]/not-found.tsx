@@ -1,7 +1,13 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowLeft, AlertCircle } from "lucide-react"
-import Link from "next/link"
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { ArrowLeft, AlertCircle } from 'lucide-react';
+import Link from 'next/link';
 
 export default function NotFound() {
   return (
@@ -12,7 +18,9 @@ export default function NotFound() {
             <AlertCircle className="h-6 w-6 text-red-600" />
           </div>
           <CardTitle className="text-2xl">Project Not Found</CardTitle>
-          <CardDescription>The project you're looking for doesn't exist or may have been moved.</CardDescription>
+          <CardDescription>
+            The project you're looking for doesn't exist or may have been moved.
+          </CardDescription>
         </CardHeader>
         <CardContent className="text-center">
           <Link href="/">
@@ -24,5 +32,5 @@ export default function NotFound() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

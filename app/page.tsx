@@ -1,198 +1,237 @@
-"use client"
+'use client';
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Github, Linkedin, Mail, ExternalLink, MapPin, Coffee, Code2, Moon, Sun } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useTheme } from "next-themes"
-import { useEffect, useState, useRef } from "react"
-import { ProjectModal } from "@/components/project-modal"
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  MapPin,
+  Coffee,
+  Code2,
+  Moon,
+  Sun,
+} from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import { useEffect, useState, useRef } from 'react';
+import { ProjectModal } from '@/components/project-modal';
 
 // Add this function at the top of the component, after the imports
 const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768) // md breakpoint
-    }
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
 
-    checkIsMobile()
-    window.addEventListener("resize", checkIsMobile)
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
 
-    return () => window.removeEventListener("resize", checkIsMobile)
-  }, [])
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
 
-  return isMobile
-}
+  return isMobile;
+};
 
 const techSkills = [
   {
-    name: "React & Next.js",
+    name: 'React & Next.js',
     description:
-      "5+ years building scalable web applications. I specialize in creating performant, SEO-optimized applications using Next.js App Router, implementing server-side rendering, and optimizing Core Web Vitals. I prefer functional components with hooks and have extensive experience with React 18 features like Suspense and concurrent rendering.",
+      '5+ years building scalable web applications. I specialize in creating performant, SEO-optimized applications using Next.js App Router, implementing server-side rendering, and optimizing Core Web Vitals. I prefer functional components with hooks and have extensive experience with React 18 features like Suspense and concurrent rendering.',
   },
   {
-    name: "TypeScript",
+    name: 'TypeScript',
     description:
-      "Strong advocate for type safety in large codebases. I implement strict TypeScript configurations, create custom type definitions, and use advanced features like conditional types and mapped types. I believe TypeScript significantly improves code maintainability and developer experience.",
+      'Strong advocate for type safety in large codebases. I implement strict TypeScript configurations, create custom type definitions, and use advanced features like conditional types and mapped types. I believe TypeScript significantly improves code maintainability and developer experience.',
   },
   {
-    name: "CSS & Styling",
+    name: 'CSS & Styling',
     description:
-      "Proficient in modern CSS including Grid, Flexbox, and CSS-in-JS solutions. I have extensive experience with Tailwind CSS for rapid prototyping and Styled Components for component-based styling. I focus on creating responsive, accessible designs with smooth animations.",
+      'Proficient in modern CSS including Grid, Flexbox, and CSS-in-JS solutions. I have extensive experience with Tailwind CSS for rapid prototyping and Styled Components for component-based styling. I focus on creating responsive, accessible designs with smooth animations.',
   },
   {
-    name: "State Management",
+    name: 'State Management',
     description:
-      "Experienced with various state management solutions including Redux Toolkit, Zustand, and React Query. I choose the right tool based on project complexity and team preferences, with a focus on minimizing boilerplate and improving developer experience.",
+      'Experienced with various state management solutions including Redux Toolkit, Zustand, and React Query. I choose the right tool based on project complexity and team preferences, with a focus on minimizing boilerplate and improving developer experience.',
   },
   {
-    name: "Testing",
+    name: 'Testing',
     description:
-      "Comprehensive testing approach using Jest, React Testing Library, and Cypress. I write unit tests for components, integration tests for user flows, and end-to-end tests for critical paths. I believe in test-driven development for complex features.",
+      'Comprehensive testing approach using Jest, React Testing Library, and Cypress. I write unit tests for components, integration tests for user flows, and end-to-end tests for critical paths. I believe in test-driven development for complex features.',
   },
   {
-    name: "Performance Optimization",
+    name: 'Performance Optimization',
     description:
-      "Focused on creating fast, efficient web applications. I implement code splitting, lazy loading, image optimization, and bundle analysis. I regularly use Chrome DevTools and Lighthouse to identify and fix performance bottlenecks.",
+      'Focused on creating fast, efficient web applications. I implement code splitting, lazy loading, image optimization, and bundle analysis. I regularly use Chrome DevTools and Lighthouse to identify and fix performance bottlenecks.',
   },
-]
+];
 
 const projects = [
   {
-    id: "ecommerce-platform",
-    title: "E-commerce Platform",
+    id: 'ecommerce-platform',
+    title: 'E-commerce Platform',
     description:
-      "A full-featured e-commerce platform with real-time inventory management, payment processing, and admin dashboard.",
-    image: "/placeholder.svg?height=200&width=300",
-    tags: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
+      'A full-featured e-commerce platform with real-time inventory management, payment processing, and admin dashboard.',
+    image: '/placeholder.svg?height=200&width=300',
+    tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
   },
   {
-    id: "task-management-app",
-    title: "Task Management Application",
+    id: 'task-management-app',
+    title: 'Task Management Application',
     description:
-      "Collaborative project management tool with real-time updates, team collaboration features, and advanced filtering.",
-    image: "/placeholder.svg?height=200&width=300",
-    tags: ["React", "Socket.io", "Node.js", "MongoDB"],
+      'Collaborative project management tool with real-time updates, team collaboration features, and advanced filtering.',
+    image: '/placeholder.svg?height=200&width=300',
+    tags: ['React', 'Socket.io', 'Node.js', 'MongoDB'],
   },
   {
-    id: "analytics-dashboard",
-    title: "Analytics Dashboard",
+    id: 'analytics-dashboard',
+    title: 'Analytics Dashboard',
     description:
-      "Real-time analytics dashboard for tracking user behavior, conversion rates, and business metrics with interactive charts.",
-    image: "/placeholder.svg?height=200&width=300",
-    tags: ["React", "D3.js", "Python", "Redis"],
+      'Real-time analytics dashboard for tracking user behavior, conversion rates, and business metrics with interactive charts.',
+    image: '/placeholder.svg?height=200&width=300',
+    tags: ['React', 'D3.js', 'Python', 'Redis'],
   },
   {
-    id: "mobile-banking-app",
-    title: "Mobile Banking Interface",
+    id: 'mobile-banking-app',
+    title: 'Mobile Banking Interface',
     description:
-      "Responsive web interface for a mobile banking application with advanced security features and intuitive UX.",
-    image: "/placeholder.svg?height=200&width=300",
-    tags: ["React Native", "TypeScript", "OAuth", "Biometrics"],
+      'Responsive web interface for a mobile banking application with advanced security features and intuitive UX.',
+    image: '/placeholder.svg?height=200&width=300',
+    tags: ['React Native', 'TypeScript', 'OAuth', 'Biometrics'],
   },
-]
+];
 
 // Mapping projects to skills for auto-highlighting
 const projectSkillsMapping = {
-  "ecommerce-platform": ["React & Next.js", "TypeScript", "CSS & Styling", "Performance Optimization"],
-  "task-management-app": ["React & Next.js", "TypeScript", "State Management", "CSS & Styling"],
-  "analytics-dashboard": ["React & Next.js", "TypeScript", "Performance Optimization", "CSS & Styling"],
-  "mobile-banking-app": ["React & Next.js", "TypeScript", "CSS & Styling", "Testing"],
-}
+  'ecommerce-platform': [
+    'React & Next.js',
+    'TypeScript',
+    'CSS & Styling',
+    'Performance Optimization',
+  ],
+  'task-management-app': [
+    'React & Next.js',
+    'TypeScript',
+    'State Management',
+    'CSS & Styling',
+  ],
+  'analytics-dashboard': [
+    'React & Next.js',
+    'TypeScript',
+    'Performance Optimization',
+    'CSS & Styling',
+  ],
+  'mobile-banking-app': [
+    'React & Next.js',
+    'TypeScript',
+    'CSS & Styling',
+    'Testing',
+  ],
+};
 
 function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
-    return null
+    return null;
   }
 
   return (
     <Button
       variant="ghost"
       size="sm"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       className="w-9 px-0 cursor-pointer"
     >
       <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
       <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Toggle theme</span>
     </Button>
-  )
+  );
 }
 
 export default function Portfolio() {
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
   // Remove the current skill highlighting logic and replace with tag highlighting
-  const [highlightedTags, setHighlightedTags] = useState<{ projectId: string; tags: string[] }>({
-    projectId: "",
+  const [highlightedTags, setHighlightedTags] = useState<{
+    projectId: string;
+    tags: string[];
+  }>({
+    projectId: '',
     tags: [],
-  })
-  const highlightIntervalRef = useRef<NodeJS.Timeout | null>(null)
+  });
+  const highlightIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Add this inside the Portfolio component, after the existing state
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
 
   // Update the project card click handler
   const handleProjectClick = (projectId: string) => {
     if (isMobile) {
       // On mobile, navigate directly to project page
-      window.location.href = `/projects/${projectId}`
+      window.location.href = `/projects/${projectId}`;
     } else {
       // On desktop, open modal
-      setSelectedProject(projectId)
+      setSelectedProject(projectId);
     }
-  }
+  };
 
   // Tag highlighting functions
   const startTagHighlighting = (projectId: string, tags: string[]) => {
-    let currentIndex = 0
+    let currentIndex = 0;
 
     const highlightNext = () => {
       if (currentIndex < tags.length) {
-        setHighlightedTags({ projectId, tags: [tags[currentIndex]] })
-        currentIndex++
+        setHighlightedTags({ projectId, tags: [tags[currentIndex]] });
+        currentIndex++;
       } else {
-        currentIndex = 0
-        setHighlightedTags({ projectId, tags: [tags[currentIndex]] })
-        currentIndex++
+        currentIndex = 0;
+        setHighlightedTags({ projectId, tags: [tags[currentIndex]] });
+        currentIndex++;
       }
-    }
+    };
 
-    highlightNext() // Start immediately
-    highlightIntervalRef.current = setInterval(highlightNext, 800)
-  }
+    highlightNext(); // Start immediately
+    highlightIntervalRef.current = setInterval(highlightNext, 800);
+  };
 
   const stopTagHighlighting = () => {
     if (highlightIntervalRef.current) {
-      clearInterval(highlightIntervalRef.current)
-      highlightIntervalRef.current = null
+      clearInterval(highlightIntervalRef.current);
+      highlightIntervalRef.current = null;
     }
-    setHighlightedTags({ projectId: "", tags: [] })
-  }
+    setHighlightedTags({ projectId: '', tags: [] });
+  };
 
   // Cleanup interval on unmount
   useEffect(() => {
     return () => {
       if (highlightIntervalRef.current) {
-        clearInterval(highlightIntervalRef.current)
+        clearInterval(highlightIntervalRef.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
-  const [selectedProject, setSelectedProject] = useState<string | null>(null)
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20">
@@ -208,7 +247,7 @@ export default function Portfolio() {
             <motion.div
               className="flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
               <div className="p-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg">
                 <Code2 className="h-6 w-6 text-white" />
@@ -219,22 +258,24 @@ export default function Portfolio() {
             </motion.div>
             <div className="flex items-center space-x-6">
               <div className="hidden md:flex items-center space-x-6">
-                {["About", "Skills", "Projects", "Contact"].map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 + 0.3 }}
-                  >
-                    <Link
-                      href={`#${item.toLowerCase()}`}
-                      className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors relative group cursor-pointer"
+                {['About', 'Skills', 'Projects', 'Contact'].map(
+                  (item, index) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 + 0.3 }}
                     >
-                      {item}
-                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-                    </Link>
-                  </motion.div>
-                ))}
+                      <Link
+                        href={`#${item.toLowerCase()}`}
+                        className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors relative group cursor-pointer"
+                      >
+                        {item}
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+                      </Link>
+                    </motion.div>
+                  ),
+                )}
               </div>
               <ThemeToggle />
             </div>
@@ -257,7 +298,7 @@ export default function Portfolio() {
           >
             <motion.div
               whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ type: "spring", stiffness: 300, damping: 10 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 10 }}
               className="relative inline-block mb-6"
             >
               <Image
@@ -332,23 +373,28 @@ export default function Portfolio() {
               <CardContent className="pt-8 pb-8 px-8">
                 <div className="prose max-w-none text-gray-700 dark:text-gray-300 leading-relaxed">
                   <p className="text-lg mb-6">
-                    I'm a passionate frontend developer with 5 years of experience building scalable web applications. I
-                    love turning complex problems into simple, beautiful, and intuitive solutions that users enjoy
-                    interacting with.
+                    I'm a passionate frontend developer with 5 years of
+                    experience building scalable web applications. I love
+                    turning complex problems into simple, beautiful, and
+                    intuitive solutions that users enjoy interacting with.
                   </p>
 
                   <p className="text-lg mb-6">
-                    I thrive in collaborative, agile environments where I can work closely with designers, product
-                    managers, and backend developers. I prefer remote-first companies with strong engineering culture
-                    and continuous learning opportunities, where innovation and quality are valued over just shipping
+                    I thrive in collaborative, agile environments where I can
+                    work closely with designers, product managers, and backend
+                    developers. I prefer remote-first companies with strong
+                    engineering culture and continuous learning opportunities,
+                    where innovation and quality are valued over just shipping
                     features.
                   </p>
 
                   <p className="text-lg">
-                    My specialties include the React ecosystem, performance optimization, and accessibility. I'm
-                    particularly interested in fintech, e-commerce, and developer tools. I'm always exploring emerging
-                    technologies like Web3 and AI integration, believing that staying curious and adaptable is key to
-                    creating meaningful digital experiences.
+                    My specialties include the React ecosystem, performance
+                    optimization, and accessibility. I'm particularly interested
+                    in fintech, e-commerce, and developer tools. I'm always
+                    exploring emerging technologies like Web3 and AI
+                    integration, believing that staying curious and adaptable is
+                    key to creating meaningful digital experiences.
                   </p>
                 </div>
               </CardContent>
@@ -393,7 +439,9 @@ export default function Portfolio() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{skill.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {skill.description}
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -424,14 +472,19 @@ export default function Portfolio() {
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
                 className="group"
-                onMouseEnter={() => startTagHighlighting(project.id, project.tags)}
+                onMouseEnter={() =>
+                  startTagHighlighting(project.id, project.tags)
+                }
                 onMouseLeave={stopTagHighlighting}
               >
                 <Card className="border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
                   <div className="relative overflow-hidden">
-                    <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.4 }}>
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.4 }}
+                    >
                       <Image
-                        src={project.image || "/placeholder.svg"}
+                        src={project.image || '/placeholder.svg'}
                         alt={project.title}
                         width={300}
                         height={200}
@@ -444,25 +497,31 @@ export default function Portfolio() {
                     <CardTitle className="text-xl group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                       {project.title}
                     </CardTitle>
-                    <CardDescription className="dark:text-gray-300">{project.description}</CardDescription>
+                    <CardDescription className="dark:text-gray-300">
+                      {project.description}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag) => (
+                      {project.tags.map(tag => (
                         <Badge
                           key={tag}
                           variant="outline"
                           className={`text-xs border-purple-200 dark:border-purple-700 transition-all duration-300 ${
-                            highlightedTags.projectId === project.id && highlightedTags.tags.includes(tag)
-                              ? "bg-purple-100 border-purple-400 text-purple-700 dark:bg-purple-900/40 dark:border-purple-500 dark:text-purple-300 shadow-md transform scale-110"
-                              : "hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                            highlightedTags.projectId === project.id &&
+                            highlightedTags.tags.includes(tag)
+                              ? 'bg-purple-100 border-purple-400 text-purple-700 dark:bg-purple-900/40 dark:border-purple-500 dark:text-purple-300 shadow-md transform scale-110'
+                              : 'hover:bg-purple-50 dark:hover:bg-purple-900/20'
                           }`}
                         >
                           {tag}
                         </Badge>
                       ))}
                     </div>
-                    <div onClick={() => handleProjectClick(project.id)} className="cursor-pointer">
+                    <div
+                      onClick={() => handleProjectClick(project.id)}
+                      className="cursor-pointer"
+                    >
                       <Button className="w-full bg-blue-600 hover:bg-blue-700 border-0 shadow-lg group/btn cursor-pointer">
                         View Project Details
                         <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -498,7 +557,8 @@ export default function Portfolio() {
             viewport={{ once: true }}
             className="text-gray-600 dark:text-gray-300 mb-8 text-lg"
           >
-            I'm always interested in hearing about new opportunities and exciting projects.
+            I'm always interested in hearing about new opportunities and
+            exciting projects.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -509,22 +569,26 @@ export default function Portfolio() {
           >
             {[
               {
-                href: "mailto:alex.chen@example.com",
+                href: 'mailto:alex.chen@example.com',
                 icon: Mail,
-                text: "alex.chen@example.com",
+                text: 'alex.chen@example.com',
               },
               {
-                href: "https://linkedin.com/in/alexchen",
+                href: 'https://linkedin.com/in/alexchen',
                 icon: Linkedin,
-                text: "LinkedIn",
+                text: 'LinkedIn',
               },
               {
-                href: "https://github.com/alexchen",
+                href: 'https://github.com/alexchen',
                 icon: Github,
-                text: "GitHub",
+                text: 'GitHub',
               },
             ].map((contact, index) => (
-              <motion.div key={contact.text} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                key={contact.text}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
                   variant="outline"
                   size="lg"
@@ -533,8 +597,14 @@ export default function Portfolio() {
                 >
                   <a
                     href={contact.href}
-                    target={contact.href.startsWith("mailto:") ? undefined : "_blank"}
-                    rel={contact.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                    target={
+                      contact.href.startsWith('mailto:') ? undefined : '_blank'
+                    }
+                    rel={
+                      contact.href.startsWith('mailto:')
+                        ? undefined
+                        : 'noopener noreferrer'
+                    }
                     className="flex items-center space-x-2"
                   >
                     <contact.icon className="h-5 w-5 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors" />
@@ -555,7 +625,10 @@ export default function Portfolio() {
           </p>
         </div>
       </footer>
-      <ProjectModal projectId={selectedProject} onClose={() => setSelectedProject(null)} />
+      <ProjectModal
+        projectId={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </div>
-  )
+  );
 }
