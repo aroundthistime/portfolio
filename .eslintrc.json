@@ -10,7 +10,7 @@
     "no-var": "error",
     "no-console": "warn",
     "eqeqeq": "error",
-    "curly": "error",
+    "curly": ["error", "multi-line", "consistent"],
     "no-duplicate-imports": "error",
     "no-unused-expressions": "error",
     "prefer-template": "error",
