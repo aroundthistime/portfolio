@@ -26,11 +26,11 @@ const HeroSection = () => {
             transition={{ type: 'spring', stiffness: 300, damping: 10 }}
             className="relative inline-block mb-6">
             <Image
-              src="/placeholder.svg?height=150&width=150"
+              src="/images/profile.jpeg"
               alt="Alex Chen"
               width={150}
               height={150}
-              className="rounded-full mx-auto border-4 border-white dark:border-gray-700 shadow-2xl"
+              className="w-[150px] h-[150px] rounded-full mx-auto border-4 border-white dark:border-gray-700 shadow-2xl object-cover"
             />
             <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-2 border-white dark:border-gray-700 animate-pulse"></div>
           </motion.div>
