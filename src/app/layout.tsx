@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   description:
     'Experienced frontend developer specializing in React, Next.js, and modern web technologies',
   generator: 'v0.dev',
+  icons: {
+    icon: '/images/bart.jpg',
+  },
 };
 
 export default function RootLayout({
