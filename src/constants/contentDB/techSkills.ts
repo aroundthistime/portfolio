@@ -5,6 +5,10 @@ export const TECH_SKILLS = {
     name: 'Typescript',
     iconUrl: '/images/skills/typescript.png',
   },
+  emotion: {
+    name: 'Emotion',
+    iconUrl: '/images/skills/emotion.png',
+  },
   styledComponents: {
     name: 'styled-components',
     iconUrl: '/images/skills/styledcomponents.png',
@@ -41,6 +45,14 @@ export const TECH_SKILLS = {
     name: 'Zustand',
     iconUrl: '/images/skills/zustand.png',
   },
+  jotai: {
+    name: 'Jotai',
+    iconUrl: '/images/skills/jotai.jpeg',
+  },
+  rxjs: {
+    name: 'RxJS',
+    iconUrl: '/images/skills/rxjs.png',
+  },
   threeJS: {
     name: 'Three.js',
     iconUrl: '/images/skills/threejs.png',
@@ -48,6 +60,13 @@ export const TECH_SKILLS = {
   r3f: {
     name: 'React Three Fiber',
     iconUrl: '/images/skills/threejs.png',
+  },
+  tensorFlow: {
+    name: 'TensorFlow',
+    iconUrl: '/images/skills/tensorflow.png',
+  },
+  stomp: {
+    name: 'STOMP',
   },
   codeIgniter: {
     name: 'PHP (Code Igniter)',
@@ -57,6 +76,10 @@ export const TECH_SKILLS = {
     name: 'Zeplin',
     iconUrl: '/images/skills/zeplin.png',
   },
+  webrtc: {
+    name: 'WebRTC',
+    iconUrl: '/images/skills/webrtc.jpeg',
+  },
   webAssembly: {
     name: 'WebAssembly',
     iconUrl: '/images/skills/webAssembly.png',
@@ -64,6 +87,10 @@ export const TECH_SKILLS = {
   python: {
     name: 'Python',
     iconUrl: '/images/skills/python.png',
+  },
+  sentry: {
+    name: 'Sentry',
+    iconUrl: '/images/skills/sentry.svg',
   },
   grafana: {
     name: 'Grafana',
@@ -105,6 +132,14 @@ export const TECH_SKILLS = {
     name: 'React Testing Library',
     iconUrl: '/images/skills/react-testing-library.png',
   },
+  playwright: {
+    name: 'Playwright',
+    iconUrl: '/images/skills/playwright.png',
+  },
+  spinnaker: {
+    name: 'Spinnaker',
+    iconUrl: '/images/skills/spinnaker.jpeg',
+  },
   jenkins: {
     name: 'Jenkins',
     iconUrl: '/images/skills/jenkins.png',
@@ -124,5 +159,9 @@ export const TECH_SKILLS = {
   sonarqube: {
     name: 'SonarQube',
     iconUrl: '/images/skills/sonarqube.svg',
+  },
+  zendesk: {
+    name: 'Zendesk',
+    iconUrl: '/images/skills/zendesk.png',
   },
 } as const satisfies Record<string, TechSkill>;
