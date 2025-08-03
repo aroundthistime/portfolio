@@ -1,0 +1,26 @@
+export interface Project {
+  title: string;
+  summary: string;
+  links: {
+    live: string;
+    github: string;
+    demo: string;
+  };
+  image: string;
+  techSkillsUsed: string[];
+  techSkillsExposed: string[];
+  detailedExplanation: string;
+  features: {
+    name: string;
+    description: string;
+    myContribution: boolean;
+  }[];
+  teamSize: string;
+  role: string;
+  period: string;
+  troubleshoots: {
+    title: string;
+    problem: string;
+    solution: string;
+  }[];
+}
