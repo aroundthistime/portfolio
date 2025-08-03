@@ -16,7 +16,7 @@ const techSkills = [
   {
     name: 'CSS & Styling',
     description:
-      'Proficient in modern CSS including Grid, Flexbox, and CSS-in-JS solutions. I have extensive experience with Tailwind CSS for rapid prototyping and Styled Components for component-based styling. I focus on creating responsive, accessible designs with smooth animations.',
+      'CSS, CSS Module, styled-components(Emotion) 등을 활용해 UI 디자인을 구현할 수 있으며, React 컴포넌트명과 직접 연동되어 관리가 용이한 CSS-in-JS 방식을 선호합니다.\n다크/라이트 모드 지원, 반응형 웹 디자인, 그리고 RTL(오른쪽-왼쪽) 레이아웃에 대응할 수 있으며 React Spring 등의 라이브러리를 활용해 자연스럽고 동적인 애니메이션 효과를 구현할 수 있습니다.',
   },
   {
     name: 'State Management',
