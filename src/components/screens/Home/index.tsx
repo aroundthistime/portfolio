@@ -17,6 +17,7 @@ import { useEffect, useState, useRef } from 'react';
 import { ProjectModal } from '@/components/project-modal';
 import { Header } from '@/components/layout/Header';
 import HeroSection from './sections/Hero';
+import { MY_NAME } from '@/constants/contentDB/aboutMe';
 
 // Add this function at the top of the component, after the imports
 const useIsMobile = () => {
@@ -431,7 +432,7 @@ export function Home() {
       <footer className="py-8 px-4 border-t border-purple-200 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
         <div className="container mx-auto max-w-4xl text-center">
           <p className="text-gray-600 dark:text-gray-400">
-            © 2024 Alex Chen. Built with Next.js, TypeScript, and Tailwind CSS.
+            {`© 2024 ${MY_NAME.short}, aroundthistime`}
           </p>
         </div>
       </footer>

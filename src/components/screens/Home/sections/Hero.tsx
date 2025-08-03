@@ -27,7 +27,7 @@ const HeroSection = () => {
             className="relative inline-block mb-6">
             <Image
               src="/images/profile.jpeg"
-              alt="Alex Chen"
+              alt="My Profile Image"
               width={150}
               height={150}
               className="w-[150px] h-[150px] rounded-full mx-auto border-4 border-white dark:border-gray-700 shadow-2xl object-cover"
