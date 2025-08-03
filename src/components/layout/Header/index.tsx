@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { DarkLightToggleButton } from './DarkLightToggleButton';
+import { MY_NAME } from '@/constants/contentDB/aboutMe';
 
 interface Props {
   tabs?: Array<{
@@ -33,6 +34,9 @@ export function Header({ tabs }: Props) {
                 height={40}
                 className="h-10 w-10 rounded-lg object-cover"
               />
+              <span className="font-bold text-xl text-gray-600 dark:text-gray-300">
+                FE {MY_NAME.short}
+              </span>
             </Link>
           </motion.div>
           <div className="flex items-center space-x-6">
