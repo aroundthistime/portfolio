@@ -1,10 +1,13 @@
-import { motion } from 'framer-motion';
+import { MY_NAME } from '@/constants/contentDB/aboutMe';
+import useIsMobileViewport from '@/hooks/useIsMobileViewport';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Coffee, MapPin } from 'lucide-react';
 import Image from 'next/image';
 
 const HeroSection = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const isMobileViewport = useIsMobileViewport();
 
   return (
     <section className="py-20 px-4 relative overflow-hidden">
@@ -38,7 +41,7 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
             <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              Frontend Developer
+              {isMobileViewport ? MY_NAME.short : MY_NAME.long}
             </span>
           </motion.h1>
 
@@ -47,7 +50,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6">
-            Crafting exceptional user experiences with modern web technologies
+            Frontend Developer
           </motion.p>
 
           <motion.div
@@ -57,7 +60,7 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-gray-500 dark:text-gray-400">
             <div className="flex items-center space-x-1">
               <MapPin className="h-4 w-4 text-purple-500" />
-              <span>San Francisco, CA</span>
+              <span>Seoul, South Korea</span>
             </div>
             <div className="flex items-center space-x-1">
               <Coffee className="h-4 w-4 text-blue-500" />
