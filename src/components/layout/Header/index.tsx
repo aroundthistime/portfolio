@@ -1,7 +1,7 @@
 'use client';
 
-import { Code2 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { DarkLightToggleButton } from './DarkLightToggleButton';
 
@@ -26,12 +26,13 @@ export function Header({ tabs }: Props) {
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
             <Link href="/" className="flex items-center space-x-2">
-              <div className="p-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg">
-                <Code2 className="h-6 w-6 text-white" />
-              </div>
-              <span className="font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                Alex Chen
-              </span>
+              <Image
+                src="/images/bart.jpg"
+                alt="Bart"
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-lg object-cover"
+              />
             </Link>
           </motion.div>
           <div className="flex items-center space-x-6">
