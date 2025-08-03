@@ -177,7 +177,7 @@ export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20">
+    <>
       <Header
         tabs={[
           { label: 'About', href: '#about' },
@@ -509,6 +509,6 @@ export default function Portfolio() {
         projectId={selectedProject}
         onClose={() => setSelectedProject(null)}
       />
-    </div>
+    </>
   );
 }

@@ -14,6 +14,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 
+
 // Technology icons mapping
 const techIcons = {
   'Next.js': '⚛️',
@@ -554,7 +555,7 @@ export default function ProjectDetail({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20">
+    <>
       <Header />
 
       <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -786,6 +787,6 @@ export default function ProjectDetail({ params }: PageProps) {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
