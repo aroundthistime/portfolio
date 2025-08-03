@@ -6,7 +6,7 @@ const techSkills = [
   {
     name: 'React & Next.js',
     description:
-      '5+ years building scalable web applications. I specialize in creating performant, SEO-optimized applications using Next.js App Router, implementing server-side rendering, and optimizing Core Web Vitals. I prefer functional components with hooks and have extensive experience with React 18 features like Suspense and concurrent rendering.',
+      'React 생태계 전반에 익숙하며, 재사용성이 뛰어나고 책임이 명확한 컴포넌트 설계를 지향합니다.\nNext.js를 활용해 SSR과 SSG 아키텍처를 구현할 수 있으며, React Native CLI와 Expo를 사용해 크로스플랫폼 모바일 앱을 개발한 경험이 있습니다.\n확장성을 위해 HOC, 컴파운드 컴포넌트 등의 패턴을 적용할 수 있으며 strict mode 환경의 개발을 선호합니다.',
   },
   {
     name: 'TypeScript',
