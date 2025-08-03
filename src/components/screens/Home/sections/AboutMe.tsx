@@ -22,15 +22,15 @@ const AboutMeSection = () => {
           viewport={{ once: true }}>
           <Card className="border-0 shadow-xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm hover:shadow-2xl transition-all duration-300">
             <CardContent className="pt-8 pb-8 px-8">
-              <div className="prose max-w-none text-gray-700 dark:text-gray-300 leading-relaxed">
-                <p className="text-lg mb-6">
+              <div className="prose max-w-none text-gray-700 dark:text-gray-300 leading-relaxed flex flex-col gap-6">
+                <p className="text-lg">
                   I'm a passionate frontend developer with 5 years of experience
                   building scalable web applications. I love turning complex
                   problems into simple, beautiful, and intuitive solutions that
                   users enjoy interacting with.
                 </p>
 
-                <p className="text-lg mb-6">
+                <p className="text-lg">
                   I thrive in collaborative, agile environments where I can work
                   closely with designers, product managers, and backend
                   developers. I prefer remote-first companies with strong
