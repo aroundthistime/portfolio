@@ -3,7 +3,7 @@
 import { Code2 } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { DarkLightToggleButton } from './DarkLightToggleButton';
 
 interface Props {
   tabs?: Array<{
@@ -53,7 +53,7 @@ export function Header({ tabs }: Props) {
                 ))}
               </div>
             )}
-            <ThemeToggle />
+            <DarkLightToggleButton />
           </div>
         </nav>
       </div>
