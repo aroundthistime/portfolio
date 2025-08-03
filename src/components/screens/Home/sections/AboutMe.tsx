@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
+import MainSection from './MainSection';
 
 const AboutMeSection = () => {
   return (
-    <section id="about" className="py-16 px-4">
+    <MainSection id="about" className="py-16 px-4">
       <div className="container mx-auto max-w-4xl">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -51,7 +52,7 @@ const AboutMeSection = () => {
           </Card>
         </motion.div>
       </div>
-    </section>
+    </MainSection>
   );
 };
 

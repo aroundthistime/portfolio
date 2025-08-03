@@ -7,9 +7,9 @@ import { DarkLightToggleButton } from './DarkLightToggleButton';
 import { MY_NAME } from '@/constants/contentDB/aboutMe';
 
 interface Props {
-  tabs?: Array<{
-    label: string;
-    href: string;
+  tabs?: ReadonlyArray<{
+    readonly label: string;
+    readonly href: string;
   }>;
 }
 
