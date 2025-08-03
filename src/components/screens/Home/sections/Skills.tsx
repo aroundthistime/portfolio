@@ -67,7 +67,7 @@ const TechSkillsSection = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed whitespace-pre-line">
                     {skill.description}
                   </p>
                 </CardContent>
