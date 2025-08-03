@@ -562,8 +562,7 @@ export default function ProjectDetail({ params }: PageProps) {
           <nav className="flex items-center justify-between">
             <Link
               href="/"
-              className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors cursor-pointer"
-            >
+              className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors cursor-pointer">
               <ArrowLeft className="h-5 w-5" />
               <span>Back to Portfolio</span>
             </Link>
@@ -573,13 +572,11 @@ export default function ProjectDetail({ params }: PageProps) {
                   variant="outline"
                   size="sm"
                   asChild
-                  className="cursor-pointer bg-transparent"
-                >
+                  className="cursor-pointer bg-transparent">
                   <a
                     href={project.links.live}
                     target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                    rel="noopener noreferrer">
                     <Globe className="h-4 w-4 mr-2" />
                     Live Site
                   </a>
@@ -591,13 +588,11 @@ export default function ProjectDetail({ params }: PageProps) {
                     variant="outline"
                     size="sm"
                     asChild
-                    className="cursor-pointer bg-transparent"
-                  >
+                    className="cursor-pointer bg-transparent">
                     <a
                       href={project.links.github}
                       target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                      rel="noopener noreferrer">
                       <Github className="h-4 w-4 mr-2" />
                       GitHub
                     </a>
@@ -629,13 +624,11 @@ export default function ProjectDetail({ params }: PageProps) {
             {project.links.live && (
               <Button
                 className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
-                asChild
-              >
+                asChild>
                 <a
                   href={project.links.live}
                   target="_blank"
-                  rel="noopener noreferrer"
-                >
+                  rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4 mr-2" />
                   View Live Project
                 </a>
@@ -645,13 +638,11 @@ export default function ProjectDetail({ params }: PageProps) {
               <Button
                 variant="outline"
                 asChild
-                className="cursor-pointer bg-transparent"
-              >
+                className="cursor-pointer bg-transparent">
                 <a
                   href={project.links.appStore}
                   target="_blank"
-                  rel="noopener noreferrer"
-                >
+                  rel="noopener noreferrer">
                   <Globe className="h-4 w-4 mr-2" />
                   App Store
                 </a>
@@ -699,8 +690,7 @@ export default function ProjectDetail({ params }: PageProps) {
                         <Badge
                           key={tech}
                           variant="outline"
-                          className="px-3 py-1 text-sm"
-                        >
+                          className="px-3 py-1 text-sm">
                           {techIcons[tech as keyof typeof techIcons] && (
                             <span className="mr-2">
                               {techIcons[tech as keyof typeof techIcons]}
@@ -733,8 +723,7 @@ export default function ProjectDetail({ params }: PageProps) {
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="px-3 py-1 text-sm"
-                        >
+                          className="px-3 py-1 text-sm">
                           {techIcons[tech as keyof typeof techIcons] && (
                             <span className="mr-2">
                               {techIcons[tech as keyof typeof techIcons]}
@@ -764,8 +753,7 @@ export default function ProjectDetail({ params }: PageProps) {
                   .map((paragraph, index) => (
                     <p
                       key={index}
-                      className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4"
-                    >
+                      className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                       {paragraph}
                     </p>
                   ))}
@@ -783,8 +771,9 @@ export default function ProjectDetail({ params }: PageProps) {
             {project.features.map((feature, index) => (
               <Card
                 key={index}
-                className={`${feature.myContribution ? 'border-blue-200 bg-blue-50/50' : ''} border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm`}
-              >
+                className={`${
+                  feature.myContribution ? 'border-blue-200 bg-blue-50/50' : ''
+                } border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm`}>
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-base text-gray-900 dark:text-white">
@@ -816,8 +805,7 @@ export default function ProjectDetail({ params }: PageProps) {
             {project.troubleshoots.map((item, index) => (
               <Card
                 key={index}
-                className="border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
-              >
+                className="border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center text-gray-900 dark:text-white">
                     <Lightbulb className="h-6 w-6 text-yellow-500 mr-3" />
