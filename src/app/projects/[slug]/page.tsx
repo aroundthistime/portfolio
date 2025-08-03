@@ -4,8 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   ArrowLeft,
   ExternalLink,
-  Github,
-  Globe,
   CheckCircle,
   Lightbulb,
   Code2,
@@ -14,6 +12,7 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { Header } from '@/components/layout/Header';
 
 // Technology icons mapping
 const techIcons = {
@@ -557,51 +556,7 @@ export default function ProjectDetail({ params }: PageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-purple-200 dark:border-gray-700">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between">
-            <Link
-              href="/"
-              className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors cursor-pointer">
-              <ArrowLeft className="h-5 w-5" />
-              <span>Back to Portfolio</span>
-            </Link>
-            <div className="flex items-center space-x-4">
-              {project.links.live && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  asChild
-                  className="cursor-pointer bg-transparent">
-                  <a
-                    href={project.links.live}
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    <Globe className="h-4 w-4 mr-2" />
-                    Live Site
-                  </a>
-                </Button>
-              )}
-              {project.links.github &&
-                project.links.github !== 'Private Repository' && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    asChild
-                    className="cursor-pointer bg-transparent">
-                    <a
-                      href={project.links.github}
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      <Github className="h-4 w-4 mr-2" />
-                      GitHub
-                    </a>
-                  </Button>
-                )}
-            </div>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Project Header */}
@@ -634,20 +589,7 @@ export default function ProjectDetail({ params }: PageProps) {
                 </a>
               </Button>
             )}
-            {project.links.appStore && (
-              <Button
-                variant="outline"
-                asChild
-                className="cursor-pointer bg-transparent">
-                <a
-                  href={project.links.appStore}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  <Globe className="h-4 w-4 mr-2" />
-                  App Store
-                </a>
-              </Button>
-            )}
+
             {project.links.github &&
               project.links.github === 'Private Repository' && (
                 <div className="text-sm text-gray-600 dark:text-gray-400 flex items-center">

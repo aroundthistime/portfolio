@@ -16,16 +16,13 @@ import {
   ExternalLink,
   MapPin,
   Coffee,
-  Code2,
-  Moon,
-  Sun,
 } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useTheme } from 'next-themes';
+
 import { useEffect, useState, useRef } from 'react';
 import { ProjectModal } from '@/components/project-modal';
+import { Header } from '@/components/layout/Header';
 
 // Add this function at the top of the component, after the imports
 const useIsMobile = () => {
@@ -113,31 +110,6 @@ const projects = [
   },
 ];
 
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
-  return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className="w-9 px-0 cursor-pointer">
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
-  );
-}
-
 export default function Portfolio() {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
@@ -207,48 +179,14 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20">
       {/* Header */}
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-purple-200 dark:border-gray-700">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between">
-            <motion.div
-              className="flex items-center space-x-2"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
-              <div className="p-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg">
-                <Code2 className="h-6 w-6 text-white" />
-              </div>
-              <span className="font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                Alex Chen
-              </span>
-            </motion.div>
-            <div className="flex items-center space-x-6">
-              <div className="hidden md:flex items-center space-x-6">
-                {['About', 'Skills', 'Projects', 'Contact'].map(
-                  (item, index) => (
-                    <motion.div
-                      key={item}
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 + 0.3 }}>
-                      <Link
-                        href={`#${item.toLowerCase()}`}
-                        className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors relative group cursor-pointer">
-                        {item}
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-                      </Link>
-                    </motion.div>
-                  ),
-                )}
-              </div>
-              <ThemeToggle />
-            </div>
-          </nav>
-        </div>
-      </motion.header>
+      <Header
+        tabs={[
+          { label: 'About', href: '#about' },
+          { label: 'Skills', href: '#skills' },
+          { label: 'Projects', href: '#projects' },
+          { label: 'Contact', href: '#contact' },
+        ]}
+      />
 
       {/* Hero Section */}
       <section className="py-20 px-4 relative overflow-hidden">
