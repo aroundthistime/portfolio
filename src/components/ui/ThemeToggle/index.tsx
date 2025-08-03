@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { checkIsDarkMode } from '@/utils/styles';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -20,10 +21,7 @@ export function ThemeToggle() {
   const toggleDarkLightMode = () => {
     const getCurrentDarkLightMode = () => {
       if (!theme || theme === 'system') {
-        return window.matchMedia &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light';
+        return checkIsDarkMode() ? 'dark' : 'light';
       }
 
       return theme;
