@@ -11,7 +11,7 @@ const techSkills = [
   {
     name: 'TypeScript',
     description:
-      'Strong advocate for type safety in large codebases. I implement strict TypeScript configurations, create custom type definitions, and use advanced features like conditional types and mapped types. I believe TypeScript significantly improves code maintainability and developer experience.',
+      '타입 명시나 assertion보다는 타입 추론을 활용해 코드를 작성하며, 추론이 어려운 경우에는 커스텀 타입 가드(predicate) 함수를 통해 검증을 보완합니다.\n제네릭 타입을 바탕으로 시스템에 필요한 다양한 유틸리티 타입을 설계하고 작성할 수 있습니다.\n엄격한 타입 지정을 선호하여 함수 오버로딩 등을 활용해 타입 안전성을 극대화하고, 이를 통해 휴먼 에러 방지를 지향합니다.',
   },
   {
     name: 'CSS & Styling',
