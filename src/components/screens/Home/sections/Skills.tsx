@@ -26,7 +26,7 @@ const techSkills = [
   {
     name: 'Testing',
     description:
-      'Comprehensive testing approach using Jest, React Testing Library, and Cypress. I write unit tests for components, integration tests for user flows, and end-to-end tests for critical paths. I believe in test-driven development for complex features.',
+      'Playwright를 활용해 다양한 OS 및 브라우저 환경에서의 E2E 테스트를 구현할 수 있으며, 네트워크 인터셉터나 프록시 설정 등을 통해 다양한 시나리오를 검증할 수 있습니다. 또한 Jest 및 React Testing Library를 사용하여 유틸 함수, 컴포넌트, 커스텀 훅 단위의 유닛 테스트를 구성할 수 있습니다.\nGitHub Actions의 PR 트리거나 Cron 스케줄을 활용해 테스트를 CI 파이프라인에 연동하고, 검증 중요도에 따라 파이프라인을 분리하는 방식으로 운영했습니다.\n아울러 비동기 병렬 처리와 GitHub Action의 Concurrency 설정 등을 활용해 테스트 소요 시간을 최적화할 수 있습니다.',
   },
   {
     name: 'Performance Optimization',
