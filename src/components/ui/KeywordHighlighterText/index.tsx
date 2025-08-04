@@ -96,6 +96,8 @@ const KeywordHighlighterText = ({
             </motion.span>
           );
         }
+
+        // For non-keywords, skip wrapping with motion.span for performance reasons
         return part;
       })}
     </>
