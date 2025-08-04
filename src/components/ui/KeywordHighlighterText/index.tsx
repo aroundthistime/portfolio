@@ -4,29 +4,47 @@ import { useEffect, useState } from 'react';
 interface Props {
   description: string;
   allKeywords: string[];
+  highlightDurationMs?: number;
   highlightIntervalMs?: number;
 }
 
 const KeywordHighlighterText = ({
   description,
   allKeywords,
-  highlightIntervalMs = 1000,
+  highlightDurationMs = 1000,
+  highlightIntervalMs = 400,
 }: Props) => {
-  const [highlightedKeywordIndex, setHighlightedKeywordIndex] = useState(0);
+  const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
 
   useEffect(() => {
-    // reset on props change
-    setHighlightedKeywordIndex(0);
-  }, [allKeywords]);
+    if (!allKeywords.length) return;
 
-  useEffect(() => {
+    let currentIndex = 0;
+    // Immediately highlight the first keyword on mount
+    setActiveKeyword(allKeywords[currentIndex]);
+    currentIndex++;
+
+    const cycleTime = highlightDurationMs + highlightIntervalMs;
+
     const intervalId = setInterval(() => {
-      setHighlightedKeywordIndex(prev => (prev + 1) % allKeywords.length);
-    }, highlightIntervalMs);
+      // De-highlight current one to start the pause
+      setActiveKeyword(null);
+
+      // After the pause, highlight the next one
+      const timeoutId = setTimeout(() => {
+        setActiveKeyword(allKeywords[currentIndex]);
+        currentIndex = (currentIndex + 1) % allKeywords.length;
+      }, highlightIntervalMs);
+
+      // This is for cleanup if the component unmounts during the pause
+      return () => clearTimeout(timeoutId);
+    }, cycleTime);
+
     return () => {
-      clearTimeout(intervalId);
+      setActiveKeyword(null);
+      clearInterval(intervalId);
     };
-  }, [allKeywords, highlightIntervalMs]);
+  }, [allKeywords, highlightDurationMs, highlightIntervalMs]);
 
   if (!allKeywords.length) {
     return <>{description}</>;
@@ -38,8 +56,6 @@ const KeywordHighlighterText = ({
   const regex = new RegExp(`(${escapedKeywords.join('|')})`, 'gi');
   const parts = description.split(regex);
 
-  const highlightedKeyword = allKeywords[highlightedKeywordIndex];
-
   return (
     <>
       {parts.map((part, i) => {
@@ -50,7 +66,7 @@ const KeywordHighlighterText = ({
 
         if (isKeyword) {
           const isHighlighted =
-            part.toLowerCase() === highlightedKeyword?.toLowerCase();
+            part.toLowerCase() === activeKeyword?.toLowerCase();
           return (
             <motion.span
               key={i}
