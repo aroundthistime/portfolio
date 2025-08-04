@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import MainSection from './MainSection';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import KeywordHighlighterText from '@/components/ui/KeywordHighlighterText';
 
 const techSkills = [
   {
@@ -68,74 +69,10 @@ const techSkills = [
   },
 ];
 
-const KeywordAnimator = ({
-  description,
-  allKeywords,
-  highlightedKeyword,
-}: {
-  description: string;
-  allKeywords: string[];
-  highlightedKeyword?: string;
-}) => {
-  if (!allKeywords.length) {
-    return <>{description}</>;
-  }
-
-  const escapedKeywords = allKeywords.map(k =>
-    k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
-  );
-  const regex = new RegExp(`(${escapedKeywords.join('|')})`, 'gi');
-  const parts = description.split(regex);
-
-  return (
-    <>
-      {parts.map((part, i) => {
-        if (!part) return null;
-        const isKeyword = allKeywords.some(
-          k => k.toLowerCase() === part.toLowerCase(),
-        );
-
-        if (isKeyword) {
-          const isHighlighted =
-            part.toLowerCase() === highlightedKeyword?.toLowerCase();
-          return (
-            <motion.span
-              key={i}
-              initial={{ fontWeight: 400 }}
-              animate={{
-                fontWeight: isHighlighted ? 700 : 400,
-              }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}>
-              {part}
-            </motion.span>
-          );
-        }
-        return part;
-      })}
-    </>
-  );
-};
-
 const TechSkillsSection = () => {
   const [hoveredSkillIndex, setHoveredSkillIndex] = useState<number | null>(
     null,
   );
-  const [highlightedKeywordIndex, setHighlightedKeywordIndex] = useState(0);
-
-  useEffect(() => {
-    if (hoveredSkillIndex === null) return;
-
-    const keywords = techSkills[hoveredSkillIndex].keywords;
-    if (!keywords || keywords.length === 0) return;
-
-    const interval = setInterval(() => {
-      setHighlightedKeywordIndex(
-        prevIndex => (prevIndex + 1) % keywords.length,
-      );
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [hoveredSkillIndex]);
 
   return (
     <MainSection
@@ -161,11 +98,9 @@ const TechSkillsSection = () => {
               whileHover={{ y: -5 }}
               onMouseEnter={() => {
                 setHoveredSkillIndex(index);
-                setHighlightedKeywordIndex(0);
               }}
               onMouseLeave={() => {
                 setHoveredSkillIndex(null);
-                setHighlightedKeywordIndex(0);
               }}>
               <Card
                 className={`h-full border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm transition-all duration-300 group hover:shadow-xl`}>
@@ -177,15 +112,14 @@ const TechSkillsSection = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed whitespace-pre-line">
-                    <KeywordAnimator
-                      description={skill.description}
-                      allKeywords={skill.keywords}
-                      highlightedKeyword={
-                        hoveredSkillIndex === index
-                          ? skill.keywords[highlightedKeywordIndex]
-                          : undefined
-                      }
-                    />
+                    {hoveredSkillIndex === index ? (
+                      <KeywordHighlighterText
+                        description={skill.description}
+                        allKeywords={skill.keywords}
+                      />
+                    ) : (
+                      <>{skill.description}</>
+                    )}
                   </p>
                 </CardContent>
               </Card>
