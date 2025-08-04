@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 interface Props {
   description: string;
@@ -58,15 +58,20 @@ const KeywordAnimatorText = ({
     };
   }, [allKeywords, highlightDurationMs, highlightIntervalMs, repeatCount]);
 
+  const parts = useMemo(() => {
+    if (!allKeywords.length) {
+      return [description];
+    }
+    const escapedKeywords = allKeywords.map(k =>
+      k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+    );
+    const regex = new RegExp(`(${escapedKeywords.join('|')})`, 'gi');
+    return description.split(regex);
+  }, [allKeywords, description]);
+
   if (!allKeywords.length) {
     return <>{description}</>;
   }
-
-  const escapedKeywords = allKeywords.map(k =>
-    k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
-  );
-  const regex = new RegExp(`(${escapedKeywords.join('|')})`, 'gi');
-  const parts = description.split(regex);
 
   const highlightPartIndex = activeKeyword
     ? parts.findIndex(
@@ -97,7 +102,6 @@ const KeywordAnimatorText = ({
           );
         }
 
-        // For non-keywords, skip wrapping with motion.span for performance reasons
         return part;
       })}
     </>
