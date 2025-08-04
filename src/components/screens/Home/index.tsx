@@ -21,6 +21,7 @@ import { MY_NAME } from '@/constants/contentDB/aboutMe';
 import AboutMeSection from './sections/AboutMe';
 import TechSkillsSection from './sections/Skills';
 import ContactSection from './sections/Contact';
+import FooterSection from './sections/Footer';
 
 /**
  * 홈 스크린 메인 섹션 상수들
@@ -168,7 +169,6 @@ export function Home() {
       <HeroSection />
       <AboutMeSection />
       <TechSkillsSection />
-
       {/* Projects Section */}
       <section id="projects" className="py-16 px-4">
         <div className="container mx-auto max-w-6xl">
@@ -249,15 +249,7 @@ export function Home() {
         </div>
       </section>
       <ContactSection />
-
-      {/* Footer */}
-      <footer className="py-8 px-4 border-t border-purple-200 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
-        <div className="container mx-auto max-w-4xl text-center">
-          <p className="text-gray-600 dark:text-gray-400">
-            {`© 2024 ${MY_NAME.short}, aroundthistime`}
-          </p>
-        </div>
-      </footer>
+      <FooterSection />
       <ProjectModal
         projectId={selectedProject}
         onClose={() => setSelectedProject(null)}
