@@ -6,6 +6,7 @@ interface Props {
   allKeywords: string[];
   highlightDurationMs?: number;
   highlightIntervalMs?: number;
+  repeatCount?: number;
 }
 
 const KeywordHighlighterText = ({
@@ -13,26 +14,37 @@ const KeywordHighlighterText = ({
   allKeywords,
   highlightDurationMs = 1000,
   highlightIntervalMs = 400,
+  repeatCount = 1,
 }: Props) => {
   const [activeKeyword, setActiveKeyword] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!allKeywords.length) return;
+    if (!allKeywords.length || repeatCount === 0) return;
 
     let currentIndex = 0;
+    let highlightCount = 0;
+    const maxHighlights = allKeywords.length * repeatCount;
+    const cycleTime = highlightDurationMs + highlightIntervalMs;
+
     // Immediately highlight the first keyword on mount
     setActiveKeyword(allKeywords[currentIndex]);
+    highlightCount++;
     currentIndex++;
-
-    const cycleTime = highlightDurationMs + highlightIntervalMs;
 
     const intervalId = setInterval(() => {
       // De-highlight current one to start the pause
       setActiveKeyword(null);
 
-      // After the pause, highlight the next one
       const timeoutId = setTimeout(() => {
+        // Stop if we've reached the repeat count
+        if (highlightCount >= maxHighlights) {
+          clearInterval(intervalId);
+          clearTimeout(timeoutId);
+          return;
+        }
+
         setActiveKeyword(allKeywords[currentIndex]);
+        highlightCount++;
         currentIndex = (currentIndex + 1) % allKeywords.length;
       }, highlightIntervalMs);
 
@@ -44,7 +56,7 @@ const KeywordHighlighterText = ({
       setActiveKeyword(null);
       clearInterval(intervalId);
     };
-  }, [allKeywords, highlightDurationMs, highlightIntervalMs]);
+  }, [allKeywords, highlightDurationMs, highlightIntervalMs, repeatCount]);
 
   if (!allKeywords.length) {
     return <>{description}</>;
