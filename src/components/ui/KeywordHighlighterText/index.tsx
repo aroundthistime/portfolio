@@ -68,6 +68,12 @@ const KeywordHighlighterText = ({
   const regex = new RegExp(`(${escapedKeywords.join('|')})`, 'gi');
   const parts = description.split(regex);
 
+  const highlightPartIndex = activeKeyword
+    ? parts.findIndex(
+        part => part.toLowerCase() === activeKeyword.toLowerCase(),
+      )
+    : -1;
+
   return (
     <>
       {parts.map((part, i) => {
@@ -75,10 +81,9 @@ const KeywordHighlighterText = ({
         const isKeyword = allKeywords.some(
           k => k.toLowerCase() === part.toLowerCase(),
         );
+        const isHighlighted = i === highlightPartIndex;
 
         if (isKeyword) {
-          const isHighlighted =
-            part.toLowerCase() === activeKeyword?.toLowerCase();
           return (
             <motion.span
               key={i}
