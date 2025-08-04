@@ -9,7 +9,7 @@ interface Props {
   repeatCount?: number;
 }
 
-const KeywordHighlighterText = ({
+const KeywordAnimatorText = ({
   description,
   allKeywords,
   highlightDurationMs = 1000,
@@ -104,4 +104,4 @@ const KeywordHighlighterText = ({
   );
 };
 
-export default KeywordHighlighterText;
+export default KeywordAnimatorText;

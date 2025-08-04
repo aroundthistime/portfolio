@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import MainSection from './MainSection';
 import { useState } from 'react';
-import KeywordHighlighterText from '@/components/ui/KeywordHighlighterText';
+import KeywordAnimatorText from '@/components/ui/KeywordAnimatorText';
 
 const techSkills = [
   {
@@ -113,7 +113,7 @@ const TechSkillsSection = () => {
                 <CardContent>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed whitespace-pre-line">
                     {hoveredSkillIndex === index ? (
-                      <KeywordHighlighterText
+                      <KeywordAnimatorText
                         description={skill.description}
                         allKeywords={skill.keywords}
                       />
