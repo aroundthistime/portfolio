@@ -29,9 +29,9 @@ const techSkills = [
       'Playwright를 활용해 다양한 OS 및 브라우저 환경에서의 E2E 테스트를 구현할 수 있으며, 네트워크 인터셉터나 프록시 설정 등을 통해 다양한 시나리오를 검증할 수 있습니다. 또한 Jest 및 React Testing Library를 사용하여 유틸 함수, 컴포넌트, 커스텀 훅 단위의 유닛 테스트를 구성할 수 있습니다.\nGitHub Actions의 PR 트리거나 Cron 스케줄을 활용해 테스트를 CI 파이프라인에 연동하고, 검증 중요도에 따라 파이프라인을 분리하는 방식으로 운영했습니다.\n아울러 비동기 병렬 처리와 GitHub Action의 Concurrency 설정 등을 활용해 테스트 소요 시간을 최적화할 수 있습니다.',
   },
   {
-    name: 'Performance Optimization',
+    name: 'Web Optimization',
     description:
-      'Focused on creating fast, efficient web applications. I implement code splitting, lazy loading, image optimization, and bundle analysis. I regularly use Chrome DevTools and Lighthouse to identify and fix performance bottlenecks.',
+      '특정 OS 및 브라우저에서 발생하는 다양한 이슈에 대응할 수 있습니다.\nLighthouse를 기반으로 성능, 접근성, SEO를 개선한 경험이 있으며, 특히 접근성 준수를 위해 관련 린트 룰을 도입해 시스템 내 일관된 품질 관리를 강조했습니다.\n디버깅 시에는 Chrome DevTools의 Performance와 Memory 탭을 활용해 연산 시간과 메모리 사용량을 모니터링하고, 병목 현상을 찾아 최적화를 진행합니다.\n또한, Web Worker를 활용해 메인 스레드의 병목 현상 없이 TensorFlow 모델이나 WebAssembly 연산을 효율적으로 구동할 수 있습니다.',
   },
 ];
 
