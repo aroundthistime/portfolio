@@ -17,7 +17,6 @@ import { useEffect, useState, useRef } from 'react';
 import { ProjectModal } from '@/components/project-modal';
 import { Header } from '@/components/layout/Header';
 import HeroSection from './sections/Hero';
-import { MY_NAME } from '@/constants/contentDB/aboutMe';
 import AboutMeSection from './sections/AboutMe';
 import TechSkillsSection from './sections/Skills';
 import ContactSection from './sections/Contact';
