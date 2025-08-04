@@ -21,7 +21,7 @@ const techSkills = [
   {
     name: 'State Management',
     description:
-      'Experienced with various state management solutions including Redux Toolkit, Zustand, and React Query. I choose the right tool based on project complexity and team preferences, with a focus on minimizing boilerplate and improving developer experience.',
+      'Redux, Redux Toolkit, Zustand, Jotai 등을 사용해 클라이언트 전역 상태를, Tanstack Query를 활용해 서버 상태를 관리할 수 있습니다. 전역 상태로 일괄 처리되던 구조를 클라이언트와 서버 상태로 분리하여, 데이터 출처를 명확히 구분한 경험이 있습니다.\n사용자 경험을 고려해 필요에 따라 prefetch나 optimistic update를 적용할 수 있으며, Tanstack Query를 사용할 때에는 API 설계자와 데이터 흐름을 공유하며 적절한 캐싱 정책을 조율하는 방식을 선호합니다.',
   },
   {
     name: 'Testing',
