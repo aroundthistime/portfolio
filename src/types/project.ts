@@ -1,3 +1,5 @@
+import { TechSkill } from "./techSkill";
+
 export interface Project {
   title: string;
   summary: string;
@@ -7,8 +9,10 @@ export interface Project {
     demo: string;
   };
   image: string;
-  techSkillsUsed: string[];
-  techSkillsExposed: string[];
+  techSkillsUsed: ReadonlyArray<TechSkill & {
+    isMain?: boolean;
+  }>;
+  techSkillsExposed: ReadonlyArray<TechSkill>
   detailedExplanation: string;
   features: {
     name: string;

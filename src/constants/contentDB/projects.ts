@@ -1,4 +1,5 @@
 import { Project } from "@/types/project";
+import { TECH_SKILLS } from "./techSkills";
 
 /**
  * @TODO fill with actual data
@@ -14,15 +15,15 @@ export const PROJECTS_DB = {
       demo: 'https://demo.shop.example.com',
     },
     image: '/placeholder.svg?height=400&width=800',
-    techSkillsUsed: [
-      'Next.js 14',
-      'TypeScript',
-      'Tailwind CSS',
-      'Stripe API',
-      'PostgreSQL',
-      'Redis',
-    ],
-    techSkillsExposed: ['Docker', 'Jenkins', 'AWS S3', 'Elasticsearch'],
+    techSkillsUsed: [{
+      ...TECH_SKILLS.nextJS,
+      isMain: true
+    },
+    {
+      ...TECH_SKILLS.typescript,
+      isMain: true
+    }],
+    techSkillsExposed: [TECH_SKILLS.docker, TECH_SKILLS.codeIgniter],
     detailedExplanation: `This project was a complete rebuild of an existing e-commerce platform for a growing retail company. The previous system was built on WordPress and couldn't handle the increasing traffic and complex business requirements.
 
 My primary contribution was architecting and implementing the entire frontend application using Next.js 14 with the new App Router. I worked closely with the backend team to design efficient API endpoints and implemented a robust state management system using Zustand for cart functionality and React Query for server state.
@@ -122,15 +123,14 @@ The project took 8 months to complete with a team of 6 developers. I was respons
       demo: 'https://demo.taskflow.example.com',
     },
     image: '/placeholder.svg?height=400&width=800',
-    techSkillsUsed: [
-      'React 18',
-      'TypeScript',
-      'Socket.io',
-      'React Query',
-      'Framer Motion',
-      'Styled Components',
-    ],
-    techSkillsExposed: ['Node.js', 'MongoDB', 'JWT', 'GitHub Actions'],
+    techSkillsUsed: [{
+      ...TECH_SKILLS.reactJS,
+      isMain: true
+    },
+    {
+      ...TECH_SKILLS.typescript,
+    }],
+    techSkillsExposed: [TECH_SKILLS.sonarqube],
     detailedExplanation: `This project was developed for a startup that needed a comprehensive project management solution for their distributed team of 50+ members. The existing tools weren't meeting their specific workflow requirements, particularly around real-time collaboration and custom project templates.
 
 I led the frontend development and was responsible for the entire user interface, real-time features implementation, and performance optimization. The most challenging aspect was implementing smooth real-time collaboration where multiple users could edit tasks simultaneously without conflicts.
@@ -219,223 +219,5 @@ I also implemented advanced features like bulk operations, keyboard shortcuts, a
     period: 'June 2022 - December 2022 (6 months)',
     teamSize: '8 developers',
     role: 'Frontend Architect',
-  },
-  'analytics-dashboard': {
-    title: 'Analytics Dashboard',
-    summary:
-      'A comprehensive analytics platform for tracking user behavior, conversion rates, and business metrics with real-time data visualization and custom reporting capabilities.',
-    links: {
-      live: 'https://analytics.example.com',
-      github: 'https://github.com/alexchen/analytics-dashboard',
-      demo: 'https://demo.analytics.example.com',
-    },
-    image: '/placeholder.svg?height=400&width=800',
-    techSkillsUsed: [
-      'React',
-      'D3.js',
-      'TypeScript',
-      'React Query',
-      'Recharts',
-      'Date-fns',
-    ],
-    techSkillsExposed: ['Python', 'Redis', 'WebSocket', 'Apache Kafka'],
-    detailedExplanation: `This analytics dashboard was built for a SaaS company that needed comprehensive insights into user behavior, product performance, and business metrics. The previous solution was a collection of static reports that didn't provide real-time insights or interactive exploration capabilities.
-
-My role was to design and implement the entire frontend application, focusing on creating an intuitive interface for complex data visualization. The biggest challenge was making large datasets accessible and meaningful to non-technical stakeholders while providing the depth that data analysts needed.
-
-I implemented a flexible dashboard system where users could create custom views, save filters, and share insights with their teams. The application needed to handle real-time data updates without impacting performance, which required careful optimization of rendering and data management strategies.
-
-Key technical achievements included building a custom chart library on top of D3.js for specific business requirements, implementing efficient data aggregation on the frontend, and creating a responsive design that worked well on both desktop and tablet devices.`,
-    features: [
-      {
-        name: 'Interactive Data Visualizations',
-        description:
-          'Custom charts, graphs, and heatmaps with drill-down capabilities',
-        myContribution: true,
-      },
-      {
-        name: 'Real-time Data Updates',
-        description:
-          'Live data streaming with WebSocket integration and automatic refresh',
-        myContribution: true,
-      },
-      {
-        name: 'Custom Dashboard Builder',
-        description:
-          'Drag-and-drop interface for creating personalized dashboard layouts',
-        myContribution: true,
-      },
-      {
-        name: 'Advanced Filtering System',
-        description:
-          'Complex multi-dimensional filtering with date ranges and custom segments',
-        myContribution: true,
-      },
-      {
-        name: 'Export and Sharing',
-        description:
-          'PDF/CSV export functionality and shareable dashboard links',
-        myContribution: true,
-      },
-      {
-        name: 'Data Processing Pipeline',
-        description: 'ETL processes for data aggregation and transformation',
-        myContribution: false,
-      },
-      {
-        name: 'User Behavior Tracking',
-        description: 'Event tracking and user journey analysis',
-        myContribution: false,
-      },
-      {
-        name: 'Automated Reporting',
-        description: 'Scheduled reports and alert system for key metrics',
-        myContribution: false,
-      },
-    ],
-    troubleshoots: [
-      {
-        title: 'Performance with Large Datasets',
-        problem:
-          'The dashboard struggled to render and process large datasets, leading to slow loading times and a poor user experience.',
-        solution:
-          'Implemented data virtualization for large tables, server-side pagination, and intelligent caching. Used Web Workers for heavy data processing to keep the UI responsive.',
-      },
-      {
-        title: 'Complex Chart Interactions',
-        problem:
-          'Implementing complex chart interactions like zoom, pan, and brush while maintaining performance with large datasets proved challenging.',
-        solution:
-          'Built custom D3.js components with proper event handling and accessibility support. Implemented zoom, pan, and brush interactions while maintaining performance with large datasets.',
-      },
-      {
-        title: 'Real-time Data Synchronization',
-        problem:
-          'Ensuring real-time data synchronization across multiple users without impacting performance was a significant challenge.',
-        solution:
-          'Implemented efficient WebSocket connection management with reconnection logic. Used differential updates to minimize data transfer and prevent unnecessary re-renders.',
-      },
-      {
-        title: 'Cross-browser Compatibility',
-        problem:
-          'Ensuring the dashboard worked consistently across different browsers and devices was difficult due to varying levels of support for advanced features.',
-        solution:
-          'Extensive testing across different browsers and devices. Implemented polyfills for older browsers and fallback solutions for unsupported features. Used progressive enhancement for advanced visualizations.',
-      },
-    ],
-    period: 'January 2023 - July 2023 (7 months)',
-    teamSize: '4 developers',
-    role: 'Lead Frontend Developer',
-  },
-  'mobile-banking-app': {
-    title: 'Mobile Banking Interface',
-    summary:
-      'A secure, responsive web interface for a mobile banking application serving 100,000+ users with advanced security features, biometric authentication, and intuitive financial management tools.',
-    links: {
-      live: 'https://mobile.bankexample.com',
-      github: 'Private Repository',
-      demo: 'https://demo.bankexample.com',
-    },
-    image: '/placeholder.svg?height=400&width=800',
-    techSkillsUsed: [
-      'React Native Web',
-      'TypeScript',
-      'React Hook Form',
-      'React Navigation',
-      'Styled Components',
-      'React Query',
-    ],
-    techSkillsExposed: [
-      'OAuth 2.0',
-      'Biometric APIs',
-      'Push Notifications',
-      'SSL/TLS',
-    ],
-    detailedExplanation: `This project involved developing the web interface for a mobile banking application for a regional bank with over 100,000 active users. The application needed to meet strict security requirements while providing an intuitive user experience for complex financial operations.
-
-My primary responsibility was implementing the frontend application using React Native Web to ensure consistency between web and mobile platforms. I worked closely with the security team to implement proper authentication flows, data encryption, and secure session management.
-
-The most challenging aspects were implementing biometric authentication for web browsers, ensuring accessibility compliance for financial services, and optimizing performance for users on slower network connections. I also had to design interfaces that could handle complex financial data while remaining simple enough for users of all technical skill levels.
-
-Key contributions included building a comprehensive component library that met banking design standards, implementing advanced form validation for financial transactions, and creating a responsive design system that worked seamlessly across all device sizes.`,
-    features: [
-      {
-        name: 'Account Dashboard',
-        description:
-          'Comprehensive overview of accounts, balances, and recent transactions',
-        myContribution: true,
-      },
-      {
-        name: 'Secure Authentication',
-        description:
-          'Multi-factor authentication with biometric support and OAuth integration',
-        myContribution: true,
-      },
-      {
-        name: 'Transaction Management',
-        description: 'Transfer funds, pay bills, and manage recurring payments',
-        myContribution: true,
-      },
-      {
-        name: 'Mobile Check Deposit',
-        description: 'Camera integration for check capture and processing',
-        myContribution: true,
-      },
-      {
-        name: 'Financial Planning Tools',
-        description:
-          'Budget tracking, spending analysis, and savings goal management',
-        myContribution: true,
-      },
-      {
-        name: 'Fraud Detection System',
-        description: 'Real-time transaction monitoring and alert system',
-        myContribution: false,
-      },
-      {
-        name: 'Customer Support Chat',
-        description: 'Integrated chat system with secure document sharing',
-        myContribution: false,
-      },
-      {
-        name: 'Regulatory Compliance',
-        description:
-          'GDPR, PCI DSS, and banking regulation compliance features',
-        myContribution: false,
-      },
-    ],
-    troubleshoots: [
-      {
-        title: 'Biometric Authentication on Web',
-        problem:
-          'Implementing biometric authentication on web browsers proved challenging due to limited API support and security concerns.',
-        solution:
-          'Implemented WebAuthn API for supported browsers with graceful fallback to traditional 2FA. Added proper error handling and user education for unsupported devices.',
-      },
-      {
-        title: 'Security and Performance Balance',
-        problem:
-          'Balancing security requirements with performance optimization was difficult due to the need for encryption and secure data handling.',
-        solution:
-          'Implemented efficient encryption/decryption on the client side without compromising security. Used service workers for secure caching and optimized bundle sizes for faster loading.',
-      },
-      {
-        title: 'Accessibility for Financial Data',
-        problem:
-          'Ensuring accessibility for users with disabilities when dealing with complex financial data was a significant challenge.',
-        solution:
-          'Extensive testing with screen readers and keyboard navigation. Implemented proper ARIA labels for complex financial tables and charts. Added high contrast mode and font size controls.',
-      },
-      {
-        title: 'Cross-platform Consistency',
-        problem:
-          'Maintaining a consistent user experience across web and mobile platforms was difficult due to platform-specific differences and limitations.',
-        solution:
-          'Created a comprehensive design system with React Native Web to ensure identical user experience across platforms. Implemented platform-specific optimizations while maintaining feature parity.',
-      },
-    ],
-    period: 'August 2022 - February 2023 (6 months)',
-    teamSize: '5 developers',
-    role: 'Senior Frontend Engineer',
   },
 } as const satisfies Record<string, Project>;
