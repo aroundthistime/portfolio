@@ -16,6 +16,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useProjectModal } from './context';
 import { getDeviceInfo } from '@/utils/device';
+import { IMAGE_PLACEHOLDER } from '@/constants/media';
 
 interface Props {
   project: Project;
@@ -78,8 +79,9 @@ const ProjectCard = ({ project, index }: Props) => {
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.4 }}>
             <Image
-              src={project.image || '/placeholder.svg'}
+              src={project.image}
               alt={project.title}
+              placeholder={IMAGE_PLACEHOLDER}
               width={300}
               height={200}
               className="w-full h-48 object-cover"
