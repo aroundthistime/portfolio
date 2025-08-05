@@ -27,4 +27,4 @@ export type Project = Readonly<{
     problem: string;
     solution: string;
   }>;
-}
+}>
