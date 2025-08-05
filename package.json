@@ -15,6 +15,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@egjs/agent": "^2.4.4",
     "@emotion/is-prop-valid": "latest",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "1.2.2",
@@ -74,8 +75,8 @@
     "@types/react-dom": "^18",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.16",
-    "prettier": "^3.2.5",
     "postcss": "^8.5",
+    "prettier": "^3.2.5",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
   },
