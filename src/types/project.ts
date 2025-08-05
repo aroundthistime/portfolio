@@ -14,17 +14,17 @@ export interface Project {
   }>;
   techSkillsExposed: ReadonlyArray<TechSkill>
   detailedExplanation: string;
-  features: {
+  features: ReadonlyArray<{
     name: string;
     description: string;
     myContribution: boolean;
-  }[];
+  }>;
   teamSize: string;
   role: string;
   period: string;
-  troubleshoots: {
+  troubleshoots:ReadonlyArray< {
     title: string;
     problem: string;
     solution: string;
-  }[];
+  }>;
 }
