@@ -15,15 +15,8 @@ export const PROJECTS_DB = {
       demo: 'https://demo.shop.example.com',
     },
     image: '/placeholder.svg?height=400&width=800',
-    techSkillsUsed: [
-      {
-      ...TECH_SKILLS.nextJS,
-      isMain: true
-    },
-    {
-      ...TECH_SKILLS.typescript,
-      isMain: true
-    }],
+    tags: ['E-commerce', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'PostgreSQL', 'Redis'],
+    techSkillsUsed: [TECH_SKILLS.nextJS, TECH_SKILLS.typescript],
     techSkillsExposed: [TECH_SKILLS.docker, TECH_SKILLS.codeIgniter],
     detailedExplanation: `This project was a complete rebuild of an existing e-commerce platform for a growing retail company. The previous system was built on WordPress and couldn't handle the increasing traffic and complex business requirements.
 
@@ -124,14 +117,11 @@ The project took 8 months to complete with a team of 6 developers. I was respons
       demo: 'https://demo.taskflow.example.com',
     },
     image: '/placeholder.svg?height=400&width=800',
-    techSkillsUsed: [{
-      ...TECH_SKILLS.reactJS,
-      isMain: true
-    },
-    {
-      ...TECH_SKILLS.typescript,
-      isMain: false
-    }],
+    tags: ['React', 'TypeScript', 'Styled Components', 'Socket.io', 'React Query', 'Framer Motion', 'SonarQube'],
+    techSkillsUsed: [
+      TECH_SKILLS.reactJS,
+      TECH_SKILLS.styledComponents
+    ],
     techSkillsExposed: [TECH_SKILLS.sonarqube],
     detailedExplanation: `This project was developed for a startup that needed a comprehensive project management solution for their distributed team of 50+ members. The existing tools weren't meeting their specific workflow requirements, particularly around real-time collaboration and custom project templates.
 

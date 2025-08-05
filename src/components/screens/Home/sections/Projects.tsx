@@ -16,16 +16,6 @@ import { ProjectModal } from '@/components/project-modal';
 import { Badge } from '@/components/ui/badge';
 import { PROJECTS_DB } from '@/constants/contentDB/projects';
 
-const BRIEF_PROJECTS = Object.entries(PROJECTS_DB).map(([id, project]) => ({
-  id,
-  title: project.title,
-  summary: project.summary,
-  image: project.image,
-  mainSkills: project.techSkillsUsed
-    .filter(skill => skill.isMain)
-    .map(skill => skill.name),
-}));
-
 const ProjectsSection = () => {
   // Remove the current skill highlighting logic and replace with tag highlighting
   const [highlightedTags, setHighlightedTags] = useState<{
@@ -98,9 +88,9 @@ const ProjectsSection = () => {
             Featured Projects
           </motion.h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {BRIEF_PROJECTS.map((project, index) => (
+            {Object.entries(PROJECTS_DB).map(([projectId, project], index) => (
               <motion.div
-                key={project.id}
+                key={projectId}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -108,7 +98,7 @@ const ProjectsSection = () => {
                 whileHover={{ y: -10 }}
                 className="group"
                 onMouseEnter={() =>
-                  startTagHighlighting(project.id, project.mainSkills)
+                  startTagHighlighting(projectId, project.tags)
                 }
                 onMouseLeave={stopTagHighlighting}>
                 <Card className="border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
@@ -136,22 +126,22 @@ const ProjectsSection = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.mainSkills.map(skill => (
+                      {project.tags.map(tag => (
                         <Badge
-                          key={skill}
+                          key={tag}
                           variant="outline"
                           className={`text-xs border-purple-200 dark:border-purple-700 transition-all duration-300 ${
-                            highlightedTags.projectId === project.id &&
-                            highlightedTags.tags.includes(skill)
+                            highlightedTags.projectId === projectId &&
+                            highlightedTags.tags.includes(tag)
                               ? 'bg-purple-100 border-purple-400 text-purple-700 dark:bg-purple-900/40 dark:border-purple-500 dark:text-purple-300 shadow-md transform scale-110'
                               : 'hover:bg-purple-50 dark:hover:bg-purple-900/20'
                           }`}>
-                          {skill}
+                          {tag}
                         </Badge>
                       ))}
                     </div>
                     <div
-                      onClick={() => handleProjectClick(project.id)}
+                      onClick={() => handleProjectClick(projectId)}
                       className="cursor-pointer">
                       <Button className="w-full bg-blue-600 hover:bg-blue-700 border-0 shadow-lg group/btn cursor-pointer">
                         View Project Details

@@ -9,9 +9,8 @@ export interface Project {
     demo: string;
   };
   image: string;
-  techSkillsUsed: ReadonlyArray<TechSkill & {
-    isMain: boolean;
-  }>;
+  tags: string[];
+  techSkillsUsed: ReadonlyArray<TechSkill>;
   techSkillsExposed: ReadonlyArray<TechSkill>
   detailedExplanation: string;
   features: ReadonlyArray<{
