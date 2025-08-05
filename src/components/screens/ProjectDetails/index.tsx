@@ -13,6 +13,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Header } from '@/components/layout/Header';
 import { Project } from '@/types/project';
+import { TechSkill, TechSkillGroup } from '@/types/techSkill';
+import { useMemo } from 'react';
+import { DefaultMap } from '@/utils/dataStructure/defaultMap';
+import { groupBy } from '@/utils/array';
 
 // Technology icons mapping
 const techIcons = {
@@ -106,7 +110,11 @@ interface Props {
   project: Project;
 }
 
-export default function ProjectDetailsScreen({ project }: Props) {
+const ProjectDetailsScreen = ({ project }: Props) => {
+  const groupedUsedTechSkillsMap = useMemo(() => {
+    return groupBy([...project.techSkillsUsed], tech => tech.group ?? 'Others');
+  }, [project.techSkillsUsed]);
+
   return (
     <>
       <Header />
@@ -173,24 +181,24 @@ export default function ProjectDetailsScreen({ project }: Props) {
               Primary Technologies
             </h3>
             <div className="space-y-4">
-              {groupTechnologies(project.techSkillsUsed).map(
-                ([groupName, techs]) => (
+              {Array.from(groupedUsedTechSkillsMap.entries()).map(
+                ([groupName, techSkills]) => (
                   <div key={groupName}>
                     <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
                       {groupName}
                     </h4>
                     <div className="flex flex-wrap gap-3">
-                      {techs.map(tech => (
+                      {techSkills.map(tech => (
                         <Badge
-                          key={tech}
+                          key={tech.name}
                           variant="outline"
                           className="px-3 py-1 text-sm">
-                          {techIcons[tech as keyof typeof techIcons] && (
+                          {techIcons[tech.name as keyof typeof techIcons] && (
                             <span className="mr-2">
-                              {techIcons[tech as keyof typeof techIcons]}
+                              {techIcons[tech.name as keyof typeof techIcons]}
                             </span>
                           )}
-                          {tech}
+                          {tech.name}
                         </Badge>
                       ))}
                     </div>
@@ -206,30 +214,30 @@ export default function ProjectDetailsScreen({ project }: Props) {
               Technologies Worked With
             </h3>
             <div className="space-y-4">
-              {groupTechnologies(project.techSkillsExposed).map(
-                ([groupName, techs]) => (
-                  <div key={groupName}>
-                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
-                      {groupName}
-                    </h4>
-                    <div className="flex flex-wrap gap-3">
-                      {techs.map(tech => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className="px-3 py-1 text-sm">
-                          {techIcons[tech as keyof typeof techIcons] && (
-                            <span className="mr-2">
-                              {techIcons[tech as keyof typeof techIcons]}
-                            </span>
-                          )}
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
+              {groupTechnologies(
+                project.techSkillsExposed.map(tech => tech.name),
+              ).map(([groupName, techs]) => (
+                <div key={groupName}>
+                  <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
+                    {groupName}
+                  </h4>
+                  <div className="flex flex-wrap gap-3">
+                    {techs.map(tech => (
+                      <Badge
+                        key={tech}
+                        variant="secondary"
+                        className="px-3 py-1 text-sm">
+                        {techIcons[tech as keyof typeof techIcons] && (
+                          <span className="mr-2">
+                            {techIcons[tech as keyof typeof techIcons]}
+                          </span>
+                        )}
+                        {tech}
+                      </Badge>
+                    ))}
                   </div>
-                ),
-              )}
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -341,4 +349,6 @@ export default function ProjectDetailsScreen({ project }: Props) {
       </div>
     </>
   );
-}
+};
+
+export default ProjectDetailsScreen;
