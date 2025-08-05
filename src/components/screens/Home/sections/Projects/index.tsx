@@ -1,9 +1,9 @@
 import MainSection from '../MainSection';
 import { motion } from 'framer-motion';
-import { ProjectModal } from '@/components/project-modal';
 import { PROJECTS_DB } from '@/constants/contentDB/projects';
 import ProjectCard from './ProjectCard';
 import { ProjectModalProvider } from './context';
+import { ProjectModal } from './ProjectModal';
 
 const ProjectsSection = () => {
   return (

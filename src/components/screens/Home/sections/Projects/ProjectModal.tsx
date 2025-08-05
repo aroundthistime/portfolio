@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useProjectModal } from './screens/Home/sections/Projects/context';
+import { useProjectModal } from './context';
 
 // Technology icons mapping
 const techIcons = {
