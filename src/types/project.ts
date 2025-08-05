@@ -1,6 +1,7 @@
 import { TechSkill } from "./techSkill";
 
-export interface Project {
+export type Project = Readonly<{
+  id: string;
   title: string;
   summary: string;
   links: {
