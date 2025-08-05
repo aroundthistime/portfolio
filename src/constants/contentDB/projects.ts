@@ -15,7 +15,8 @@ export const PROJECTS_DB = {
       demo: 'https://demo.shop.example.com',
     },
     image: '/placeholder.svg?height=400&width=800',
-    techSkillsUsed: [{
+    techSkillsUsed: [
+      {
       ...TECH_SKILLS.nextJS,
       isMain: true
     },
@@ -129,6 +130,7 @@ The project took 8 months to complete with a team of 6 developers. I was respons
     },
     {
       ...TECH_SKILLS.typescript,
+      isMain: false
     }],
     techSkillsExposed: [TECH_SKILLS.sonarqube],
     detailedExplanation: `This project was developed for a startup that needed a comprehensive project management solution for their distributed team of 50+ members. The existing tools weren't meeting their specific workflow requirements, particularly around real-time collaboration and custom project templates.

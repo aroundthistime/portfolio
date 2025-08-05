@@ -14,41 +14,17 @@ import { Button } from '@/components/ui/button';
 import { ExternalLink } from 'lucide-react';
 import { ProjectModal } from '@/components/project-modal';
 import { Badge } from '@/components/ui/badge';
+import { PROJECTS_DB } from '@/constants/contentDB/projects';
 
-const projects = [
-  {
-    id: 'ecommerce-platform',
-    title: 'E-commerce Platform',
-    description:
-      'A full-featured e-commerce platform with real-time inventory management, payment processing, and admin dashboard.',
-    image: '/placeholder.svg?height=200&width=300',
-    tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-  },
-  {
-    id: 'task-management-app',
-    title: 'Task Management Application',
-    description:
-      'Collaborative project management tool with real-time updates, team collaboration features, and advanced filtering.',
-    image: '/placeholder.svg?height=200&width=300',
-    tags: ['React', 'Socket.io', 'Node.js', 'MongoDB'],
-  },
-  {
-    id: 'analytics-dashboard',
-    title: 'Analytics Dashboard',
-    description:
-      'Real-time analytics dashboard for tracking user behavior, conversion rates, and business metrics with interactive charts.',
-    image: '/placeholder.svg?height=200&width=300',
-    tags: ['React', 'D3.js', 'Python', 'Redis'],
-  },
-  {
-    id: 'mobile-banking-app',
-    title: 'Mobile Banking Interface',
-    description:
-      'Responsive web interface for a mobile banking application with advanced security features and intuitive UX.',
-    image: '/placeholder.svg?height=200&width=300',
-    tags: ['React Native', 'TypeScript', 'OAuth', 'Biometrics'],
-  },
-];
+const BRIEF_PROJECTS = Object.entries(PROJECTS_DB).map(([id, project]) => ({
+  id,
+  title: project.title,
+  summary: project.summary,
+  image: project.image,
+  mainSkills: project.techSkillsUsed
+    .filter(skill => skill.isMain)
+    .map(skill => skill.name),
+}));
 
 const ProjectsSection = () => {
   // Remove the current skill highlighting logic and replace with tag highlighting
@@ -122,7 +98,7 @@ const ProjectsSection = () => {
             Featured Projects
           </motion.h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
+            {BRIEF_PROJECTS.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -132,7 +108,7 @@ const ProjectsSection = () => {
                 whileHover={{ y: -10 }}
                 className="group"
                 onMouseEnter={() =>
-                  startTagHighlighting(project.id, project.tags)
+                  startTagHighlighting(project.id, project.mainSkills)
                 }
                 onMouseLeave={stopTagHighlighting}>
                 <Card className="border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
@@ -155,22 +131,22 @@ const ProjectsSection = () => {
                       {project.title}
                     </CardTitle>
                     <CardDescription className="dark:text-gray-300">
-                      {project.description}
+                      {project.summary}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map(tag => (
+                      {project.mainSkills.map(skill => (
                         <Badge
-                          key={tag}
+                          key={skill}
                           variant="outline"
                           className={`text-xs border-purple-200 dark:border-purple-700 transition-all duration-300 ${
                             highlightedTags.projectId === project.id &&
-                            highlightedTags.tags.includes(tag)
+                            highlightedTags.tags.includes(skill)
                               ? 'bg-purple-100 border-purple-400 text-purple-700 dark:bg-purple-900/40 dark:border-purple-500 dark:text-purple-300 shadow-md transform scale-110'
                               : 'hover:bg-purple-50 dark:hover:bg-purple-900/20'
                           }`}>
-                          {tag}
+                          {skill}
                         </Badge>
                       ))}
                     </div>

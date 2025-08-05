@@ -10,7 +10,7 @@ export interface Project {
   };
   image: string;
   techSkillsUsed: ReadonlyArray<TechSkill & {
-    isMain?: boolean;
+    isMain: boolean;
   }>;
   techSkillsExposed: ReadonlyArray<TechSkill>
   detailedExplanation: string;
