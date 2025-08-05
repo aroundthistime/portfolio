@@ -9,7 +9,7 @@ interface PageProps {
 }
 
 export default function ProjectDetail({ params }: PageProps) {
-  const project = PROJECTS_DB[params.slug as keyof typeof PROJECTS_DB];
+  const project = PROJECTS_DB.find(project => project.id === params.slug);
 
   if (!project) {
     notFound();

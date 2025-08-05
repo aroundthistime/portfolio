@@ -1,25 +1,13 @@
 import MainSection from '../MainSection';
-import { useState } from 'react';
-import { getDeviceInfo } from '@/utils/device';
 import { motion } from 'framer-motion';
 import { ProjectModal } from '@/components/project-modal';
 import { PROJECTS_DB } from '@/constants/contentDB/projects';
 import ProjectCard from './ProjectCard';
+import { ProjectModalProvider } from './context';
 
 const ProjectsSection = () => {
-  const [selectedProject, setSelectedProject] = useState<string | null>(null);
-  const deviceInfo = getDeviceInfo();
-
-  const handleProjectClick = (projectId: string) => {
-    if (deviceInfo?.isMobile) {
-      window.location.href = `/projects/${projectId}`;
-    } else {
-      setSelectedProject(projectId);
-    }
-  };
-
   return (
-    <>
+    <ProjectModalProvider>
       <MainSection id="projects" className="py-16 px-4">
         <div className="container mx-auto max-w-6xl">
           <motion.h2
@@ -31,22 +19,14 @@ const ProjectsSection = () => {
             Featured Projects
           </motion.h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {Object.entries(PROJECTS_DB).map(([projectId, project], index) => (
-              <ProjectCard
-                key={projectId}
-                project={project}
-                index={index}
-                onProjectClick={() => handleProjectClick(projectId)}
-              />
+            {PROJECTS_DB.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
         </div>
       </MainSection>
-      <ProjectModal
-        projectId={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
-    </>
+      <ProjectModal />
+    </ProjectModalProvider>
   );
 };
 

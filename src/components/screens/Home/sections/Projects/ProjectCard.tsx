@@ -14,16 +14,27 @@ import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useProjectModal } from './context';
+import { getDeviceInfo } from '@/utils/device';
 
 interface Props {
   project: Project;
   index: number;
-  onProjectClick: () => void;
 }
 
-const ProjectCard = ({ project, index, onProjectClick }: Props) => {
+const ProjectCard = ({ project, index }: Props) => {
   const [highlightedTag, setHighlightedTag] = useState<string | null>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const { openProjectModal } = useProjectModal();
+  const deviceInfo = getDeviceInfo();
+
+  const handleClickDetails = () => {
+    if (deviceInfo?.isMobile) {
+      window.location.href = `/projects/${project.id}`;
+    } else {
+      openProjectModal(project);
+    }
+  };
 
   useEffect(() => {
     setHighlightedTag(null);
@@ -99,7 +110,7 @@ const ProjectCard = ({ project, index, onProjectClick }: Props) => {
               </Badge>
             ))}
           </div>
-          <div onClick={onProjectClick} className="cursor-pointer">
+          <div onClick={handleClickDetails} className="cursor-pointer">
             <Button className="w-full bg-blue-600 hover:bg-blue-700 border-0 shadow-lg group/btn cursor-pointer">
               View Project Details
               <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />

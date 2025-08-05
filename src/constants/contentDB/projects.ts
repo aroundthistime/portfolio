@@ -4,8 +4,8 @@ import { TECH_SKILLS } from "./techSkills";
 /**
  * @TODO fill with actual data
  */
-export const PROJECTS_DB = {
-  'ecommerce-platform': {
+export const PROJECTS_DB = [{
+    id: 'ecommerce-platform',
     title: 'E-commerce Platform',
     summary:
       'A comprehensive e-commerce solution built for a mid-size retail company, handling 10,000+ daily transactions with real-time inventory management and advanced analytics.',
@@ -107,7 +107,8 @@ The project took 8 months to complete with a team of 6 developers. I was respons
     teamSize: '6 developers',
     role: 'Senior Frontend Developer',
   },
-  'task-management-app': {
+  {
+    id: 'task-management-app',
     title: 'Task Management Application',
     summary:
       'A collaborative project management tool designed for remote teams, featuring real-time collaboration, advanced project tracking, and team productivity analytics.',
@@ -211,5 +212,4 @@ I also implemented advanced features like bulk operations, keyboard shortcuts, a
     period: 'June 2022 - December 2022 (6 months)',
     teamSize: '8 developers',
     role: 'Frontend Architect',
-  },
-} as const satisfies Record<string, Project>;
+  }]as const satisfies ReadonlyArray<Project>;

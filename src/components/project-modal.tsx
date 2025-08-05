@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useProjectModal } from './screens/Home/sections/Projects/context';
 
 // Technology icons mapping
 const techIcons = {
@@ -342,22 +343,19 @@ My primary responsibility was implementing the frontend application using React 
   },
 };
 
-interface ProjectModalProps {
-  projectId: string | null;
-  onClose: () => void;
-}
-
-export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
-  if (!projectId) return null;
-
-  const project = projectsData[projectId as keyof typeof projectsData];
+export function ProjectModal() {
+  const { openedProject: project, closeProjectModal } = useProjectModal();
   if (!project) return null;
 
-  const primaryTechGroups = groupTechnologies(project.techSkillsUsed);
-  const exposedTechGroups = groupTechnologies(project.techSkillsExposed);
+  const primaryTechGroups = groupTechnologies(
+    project.techSkillsUsed.map(tech => tech.name),
+  );
+  const exposedTechGroups = groupTechnologies(
+    project.techSkillsExposed.map(tech => tech.name),
+  );
 
   return (
-    <Dialog open={!!projectId} onOpenChange={() => onClose()}>
+    <Dialog open onOpenChange={closeProjectModal}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0">
         <div className="sticky top-0 z-10 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 px-6 py-4">
           <div className="flex items-center justify-between">
@@ -370,15 +368,14 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
               </h2>
             </div>
             <div className="flex items-center gap-1">
-              <Link href={`/projects/${projectId}`}>
+              <Link href={`/projects/${project.id}`}>
                 <button className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
                   <Maximize2 className="h-5 w-5" />
                 </button>
               </Link>
               <button
-                onClick={onClose}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
-              >
+                onClick={closeProjectModal}
+                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -396,13 +393,11 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                 <Button
                   size="sm"
                   className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
-                  asChild
-                >
+                  asChild>
                   <a
                     href={project.links.live}
                     target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                    rel="noopener noreferrer">
                     <ExternalLink className="h-3 w-3 mr-2" />
                     Live Site
                   </a>
@@ -414,13 +409,11 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                     variant="outline"
                     size="sm"
                     className="cursor-pointer bg-transparent"
-                    asChild
-                  >
+                    asChild>
                     <a
                       href={project.links.github}
                       target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                      rel="noopener noreferrer">
                       <Github className="h-3 w-3 mr-2" />
                       GitHub
                     </a>
@@ -456,8 +449,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                         <Badge
                           key={tech}
                           variant="outline"
-                          className="px-2 py-1 text-xs"
-                        >
+                          className="px-2 py-1 text-xs">
                           {techIcons[tech as keyof typeof techIcons] && (
                             <span className="mr-1">
                               {techIcons[tech as keyof typeof techIcons]}
@@ -488,8 +480,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="px-2 py-1 text-xs"
-                        >
+                          className="px-2 py-1 text-xs">
                           {techIcons[tech as keyof typeof techIcons] && (
                             <span className="mr-1">
                               {techIcons[tech as keyof typeof techIcons]}
@@ -516,8 +507,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                     .map((paragraph, index) => (
                       <p
                         key={index}
-                        className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3"
-                      >
+                        className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
                         {paragraph}
                       </p>
                     ))}
@@ -533,8 +523,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
               {project.features.slice(0, 4).map((feature, index) => (
                 <Card
                   key={index}
-                  className={`${feature.myContribution ? 'border-blue-200 bg-blue-50/50' : ''} border shadow-sm`}
-                >
+                  className={`${feature.myContribution ? 'border-blue-200 bg-blue-50/50' : ''} border shadow-sm`}>
                   <CardContent className="pt-3 pb-3">
                     <div className="flex items-center justify-between mb-1">
                       <h4 className="text-sm font-medium">{feature.name}</h4>
