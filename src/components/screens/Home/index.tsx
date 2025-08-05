@@ -1,3 +1,5 @@
+'use client';
+
 import { Header } from '@/components/layout/Header';
 import HeroSection from './sections/Hero';
 import AboutMeSection from './sections/AboutMe';
