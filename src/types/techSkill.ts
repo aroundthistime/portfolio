@@ -10,8 +10,9 @@ export const TECH_SKILL_GROUPS = {
   buildTools: 'Build Tools',
   workingTools: 'Working Tools',
   payment: 'Payment',
+} as const;
 
-export type TechSkillGroup = keyof typeof TECH_SKILL_GROUPS;
+export type TechSkillGroup = (typeof TECH_SKILL_GROUPS)[keyof typeof TECH_SKILL_GROUPS];
 
 export interface TechSkill {
   name: string;
