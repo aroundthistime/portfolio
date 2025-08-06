@@ -109,7 +109,7 @@ const ProjectDetailsScreen = ({ project }: Props) => {
                         <Badge
                           key={tech.name}
                           variant="outline"
-                          className="px-3 py-1 text-sm">
+                          className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600">
                           {tech.iconUrl && (
                             <Image
                               src={tech.iconUrl}
@@ -135,7 +135,6 @@ const ProjectDetailsScreen = ({ project }: Props) => {
               Technologies Worked With
             </h3>
             <div className="space-y-4">
-                        className="px-3 py-1 text-sm">
               {Array.from(groupedExposedTechSkillsMap.entries()).map(
                 ([groupName, techSkills]) => (
                   <div key={groupName}>
@@ -147,6 +146,7 @@ const ProjectDetailsScreen = ({ project }: Props) => {
                         <Badge
                           key={tech.name}
                           variant="secondary"
+                          className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600">
                           {tech.iconUrl && (
                             <Image
                               src={tech.iconUrl}
