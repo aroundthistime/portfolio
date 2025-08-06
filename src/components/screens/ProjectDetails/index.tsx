@@ -13,98 +13,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Header } from '@/components/layout/Header';
 import { Project } from '@/types/project';
-import { TechSkill, TechSkillGroup } from '@/types/techSkill';
 import { useMemo } from 'react';
-import { DefaultMap } from '@/utils/dataStructure/defaultMap';
 import { groupBy } from '@/utils/array';
-
-// Technology icons mapping
-const techIcons = {
-  'Next.js': '⚛️',
-  'Next.js 14': '⚛️',
-  React: '⚛️',
-  'React 18': '⚛️',
-  'React Native': '📱',
-  'React Native Web': '📱',
-  TypeScript: '🔷',
-  JavaScript: '🟨',
-  'Tailwind CSS': '🎨',
-  'Styled Components': '💅',
-  CSS: '🎨',
-  HTML: '🌐',
-  'Node.js': '🟢',
-  Python: '🐍',
-  PostgreSQL: '🐘',
-  MongoDB: '🍃',
-  Redis: '🔴',
-  Docker: '🐳',
-  AWS: '☁️',
-  Git: '📝',
-  Jest: '🃏',
-  Cypress: '🌲',
-};
-
-// Technology grouping function
-const groupTechnologies = (technologies: string[]) => {
-  const groups = {
-    'Frontend Frameworks': [] as string[],
-    'Styling & UI': [] as string[],
-    'Backend & Database': [] as string[],
-    Testing: [] as string[],
-    'DevOps & Tools': [] as string[],
-    Other: [] as string[],
-  };
-
-  technologies.forEach(tech => {
-    const lowerTech = tech.toLowerCase();
-    if (
-      lowerTech.includes('react') ||
-      lowerTech.includes('next') ||
-      lowerTech.includes('vue') ||
-      lowerTech.includes('angular')
-    ) {
-      groups['Frontend Frameworks'].push(tech);
-    } else if (
-      lowerTech.includes('css') ||
-      lowerTech.includes('tailwind') ||
-      lowerTech.includes('styled') ||
-      lowerTech.includes('sass') ||
-      lowerTech.includes('emotion')
-    ) {
-      groups['Styling & UI'].push(tech);
-    } else if (
-      lowerTech.includes('node') ||
-      lowerTech.includes('python') ||
-      lowerTech.includes('postgresql') ||
-      lowerTech.includes('mongodb') ||
-      lowerTech.includes('redis') ||
-      lowerTech.includes('mysql') ||
-      lowerTech.includes('graphql')
-    ) {
-      groups['Backend & Database'].push(tech);
-    } else if (
-      lowerTech.includes('jest') ||
-      lowerTech.includes('cypress') ||
-      lowerTech.includes('testing') ||
-      lowerTech.includes('test')
-    ) {
-      groups['Testing'].push(tech);
-    } else if (
-      lowerTech.includes('docker') ||
-      lowerTech.includes('aws') ||
-      lowerTech.includes('jenkins') ||
-      lowerTech.includes('github') ||
-      lowerTech.includes('git')
-    ) {
-      groups['DevOps & Tools'].push(tech);
-    } else {
-      groups['Other'].push(tech);
-    }
-  });
-
-  // Filter out empty groups
-  return Object.entries(groups).filter(([_, techs]) => techs.length > 0);
-};
 
 interface Props {
   project: Project;
@@ -114,6 +24,13 @@ const ProjectDetailsScreen = ({ project }: Props) => {
   const groupedUsedTechSkillsMap = useMemo(() => {
     return groupBy([...project.techSkillsUsed], tech => tech.group ?? 'Others');
   }, [project.techSkillsUsed]);
+
+  const groupedExposedTechSkillsMap = useMemo(() => {
+    return groupBy(
+      [...project.techSkillsExposed],
+      tech => tech.group ?? 'Others',
+    );
+  }, [project.techSkillsExposed]);
 
   return (
     <>
@@ -193,10 +110,14 @@ const ProjectDetailsScreen = ({ project }: Props) => {
                           key={tech.name}
                           variant="outline"
                           className="px-3 py-1 text-sm">
-                          {techIcons[tech.name as keyof typeof techIcons] && (
-                            <span className="mr-2">
-                              {techIcons[tech.name as keyof typeof techIcons]}
-                            </span>
+                          {tech.iconUrl && (
+                            <Image
+                              src={tech.iconUrl}
+                              alt={tech.name}
+                              width={16}
+                              height={16}
+                              className="mr-2"
+                            />
                           )}
                           {tech.name}
                         </Badge>
@@ -214,30 +135,34 @@ const ProjectDetailsScreen = ({ project }: Props) => {
               Technologies Worked With
             </h3>
             <div className="space-y-4">
-              {groupTechnologies(
-                project.techSkillsExposed.map(tech => tech.name),
-              ).map(([groupName, techs]) => (
-                <div key={groupName}>
-                  <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
-                    {groupName}
-                  </h4>
-                  <div className="flex flex-wrap gap-3">
-                    {techs.map(tech => (
-                      <Badge
-                        key={tech}
-                        variant="secondary"
                         className="px-3 py-1 text-sm">
-                        {techIcons[tech as keyof typeof techIcons] && (
-                          <span className="mr-2">
-                            {techIcons[tech as keyof typeof techIcons]}
-                          </span>
-                        )}
-                        {tech}
-                      </Badge>
-                    ))}
+              {Array.from(groupedExposedTechSkillsMap.entries()).map(
+                ([groupName, techSkills]) => (
+                  <div key={groupName}>
+                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
+                      {groupName}
+                    </h4>
+                    <div className="flex flex-wrap gap-3">
+                      {techSkills.map(tech => (
+                        <Badge
+                          key={tech.name}
+                          variant="secondary"
+                          {tech.iconUrl && (
+                            <Image
+                              src={tech.iconUrl}
+                              alt={tech.name}
+                              width={16}
+                              height={16}
+                              className="mr-2"
+                            />
+                          )}
+                          {tech.name}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ),
+              )}
             </div>
           </div>
         </section>
