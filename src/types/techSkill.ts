@@ -2,6 +2,7 @@ export const TECH_SKILL_GROUPS = {
   languagesAndFrameworks: 'Languages & Frameworks',
   stateManagement: 'State Management',
   styling: 'Styling & UI',
+  apiAndProtocol: 'API & Protocol',
   testing: 'Testing',
   database: 'Database',
   infrastructure: 'Devops & Infrastructure',
@@ -9,10 +10,10 @@ export const TECH_SKILL_GROUPS = {
   packageManagement: 'Package Management',
   buildTools: 'Build Tools',
   workingTools: 'Working Tools',
-  payment: 'Payment',
 } as const;
 
-export type TechSkillGroup = (typeof TECH_SKILL_GROUPS)[keyof typeof TECH_SKILL_GROUPS];
+export type TechSkillGroup =
+  (typeof TECH_SKILL_GROUPS)[keyof typeof TECH_SKILL_GROUPS];
 
 export interface TechSkill {
   name: string;
