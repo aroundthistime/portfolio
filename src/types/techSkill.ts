@@ -1,4 +1,4 @@
-const TECH_SKILL_GROUPS = {
+export const TECH_SKILL_GROUPS = {
   languagesAndFrameworks: 'Languages & Frameworks',
   stateManagement: 'State Management',
   styling: 'Styling & UI',
@@ -8,8 +8,8 @@ const TECH_SKILL_GROUPS = {
   threeD: '3D & Web Graphics',
   packageManagement: 'Package Management',
   buildTools: 'Build Tools',
-  tools: 'Working Tools',
-}
+  workingTools: 'Working Tools',
+  payment: 'Payment',
 
 export type TechSkillGroup = keyof typeof TECH_SKILL_GROUPS;
 
