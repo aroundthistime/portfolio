@@ -14,6 +14,7 @@ import Image from 'next/image';
 import { Header } from '@/components/layout/Header';
 import { Project } from '@/types/project';
 import { TechSkillsList } from './sections/TechSkills/TechSkillsList';
+import TechSkillsSection from './sections/TechSkills';
 
 interface Props {
   project: Project;
@@ -73,31 +74,10 @@ const ProjectDetailsScreen = ({ project }: Props) => {
             />
           </div>
         </div>
-
-        {/* Tech Skills */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            Technologies Used
-          </h2>
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold mb-4 flex items-center">
-              <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
-              Primary Technologies
-            </h3>
-            <TechSkillsList techSkills={project.techSkillsUsed} isEmphasized />
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4 flex items-center">
-              <Users className="h-5 w-5 text-blue-600 mr-2" />
-              Technologies Worked With
-            </h3>
-            <TechSkillsList
-              techSkills={project.techSkillsExposed}
-              isEmphasized={false}
-            />
-          </div>
-        </section>
-
+        <TechSkillsSection
+          techSkillsUsed={project.techSkillsUsed}
+          techSkillsExposed={project.techSkillsExposed}
+        />
         {/* Detailed Explanation */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
