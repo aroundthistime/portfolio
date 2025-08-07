@@ -3,6 +3,39 @@ import { Project } from '@/types/project';
 import { Apple, ExternalLink, Github } from 'lucide-react';
 import PlayStoreIcon from '@/assets/images/icons/playstore.svg';
 import Image from 'next/image';
+import { ComponentType } from 'react';
+import { getTypedObjectEntries } from '@/types/utils';
+
+const PROJECT_LINK_STYLES = {
+  live: {
+    Icon: ExternalLink,
+    label: 'View Live Project',
+    className:
+      'bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600',
+  },
+  appStore: {
+    Icon: Apple,
+    label: 'App Store',
+    className: 'bg-brandColor-appStore hover:bg-brandColor-appStore-hover',
+  },
+  playStore: {
+    Icon: PlayStoreIcon,
+    label: 'Play Store',
+    className: 'bg-brandColor-playStore hover:bg-brandColor-playStore-hover',
+  },
+  github: {
+    Icon: Github,
+    label: 'GitHub',
+    className:
+      'bg-brandColor-github hover:bg-brandColor-github-hover dark:bg-gray-700 dark:hover:bg-gray-600',
+  },
+} as const satisfies {
+  [key in keyof Project['links']]: {
+    Icon: ComponentType<{ className?: string }>;
+    label: string;
+    className: string;
+  };
+};
 
 interface Props {
   project: Project;
@@ -29,65 +62,23 @@ const IntroSection = ({ project }: Props) => {
         {project.summary}
       </p>
       <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 mb-6 md:mb-8">
-        {project.links.live && (
-          <Button
-            className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 cursor-pointer text-white w-full sm:w-auto"
-            asChild>
-            <a
-              href={project.links.live}
-              target="_blank"
-              rel="noopener noreferrer">
-              <ExternalLink className="h-4 w-4 mr-2" />
-              View Live Project
-            </a>
-          </Button>
-        )}
-        {project.links.appStore && (
-          <Button
-            variant="outline"
-            asChild
-            className="cursor-pointer bg-transparent w-full sm:w-auto">
-            <a
-              href={project.links.appStore}
-              target="_blank"
-              rel="noopener noreferrer">
-              <Apple className="h-4 w-4 mr-2" />
-              App Store
-            </a>
-          </Button>
-        )}
-        {project.links.playStore && (
-          <Button
-            variant="outline"
-            asChild
-            className="cursor-pointer bg-transparent w-full sm:w-auto">
-            <a
-              href={project.links.playStore}
-              target="_blank"
-              rel="noopener noreferrer">
-              <PlayStoreIcon className="h-4 w-4 mr-2" />
-              Play Store
-            </a>
-          </Button>
-        )}
-        {project.links.github ? (
-          <Button
-            variant="outline"
-            asChild
-            className="cursor-pointer bg-transparent w-full sm:w-auto">
-            <a
-              href={project.links.github}
-              target="_blank"
-              rel="noopener noreferrer">
-              <Github className="h-4 w-4 mr-2" />
-              GitHub
-            </a>
-          </Button>
-        ) : (
-          <div className="text-sm text-gray-600 dark:text-gray-400 flex items-center justify-center md:justify-start">
-            <span>Source code not available (Company project)</span>
-          </div>
-        )}
+        {getTypedObjectEntries(project.links).map(([key, link]) => {
+          const style = PROJECT_LINK_STYLES[key];
+
+          const { Icon, label, className } = style;
+
+          return (
+            <Button
+              key={key}
+              className={`w-full sm:w-auto cursor-pointer text-white ${className}`}
+              asChild>
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                <Icon className="h-4 w-4 mr-2" />
+                {label}
+              </a>
+            </Button>
+          );
+        })}
       </div>
 
       <div className="rounded-lg overflow-hidden shadow-lg">
