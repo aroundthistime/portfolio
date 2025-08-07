@@ -7,9 +7,10 @@ export type Project = Readonly<{
   title: string;
   summary: string;
   links: {
-    live: string;
-    github: string;
-    demo: string;
+    live?: string;
+    github?: string;
+    appStore?: string;
+    playStore?: string;
   };
   iconUrl: string;
   image: string;

@@ -12,9 +12,10 @@ export const PROJECTS_DB = [{
     links: {
       live: 'https://shop.example.com',
       github: 'https://github.com/alexchen/ecommerce-platform',
-      demo: 'https://demo.shop.example.com',
+      appStore: 'https://demo.shop.example.com',
+      playStore: 'https://demo.shop.example.com',
     },
-    iconUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fmcdonalds_5977588&psig=AOvVaw0JVjJFA1iter0YGC5dvWyp&ust=1754657815885000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPiMlvDf-I4DFQAAAAAdAAAAABAE',
+    iconUrl: 'https://yt3.googleusercontent.com/Wyb8NNdRNxSD9OgKgQpH7GbKeSf5S5cpAn_jF-dzkScJ0WE2IQ-3XbQt4png1HMuxKJK52Yf2w=s900-c-k-c0x00ffffff-no-rj',
     image: '/placeholder.svg?height=400&width=800',
     tags: ['E-commerce', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'PostgreSQL', 'Redis'],
     techSkillsUsed: [TECH_SKILLS.nextJS, TECH_SKILLS.typescript],
@@ -121,7 +122,6 @@ The project took 8 months to complete with a team of 6 developers. I was respons
     links: {
       live: 'https://taskflow.example.com',
       github: 'https://github.com/alexchen/taskflow',
-      demo: 'https://demo.taskflow.example.com',
     },
     image: '/placeholder.svg?height=400&width=800',
     tags: ['React', 'TypeScript', 'Styled Components', 'Socket.io', 'React Query', 'Framer Motion', 'SonarQube'],

@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Project } from '@/types/project';
-import { Code2, ExternalLink } from 'lucide-react';
+import { Apple, ExternalLink, Github } from 'lucide-react';
+import PlayStoreIcon from '@/assets/images/icons/playstore.svg';
 import Image from 'next/image';
 
 interface Props {
@@ -41,13 +42,52 @@ const IntroSection = ({ project }: Props) => {
             </a>
           </Button>
         )}
-
-        {project.links.github &&
-          project.links.github === 'Private Repository' && (
-            <div className="text-sm text-gray-600 dark:text-gray-400 flex items-center">
-              <span>Source code not available (Company project)</span>
-            </div>
-          )}
+        {project.links.appStore && (
+          <Button
+            variant="outline"
+            asChild
+            className="cursor-pointer bg-transparent w-full sm:w-auto">
+            <a
+              href={project.links.appStore}
+              target="_blank"
+              rel="noopener noreferrer">
+              <Apple className="h-4 w-4 mr-2" />
+              App Store
+            </a>
+          </Button>
+        )}
+        {project.links.playStore && (
+          <Button
+            variant="outline"
+            asChild
+            className="cursor-pointer bg-transparent w-full sm:w-auto">
+            <a
+              href={project.links.playStore}
+              target="_blank"
+              rel="noopener noreferrer">
+              <PlayStoreIcon className="h-4 w-4 mr-2" />
+              Play Store
+            </a>
+          </Button>
+        )}
+        {project.links.github ? (
+          <Button
+            variant="outline"
+            asChild
+            className="cursor-pointer bg-transparent w-full sm:w-auto">
+            <a
+              href={project.links.github}
+              target="_blank"
+              rel="noopener noreferrer">
+              <Github className="h-4 w-4 mr-2" />
+              GitHub
+            </a>
+          </Button>
+        ) : (
+          <div className="text-sm text-gray-600 dark:text-gray-400 flex items-center justify-center md:justify-start">
+            <span>Source code not available (Company project)</span>
+          </div>
+        )}
       </div>
 
       <div className="rounded-lg overflow-hidden shadow-lg">
