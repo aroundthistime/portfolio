@@ -3,14 +3,13 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
-import { MY_NAME } from '@/constants/contentDB/aboutMe';
+import { MY_MAIN_ROLE, MY_NAME } from '@/constants/contentDB/aboutMe';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: `${MY_NAME.long} - Frontend Developer Portfolio`,
-  description:
-    'Experienced frontend developer specializing in React, Next.js, and modern web technologies',
+  title: `${MY_NAME.long} - ${MY_MAIN_ROLE} Portfolio`,
+  description: `Experienced ${MY_MAIN_ROLE} specializing in React, Next.js, and modern web technologies`,
   generator: 'v0.dev',
   icons: {
     icon: '/images/bart.jpg',

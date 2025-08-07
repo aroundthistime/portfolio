@@ -1,4 +1,4 @@
-import { MY_NAME } from '@/constants/contentDB/aboutMe';
+import { MY_MAIN_ROLE, MY_NAME } from '@/constants/contentDB/aboutMe';
 import useIsMobileViewport from '@/hooks/useIsMobileViewport';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Coffee, MapPin } from 'lucide-react';
@@ -50,7 +50,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6">
-            Frontend Developer
+            {MY_MAIN_ROLE}
           </motion.p>
 
           <motion.div
