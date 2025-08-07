@@ -19,8 +19,8 @@ export type Project = Readonly<{
     description: string;
     myContribution: boolean;
   }>;
-  teamSize: string;
   role: string;
+  teamSize: number;
   period: {
     startDate: YYYYMMStr;
     /**
