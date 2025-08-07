@@ -15,6 +15,7 @@ import { Header } from '@/components/layout/Header';
 import { Project } from '@/types/project';
 import TechSkillsSection from './sections/TechSkills';
 import IntroSection from './sections/Intro';
+import ProjectMetaSection from './sections/Meta';
 
 interface Props {
   project: Project;
@@ -26,6 +27,7 @@ const ProjectDetailsScreen = ({ project }: Props) => {
       <Header />
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <IntroSection project={project} />
+        <ProjectMetaSection project={project} />
         <TechSkillsSection
           techSkillsUsed={project.techSkillsUsed}
           techSkillsExposed={project.techSkillsExposed}
