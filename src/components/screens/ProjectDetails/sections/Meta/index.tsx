@@ -18,6 +18,14 @@ const ProjectMetaSection = ({ project }: Props) => {
     return formatPeriod(startDate, endDate);
   }, [project.period]);
 
+  const parseTeamSize = () => {
+    if (typeof project.teamSize === 'number') {
+      return project.teamSize;
+    }
+
+    return `${project.teamSize.min} ~ ${project.teamSize.max}`;
+  };
+
   return (
     <section className="mb-12">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
@@ -46,7 +54,7 @@ const ProjectMetaSection = ({ project }: Props) => {
           </CardHeader>
           <CardContent>
             <p className="text-gray-700 dark:text-gray-300 font-medium">
-              {project.teamSize}명
+              {`${parseTeamSize()}명`}
             </p>
           </CardContent>
         </Card>

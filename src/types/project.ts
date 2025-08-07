@@ -1,4 +1,5 @@
 import { YYYYMMStr } from "./date";
+import { RangeObject } from "./number";
 import { TechSkill } from "./techSkill";
 
 export type Project = Readonly<{
@@ -20,7 +21,7 @@ export type Project = Readonly<{
     description: string;
     myContribution: boolean;
   }>;
-  teamSize: number;
+  teamSize: number | RangeObject;
   role?: string;
   period: {
     startDate: YYYYMMStr;

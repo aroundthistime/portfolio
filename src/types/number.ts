@@ -25,3 +25,8 @@ export type RangeUnion<F extends number, T extends number> = F extends T
   : RangeUnionHelper<F, T>;
 
 export type Digit = RangeUnion<0, 9>;
+
+export interface RangeObject {
+  min: number;
+  max: number;
+}

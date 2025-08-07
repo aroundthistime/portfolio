@@ -106,7 +106,10 @@ The project took 8 months to complete with a team of 6 developers. I was respons
     period: {
       startDate: '2023-03',
     },
-    teamSize: 6,
+    teamSize: {
+      min: 6,
+      max: 10,
+    },
   },
   {
     id: 'task-management-app',
