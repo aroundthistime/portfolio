@@ -14,6 +14,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        brandColor: {
+          appStore: {
+            DEFAULT: '#0484eb',
+            hover: '#0371c8',
+          },
+          playStore: {
+            DEFAULT: '#16a34a',
+            hover: '#15803d',
+          },
+          github: {
+            DEFAULT: '#1f2937',
+            hover: '#111827',
+          },
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
