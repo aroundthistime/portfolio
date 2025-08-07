@@ -35,7 +35,7 @@ const ProjectMetaSection = ({ project }: Props) => {
           </CardHeader>
           <CardContent>
             <p className="text-gray-700 dark:text-gray-300 font-medium">
-              {project.teamSize}
+              {project.teamSize}명
             </p>
           </CardContent>
         </Card>
