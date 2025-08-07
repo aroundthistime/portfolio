@@ -16,7 +16,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useProjectModal } from './context';
 import { getDeviceInfo } from '@/utils/device';
-import { IMAGE_PLACEHOLDER } from '@/constants/media';
+import Placeholder from '@/assets/images/placeholder.svg';
 
 interface Props {
   project: Project;
@@ -61,7 +61,7 @@ const ProjectCard = ({ project, index }: Props) => {
     return () => {
       clearInterval(interval);
     };
-  }, [isHovered]);
+  }, [isHovered, project.tags]);
 
   return (
     <motion.div
@@ -81,7 +81,7 @@ const ProjectCard = ({ project, index }: Props) => {
             <Image
               src={project.image}
               alt={project.title}
-              placeholder={IMAGE_PLACEHOLDER}
+              placeholder={Placeholder}
               width={300}
               height={200}
               className="w-full h-48 object-cover"
