@@ -10,7 +10,7 @@ interface Props {
 const IntroSection = ({ project }: Props) => {
   return (
     <div className="mb-12">
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex flex-col items-center md:flex-row gap-3 md:gap-4 mb-4">
         <Image
           src={project.iconUrl}
           alt={`${project.title} logo`}
@@ -18,20 +18,19 @@ const IntroSection = ({ project }: Props) => {
           height={64}
           className="w-16 h-16 rounded-xl shadow-lg flex-shrink-0"
         />
-        <div>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+        <div className="text-center md:text-left">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
             {project.title}
           </h1>
         </div>
       </div>
-      <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
+      <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 text-center md:text-left">
         {project.summary}
       </p>
-
-      <div className="flex flex-wrap gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 mb-6 md:mb-8">
         {project.links.live && (
           <Button
-            className="bg-blue-600 hover:bg-blue-700 cursor-pointer"
+            className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 cursor-pointer text-white w-full sm:w-auto"
             asChild>
             <a
               href={project.links.live}
