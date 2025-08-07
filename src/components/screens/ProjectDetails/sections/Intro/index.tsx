@@ -16,7 +16,7 @@ const IntroSection = ({ project }: Props) => {
           alt={`${project.title} logo`}
           width={64}
           height={64}
-          className="w-16 h-16 rounded-xl shadow-lg"
+          className="w-16 h-16 rounded-xl shadow-lg flex-shrink-0"
         />
         <div>
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
