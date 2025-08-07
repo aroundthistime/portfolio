@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { MY_MAIN_ROLE } from '@/constants/contentDB/aboutMe';
 import { Project } from '@/types/project';
-import { formatPeriod, getPeriodStr } from '@/utils/date';
+import { formatPeriod } from '@/utils/date';
 import { Briefcase, Calendar, Users } from 'lucide-react';
 import { useMemo } from 'react';
 
@@ -59,7 +60,7 @@ const ProjectMetaSection = ({ project }: Props) => {
           </CardHeader>
           <CardContent>
             <p className="text-gray-700 dark:text-gray-300 font-medium">
-              {project.role}
+              {project.role ?? MY_MAIN_ROLE}
             </p>
           </CardContent>
         </Card>
