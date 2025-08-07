@@ -1,12 +1,22 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Project } from '@/types/project';
+import { formatPeriod, getPeriodStr } from '@/utils/date';
 import { Briefcase, Calendar, Users } from 'lucide-react';
+import { useMemo } from 'react';
 
 interface Props {
   project: Project;
 }
 
 const ProjectMetaSection = ({ project }: Props) => {
+  const formattedPeriod = useMemo(() => {
+    const startDate = new Date(project.period.startDate);
+    const endDate = project.period.endDate
+      ? new Date(project.period.endDate)
+      : undefined;
+    return formatPeriod(startDate, endDate);
+  }, [project.period]);
+
   return (
     <section className="mb-12">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
@@ -22,7 +32,7 @@ const ProjectMetaSection = ({ project }: Props) => {
           </CardHeader>
           <CardContent>
             <p className="text-gray-700 dark:text-gray-300 font-medium">
-              {project.period}
+              {formattedPeriod}
             </p>
           </CardContent>
         </Card>
