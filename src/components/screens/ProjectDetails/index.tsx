@@ -13,25 +13,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Header } from '@/components/layout/Header';
 import { Project } from '@/types/project';
-import { useMemo } from 'react';
-import { groupBy } from '@/utils/array';
+import { TechSkillsList } from './sections/TechSkills/TechSkillsList';
 
 interface Props {
   project: Project;
 }
 
 const ProjectDetailsScreen = ({ project }: Props) => {
-  const groupedUsedTechSkillsMap = useMemo(() => {
-    return groupBy([...project.techSkillsUsed], tech => tech.group ?? 'Others');
-  }, [project.techSkillsUsed]);
-
-  const groupedExposedTechSkillsMap = useMemo(() => {
-    return groupBy(
-      [...project.techSkillsExposed],
-      tech => tech.group ?? 'Others',
-    );
-  }, [project.techSkillsExposed]);
-
   return (
     <>
       <Header />
@@ -91,79 +79,22 @@ const ProjectDetailsScreen = ({ project }: Props) => {
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
             Technologies Used
           </h2>
-
           <div className="mb-8">
             <h3 className="text-lg font-semibold mb-4 flex items-center">
               <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
               Primary Technologies
             </h3>
-            <div className="space-y-4">
-              {Array.from(groupedUsedTechSkillsMap.entries()).map(
-                ([groupName, techSkills]) => (
-                  <div key={groupName}>
-                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
-                      {groupName}
-                    </h4>
-                    <div className="flex flex-wrap gap-3">
-                      {techSkills.map(tech => (
-                        <Badge
-                          key={tech.name}
-                          variant="outline"
-                          className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600">
-                          {tech.iconUrl && (
-                            <Image
-                              src={tech.iconUrl}
-                              alt={tech.name}
-                              width={16}
-                              height={16}
-                              className="mr-2"
-                            />
-                          )}
-                          {tech.name}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                ),
-              )}
-            </div>
+            <TechSkillsList techSkills={project.techSkillsUsed} isEmphasized />
           </div>
-
           <div>
             <h3 className="text-lg font-semibold mb-4 flex items-center">
               <Users className="h-5 w-5 text-blue-600 mr-2" />
               Technologies Worked With
             </h3>
-            <div className="space-y-4">
-              {Array.from(groupedExposedTechSkillsMap.entries()).map(
-                ([groupName, techSkills]) => (
-                  <div key={groupName}>
-                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
-                      {groupName}
-                    </h4>
-                    <div className="flex flex-wrap gap-3">
-                      {techSkills.map(tech => (
-                        <Badge
-                          key={tech.name}
-                          variant="secondary"
-                          className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600">
-                          {tech.iconUrl && (
-                            <Image
-                              src={tech.iconUrl}
-                              alt={tech.name}
-                              width={16}
-                              height={16}
-                              className="mr-2"
-                            />
-                          )}
-                          {tech.name}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                ),
-              )}
-            </div>
+            <TechSkillsList
+              techSkills={project.techSkillsExposed}
+              isEmphasized={false}
+            />
           </div>
         </section>
 
