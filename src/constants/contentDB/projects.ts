@@ -14,6 +14,7 @@ export const PROJECTS_DB = [{
       github: 'https://github.com/alexchen/ecommerce-platform',
       demo: 'https://demo.shop.example.com',
     },
+    iconUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fmcdonalds_5977588&psig=AOvVaw0JVjJFA1iter0YGC5dvWyp&ust=1754657815885000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPiMlvDf-I4DFQAAAAAdAAAAABAE',
     image: '/placeholder.svg?height=400&width=800',
     tags: ['E-commerce', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'PostgreSQL', 'Redis'],
     techSkillsUsed: [TECH_SKILLS.nextJS, TECH_SKILLS.typescript],
@@ -116,6 +117,7 @@ The project took 8 months to complete with a team of 6 developers. I was respons
     title: 'Task Management Application',
     summary:
       'A collaborative project management tool designed for remote teams, featuring real-time collaboration, advanced project tracking, and team productivity analytics.',
+    iconUrl: 'https://images.seeklogo.com/logo-png/17/1/kfc-logo-png_seeklogo-176326.png',
     links: {
       live: 'https://taskflow.example.com',
       github: 'https://github.com/alexchen/taskflow',

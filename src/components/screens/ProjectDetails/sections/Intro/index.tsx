@@ -11,9 +11,13 @@ const IntroSection = ({ project }: Props) => {
   return (
     <div className="mb-12">
       <div className="flex items-center gap-4 mb-4">
-        <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
-          <Code2 className="h-8 w-8 text-white" />
-        </div>
+        <Image
+          src={project.iconUrl}
+          alt={`${project.title} logo`}
+          width={64}
+          height={64}
+          className="w-16 h-16 rounded-xl shadow-lg"
+        />
         <div>
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
             {project.title}

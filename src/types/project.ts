@@ -11,6 +11,7 @@ export type Project = Readonly<{
     github: string;
     demo: string;
   };
+  iconUrl: string;
   image: string;
   tags: string[];
   techSkillsUsed: ReadonlyArray<TechSkill>;
