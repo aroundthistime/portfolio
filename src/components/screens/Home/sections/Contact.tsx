@@ -1,7 +1,7 @@
 import MainSection from './MainSection';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
 import { MY_CONTACTS } from '@/constants/contentDB/aboutMe';
 
 const EMAIL_LINK_PREFIX = 'mailto:';
@@ -63,22 +63,12 @@ const ContactSection = () => {
                 size="lg"
                 asChild
                 className="border-2 hover:border-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:shadow-lg transition-all duration-300 group bg-transparent cursor-pointer">
-                <a
+                <ExternalLink
                   href={contact.href}
-                  target={
-                    contact.href.startsWith(EMAIL_LINK_PREFIX)
-                      ? undefined
-                      : '_blank'
-                  }
-                  rel={
-                    contact.href.startsWith(EMAIL_LINK_PREFIX)
-                      ? undefined
-                      : 'noopener noreferrer'
-                  }
                   className="flex items-center space-x-2">
                   <contact.icon className="h-5 w-5 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors" />
                   <span className="hidden sm:inline">{contact.text}</span>
-                </a>
+                </ExternalLink>
               </Button>
             </motion.div>
           ))}

@@ -1,14 +1,15 @@
 import { Button } from '@/components/ui/button';
 import { Project } from '@/types/project';
-import { Apple, ExternalLink, Github } from 'lucide-react';
+import { Apple, ExternalLink as ExternalLinkIcon, Github } from 'lucide-react';
 import PlayStoreIcon from '@/assets/images/icons/playstore.svg';
 import Image from 'next/image';
 import { ComponentType } from 'react';
 import { getTypedObjectEntries } from '@/types/utils';
+import ExternalLink from '@/components/common/ExternalLink';
 
 const PROJECT_LINK_STYLES = {
   live: {
-    Icon: ExternalLink,
+    Icon: ExternalLinkIcon,
     label: 'View Live Project',
     className:
       'bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600',
@@ -72,10 +73,10 @@ const IntroSection = ({ project }: Props) => {
               key={key}
               className={`w-full sm:w-auto cursor-pointer text-white ${className}`}
               asChild>
-              <a href={link} target="_blank" rel="noopener noreferrer">
+              <ExternalLink href={link}>
                 <Icon className="h-4 w-4 mr-2" />
                 {label}
-              </a>
+              </ExternalLink>
             </Button>
           );
         })}
