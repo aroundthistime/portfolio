@@ -13,7 +13,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Header } from '@/components/layout/Header';
 import { Project } from '@/types/project';
-import { TechSkillsList } from './sections/TechSkills/TechSkillsList';
 import TechSkillsSection from './sections/TechSkills';
 
 interface Props {
