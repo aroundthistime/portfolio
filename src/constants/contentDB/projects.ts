@@ -103,9 +103,10 @@ The project took 8 months to complete with a team of 6 developers. I was respons
           'Implemented proper meta tags, structured data, and optimized images. Used Next.js Image component and implemented lazy loading. Achieved 95+ Lighthouse scores across all metrics.',
       },
     ],
-    period: 'March 2023 - November 2023 (8 months)',
-    teamSize: '6 developers',
-    role: 'Senior Frontend Developer',
+    period: {
+      startDate: '2023-03',
+    },
+    teamSize: 6,
   },
   {
     id: 'task-management-app',
@@ -209,7 +210,10 @@ I also implemented advanced features like bulk operations, keyboard shortcuts, a
           'Implemented service worker for offline functionality and built a queue system for pending operations. Added conflict resolution UI for when users come back online with conflicting changes.',
       },
     ],
-    period: 'June 2022 - December 2022 (6 months)',
-    teamSize: '8 developers',
+    period: {
+      startDate: '2022-06',
+      endDate: '2022-12',
+    },
+    teamSize: 8,
     role: 'Frontend Architect',
   }]as const satisfies ReadonlyArray<Project>;

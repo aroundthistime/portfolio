@@ -21,7 +21,13 @@ export type Project = Readonly<{
   }>;
   teamSize: string;
   role: string;
-  period: string;
+  period: {
+    startDate: YYYYMMStr;
+    /**
+     * will be undefined if the project is still ongoing
+     */
+    endDate?: YYYYMMStr;
+  }
   troubleshoots:ReadonlyArray< {
     title: string;
     problem: string;
