@@ -1,3 +1,4 @@
+import { YYYYMMStr } from "./date";
 import { TechSkill } from "./techSkill";
 
 export type Project = Readonly<{
@@ -19,8 +20,8 @@ export type Project = Readonly<{
     description: string;
     myContribution: boolean;
   }>;
-  role: string;
   teamSize: number;
+  role?: string;
   period: {
     startDate: YYYYMMStr;
     /**
