@@ -15,7 +15,7 @@ const ProjectOverviewSection = ({ detailedExplanation }: Props) => {
             {detailedExplanation.split('\n\n').map((paragraph, index) => (
               <p
                 key={index}
-                className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
                 {paragraph}
               </p>
             ))}
