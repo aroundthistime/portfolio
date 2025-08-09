@@ -184,7 +184,7 @@ export function ProjectModal() {
                 )}
             </div>
             <Image
-              src={project.image || '/placeholder.svg'}
+              src={project.screenshots.images[0].src || '/placeholder.svg'}
               alt={project.title}
               width={600}
               height={300}
