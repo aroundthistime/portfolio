@@ -25,7 +25,7 @@ export function ProjectModal() {
             <X className="h-5 w-5" />
           </button>
         </div>
-        <div className="p-6">
+        <div className="px-6">
           <ProjectDetailsScreen project={project} />
         </div>
       </DialogContent>
