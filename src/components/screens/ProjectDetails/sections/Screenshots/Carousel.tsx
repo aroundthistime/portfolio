@@ -9,6 +9,7 @@ import { Project } from '@/types/project';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import useIsHovered from '@/hooks/useIsHovered';
 import { mergeRefs } from '@/utils/react';
+import { getDeviceInfo } from '@/utils/device';
 
 interface Props {
   screenshots: Project['screenshots'];
@@ -34,7 +35,7 @@ const ProjectImageCarousel = ({ screenshots }: Props) => {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const { isHovered, hoverableElRef } = useIsHovered();
+  const { isHovered, ref: hoverableElRef } = useIsHovered();
   const intersectionObserverOptions = useMemo(() => {
     return {
       threshold: 0.3,
@@ -82,7 +83,12 @@ const ProjectImageCarousel = ({ screenshots }: Props) => {
 
   return (
     <div
-      ref={mergeRefs(intersectionObserverRef, hoverableElRef)}
+      ref={
+        // Do not apply hover effect on mobile because it will last if no other interaction is made
+        getDeviceInfo()?.isMobile
+          ? intersectionObserverRef
+          : mergeRefs(intersectionObserverRef, hoverableElRef)
+      }
       className="rounded-lg overflow-hidden shadow-lg bg-gray-100 dark:bg-gray-800">
       <div className="relative">
         <div className="overflow-hidden" ref={emblaRef}>
