@@ -32,17 +32,19 @@ const ProjectFeaturesSection = ({ features }: Props) => {
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
           프로젝트 기능 목록
         </h2>
-        <div className="flex items-center space-x-2">
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            Show my contributions only
-          </span>
-          <Switch
-            checked={showMyContributionsOnly}
-            onCheckedChange={setShowMyContributionsOnly}
-          />
-        </div>
+        {/* Provide filter if un-contributed features exist */}
+        {otherFeatures.length > 0 && (
+          <div className="flex items-center space-x-2">
+            <span className="text-xs text-gray-500 dark:text-gray-400">
+              Show my contributions only
+            </span>
+            <Switch
+              checked={showMyContributionsOnly}
+              onCheckedChange={setShowMyContributionsOnly}
+            />
+          </div>
+        )}
       </div>
-
       <div className="grid md:grid-cols-2 gap-4">
         {featuresToShow.map(feature => (
           <Card
