@@ -1,4 +1,3 @@
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, Lightbulb } from 'lucide-react';
@@ -10,6 +9,7 @@ import IntroSection from './sections/Intro';
 import ProjectMetaSection from './sections/Meta';
 import ProjectScreenshotsSection from './sections/Screenshots';
 import ProjectOverviewSection from './sections/Overview';
+import ProjectFeaturesSection from './sections/Features';
 
 interface Props {
   project: Project;
@@ -31,38 +31,7 @@ const ProjectDetailsScreen = ({ project }: Props) => {
           detailedExplanation={project.detailedExplanation}
         />
         {/* Features */}
-        <section>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            Project Features
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {project.features.map((feature, index) => (
-              <Card
-                key={index}
-                className={`${
-                  feature.myContribution ? 'border-blue-200 bg-blue-50/50' : ''
-                } border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm`}>
-                <CardHeader className="pb-2">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-base text-gray-900 dark:text-white">
-                      {feature.name}
-                    </CardTitle>
-                    {feature.myContribution && (
-                      <Badge className="bg-blue-500 text-white hover:bg-blue-600 text-xs">
-                        My Contribution
-                      </Badge>
-                    )}
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+        <ProjectFeaturesSection features={project.features} />
 
         {/* Troubleshoots */}
         {project.troubleshoots && (
