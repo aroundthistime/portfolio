@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import { useDeepCompareCallback } from 'use-deep-compare';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface IntersectionObserverOptions extends IntersectionObserverInit {
   detectOnce?: boolean;
@@ -15,7 +14,7 @@ const useIntersectionObserver = (
   const [isIntersecting, setIsIntersecting] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  const ref = useDeepCompareCallback((node: Element | null) => {
+  const ref = useCallback((node: Element | null) => {
     if (observerRef.current) {
       observerRef.current.disconnect();
     }
