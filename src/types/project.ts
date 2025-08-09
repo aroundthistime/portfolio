@@ -2,6 +2,11 @@ import { YYYYMMStr } from "./date";
 import { RangeObject } from "./number";
 import { TechSkill } from "./techSkill";
 
+export interface Screenshot {
+  src: string;
+  description?: string;
+}
+
 export type Project = Readonly<{
   id: string;
   title: string;
@@ -13,7 +18,10 @@ export type Project = Readonly<{
     playStore?: string;
   };
   iconUrl: string;
-  image: string;
+  screenshots: {
+    type: 'landscape' | 'portrait';
+    items: ReadonlyArray<Screenshot>;
+  }
   tags: string[];
   techSkillsUsed: ReadonlyArray<TechSkill>;
   techSkillsExposed: ReadonlyArray<TechSkill>
