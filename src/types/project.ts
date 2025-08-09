@@ -3,7 +3,10 @@ import { YYYYMMStr } from "./date";
 import { RangeObject } from "./number";
 import { TechSkill } from "./techSkill";
 
+export type ScreenshotOrientation = 'landscape' | 'portrait';
+
 export interface Screenshot {
+  type: 'image' | 'video';
   src: string;
   description?: string;
 }
@@ -20,8 +23,8 @@ export type Project = Readonly<{
   };
   iconUrl: string;
   screenshots: {
-    type: 'landscape' | 'portrait';
-    images: Readonly<NonEmptyArray<Screenshot>>;
+    orientation: ScreenshotOrientation;
+    items: Readonly<NonEmptyArray<Screenshot>>;
   }
   tags: Readonly<NonEmptyArray<string>>;
   techSkillsUsed: Readonly<NonEmptyArray<TechSkill>>;

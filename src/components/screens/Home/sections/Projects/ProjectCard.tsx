@@ -83,7 +83,7 @@ const ProjectCard = ({ project, index }: Props) => {
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.4 }}>
             <Image
-              src={project.screenshots.images[0].src}
+              src={project.iconUrl}
               alt={project.title}
               placeholder={IMAGE_PLACEHOLDER}
               width={300}
