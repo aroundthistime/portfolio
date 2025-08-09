@@ -98,12 +98,12 @@ const ProjectImageCarousel = ({ screenshots }: Props) => {
         {screenshotItems.length > 1 && (
           <>
             <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-5"
+              className="absolute left-8 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-5"
               onClick={() => emblaApi?.scrollPrev()}>
               <ChevronLeft className="h-5 w-5 text-gray-700 dark:text-gray-300" />
             </button>
             <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-5"
+              className="absolute right-8 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-5"
               onClick={() => emblaApi?.scrollNext()}>
               <ChevronRight className="h-5 w-5 text-gray-700 dark:text-gray-300" />
             </button>
