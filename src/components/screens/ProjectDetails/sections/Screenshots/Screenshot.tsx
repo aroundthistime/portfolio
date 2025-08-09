@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Screenshot, ScreenshotOrientation } from '@/types/project';
 import { cn } from '@/utils/styles';
 import LazyVideo from '@/components/LazyVideo';
+import { memo } from 'react';
 
 interface Props {
   orientation: ScreenshotOrientation;
@@ -54,4 +55,4 @@ const ScreenshotItem = ({ orientation, screenshot, className }: Props) => {
   );
 };
 
-export default ScreenshotItem;
+export default memo(ScreenshotItem);

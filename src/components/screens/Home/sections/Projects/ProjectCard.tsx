@@ -13,7 +13,7 @@ import { Project } from '@/types/project';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useProjectModal } from './context';
 import { getDeviceInfo } from '@/utils/device';
 import { IMAGE_PLACEHOLDER } from '@/constants/media';
@@ -128,4 +128,4 @@ const ProjectCard = ({ project, index }: Props) => {
   );
 };
 
-export default ProjectCard;
+export default memo(ProjectCard);
