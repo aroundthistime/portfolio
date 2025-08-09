@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 import { useProjectModal } from './context';
 import { getDeviceInfo } from '@/utils/device';
 import { IMAGE_PLACEHOLDER } from '@/constants/media';
+import useIsHovered from '@/hooks/useIsHovered';
 
 interface Props {
   project: Project;
@@ -25,7 +26,7 @@ interface Props {
 
 const ProjectCard = ({ project, index }: Props) => {
   const [highlightedTag, setHighlightedTag] = useState<string | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const { hoverableElRef, isHovered } = useIsHovered();
   const { openProjectModal } = useProjectModal();
   const deviceInfo = getDeviceInfo();
 
@@ -65,14 +66,13 @@ const ProjectCard = ({ project, index }: Props) => {
 
   return (
     <motion.div
+      ref={hoverableElRef}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
       whileHover={{ y: -10 }}
-      className="group"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}>
+      className="group">
       <Card className="border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
         <div className="relative overflow-hidden">
           <motion.div
