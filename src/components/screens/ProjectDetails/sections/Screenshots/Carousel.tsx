@@ -17,7 +17,7 @@ const ProjectImageCarousel = ({ screenshots }: Props) => {
   const autoplayRef = useRef(
     Autoplay({
       delay: 5000,
-      stopOnInteraction: true,
+      stopOnInteraction: false,
       stopOnMouseEnter: true,
     }),
   );
