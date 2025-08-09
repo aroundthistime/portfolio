@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useState, useCallback, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Project } from '@/types/project';
@@ -43,31 +43,8 @@ const ProjectCarousel = ({ screenshots }: Props) => {
       threshold: 0.3,
     };
   }, []);
-  const { ref: intersectinoObserverRef, isIntersecting } =
+  const { ref: intersectionObserverRef, isIntersecting } =
     useIntersectionObserver(intersectionObserverOptions);
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  const scrollTo = useCallback(
-    (index: number) => {
-      if (emblaApi) emblaApi.scrollTo(index);
-    },
-    [emblaApi],
-  );
-
-  const onInit = useCallback((emblaApi: any) => {
-    setScrollSnaps(emblaApi.scrollSnapList());
-  }, []);
-
-  const onSelect = useCallback((emblaApi: any) => {
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, []);
 
   /**
    * Control autoplay based on intersection observer and hover state
@@ -86,11 +63,19 @@ const ProjectCarousel = ({ screenshots }: Props) => {
   useEffect(() => {
     if (!emblaApi) return;
 
-    onInit(emblaApi);
-    onSelect(emblaApi);
+    const onInit = () => {
+      setScrollSnaps(emblaApi.scrollSnapList());
+    };
+
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+
+    onInit();
+    onSelect();
     emblaApi.on('reInit', onInit);
     emblaApi.on('select', onSelect);
-  }, [emblaApi, onInit, onSelect]);
+  }, [emblaApi]);
 
   // Determine if image is portrait (mobile screenshot) or landscape
   const getImageAspectClass = () => {
@@ -99,7 +84,7 @@ const ProjectCarousel = ({ screenshots }: Props) => {
       : 'aspect-[16/9] w-full';
   };
 
-  if (!images.length) return null;
+  if (!images.length || !emblaApi) return null;
 
   if (images.length === 1) {
     // Single image - no carousel needed
@@ -132,7 +117,7 @@ const ProjectCarousel = ({ screenshots }: Props) => {
 
   return (
     <div
-      ref={mergeRefs(intersectinoObserverRef, hoverableElRef)}
+      ref={mergeRefs(intersectionObserverRef, hoverableElRef)}
       className="rounded-lg overflow-hidden shadow-lg bg-gray-100 dark:bg-gray-800">
       <div className="relative">
         <div className="overflow-hidden" ref={emblaRef}>
@@ -158,12 +143,12 @@ const ProjectCarousel = ({ screenshots }: Props) => {
           <>
             <button
               className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-10"
-              onClick={scrollPrev}>
+              onClick={() => emblaApi.scrollPrev()}>
               <ChevronLeft className="h-5 w-5 text-gray-700 dark:text-gray-300" />
             </button>
             <button
               className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-10"
-              onClick={scrollNext}>
+              onClick={() => emblaApi.scrollNext()}>
               <ChevronRight className="h-5 w-5 text-gray-700 dark:text-gray-300" />
             </button>
           </>
@@ -183,7 +168,7 @@ const ProjectCarousel = ({ screenshots }: Props) => {
                     ? 'bg-white scale-125 shadow-lg'
                     : 'bg-white/50 hover:bg-white/75'
                 }`}
-                onClick={() => scrollTo(index)}
+                onClick={() => emblaApi.scrollTo(index)}
               />
             ))}
           </div>
