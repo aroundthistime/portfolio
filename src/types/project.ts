@@ -20,7 +20,7 @@ export type Project = Readonly<{
   iconUrl: string;
   screenshots: {
     type: 'landscape' | 'portrait';
-    items: ReadonlyArray<Screenshot>;
+    images: ReadonlyArray<Screenshot>;
   }
   tags: string[];
   techSkillsUsed: ReadonlyArray<TechSkill>;

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ComponentType } from 'react';
 import { getTypedObjectEntries } from '@/types/utils';
 import ExternalLink from '@/components/common/ExternalLink';
+import ProjectImageCarousel from './ProjectImageCarousel';
 
 const PROJECT_LINK_STYLES = {
   live: {
@@ -81,16 +82,7 @@ const IntroSection = ({ project }: Props) => {
           );
         })}
       </div>
-
-      <div className="rounded-lg overflow-hidden shadow-lg">
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={800}
-          height={400}
-          className="w-full h-auto"
-        />
-      </div>
+      <ProjectImageCarousel screenshots={project.screenshots} />
     </div>
   );
 };

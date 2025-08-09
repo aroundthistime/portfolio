@@ -1,0 +1,212 @@
+'use client';
+
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
+import { useEffect, useState, useCallback, useRef, useMemo } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import { Project } from '@/types/project';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import { mergeRefs } from '@/utils/react';
+import useIsHovered from '@/hooks/useIsHovered';
+
+interface Props {
+  screenshots: Project['screenshots'];
+}
+
+const ProjectCarousel = ({ screenshots }: Props) => {
+  const { images, type: screenshotType } = screenshots;
+  const autoplayRef = useRef(
+    Autoplay({
+      delay: 5000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: false,
+    }),
+  );
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: 'center',
+      containScroll: 'trimSnaps',
+      slidesToScroll: 1,
+    },
+    [autoplayRef.current],
+  );
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const { hoverableElRef, isHovered } = useIsHovered();
+  const intersectionObserverOptions = useMemo(() => {
+    return {
+      threshold: 0.3,
+    };
+  }, []);
+  const { ref: intersectinoObserverRef, isIntersecting } =
+    useIntersectionObserver(intersectionObserverOptions);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      if (emblaApi) emblaApi.scrollTo(index);
+    },
+    [emblaApi],
+  );
+
+  const onInit = useCallback((emblaApi: any) => {
+    setScrollSnaps(emblaApi.scrollSnapList());
+  }, []);
+
+  const onSelect = useCallback((emblaApi: any) => {
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, []);
+
+  /**
+   * Control autoplay based on intersection observer and hover state
+   * (for better performance and smooth user experience)
+   */
+  useEffect(() => {
+    if (!autoplayRef.current) return;
+
+    if (isIntersecting && !isHovered) {
+      autoplayRef.current.play();
+    } else {
+      autoplayRef.current.stop();
+    }
+  }, [isIntersecting, isHovered]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    onInit(emblaApi);
+    onSelect(emblaApi);
+    emblaApi.on('reInit', onInit);
+    emblaApi.on('select', onSelect);
+  }, [emblaApi, onInit, onSelect]);
+
+  // Determine if image is portrait (mobile screenshot) or landscape
+  const getImageAspectClass = () => {
+    return screenshotType === 'portrait'
+      ? 'aspect-[9/16] max-h-96 w-auto mx-auto'
+      : 'aspect-[16/9] w-full';
+  };
+
+  if (!images.length) return null;
+
+  if (images.length === 1) {
+    // Single image - no carousel needed
+    const [image] = images;
+    return (
+      <div className="rounded-lg overflow-hidden shadow-lg bg-gray-100 dark:bg-gray-800">
+        <div className="flex items-center justify-center p-4">
+          <Image
+            src={image.src}
+            alt={image.description || 'screenshot'}
+            width={800}
+            height={400}
+            className={`object-cover rounded-lg ${getImageAspectClass()}`}
+          />
+        </div>
+        {image.description && (
+          <div className="px-4 pb-4">
+            <p className="text-sm text-gray-600 dark:text-gray-400 text-center italic">
+              {image.description}
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Check if current image has description to adjust dots position
+  const currentImage = screenshots.images[selectedIndex];
+  const hasDescription = currentImage?.description;
+
+  return (
+    <div
+      ref={mergeRefs(intersectinoObserverRef, hoverableElRef)}
+      className="rounded-lg overflow-hidden shadow-lg bg-gray-100 dark:bg-gray-800">
+      <div className="relative">
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {screenshots.images.map((image, index) => (
+              <div key={index} className="flex-[0_0_100%] min-w-0 relative">
+                <div className="flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-900">
+                  <Image
+                    src={image.src || '/placeholder.svg'}
+                    alt={image.description || `Project screenshot ${index + 1}`}
+                    width={800}
+                    height={400}
+                    className={`object-cover rounded-lg ${getImageAspectClass()}`}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Navigation Buttons */}
+        {images.length > 1 && (
+          <>
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-10"
+              onClick={scrollPrev}>
+              <ChevronLeft className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+            </button>
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-10"
+              onClick={scrollNext}>
+              <ChevronRight className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+            </button>
+          </>
+        )}
+
+        {/* Dots Indicator - Position adjusted based on description */}
+        {images.length > 1 && (
+          <div
+            className={`absolute left-1/2 -translate-x-1/2 flex space-x-2 z-10 transition-all duration-300 ${
+              hasDescription ? 'bottom-16' : 'bottom-4'
+            }`}>
+            {scrollSnaps.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                  index === selectedIndex
+                    ? 'bg-white scale-125 shadow-lg'
+                    : 'bg-white/50 hover:bg-white/75'
+                }`}
+                onClick={() => scrollTo(index)}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Image Counter */}
+        {images.length > 1 && (
+          <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm z-10">
+            {selectedIndex + 1} / {images.length}
+          </div>
+        )}
+
+        {/* Description Overlay - Always at bottom */}
+        {hasDescription && (
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent text-white p-4 z-10">
+            <p className="text-sm text-center leading-relaxed">
+              {currentImage.description}
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default ProjectCarousel;

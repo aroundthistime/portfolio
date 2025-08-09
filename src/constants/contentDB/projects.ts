@@ -16,7 +16,23 @@ export const PROJECTS_DB = [{
       playStore: 'https://demo.shop.example.com',
     },
     iconUrl: 'https://yt3.googleusercontent.com/Wyb8NNdRNxSD9OgKgQpH7GbKeSf5S5cpAn_jF-dzkScJ0WE2IQ-3XbQt4png1HMuxKJK52Yf2w=s900-c-k-c0x00ffffff-no-rj',
-    image: '/placeholder.svg?height=400&width=800',
+    screenshots: {
+      type: 'landscape',
+      images: [
+        {
+          src: '/placeholder.svg?height=400&width=800',
+          description: 'This is the main view of our e-commerce platform.',
+        },
+        {
+          src: '/placeholder.svg?height=400&width=800&seed=2',
+          description: 'Product detail page with advanced filtering options.',
+        },
+        {
+          src: '/placeholder.svg?height=400&width=800&seed=3',
+          description: 'A responsive checkout process for a seamless user experience.',
+        },
+      ],
+    },
     tags: ['E-commerce', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'PostgreSQL', 'Redis'],
     techSkillsUsed: [TECH_SKILLS.nextJS, TECH_SKILLS.typescript],
     techSkillsExposed: [TECH_SKILLS.docker, TECH_SKILLS.codeIgniter],
@@ -123,7 +139,22 @@ The project took 8 months to complete with a team of 6 developers. I was respons
       live: 'https://taskflow.example.com',
       github: 'https://github.com/alexchen/taskflow',
     },
-    image: '/placeholder.svg?height=400&width=800',
+    screenshots: {
+      type: 'landscape',
+      images: [
+        {
+          src: '/placeholder.svg?height=400&width=800&seed=4',
+          description: 'Kanban board interface for task management.',
+        },
+        {
+          src: '/placeholder.svg?height=400&width=800&seed=5',
+        },
+        {
+          src: '/placeholder.svg?height=400&width=800&seed=6',
+          description: 'Gantt chart view for project timeline visualization.',
+        },
+      ],
+    },
     tags: ['React', 'TypeScript', 'Styled Components', 'Socket.io', 'React Query', 'Framer Motion', 'SonarQube'],
     techSkillsUsed: [
       TECH_SKILLS.reactJS,
