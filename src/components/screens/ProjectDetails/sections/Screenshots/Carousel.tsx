@@ -98,21 +98,20 @@ const ProjectImageCarousel = ({ screenshots }: Props) => {
         {screenshotItems.length > 1 && (
           <>
             <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-5"
               onClick={() => emblaApi?.scrollPrev()}>
               <ChevronLeft className="h-5 w-5 text-gray-700 dark:text-gray-300" />
             </button>
             <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-colors z-5"
               onClick={() => emblaApi?.scrollNext()}>
               <ChevronRight className="h-5 w-5 text-gray-700 dark:text-gray-300" />
             </button>
           </>
         )}
-
         {/* Image Counter */}
         {screenshotItems.length > 1 && (
-          <div className="absolute top-6 right-6 bg-black/70 text-white px-3 py-1 rounded-full text-sm z-10">
+          <div className="absolute top-6 right-6 bg-black/70 text-white px-3 py-1 rounded-full text-sm z-5">
             {selectedIndex + 1} / {screenshotItems.length}
           </div>
         )}
