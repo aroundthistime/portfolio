@@ -306,7 +306,7 @@ export function ProjectModal() {
           </div>
 
           {/* Key Challenge */}
-          {project.troubleshoots.length > 0 && (
+          {project.troubleshoots && (
             <div>
               <h3 className="text-lg font-semibold mb-3">Key Challenge</h3>
               <Card className="border-0 shadow-sm bg-yellow-50/50 dark:bg-yellow-900/10">

@@ -40,9 +40,9 @@ export type Project = Readonly<{
      */
     endDate?: YYYYMMStr;
   }
-  troubleshoots:ReadonlyArray< {
+  troubleshoots?:ReadonlyArray<{
     title: string;
     problem: string;
     solution: string;
-  }>;
+  }>
 }>
