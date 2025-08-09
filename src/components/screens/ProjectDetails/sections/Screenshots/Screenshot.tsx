@@ -17,6 +17,7 @@ const ScreenshotItem = ({ orientation, screenshot, className }: Props) => {
     screenshot.type === 'video' ? (
       <video
         src={screenshot.src}
+        poster={screenshot.posterSrc}
         aria-label={alt}
         autoPlay
         loop

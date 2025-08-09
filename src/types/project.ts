@@ -5,11 +5,23 @@ import { TechSkill } from "./techSkill";
 
 export type ScreenshotOrientation = 'landscape' | 'portrait';
 
-export interface Screenshot {
+interface ScreenshotBase {
   type: 'image' | 'video';
   src: string;
   description?: string;
 }
+
+interface ImageScreenshot extends ScreenshotBase {
+  type: 'image';
+}
+
+interface VideoScreenshot extends ScreenshotBase {
+  type: 'video';
+  posterSrc: string;
+}
+
+
+export type Screenshot = ImageScreenshot | VideoScreenshot;
 
 export type Project = Readonly<{
   id: string;
