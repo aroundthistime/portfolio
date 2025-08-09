@@ -55,9 +55,9 @@ const ProjectFeaturesSection = ({ features }: Props) => {
                 <CardTitle className="text-base text-gray-900 dark:text-white">
                   {feature.name}
                 </CardTitle>
-                {feature.myContribution && (
+                {feature.myContribution && !showMyContributionsOnly && (
                   <Badge className="bg-blue-500 text-white hover:bg-blue-600 text-xs">
-                    My Contribution
+                    Contributed
                   </Badge>
                 )}
               </div>
