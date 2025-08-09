@@ -8,7 +8,7 @@ const ProjectTroubleshootsSection = ({ troubleshoots }: Props) => {
   return (
     <section>
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-        Challenges & Solutions
+        문제 해결 과정
       </h2>
       <div className="space-y-8">
         {troubleshoots.map((item, index) => (

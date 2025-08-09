@@ -7,7 +7,7 @@ const ProjectOverviewSection = ({ detailedExplanation }: Props) => {
   return (
     <section>
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-        Project Overview & My Contributions
+        프로젝트 내용
       </h2>
       <Card className="border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
         <CardContent className="pt-6">

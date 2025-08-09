@@ -9,7 +9,7 @@ const TechSkillsSection = ({ techSkillsUsed, techSkillsExposed }: Props) => {
   return (
     <section>
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-        Technologies Used
+        기술 스택 정보
       </h2>
       <div className="mb-8">
         <h3 className="text-lg font-semibold mb-4 flex items-center">

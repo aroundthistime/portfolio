@@ -30,7 +30,7 @@ const ProjectFeaturesSection = ({ features }: Props) => {
     <section>
       <div className="mb-4 md:mb-6 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-          Project Features
+          프로젝트 기능 목록
         </h2>
         <div className="flex items-center space-x-2">
           <span className="text-xs text-gray-500 dark:text-gray-400">
