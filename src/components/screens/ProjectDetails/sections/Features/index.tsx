@@ -51,12 +51,12 @@ const ProjectFeaturesSection = ({ features }: Props) => {
               feature.myContribution ? 'border-blue-200 bg-blue-50/50' : ''
             } border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm`}>
             <CardHeader className="pb-2">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col-reverse gap-1 sm:flex-row sm:items-center sm:justify-between">
                 <CardTitle className="text-base text-gray-900 dark:text-white">
                   {feature.name}
                 </CardTitle>
                 {feature.myContribution && !showMyContributionsOnly && (
-                  <Badge className="bg-blue-500 text-white hover:bg-blue-600 text-xs">
+                  <Badge className="bg-blue-500 text-white hover:bg-blue-600 text-xs w-fit">
                     Contributed
                   </Badge>
                 )}
