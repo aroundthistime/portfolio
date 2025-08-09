@@ -1,8 +1,9 @@
 import MainSection from './MainSection';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { MY_CONTACTS } from '@/constants/contentDB/aboutMe';
+import ExternalLink from '@/components/common/ExternalLink';
 
 const EMAIL_LINK_PREFIX = 'mailto:';
 
