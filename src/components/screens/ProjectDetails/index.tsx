@@ -1,16 +1,8 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import {
-  ArrowLeft,
-  ExternalLink,
-  CheckCircle,
-  Lightbulb,
-  Code2,
-  Users,
-} from 'lucide-react';
+import { ArrowLeft, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Header } from '@/components/layout/Header';
 import { Project } from '@/types/project';
 import TechSkillsSection from './sections/TechSkills';
