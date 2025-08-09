@@ -11,7 +11,7 @@ const ProjectOverviewSection = ({ detailedExplanation }: Props) => {
       </h2>
       <Card className="border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
         <CardContent className="pt-6">
-          <div className="prose max-w-none">
+          <div className="prose max-w-none flex flex-col gap-4">
             {detailedExplanation.split('\n\n').map((paragraph, index) => (
               <p
                 key={index}
