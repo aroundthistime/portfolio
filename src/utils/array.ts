@@ -8,3 +8,19 @@ export const groupBy = <T, K>(array: T[], keyGetter: (item: T) => K) => {
     // use map to support objects as keys
   }, new DefaultMap<K, T[]>(() => []));
 };
+
+
+/**
+ * Partition an array into two arrays based on a predicate (does not mutate the original array)
+ * @returns A tuple of two arrays, the first containing the items that satisfy the predicate, and the second containing the items that do not satisfy the predicate
+ */
+export const partition = <T>(array: readonly T[], predicate: (item: T) => boolean) => {
+  return array.reduce<[T[], T[]]>((acc, item) => {
+    if (predicate(item)) {
+      acc[0].push(item);
+    } else {
+      acc[1].push(item);
+    }
+    return acc;
+  }, [[], []]);
+};

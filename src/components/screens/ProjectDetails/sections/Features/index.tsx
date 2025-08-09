@@ -1,17 +1,50 @@
+'use client';
+
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Switch from '@/components/ui/Switch';
 import { Project } from '@/types/project';
+import { partition } from '@/utils/array';
+import { useMemo, useState } from 'react';
 
 type Props = Pick<Project, 'features'>;
 
 const ProjectFeaturesSection = ({ features }: Props) => {
+  const [showMyContributionsOnly, setShowMyContributionsOnly] = useState(false);
+  const [myContributionFeatures, otherFeatures] = useMemo(
+    () => partition(features, feature => feature.myContribution),
+    [features],
+  );
+
+  const allFeatures = useMemo(
+    // prioritize my contributions
+    () => [...myContributionFeatures, ...otherFeatures],
+    [myContributionFeatures, otherFeatures],
+  );
+
+  const featuresToShow = showMyContributionsOnly
+    ? myContributionFeatures
+    : allFeatures;
+
   return (
     <section>
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-        Project Features
-      </h2>
+      <div className="mb-4 md:mb-6 flex flex-col md:items-center justify-between gap-3 md:flex-row">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+          Project Features
+        </h2>
+        <div className="flex items-center space-x-2 self-end lg:self-center">
+          <span className="text-xs text-gray-500 dark:text-gray-400">
+            Show my contributions only
+          </span>
+          <Switch
+            checked={showMyContributionsOnly}
+            onCheckedChange={setShowMyContributionsOnly}
+          />
+        </div>
+      </div>
+
       <div className="grid md:grid-cols-2 gap-4">
-        {features.map(feature => (
+        {featuresToShow.map(feature => (
           <Card
             key={feature.name}
             className={`${
