@@ -1,7 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+interface IntersectionObserverOptions extends IntersectionObserverInit {
+  detectOnce?: boolean;
+}
+
+const DEFAULT_OPTIONS: IntersectionObserverOptions = {
+  detectOnce: false,
+};
+
 const useIntersectionObserver = (
-  options?: IntersectionObserverInit
+  options: IntersectionObserverOptions = DEFAULT_OPTIONS
 ) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -11,10 +19,19 @@ const useIntersectionObserver = (
       observerRef.current.disconnect();
     }
 
+    if (!node) return;
+
+    const { detectOnce, ...observerOptions } = options;
+
     if (node) {
       observerRef.current = new IntersectionObserver(([entry]) => {
         setIsIntersecting(entry.isIntersecting);
-      }, options);
+
+        if (detectOnce && entry.isIntersecting) {
+          observerRef.current?.disconnect();
+          observerRef.current = null;
+        }
+      }, observerOptions);
 
       observerRef.current.observe(node);
     } else {

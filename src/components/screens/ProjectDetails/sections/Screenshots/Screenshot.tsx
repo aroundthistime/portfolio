@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Screenshot, ScreenshotOrientation } from '@/types/project';
 import { cn } from '@/utils/styles';
+import LazyVideo from '@/components/LazyVideo';
 
 interface Props {
   orientation: ScreenshotOrientation;
@@ -15,7 +16,7 @@ const ScreenshotItem = ({ orientation, screenshot, className }: Props) => {
 
   const MediaComponent =
     screenshot.type === 'video' ? (
-      <video
+      <LazyVideo
         src={screenshot.src}
         poster={screenshot.posterSrc}
         aria-label={alt}
