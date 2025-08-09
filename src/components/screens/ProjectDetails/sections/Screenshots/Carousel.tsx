@@ -7,6 +7,8 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Project } from '@/types/project';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import useIsHovered from '@/hooks/useIsHovered';
+import { mergeRefs } from '@/utils/react';
 
 interface Props {
   screenshots: Project['screenshots'];
@@ -17,8 +19,6 @@ const ProjectImageCarousel = ({ screenshots }: Props) => {
   const autoplayRef = useRef(
     Autoplay({
       delay: 5000,
-      stopOnInteraction: false,
-      stopOnMouseEnter: true,
     }),
   );
 
@@ -34,6 +34,7 @@ const ProjectImageCarousel = ({ screenshots }: Props) => {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  const { isHovered, hoverableElRef } = useIsHovered();
   const intersectionObserverOptions = useMemo(() => {
     return {
       threshold: 0.3,
@@ -45,14 +46,17 @@ const ProjectImageCarousel = ({ screenshots }: Props) => {
   /**
    * Control autoplay based on intersection observer and hover state
    * (for better performance and smooth user experience)
+   *
+   * @Note You can't use options for autoplay plugins for hover behavior because they will be be ignored by play method
+   * In order to use the autoplay with custom behavior, you need to use explicit controls
    */
   useEffect(() => {
-    if (isIntersecting) {
+    if (isIntersecting && !isHovered) {
       autoplayRef.current.play();
     } else {
       autoplayRef.current.stop();
     }
-  }, [isIntersecting]);
+  }, [isIntersecting, isHovered]);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -78,7 +82,7 @@ const ProjectImageCarousel = ({ screenshots }: Props) => {
 
   return (
     <div
-      ref={intersectionObserverRef}
+      ref={mergeRefs(intersectionObserverRef, hoverableElRef)}
       className="rounded-lg overflow-hidden shadow-lg bg-gray-100 dark:bg-gray-800">
       <div className="relative">
         <div className="overflow-hidden" ref={emblaRef}>
