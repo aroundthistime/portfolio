@@ -84,9 +84,7 @@ const ProjectCarousel = ({ screenshots }: Props) => {
       : 'aspect-[16/9] w-full';
   };
 
-  if (!images.length || !emblaApi) return null;
-
-  if (images.length === 1) {
+  if (images.length === 1 || !emblaApi) {
     // Single image - no carousel needed
     const [image] = images;
     return (

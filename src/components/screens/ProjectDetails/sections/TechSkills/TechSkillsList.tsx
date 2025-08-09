@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import Image from 'next/image';
 import { groupBy } from '@/utils/array';
 import { TechSkill } from '@/types/techSkill';
-import { Badge, BadgeProps } from '@/components/ui/badge';
+import { Badge } from '@/components/ui/badge';
 
 interface Props {
   techSkills: readonly TechSkill[];
@@ -15,10 +15,6 @@ const TechSkillsList = ({ techSkills, isEmphasized }: Props) => {
   const groupedSkillsMap = useMemo(() => {
     return groupBy([...techSkills], tech => tech.group ?? 'Others');
   }, [techSkills]);
-
-  if (!techSkills.length) {
-    return null;
-  }
 
   return (
     <div className="space-y-4">

@@ -40,7 +40,7 @@ const ProjectCard = ({ project, index }: Props) => {
 
   useEffect(() => {
     setHighlightedTag(null);
-    if (!isHovered || !project.tags.length) {
+    if (!isHovered) {
       return;
     }
 

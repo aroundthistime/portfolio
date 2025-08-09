@@ -1,3 +1,4 @@
+import { NonEmptyArray } from "./array";
 import { YYYYMMStr } from "./date";
 import { RangeObject } from "./number";
 import { TechSkill } from "./techSkill";
@@ -20,11 +21,11 @@ export type Project = Readonly<{
   iconUrl: string;
   screenshots: {
     type: 'landscape' | 'portrait';
-    images: ReadonlyArray<Screenshot>;
+    images: Readonly<NonEmptyArray<Screenshot>>;
   }
-  tags: string[];
-  techSkillsUsed: ReadonlyArray<TechSkill>;
-  techSkillsExposed: ReadonlyArray<TechSkill>
+  tags: Readonly<NonEmptyArray<string>>;
+  techSkillsUsed: Readonly<NonEmptyArray<TechSkill>>;
+  techSkillsExposed: Readonly<NonEmptyArray<TechSkill>>
   detailedExplanation: string;
   features: ReadonlyArray<{
     name: string;
@@ -40,9 +41,9 @@ export type Project = Readonly<{
      */
     endDate?: YYYYMMStr;
   }
-  troubleshoots?:ReadonlyArray<{
+  troubleshoots?:Readonly<NonEmptyArray< {
     title: string;
     problem: string;
     solution: string;
-  }>
+  }>>;
 }>
