@@ -1,7 +1,7 @@
 'use client';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Project } from '@/types/project';
@@ -36,13 +36,11 @@ const ProjectImageCarousel = ({ screenshots }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const { isHovered, ref: hoverableElRef } = useIsHovered();
-  const intersectionObserverOptions = useMemo(() => {
-    return {
-      threshold: 0.3,
-    };
-  }, []);
+
   const { ref: intersectionObserverRef, isIntersecting } =
-    useIntersectionObserver(intersectionObserverOptions);
+    useIntersectionObserver({
+      threshold: 0.3,
+    });
 
   /**
    * Control autoplay based on intersection observer and hover state
