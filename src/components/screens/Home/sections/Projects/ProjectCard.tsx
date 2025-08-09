@@ -17,7 +17,6 @@ import { useEffect, useState } from 'react';
 import { useProjectModal } from './context';
 import { getDeviceInfo } from '@/utils/device';
 import { IMAGE_PLACEHOLDER } from '@/constants/media';
-import useIsHovered from '@/hooks/useIsHovered';
 
 interface Props {
   project: Project;
@@ -26,7 +25,7 @@ interface Props {
 
 const ProjectCard = ({ project, index }: Props) => {
   const [highlightedTag, setHighlightedTag] = useState<string | null>(null);
-  const { ref: hoverableElRef, isHovered } = useIsHovered();
+  const [isHovered, setIsHovered] = useState(false);
   const { openProjectModal } = useProjectModal();
   const deviceInfo = getDeviceInfo();
 
@@ -66,7 +65,12 @@ const ProjectCard = ({ project, index }: Props) => {
 
   return (
     <motion.div
-      ref={hoverableElRef}
+      /**
+       * framer motion elements do not support direct mouse events,
+       * you must use provided event handler props for proper functionality
+       */
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
