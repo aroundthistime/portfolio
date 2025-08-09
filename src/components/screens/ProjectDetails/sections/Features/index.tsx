@@ -28,11 +28,11 @@ const ProjectFeaturesSection = ({ features }: Props) => {
 
   return (
     <section>
-      <div className="mb-4 md:mb-6 flex flex-col md:items-center justify-between gap-3 md:flex-row">
+      <div className="mb-4 md:mb-6 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
           Project Features
         </h2>
-        <div className="flex items-center space-x-2 self-end lg:self-center">
+        <div className="flex items-center space-x-2">
           <span className="text-xs text-gray-500 dark:text-gray-400">
             Show my contributions only
           </span>
