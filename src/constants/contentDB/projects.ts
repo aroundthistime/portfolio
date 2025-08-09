@@ -29,7 +29,6 @@ export const PROJECTS_DB = [{
         },
         {
           src: '/placeholder.svg?height=400&width=800&seed=3',
-          description: 'A responsive checkout process for a seamless user experience.',
         },
       ],
     },

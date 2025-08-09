@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { ComponentType } from 'react';
 import { getTypedObjectEntries } from '@/types/utils';
 import ExternalLink from '@/components/common/ExternalLink';
-import ProjectImageCarousel from './ProjectImageCarousel';
 
 const PROJECT_LINK_STYLES = {
   live: {
@@ -82,7 +81,6 @@ const IntroSection = ({ project }: Props) => {
           );
         })}
       </div>
-      <ProjectImageCarousel screenshots={project.screenshots} />
     </div>
   );
 };

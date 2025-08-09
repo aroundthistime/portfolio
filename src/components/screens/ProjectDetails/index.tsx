@@ -8,6 +8,7 @@ import { Project } from '@/types/project';
 import TechSkillsSection from './sections/TechSkills';
 import IntroSection from './sections/Intro';
 import ProjectMetaSection from './sections/Meta';
+import ProjectScreenshotsSection from './sections/Screenshots';
 
 interface Props {
   project: Project;
@@ -19,6 +20,7 @@ const ProjectDetailsScreen = ({ project }: Props) => {
       <Header />
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <IntroSection project={project} />
+        <ProjectScreenshotsSection screenshots={project.screenshots} />
         <ProjectMetaSection project={project} />
         <TechSkillsSection
           techSkillsUsed={project.techSkillsUsed}
