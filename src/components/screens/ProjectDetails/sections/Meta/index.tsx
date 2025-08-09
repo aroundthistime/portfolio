@@ -27,7 +27,7 @@ const ProjectMetaSection = ({ project }: Props) => {
   };
 
   return (
-    <section className="mb-12">
+    <section>
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
         프로젝트 정보
       </h2>

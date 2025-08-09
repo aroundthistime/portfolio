@@ -19,7 +19,7 @@ const ProjectDetailsScreen = ({ project }: Props) => {
   return (
     <>
       <Header />
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mx-auto px-4 py-8 max-w-6xl flex flex-col gap-8">
         <IntroSection project={project} />
         <ProjectScreenshotsSection screenshots={project.screenshots} />
         <ProjectMetaSection project={project} />
@@ -31,7 +31,7 @@ const ProjectDetailsScreen = ({ project }: Props) => {
           detailedExplanation={project.detailedExplanation}
         />
         {/* Features */}
-        <section className="mb-12">
+        <section>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
             Project Features
           </h2>
@@ -66,7 +66,7 @@ const ProjectDetailsScreen = ({ project }: Props) => {
 
         {/* Troubleshoots */}
         {project.troubleshoots && (
-          <section className="mb-12">
+          <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Challenges & Solutions
             </h2>

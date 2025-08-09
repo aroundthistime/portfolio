@@ -44,7 +44,7 @@ interface Props {
 
 const IntroSection = ({ project }: Props) => {
   return (
-    <div className="mb-12">
+    <section>
       <div className="flex flex-col items-center md:flex-row gap-3 md:gap-4 mb-4">
         <Image
           src={project.iconUrl}
@@ -62,7 +62,7 @@ const IntroSection = ({ project }: Props) => {
       <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 text-center md:text-left">
         {project.summary}
       </p>
-      <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 mb-6 md:mb-8">
+      <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
         {getTypedObjectEntries(project.links).map(([key, link]) => {
           const style = PROJECT_LINK_STYLES[key];
 
@@ -81,7 +81,7 @@ const IntroSection = ({ project }: Props) => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -16,7 +16,7 @@ const ProjectScreenshotsSection = ({ screenshots }: Props) => {
   };
 
   return (
-    <section className="mb-12">
+    <section className="-mt-2">
       {images.length > 1 ? (
         <ProjectImageCarousel screenshots={screenshots} />
       ) : (

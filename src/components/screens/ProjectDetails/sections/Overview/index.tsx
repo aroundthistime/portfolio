@@ -5,7 +5,7 @@ type Props = Pick<Project, 'detailedExplanation'>;
 
 const ProjectOverviewSection = ({ detailedExplanation }: Props) => {
   return (
-    <section className="mb-12">
+    <section>
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
         Project Overview & My Contributions
       </h2>
