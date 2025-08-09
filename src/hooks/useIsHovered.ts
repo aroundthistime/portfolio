@@ -12,7 +12,7 @@ const useIsHovered = () => {
    * (will be available since React 19)
    * @see https://react.dev/reference/react-dom/components/common#react-19-added-cleanup-functions-for-ref-callbacks
    */
-  const hoverableElRef = useCallback((node: HTMLElement | null) => {
+  const ref = useCallback((node: HTMLElement | null) => {
     if (nodeRef.current) {
       nodeRef.current.removeEventListener("mouseenter", handleMouseEnter);
       nodeRef.current.removeEventListener("mouseleave", handleMouseLeave);
@@ -36,7 +36,7 @@ const useIsHovered = () => {
   }, [handleMouseEnter, handleMouseLeave]);
 
   return {
-    hoverableElRef,
+    ref,
     isHovered,
   };
 };

@@ -26,7 +26,7 @@ interface Props {
 
 const ProjectCard = ({ project, index }: Props) => {
   const [highlightedTag, setHighlightedTag] = useState<string | null>(null);
-  const { hoverableElRef, isHovered } = useIsHovered();
+  const { ref: hoverableElRef, isHovered } = useIsHovered();
   const { openProjectModal } = useProjectModal();
   const deviceInfo = getDeviceInfo();
 
