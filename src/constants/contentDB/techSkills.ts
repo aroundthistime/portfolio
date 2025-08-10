@@ -134,6 +134,11 @@ export const TECH_SKILLS = {
     iconUrl: '/images/skills/figma.png',
     group: 'Working Tools',
   },
+  protopie: {
+    name: 'ProtoPie',
+    iconUrl: '/images/skills/protopie.png',
+    group: 'Working Tools',
+  },
   java: {
     name: 'Java',
     iconUrl: '/images/skills/java.png',

@@ -3,6 +3,76 @@ import { TECH_SKILLS } from './techSkills';
 
 export const PROJECTS_DB = [
   {
+    id: 'azar',
+    title: 'AZAR',
+    summary: 'WebRTC 기반 1:1 랜덤 비디오챗 서비스',
+    links: {
+      live: 'https://azarlive.com/',
+      appStore: 'https://apps.apple.com/kr/app/%EC%95%84%EC%9E%90%EB%A5%B4-%EC%96%B4%ED%94%8C-%EC%B9%9C%EA%B5%AC-%EC%9E%A0%EA%B9%90%EC%9D%B4%EB%A9%B4-%EB%8F%BC/id972558973',
+      playStore: 'https://play.google.com/store/apps/details?id=com.azarlive.android&hl=ko'
+    },
+    iconUrl: '/projects/azar/logo.png',
+    screenshots: {
+      orientation: 'landscape',
+      items: [
+        {
+          type: 'image',
+          src: '/projects/azar/screenshots/store-images.webp',
+          description: '스토어 소개 이미지'
+        },
+        {
+          type: 'image',
+          src: '/projects/azar/screenshots/mirror.jpg',
+          description: '웹사이트 메인 페이지'
+        },
+      ]
+    },
+    tags: ['WebRTC', 'Next.js', 'TypeScript', 'Emotion', 'Tensorflow', 'Playwright'],
+    techSkillsUsed: [
+      TECH_SKILLS.nextJS,
+      TECH_SKILLS.typescript,
+      TECH_SKILLS.emotion,
+      TECH_SKILLS.restApi,
+      TECH_SKILLS.jsonRpc,
+      TECH_SKILLS.stomp,
+      TECH_SKILLS.jotai,
+      TECH_SKILLS.redux,
+      TECH_SKILLS.swc,
+      TECH_SKILLS.babel,
+      TECH_SKILLS.reactQuery,
+      TECH_SKILLS.rxjs,
+      TECH_SKILLS.threeJS,
+      TECH_SKILLS.tensorFlow,
+      TECH_SKILLS.jest,
+      TECH_SKILLS.playwright,
+      TECH_SKILLS.sentry,
+      TECH_SKILLS.zendesk,
+      TECH_SKILLS.reactNative,
+      TECH_SKILLS.webrtc,
+      TECH_SKILLS.figma,
+      TECH_SKILLS.protopie,
+      TECH_SKILLS.githubAction,
+      TECH_SKILLS.bigQuery,
+      TECH_SKILLS.mediapipe
+    ],
+    techSkillsExposed: [
+      TECH_SKILLS.springBoot,
+      TECH_SKILLS.spinnaker,
+      TECH_SKILLS.aws,
+      TECH_SKILLS.jenkins,
+      TECH_SKILLS.grafana,
+      TECH_SKILLS.docker,
+      TECH_SKILLS.terraform,
+    ],
+    period: {
+      startDate: '2024-03',
+    },
+    teamSize: {
+      min: 4,
+      max: 7
+    }
+  },
+  {
     id: 'squars',
     title: 'SQUARS',
     summary: 'AR 컨텐츠 저작 및 재생 웹 플랫폼 서비스',
