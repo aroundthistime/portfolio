@@ -1,67 +1,29 @@
-import cloneDeep from 'lodash/cloneDeep';
+import { DefaultMap } from "./dataStructure/defaultMap";
 
-/**
- * Get a random item from the given array.
- * This doesn't pop out the item. The array stays in the original state
- * @param {Array} array Array to extract the random item
- * @returns Randomly selected item
- */
-export const getRandomItemFromArray = <T>(array: T[]): T | undefined => {
-  if (array.length === 0) {
-    return undefined;
-  }
-
-  const randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
+export const groupBy = <T, K>(array: readonly T[], keyGetter: (item: T) => K) => {
+  return array.reduce((acc, item) => {
+    const key = keyGetter(item);
+    acc.get(key).push(item);
+    return acc;
+    // use map to support objects as keys
+  }, new DefaultMap<K, T[]>(() => []));
 };
 
-/**
- * Get an array filled with same elements (the elements will be deep-cloned)
- *
- * @template {T}
- * @param {T} value Value to fill the entire array
- * @param {number} length Number of elements to fill out the array
- * @returns {T[]} An array filled with same elements
- */
-export const getFilledArray = <T>(value: T, length: number): T[] => {
-  if (length < 0) {
-    throw new Error('Invalid length given - should be greater or equal to 0');
-  }
-
-  const resultArray = [];
-
-  for (let i = 0; i < length; i += 1) {
-    resultArray.push(cloneDeep(value));
-  }
-
-  return resultArray;
-};
 
 /**
- * Get an array with parameter added between each elements of the original array
- * @template {T}
- * @param {T[]} array Array to update
- * @param {U} elementToAdd Element to add between elements of the original array
- * @returns {(T|U)[]} Array with parameter element added between elements
+ * Partition an array into two arrays based on a predicate (does not mutate the original array)
+ * @returns A tuple of two arrays, the first containing the items that satisfy the predicate, and the second containing the items that do not satisfy the predicate
  */
-export const addBetweenElements = <T, U>(
-  array: T[],
-  elementToAdd: U,
-): (T | U)[] => {
-  const newArray: any[] = [];
-  for (let i = 0; i < array.length; i += 1) {
-    newArray.push(array[i]);
-    if (i < array.length - 1) {
-      newArray.push(cloneDeep(elementToAdd));
+export const partition = <T>(array: readonly T[], predicate: (item: T) => boolean) => {
+  return array.reduce<[T[], T[]]>((acc, item) => {
+    if (predicate(item)) {
+      acc[0].push(item);
+    } else {
+      acc[1].push(item);
     }
-  }
-  return newArray;
+    return acc;
+  }, [[], []]);
 };
 
-/**
- * Get cartesian of given arrays
- * @param {...any[][]} arrays Arrays to create cartesian product from
- * @returns {any[]} Array containing cartesian product
- */
-export const cartesian = (...arrays: any[][]) =>
-  arrays.reduce((a, b) => a.flatMap(d => b.map(e => [d, e].flat())));
+export const hasCommonElements = <T>(arr1: readonly T[], arr2: readonly T[]): boolean =>
+  arr1.some((item) => arr2.includes(item));

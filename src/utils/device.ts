@@ -1,13 +1,11 @@
-import UAParser from 'ua-parser-js';
+import { safeWindow } from "./common"
+import getAgent, { AgentInfo } from '@egjs/agent'
 
-/**
- * Get whether browser is running on a mobile device or not (including tablet)
- * @returns {boolean} Whether browser is running on a mobile device or not (including tablet)
- */
-export const isMobileDevice = (): boolean => {
-  const currentDeviceType = new UAParser().getDevice().type;
+let agent: AgentInfo | null = null;
 
-  return [UAParser.DEVICE.MOBILE, UAParser.DEVICE.TABLET].includes(
-    currentDeviceType as any,
-  );
-};
+export const getDeviceInfo = () => {
+  if (!agent && safeWindow) {
+    agent = getAgent(safeWindow.navigator.userAgent);
+  }
+  return agent;
+}
