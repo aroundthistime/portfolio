@@ -64,6 +64,15 @@ export const PROJECTS_DB = [
       TECH_SKILLS.docker,
       TECH_SKILLS.terraform,
     ],
+    detailedExplanation: `Azar는 <strong>WebRTC</strong> 기반의 <strong>랜덤 화상 채팅</strong> 기능을 중심으로 구성된 <strong>글로벌 소셜 커넥팅 서비스</strong>로, 전 세계 기준 약 <strong>1,100만명의 월간 이용자 수(MAU)</strong>를 보유하고 있습니다. 저는 그중 <strong>웹 플랫폼(약 170만 MAU)</strong>을 담당하는 프론트엔드 개발자로서 주요 신규 기능 구현부터 성능 및 품질 개선, 유지보수까지 폭넓은 개발 업무를 수행했습니다. 또한 고객센터 페이지 구축 및 앱 내부에 탑재되는 <strong>React Native 번들과 웹뷰 페이지</strong>의 개발과 운영도 함께 담당했습니다.
+
+스쿼드 체제에 소속하여 <strong>PM, 백엔드 개발자, 디자이너, DA, 마케터</strong>와 함께 밀접히 협업했으며, 별도로 <strong>사내 AI 개발자</strong>·<strong>AR 개발자</strong>와의 기능 통합 및 기술 검토도 병행하였습니다.
+
+서비스 품질과 사용자 경험 개선을 위한 다양한 프로젝트를 수행해왔습니다. 예를 들어, <strong>TanStack Query 기반의 API 요청 구조로의 리팩토링</strong>을 통해 서버-클라이언트 상태의 모호성 및 동시성·비동기 타이밍 이슈를 해결했고, Mediapipe 및 Three.js를 활용한 AR 기능을 구현하여 실시간 사용자 인터랙션 경험을 확장했습니다. 나아가 Web Worker 환경에서 <strong>Tensorflow.js 및 TFLite 기반의 사내 AI 모델을 연동</strong>하여 클라이언트 단에서의 AI 기능 구동을 실현했습니다. 또한 글로벌 서비스로서의 요구사항을 만족시키기 위해 <strong>다국어 번역</strong>, <strong>RTL 지원</strong>, <strong>기능 가시성 동적 분기</strong> 등을 포함한 <strong>국제화 대응</strong>을 수행했고, <strong>Stripe</strong>·<strong>Adyen</strong>·<strong>Toss</strong> 등 다양한 결제 수단을 통합하면서 관련 보안 강화를 위한 메시지 기반 데이터 검증 구조(window.postMessage 활용)도 설계했습니다.
+
+기능 구현에만 국한되지 않고, 테스트 신뢰성 확보와 개발 환경 생산성 향상에도 많은 노력을 기울였습니다. <strong>Playwright 기반 E2E 테스트</strong> 시스템을 안정화하고, Emulation·프록시·Admin API 연동 등을 통해 다양한 유저 시나리오에 대한 커버리지를 확대했습니다. CI 환경에서는 테스트 실행 전략을 병렬화, 정기화하여 병목을 최소화한 기능 안정성을 확보하고, <strong>린트 룰, Prettier, VSCode 워크스페이스 구성을 주도</strong>하여 통합된 협업 환경을 구축했습니다.
+
+이 외에도 Beacon API 기반 지표 수집 안정화, 오가닉 유저 증진을 위한 <strong>SEO 개선</strong>, 레거시 코드 정리, 디버깅 UI 개발, 사내 라이브러리 개발 지원 등 사용자와 개발자 모두를 고려한 지속적인 개선에 기여해왔습니다.`,
     period: {
       startDate: '2024-03',
     },
