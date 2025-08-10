@@ -7,7 +7,6 @@ export const TECH_SKILL_GROUPS = {
   database: 'Database',
   infrastructure: 'Devops & Infrastructure',
   threeD: '3D & Web Graphics',
-  packageManagement: 'Package Management',
   buildTools: 'Build Tools',
   workingTools: 'Working Tools',
 } as const;
