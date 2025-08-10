@@ -53,7 +53,7 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="flex flex-col sm:flex-row justify-center gap-4">
+          className="flex flex-row justify-center gap-4">
           {CONTACT_LIST.map(contact => (
             <motion.div
               key={contact.text}
