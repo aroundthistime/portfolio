@@ -193,84 +193,127 @@ export const PROJECTS_DB = [
     role: 'Frontend Developer',
   },
   {
-    id: 'task-management-app',
-    title: 'Task Management Application',
-    summary:
-      'A collaborative project management tool designed for remote teams, featuring real-time collaboration, advanced project tracking, and team productivity analytics.',
-    iconUrl: 'https://images.seeklogo.com/logo-png/17/1/kfc-logo-png_seeklogo-176326.png',
+    id: 'track',
+    title: 'TRACK',
+    summary: 'AR 전용 크로스 플랫폼 프레임워크',
     links: {
-      live: 'https://taskflow.example.com',
-      github: 'https://github.com/alexchen/taskflow',
+      live: 'https://track.virnect.com/',
     },
+    iconUrl: '/projects/track/logo.jpeg',
     screenshots: {
-      type: 'landscape',
-      images: [
+      orientation: 'landscape',
+      items: [
         {
-          src: '/placeholder.svg?height=400&width=800&seed=4',
-          description: 'Kanban board interface for task management.',
+          type: 'video',
+          src: '/projects/track/screenshots/Statue.mp4',
+          posterSrc: '/projects/track/screenshots/Statue.png',
+          description: '프레임워크를 통해 구현한 물체 추적 AR (1)'
         },
         {
-          src: '/placeholder.svg?height=400&width=800&seed=5',
+          type: 'video',
+          src: '/projects/track/screenshots/Car.mp4',
+          posterSrc: '/projects/track/screenshots/Car.png',
+          description: '프레임워크를 통해 구현한 물체 추적 AR (2)'
         },
         {
-          src: '/placeholder.svg?height=400&width=800&seed=6',
-          description: 'Gantt chart view for project timeline visualization.',
+          type: 'image',
+          src: '/projects/track/screenshots/map.gif',
+          description: "공간 탐지 기능"
         },
       ],
     },
-    tags: ['React', 'TypeScript', 'Styled Components', 'Socket.io', 'React Query', 'Framer Motion', 'SonarQube'],
+    tags: ['WebAssembly', 'TypeScript', 'React', 'Computer Vision'],
     techSkillsUsed: [
+      TECH_SKILLS.typescript,
+      TECH_SKILLS.webAssembly,
       TECH_SKILLS.reactJS,
-      TECH_SKILLS.styledComponents
+      TECH_SKILLS.nextJS,
+      TECH_SKILLS.redux,
+      TECH_SKILLS.scss,
+      TECH_SKILLS.threeJS,
+      TECH_SKILLS.r3f,
+      TECH_SKILLS.python,
+      TECH_SKILLS.teamcity,
+      TECH_SKILLS.sonarqube,
+      TECH_SKILLS.grafana,
     ],
-    techSkillsExposed: [TECH_SKILLS.sonarqube],
-    detailedExplanation: `This project was developed for a startup that needed a comprehensive project management solution for their distributed team of 50+ members. The existing tools weren't meeting their specific workflow requirements, particularly around real-time collaboration and custom project templates.
+    techSkillsExposed: [
+      TECH_SKILLS.cpp,
+      TECH_SKILLS.java,
+      TECH_SKILLS.docker,
+      TECH_SKILLS.githubAction,
+    ],
+    detailedExplanation: `TRACK은 다양한 환경에서 <strong>AR 기능을 구현할 수 있게 만드는 크로스 플랫폼 프레임워크</strong>입니다.
 
-I led the frontend development and was responsible for the entire user interface, real-time features implementation, and performance optimization. The most challenging aspect was implementing smooth real-time collaboration where multiple users could edit tasks simultaneously without conflicts.
+특정한 현실의 대상을 기준으로 시각적 AR 기능을 수행하기 위해서는 대상이 어디에 어떠한 형태로 위치해있는지 판단하는 연산이 요구됩니다. TRACK은 인식하고자 하는 타겟에 대한 정보를 추출하는 '학습' 연산과 그 데이터를 기반으로 이미지로부터 타겟의 위치, 회전 정보 등을 검출하는 '추적' 연산을 통해 해당 기능을 수행할 수 있습니다. 플랫폼에 따라 해당 기능들은 <strong>SDK의 형태로 제공되거나</strong> 연산 결과를 기반으로 한 렌더링 등의 <strong>추가 기능이 포함된 어플리케이션의 형태</strong>로 제공됩니다.
 
-My key contributions included designing and implementing the drag-and-drop Kanban interface, building the real-time notification system, and creating a flexible component architecture that could accommodate different project views (Kanban, List, Calendar, Gantt).
+<strong>서울과 비엔나 두 오피스 협업 통해서 (영어 기반) 개발 진행</strong>되었으며 그 중 C++ 코드로 작성된 <strong>네이티브 컴퓨터 비전 코드를 다양한 플랫폼에 맞춰서 빌드하거나 연구 조직 내 인프라를 담당하는 팀에서 근무</strong>를 진행했습니다. 해당 팀 내에서 구체적으로 진행한 업무들은 다음과 같습니다.
 
-I also implemented advanced features like bulk operations, keyboard shortcuts, and offline support with conflict resolution. The application needed to work seamlessly across different devices and screen sizes, which required careful consideration of responsive design patterns.`,
+(1) <strong>웹 플랫폼 전용 라이브러리 개발</strong>
+네이티브 코드를 <strong>Emscripten을 통해 WebAssembly로 컴파일</strong>한 후 카메라 프레임 추출 및 렌더링 등 기능 추가 구현 (<strong>기존 Vanilla JS 기반 코드 Typescript + React 생태계에 맞춘 migration</strong> 작업 포함)
+
+(2) 연구조직 내·외부를 위한 <strong>웹 프로토타입 어플리케이션 개발</strong>
+데모 AR 뷰어, 벤치마크 테스트 어플리케이션 등 사내 수요에 의한 웹 어플리케이션들을 구현했습니다. 주로 <strong>Next.JS, Typescript, Scss, Redux Toolkit</strong>를 사용하였으며 상황에 따라 빠른 프로토타이핑을 위해 <strong>Material UI</strong> 등 외부 디자인 라이브러리를 활용하기도 했습니다. <strong>Next.js는 어플리케이션과 API 구조를 빠르게 구축하기 위해 주로 사용</strong>했으며, 특정 프레임워크 수요가 있는 경우 <strong>React.js와 Spring Boot를 조합</strong>해 요구에 맞춘 기술 스택을 적용했습니다.
+
+(3) <strong>CI 파이프라인 관리 및 벤치마크 시스템 개발</strong>
+네이티브 PC, 모바일, 웹(PC) 등 다양한 환경에서 <strong>정확도와 연산 속도 등을 측정하는 벤치마크 시스템을 구현</strong>했습니다. 테스트 <strong>자동화 스크립트는 Python</strong>으로 작성했으며, <strong>다양한 플랫폼별 특성에 맞춰 전용 테스트용 애플리케이션을 개발</strong>하기도 했습니다. 구현된 벤치마크 시스템은 <strong>PR 또는 스케줄 트리거를 기반으로 TeamCity CI 파이프라인과 연동</strong>시켰으며, 결과는 엑셀 파일 추출, Slack 및 GitHub PR 메시지 전송, MySQL 데이터베이스 업로드 후 <strong>Grafana를 통한 시각화</strong> 등 다양한 방식으로 확인할 수 있도록 구성했습니다.`,
     features: [
       {
-        name: 'Kanban Board Interface',
+        name: '다양한 플랫폼 지원',
         description:
-          'Drag-and-drop task management with customizable columns and swimlanes',
+          '다양한 플랫폼 지원 (실행 어플리케이션 혹은 SDK 라이브러리 형태)',
         myContribution: true,
       },
       {
-        name: 'Real-time Collaboration',
+        name: 'Web SDK 지원',
         description:
-          'Live updates, user presence indicators, and conflict resolution',
+          'Web SDK는 유일하게 외부에 제공되지 않으며 사내 WebXR 플랫폼 조직에서 차용중입니다',
         myContribution: true,
       },
       {
-        name: 'Multiple Project Views',
+        name: '프로토타입 어플리케이션',
         description:
-          'Kanban, List, Calendar, and Gantt chart views for different workflows',
+          'SDK 활용 관련 프로토타입 어플리케이션 개발 (Web에 한해서 본인 참여)',
         myContribution: true,
       },
       {
-        name: 'Advanced Filtering & Search',
+        name: '자동화 벤치마크 시스템',
         description:
-          'Complex filtering options with saved filters and search across all content',
+          '자동화 벤치마크 시스템 통한 성능 검증',
         myContribution: true,
       },
+    ],
+    troubleshoots: [
       {
-        name: 'Team Collaboration Tools',
-        description: 'Comments, mentions, file attachments, and activity feeds',
-        myContribution: true,
+        title: '브라우저 및 OS 최적화',
+        problem:
+          'TRACK Web SDK는 Android, iOS, PC 총 세 가지 환경에서 실행되는 다양한 브라우저를 지원해야 했습니다. 그러나 Web API, SIMD 호환 등 다양한 측면에서 각 환경은 차이가 있었고 그에 대응하는 최적화 및 안정화 노력이 요구되었습니다.',
+        solution:
+          '최적화된 성능와 안정적인 호환성을 위해 저희는 외부적으로는 추상성을 유지하면서 내부적으로 로직의 분기 처리를 수행하기로 결정했습니다. 분기 처리는 브라우저와 같은 환경보다는 특정 로직의 호환 여부 검사를 기반으로 진행되었으며 호환 여부 뿐만 아니라 각 경우에 대한 벤치마크 실행 결과를 토대로 추가적인 우선순위를 결정하였습니다. 일부 분기 처리 과정에서는 동적 모듈 로딩과 같은 코드 분할을 적용함으로써 로딩 시간 최적화 및 정적 import로 인한 예기치 못한 호환성 에러 발생 등을 방지할 수 있었습니다.',
       },
       {
-        name: 'Project Templates',
-        description:
-          'Customizable project templates for different team workflows',
-        myContribution: false,
+        title:
+          '대규모 연산 수행하기 (이미지 프로세싱)',
+        problem:
+          '데이터셋 생성 어플리케이션은 30 혹은 60 FPS의 속도로 기기의 카메라 및 IMU 센서로부터 획득된 데이터를 공정하고 추출하는 웹 어플리케이션입니다. 데이터 자체의 크기가 작고 프로세싱 과정도 복잡하지 않은 IMU 센서 데이터와 달리 이미지 데이터의 경우 프로세싱의 속도보다 실행 주기가 더 빠르기 때문에 점점 어플리케이션의 성능이 느려지는 문제가 발생했습니다.',
+        solution:
+          '해당 이슈를 극복하기 위해 첫 번째로 시도했던 방법은 Next.js 프레임워크를 통해 API를 구현한 후 무거운 프로세싱 과정을 서버에 위임하는 것이었습니다. 그러나 이는 네트워크 환경에 큰 영향을 받았으며 원만한 네트워크 환경에서의 통신 비용 역시 빠른 실행 주기를 감당하기에는 적지 않음을 확인했습니다.\n그를 대신하여 최종적으로 선택한 방법은 Web Worker을 통해 연산 과정을 백그라운드 쓰레드로 이동시킨 것이었습니다. 그를 통해 메인 스레드에 발생하는 연산 비용 부담을 줄일 수 있었으며 메인 스레드와 Worker 스레드 간 이미지 데이터를 주고받는 과정에서 Transferable object를 활용함으로써 통신 비용 관련 발생하는 오버헤드를 줄이는 방식을 채택했습니다.',
       },
       {
-        name: 'Time Tracking',
-        description: 'Built-in time tracking with reporting and analytics',
-        myContribution: false,
+        title: '관심사 분리 원칙 기반 설계하기 (SoC)',
+        problem:
+          'TRACK Web SDK는 카메라, IMU 센서 등 하드웨어 리소스와 관련된 로직, 그리고 그로부터 추출한 데이터를 기반으로 AR 연산을 수행하는 로직 크게 두 가지로 구성됩니다. 초반 설계 당시 TRACK에 대한 비즈니스 요구사항은 후자만이 존재했기 때문에 외부에는 관련된 인터페이스만을 제공하고 그 외는 라이브러리 내에 은닉화하는 방식으로 구현이 진행되었습니다. 그러나 시간이 흘러 데이터셋 생성 어플리케이션을 구현하는 과정에서 문제가 발생하였습니다. 해당 어플리케이션은 AR 연산 기능을 제외한 순수 하드웨어 로직만을 필요로 하였으며 기존의 라이브러리 설계는 이와 관련된 API를 전혀 제공하고 있지 않았기 때문입니다.',
+        solution:
+          '이 문제를 해결하기 위해서 저희는 관심사 분리 원칙(SoC)에 의거하여 하나의 라이브러리를 둘로 분리하는 작업을 수행했습니다. 하드웨어와 관련된 은닉을 해제하는 간단한 방법이 있었음에도 분리 작업을 수행한 이유는 각각의 로직이 서로 다른 기반을 가지기 때문입니다. AR 관련 로직은 C++로 작성된 컴퓨터 비전 코드의 WebAssembly 빌드를, 하드웨어 관련 로직은 Web API를 주된 기반으로 가지고 있었으며 둘 간의 공통점이 존재하지 않았습니다. 그렇기 때문에 두 로직을 분리할 경우 한 로직에 이슈가 발생했을 때 다른 로직에 영향 없이 보다 유연하게 대응할 수 있다는 이점이 발생합니다. 실제로 브라우저 업데이트라는 제3의 요소에 크게 영향을 받는 Web API의 특성상 TRACK의 하드웨어 모듈은 핫픽스 배포가 이루어지는 경우가 종종 발생하였으며 이러한 설계 전환은 그 과정을 보다 원활하게 만들어주었습니다.',
+      },
+    ],
+    period: {
+      startDate: '2022-05',
+      endDate: '2023-02',
+    },
+    teamSize: 3,
+    role: 'Research Engineer',
+  },
       },
       {
         name: 'API Integration',
