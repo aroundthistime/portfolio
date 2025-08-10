@@ -475,7 +475,7 @@ export const PROJECTS_DB = [
     id: 'owin-pos',
     title: 'OWiN POS 모바일 앱',
     summary:
-      'OWiN 인카페이먼트 서비스 중 F&B 서비스(카페 및 식당 주문)의 매장 점주들을 위한 모바일 POS 애플리케이션',
+      '크로스플랫폼 모바일 POS 애플리케이션',
     links: {
       playStore:
         'https://play.google.com/store/apps/details?id=kr.owin.fnbmanager',
