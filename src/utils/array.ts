@@ -24,3 +24,6 @@ export const partition = <T>(array: readonly T[], predicate: (item: T) => boolea
     return acc;
   }, [[], []]);
 };
+
+export const hasCommonElements = <T>(arr1: readonly T[], arr2: readonly T[]): boolean =>
+  arr1.some((item) => arr2.includes(item));

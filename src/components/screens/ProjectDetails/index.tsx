@@ -21,10 +21,7 @@ const ProjectDetailsScreen = ({ project }: Props) => {
       <IntroSection project={project} />
       <ProjectScreenshotsSection screenshots={project.screenshots} />
       <ProjectMetaSection project={project} />
-      <TechSkillsSection
-        techSkillsUsed={project.techSkillsUsed}
-        techSkillsExposed={project.techSkillsExposed}
-      />
+      <TechSkillsSection project={project} />
       <ProjectOverviewSection
         detailedExplanation={project.detailedExplanation}
       />

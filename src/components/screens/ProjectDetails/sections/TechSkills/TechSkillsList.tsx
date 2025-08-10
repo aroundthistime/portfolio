@@ -3,30 +3,43 @@
 import { useMemo } from 'react';
 import Image from 'next/image';
 import { groupBy } from '@/utils/array';
-import {
-  TECH_SKILL_GROUPS,
-  TechSkill,
-  TechSkillGroup,
-} from '@/types/techSkill';
+import { TechSkill, TechSkillGroup } from '@/types/techSkill';
 import { Badge } from '@/components/ui/badge';
+
+const FALLBACK_GROUP = 'Others';
 
 interface Props {
   techSkills: readonly TechSkill[];
   isEmphasized: boolean;
+  groupsToSimplify?: readonly TechSkillGroup[];
 }
 
-const FALLBACK_GROUP = 'Others';
-
-const TechSkillsList = ({ techSkills, isEmphasized }: Props) => {
+const TechSkillsList = ({
+  techSkills,
+  isEmphasized,
+  groupsToSimplify,
+}: Props) => {
   const skillGroupsSortedByPriority = useMemo(() => {
+    const groupsToSimplifySet = new Set(groupsToSimplify);
+
+    const simplifiedTechSkills = techSkills.map(techSkill => {
+      const { group, ...rest } = techSkill;
+
+      return group && !groupsToSimplifySet.has(group)
+        ? techSkill
+        : {
+            ...rest,
+            group: undefined,
+          };
+    });
+
     const groupedSkillsMap = groupBy(
-      techSkills,
-      tech => tech.group ?? FALLBACK_GROUP,
+      simplifiedTechSkills,
+      techSkill => techSkill.group,
     );
 
-    const getGroupPriority = (
-      group: TechSkillGroup | typeof FALLBACK_GROUP,
-    ) => {
+    const getGroupPriority = (group?: TechSkillGroup) => {
+      if (!group) return 999;
       switch (group) {
         case 'Languages & Frameworks':
           return 0;
@@ -55,14 +68,14 @@ const TechSkillsList = ({ techSkills, isEmphasized }: Props) => {
       const bPriority = getGroupPriority(groupB);
       return aPriority - bPriority;
     });
-  }, [techSkills]);
+  }, [techSkills, groupsToSimplify]);
 
   return (
     <div className="space-y-4">
       {skillGroupsSortedByPriority.map(([groupName, skills]) => (
         <div key={groupName}>
           <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
-            {groupName}
+            {groupName ?? FALLBACK_GROUP}
           </h4>
           <div className="flex flex-wrap gap-3">
             {skills.map(tech => (
