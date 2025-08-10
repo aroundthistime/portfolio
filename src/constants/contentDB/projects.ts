@@ -314,48 +314,80 @@ export const PROJECTS_DB = [
     teamSize: 3,
     role: 'Research Engineer',
   },
-      },
-      {
-        name: 'API Integration',
-        description:
-          'Integrations with Slack, GitHub, and other development tools',
-        myContribution: false,
-      },
+  {
+    id: 'owin-pos',
+    title: 'OWiN POS 모바일 앱',
+    summary:
+      'OWiN 인카페이먼트 서비스 중 F&B 서비스(카페 및 식당 주문)의 매장 점주들을 위한 모바일 POS 애플리케이션',
+    links: {
+      playStore:
+        'https://play.google.com/store/apps/details?id=kr.owin.fnbmanager',
+      appStore:
+        'https://apps.apple.com/kr/app/%EC%98%A4%EC%9C%88-%EC%82%AC%EC%9E%A5%EB%8B%98-%EC%84%9C%EB%B9%84%EC%8A%A4/id1601783039',
+    },
+    iconUrl: '/projects/owin/logo.jpeg',
+    screenshots: {
+      orientation: 'portrait',
+      items: [
+        { type: 'image', src: '/projects/owin/screenshots/1.jpeg' },
+        { type: 'image', src: '/projects/owin/screenshots/2.jpeg', description: '인증 화면' },
+        { type: 'image', src: '/projects/owin/screenshots/3.jpeg', description: '실시간 주문 알림' },
+        { type: 'image', src: '/projects/owin/screenshots/4.jpeg', description: '주문 처리' },
+        { type: 'image', src: '/projects/owin/screenshots/5.jpeg', description: '메뉴 조회 및 관리' },
+        { type: 'image', src: '/projects/owin/screenshots/6.jpeg', description: '정산 내역 조회' },
+      ],
+    },
+    tags: ['React Native', 'TypeScript', 'Redux', 'Styled Components'],
+    techSkillsUsed: [
+      TECH_SKILLS.reactNative,
+      TECH_SKILLS.typescript,
+      TECH_SKILLS.redux,
+      TECH_SKILLS.styledComponents,
+      TECH_SKILLS.zeplin,
     ],
-    troubleshoots: [
+    techSkillsExposed: [TECH_SKILLS.codeIgniter],
+    detailedExplanation: `차량 내부에서 상품 혹은 서비스를 결제하고 이용할 수 있는 인카페이먼트 서비스에서 매장 점주들이 <strong>주문 혹은 상품을 관리할 수 있는 POS 어플리케이션</strong>입니다. (타 서비스 중에서는 ‘배민주문접수 앱’, ‘요기요 사장님’ 등과 유사한 기능을 수행한다고 볼 수 있습니다) 모바일 어플리케이션이라는 형태를 통해 접근성을 높이면서 매장들에 설치된 <strong>기존 윈도우 POS 시스템과 실시간으로 연동되는 동일 기능을 모두 구현</strong>하는 것이 프로젝트의 목표였습니다. 개발 프레임워크는 유지보수의 용이를 위해 크로스 플랫폼 개발이 가능한 React Native를 채택하였습니다.
+    
+    백엔드 엔지니어 1명, 디자이너 1명과 함께 프로젝트를 수행하였으며 본인은 프로젝트 내에서 <strong>모바일 애플리케이션 개발 및 배포</strong>를 담당하였습니다. 최초 배포는 스토어 직접 배포를 통해 진행하였으며 이후 <strong>빠른 이슈 대응을 위해 CodePush를 추가 도입</strong>하였습니다.`,
+    features: [
       {
-        title: 'Real-time Sync Conflicts',
-        problem:
-          'When multiple users edited tasks simultaneously, conflicts arose due to concurrent updates, leading to data loss and inconsistent states.',
-        solution:
-          'Implemented operational transformation for conflict resolution and optimistic updates with rollback capability. Added visual indicators for conflicting changes and user-friendly merge interfaces.',
+        name: '계정 인증 처리 시스템',
+        description: '가맹 점주 계약 특성으로 인해 가입 기능을 제외한 로그인 인증만을 제공',
+        myContribution: true,
       },
       {
-        title: 'Performance with Large Datasets',
-        problem:
-          'The application became slow and unresponsive when dealing with large task lists and complex project structures, impacting user experience.',
-        solution:
-          'Implemented virtual scrolling for large task lists, pagination for API calls, and intelligent caching strategies. Used React.memo and useMemo extensively to prevent unnecessary re-renders.',
+        name: '실시간 주문 알림',
+        description: 'Firebase Cloud Messaging 활용하였으며 주문 상태에 따라 다른 푸쉬 메시지 및 알림음 적용',
+        myContribution: true,
       },
       {
-        title: 'Complex Drag-and-Drop Interactions',
-        problem:
-          'Implementing a smooth and intuitive drag-and-drop interface for the Kanban board proved challenging due to complex collision detection and performance requirements.',
-        solution:
-          'Built custom drag-and-drop system using react-beautiful-dnd with custom collision detection. Added keyboard accessibility and touch support for mobile devices.',
+        name: '실시간 주문 처리',
+        description:
+          '주문승인, 거부, 상품 준비 완료 등 주문 상태 실시간으로 변경 및 관리',
+        myContribution: true,
       },
       {
-        title: 'Offline Support and Sync',
-        problem:
-          'Providing offline support and seamless synchronization of changes when users came back online was difficult due to the complexity of conflict resolution and data consistency.',
-        solution:
-          'Implemented service worker for offline functionality and built a queue system for pending operations. Added conflict resolution UI for when users come back online with conflicting changes.',
+        name: '메뉴 조회 및 관리',
+        description: '메뉴 조회 시 카테고리, 판매여부 등에 의한 필터 기능 제공',
+        myContribution: true,
+      },
+      {
+        name: '정산내역 조회',
+        description: '기간을 기준으로 정산 내역을 조회하고 Excel 파일로 추출 기능 제공',
+        myContribution: true,
+      },
+      {
+        name: '앱 버전 호환성 관리',
+        description:
+          '앱 실행 시 최소 요구 버전 검사를 통한 강제 업데이트 기능 구현',
+        myContribution: true,
       },
     ],
     period: {
-      startDate: '2022-06',
-      endDate: '2022-12',
+      startDate: '2021-10',
+      endDate: '2021-12',
     },
-    teamSize: 8,
-    role: 'Frontend Architect',
-  }]as const satisfies ReadonlyArray<Project>;
+    teamSize: 1,
+    role: 'React Native Developer',
+  },
+] as const satisfies ReadonlyArray<Project>;
