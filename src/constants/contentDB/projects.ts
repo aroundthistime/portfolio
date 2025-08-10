@@ -73,6 +73,84 @@ export const PROJECTS_DB = [
 기능 구현에만 국한되지 않고, 테스트 신뢰성 확보와 개발 환경 생산성 향상에도 많은 노력을 기울였습니다. <strong>Playwright 기반 E2E 테스트</strong> 시스템을 안정화하고, Emulation·프록시·Admin API 연동 등을 통해 다양한 유저 시나리오에 대한 커버리지를 확대했습니다. CI 환경에서는 테스트 실행 전략을 병렬화, 정기화하여 병목을 최소화한 기능 안정성을 확보하고, <strong>린트 룰, Prettier, VSCode 워크스페이스 구성을 주도</strong>하여 통합된 협업 환경을 구축했습니다.
 
 이 외에도 Beacon API 기반 지표 수집 안정화, 오가닉 유저 증진을 위한 <strong>SEO 개선</strong>, 레거시 코드 정리, 디버깅 UI 개발, 사내 라이브러리 개발 지원 등 사용자와 개발자 모두를 고려한 지속적인 개선에 기여해왔습니다.`,
+    features: [
+      {
+        name: '랜덤 영상 채팅',
+        description: 'WebRTC 기반의 1:1 실시간 음성 및 영상 통화 기능 제공',
+        myContribution: true
+      },
+      {
+        name: '유저 간 실시간 채팅',
+        description: 'STOMP 프로토콜 기반의 실시간 텍스트 메시지 송수신 기능',
+        myContribution: true
+      },
+      {
+        name: '전화번호 및 SNS 인증',
+        description: 'Google, Apple, Facebook 계정을 통한 소셜 로그인 및 기본 휴대폰 인증 지원. 구체적인 플로우는 국가 정책에 따른 분기 처리',
+        myContribution: true
+      },
+      {
+        name: '3자 결제 지원',
+        description: 'Stripe, Adyen, Toss 등을 국가별로 제공하며 웹·앱 모두 통합 지원',
+        myContribution: true
+      },
+      {
+        name: 'AR 효과',
+        description: '배경 제거, 뷰티 필터 및 사용자 얼굴 혹은 모션 인식 기반 AR 이펙트 제공',
+        myContribution: true
+      },
+      {
+        name: '크리에이터 기능 지원',
+        description: '컨텐츠 크리에이터용 특정 기능 지원 및 전용 튜토리얼, 모집 배너 구현',
+        myContribution: true,
+      },
+      {
+        name: '모더레이션 기능',
+        description: '클라이언트/서버 측 AI 모델 기반 실시간 콘텐츠/유저 검출 및 제어 로직 구현',
+        myContribution: true
+      },
+      {
+        name: '히스토리 기능',
+        description: '온라인 여부, 대화 날짜 등을 통한 필터링 및 정렬 기능 제공',
+        myContribution: true
+      },
+      {
+        name: '부분 유료화',
+        description: '특정 기능(매칭, 효과 등) 사용 시 재화 또는 아이템 소비 방식 도입. 빠른 사용자 경험을 위해 클라이언트 dry-run과 서버 확인을 병행',
+        myContribution: true
+      },
+      {
+        name: '라이브 방송',
+        description: '실시간 영상 스트리밍 및 후원 기능 지원',
+        myContribution: false,
+      },
+      {
+        name: '블로그 기능',
+        description: 'Zendesk 기반 CMS 연동형 콘텐츠 발행 기능으로 SEO 및 유저 유입 지원. 배포 최적화를 위해 Zendesk Webhook을 기반으로 콘텐츠 자동 업데이트 기능 구현',
+        myContribution: true
+      },
+      {
+        name: '이벤트 프로모션',
+        description: '백오피스에서 설정한 데이터를 기반으로 자동 렌더링되는 페이지 혹은 배너 형태의 프로모션 UI 제공',
+        myContribution: true
+      },
+
+      {
+        name: '앱 전환 유도',
+        description: 'Appsflyer·Adjust 기반 트래커와 연동하여 트리거 지점에서 앱 다운로드 유도',
+        myContribution: true,
+      },
+      {
+        name: '이벤트 로그 수집',
+        description: 'Google BigQuery 기반 로그 시스템 구축, A/B 테스트, 디버깅, 대시보드 지표 활용 등 지원',
+        myContribution: true,
+      },
+      {
+        name: '고객센터 페이지',
+        description: '약관 등의 법적 정보 제공 및 문의 페이지 (Zendesk 기반)',
+        myContribution: true
+      }
+    ],
     period: {
       startDate: '2024-03',
     },
