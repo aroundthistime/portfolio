@@ -218,7 +218,7 @@ export const TECH_SKILLS = {
     group: 'API & Protocol',
   },
   jsonRpc: {
-    name: 'jsonRPC',
+    name: 'jsonRPC API',
     group: 'API & Protocol',
   },
   websocket: {
