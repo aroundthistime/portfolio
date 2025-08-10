@@ -6,14 +6,20 @@ import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
+export async function generateStaticParams() {
+  return PROJECTS_DB.map(project => ({
+    id: project.id,
+  }));
+}
+
 interface PageProps {
   params: {
-    slug: string;
+    id: string;
   };
 }
 
 export default function ProjectDetail({ params }: PageProps) {
-  const project = PROJECTS_DB.find(project => project.id === params.slug);
+  const project = PROJECTS_DB.find(project => project.id === params.id);
 
   if (!project) {
     notFound();
