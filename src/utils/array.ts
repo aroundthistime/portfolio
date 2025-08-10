@@ -1,6 +1,6 @@
 import { DefaultMap } from "./dataStructure/defaultMap";
 
-export const groupBy = <T, K>(array: T[], keyGetter: (item: T) => K) => {
+export const groupBy = <T, K>(array: readonly T[], keyGetter: (item: T) => K) => {
   return array.reduce((acc, item) => {
     const key = keyGetter(item);
     acc.get(key).push(item);
