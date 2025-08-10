@@ -37,7 +37,7 @@ export const TECH_SKILLS = {
     group: 'Languages & Frameworks',
   },
   reactQuery: {
-    name: 'React Query',
+    name: 'Tanstack Query',
     iconUrl: '/images/skills/reactquery.png',
     group: 'State Management',
   },
@@ -216,4 +216,12 @@ export const TECH_SKILLS = {
     name: 'WebSocket',
     group: 'API & Protocol',
   },
+  swc: {
+    name: 'SWC',
+    group: 'Build Tools'
+  },
+  babel: {
+    name: 'Babel',
+    group: 'Build Tools'
+  }
 } as const satisfies Record<string, TechSkill>;
