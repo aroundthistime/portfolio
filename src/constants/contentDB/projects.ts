@@ -151,6 +151,11 @@ export const PROJECTS_DB = [
         myContribution: true
       }
     ],
+    troubleshoots: [
+      // {
+      //   title: 
+      // }
+    ],
     period: {
       startDate: '2024-03',
     },
@@ -196,7 +201,7 @@ export const PROJECTS_DB = [
         },
       ],
     },
-    tags: ['WebAR', 'Next.js', 'TypeScript', 'Three.js', 'WebAssembly'],
+    tags: ['AR', 'Next.js', 'TypeScript', 'Three.js', 'WebAssembly'],
     techSkillsUsed: [
       TECH_SKILLS.typescript,
       TECH_SKILLS.nextJS,
