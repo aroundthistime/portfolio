@@ -3,7 +3,11 @@
 import { useMemo } from 'react';
 import Image from 'next/image';
 import { groupBy } from '@/utils/array';
-import { TechSkill } from '@/types/techSkill';
+import {
+  TECH_SKILL_GROUPS,
+  TechSkill,
+  TechSkillGroup,
+} from '@/types/techSkill';
 import { Badge } from '@/components/ui/badge';
 
 interface Props {
@@ -11,14 +15,51 @@ interface Props {
   isEmphasized: boolean;
 }
 
+const FALLBACK_GROUP = 'Others';
+
 const TechSkillsList = ({ techSkills, isEmphasized }: Props) => {
-  const groupedSkillsMap = useMemo(() => {
-    return groupBy([...techSkills], tech => tech.group ?? 'Others');
+  const skillGroupsSortedByPriority = useMemo(() => {
+    const groupedSkillsMap = groupBy(
+      techSkills,
+      tech => tech.group ?? FALLBACK_GROUP,
+    );
+
+    const getGroupPriority = (
+      group: TechSkillGroup | typeof FALLBACK_GROUP,
+    ) => {
+      switch (group) {
+        case 'Languages & Frameworks':
+          return 0;
+        case 'State Management':
+          return 1;
+        case 'Styling & UI':
+          return 2;
+        case 'Testing':
+          return 3;
+        case 'API & Protocol':
+          return 4;
+        case 'Database':
+        case 'Devops & Infrastructure':
+          return 5;
+        case '3D & Web Graphics':
+        case 'Build Tools':
+        case 'Working Tools':
+          return 6;
+        default:
+          return 7;
+      }
+    };
+
+    return Array.from(groupedSkillsMap.entries()).sort(([groupA], [groupB]) => {
+      const aPriority = getGroupPriority(groupA);
+      const bPriority = getGroupPriority(groupB);
+      return aPriority - bPriority;
+    });
   }, [techSkills]);
 
   return (
     <div className="space-y-4">
-      {Array.from(groupedSkillsMap.entries()).map(([groupName, skills]) => (
+      {skillGroupsSortedByPriority.map(([groupName, skills]) => (
         <div key={groupName}>
           <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
             {groupName}
