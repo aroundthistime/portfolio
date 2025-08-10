@@ -26,7 +26,7 @@ const ProjectTroubleshootsSection = ({ troubleshoots }: Props) => {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                   The Challenge:
                 </h4>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
                   {item.problem}
                 </p>
               </div>
@@ -34,7 +34,7 @@ const ProjectTroubleshootsSection = ({ troubleshoots }: Props) => {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                   My Solution:
                 </h4>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
                   {item.solution}
                 </p>
               </div>
