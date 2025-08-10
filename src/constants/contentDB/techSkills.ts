@@ -199,10 +199,14 @@ export const TECH_SKILLS = {
     iconUrl: '/images/skills/sonarqube.svg',
     group: 'Devops & Infrastructure',
   },
+  terraform: {
+    name: 'Terraform',
+    iconUrl: '/images/skills/terraform.png',
+    group: 'Devops & Infrastructure',
+  },
   zendesk: {
     name: 'Zendesk',
     iconUrl: '/images/skills/zendesk.png',
-    group: 'Working Tools',
   },
   restApi: {
     name: 'REST API',
@@ -223,5 +227,14 @@ export const TECH_SKILLS = {
   babel: {
     name: 'Babel',
     group: 'Build Tools'
+  },
+  bigQuery: {
+    name: 'BigQuery',
+    group: 'Database',
+    iconUrl: '/images/skills/bigquery.png',
+  },
+  mediapipe: {
+    name: 'MediaPipe',
+    group: '3D & Web Graphics',
   }
 } as const satisfies Record<string, TechSkill>;
