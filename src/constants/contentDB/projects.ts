@@ -282,7 +282,7 @@ solution: `이 문제를 해결하기 위해, 웹페이지에서 실제 사용�
 중복되는 로직들을 <strong>유틸 함수 혹은 클래스 형태로 모듈화</strong>하였으며 <strong>HOC, Wrapper 컴포넌트 등을 활용</strong>하여 다중 관심사 컴포넌트들을 단일 관심의 확장 가능 컴포넌트로 구현하였습니다. 또한 옵셔널 속성들이 다수 존재하는 <strong>범용적인 타입 정의들을 Discriminated Union으로 변경</strong>하여 타입 조건을 강화하였습니다. 디자인 패턴 관점에서는 <strong>클린 아키텍처 기반의 초기 구조</strong>가 불필요한 계층 생성으로 인해 개발 공수를 늘리거나 중복 코드를 유도하는 경향이 있어 이를 <strong>컴포넌트 + 훅 기반으로 변동</strong>하는 작업을 수행했습니다.
 
 5. <strong>성능 최적화</strong>
-이벤트 핸들러, 3D 객체 처리 등 관련 <strong>메모리 누수</strong>를 발견 및 제거하고 <strong>memoization을 통해 무거운 3D 객체 처리를 최적화</strong>했습니다. 또한 <strong>자동 저장 기능에 쓰로틀링 적용</strong>, 저장 시 <strong>데이터 압축 등을 수행</strong>하여 네트워크 비용을 감소시키고 사용자 경험을 개선했습니다.
+이벤트 핸들러, 3D 객체 처리 등 관련 <strong>메모리 누수</strong>를 발견 및 제거하고 <strong>memoization을 통해 무거운 3D 객체 처리를 최적화</strong>했습니다. 또한 <strong>자동 저장 기능에 쓰로틀링 적용</strong>, 저장 시 <strong>데이터 압축 등을 수행</strong>하여 네트워크 비용을 감소시키고 사용자 경험을 개선했습니다. 추가로, 특정 파싱 로직을 비동기 병렬 실행 구조로 변경하여 연산 의존성을 줄이고 전체 처리 속도를 향상시켰습니다.
 
 6. <strong>품질 관리</strong>
 <strong>코드 리뷰에 참여</strong>하고 Github Actions 기반 PR CI에 연동된 <strong>유닛 테스트</strong>를 작성했습니다.
