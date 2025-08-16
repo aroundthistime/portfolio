@@ -470,7 +470,7 @@ solution: `이 문제를 해결하기 위해, 웹페이지에서 실제 사용�
       {
         name: '자동화 벤치마크 시스템',
         description:
-          '플랫폼별 최종 빌드에서 정확도, 연산 소요 시간, 메모리 사용량 등 성능 검증 및 비교. Github Action과 TeamCity CI 파이프라인 연동되었으며 Grafana를 통한 시각화 지원',
+          '플랫폼별 최종 빌드에서 정확도, 연산 소요 시간, 메모리 사용량 등 성능 검증 및 비교. TeamCity CI 파이프라인 연동되었으며 Grafana를 통한 시각화 지원',
         myContribution: true,
       },
     ],
