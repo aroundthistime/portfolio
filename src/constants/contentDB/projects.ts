@@ -96,7 +96,7 @@ export const PROJECTS_DB = [
       },
       {
         name: 'AR 효과',
-        description: '배경 제거, 뷰티 필터 및 사용자 얼굴 혹은 모션 인식 기반 AR 이펙트 제공',
+        description: '배경 제거, 뷰티 필터 및 사용자 얼굴 혹은 모션 인식 기반 AR 이펙트 제공 (로딩 성능 최적화를 위한 indexedDB 캐싱 적용)',
         myContribution: true
       },
       {
@@ -328,7 +328,7 @@ solution: `이 문제를 해결하기 위해, 웹페이지에서 실제 사용�
       {
         name: 'AR 뷰어: 통계 수집',
         description:
-          '사용자 액션 등 특정 기준 충족할 때마다 통계 자료 수집 (STOMP 통신 기반)',
+          '사용자 분석을 위해 어드민 페이지에 연동되는 이벤트 로그 수집 시스템 구현',
         myContribution: true,
       },
       {
@@ -458,25 +458,19 @@ solution: `이 문제를 해결하기 위해, 웹페이지에서 실제 사용�
       {
         name: '다양한 플랫폼 지원',
         description:
-          '다양한 플랫폼 지원 (실행 어플리케이션 혹은 SDK 라이브러리 형태)',
-        myContribution: true,
-      },
-      {
-        name: 'Web SDK 지원',
-        description:
-          'Web SDK는 유일하게 외부에 제공되지 않으며 사내 WebXR 플랫폼 조직에서 차용중입니다',
+          'Native PC (Window, MacOS, Linux), Android, iOS, Web 플랫폼에서의 AR 연산 및 렌더링 지원 (실행 어플리케이션 혹은 SDK 라이브러리 형태)',
         myContribution: true,
       },
       {
         name: '프로토타입 어플리케이션',
         description:
-          'SDK 활용 관련 프로토타입 어플리케이션 개발 (Web에 한해서 본인 참여)',
+          'SDK 활용 관련 프로토타입 어플리케이션 개발 (Web에 한해서 본인 참여): AR 뷰어, 3D 프로젝트 저작, 벤치마크용 성능 측정, 데이터셋 생성 어플리케이션 등',
         myContribution: true,
       },
       {
         name: '자동화 벤치마크 시스템',
         description:
-          '자동화 벤치마크 시스템 통한 성능 검증',
+          '플랫폼별 최종 빌드에서 정확도, 연산 소요 시간, 메모리 사용량 등 성능 검증 및 비교. Github Action과 TeamCity CI 파이프라인 연동되었으며 Grafana를 통한 시각화 지원',
         myContribution: true,
       },
     ],
