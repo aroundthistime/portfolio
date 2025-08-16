@@ -77,7 +77,7 @@ const ProjectCard = ({ project, index }: Props) => {
       viewport={{ once: true }}
       whileHover={{ y: -10 }}
       className="group">
-      <Card className="border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer">
+      <Card className="border-0 shadow-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 overflow-hidden">
         <div className="relative overflow-hidden">
           <motion.div
             whileHover={{ scale: 1.1 }}
